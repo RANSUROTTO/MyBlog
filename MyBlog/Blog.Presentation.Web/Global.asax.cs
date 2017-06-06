@@ -26,5 +26,14 @@ namespace Blog.Presentation.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+
+        protected void Application_PreSendRequestHeaders(object sender, EventArgs e)
+        {
+            HttpApplication app = sender as HttpApplication;
+            //禁用 "Server" 请求头
+            app?.Context?.Response.Headers.Remove("Server");
+        }
+
     }
 }
