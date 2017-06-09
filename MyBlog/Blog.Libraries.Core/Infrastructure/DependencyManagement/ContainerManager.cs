@@ -91,17 +91,16 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
 
 
         /// <summary>
-        /// Resolve all
+        /// 通过key值和类型T解析指定类型T的所有注册项
         /// </summary>
-        /// <typeparam name="T">Type</typeparam>
-        /// <param name="key">key</param>
-        /// <param name="scope">Scope; pass null to automatically resolve the current scope</param>
-        /// <returns>Resolved services</returns>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="key">键值</param>
+        /// <param name="scope">解析范围; 传递null以自动解析当前作用域</param>
+        /// <returns>解析后的服务列表</returns>
         public virtual T[] ResolveAll<T>(string key = "", ILifetimeScope scope = null)
         {
             if (scope == null)
             {
-                //no scope specified
                 scope = Scope();
             }
             if (string.IsNullOrEmpty(key))
@@ -159,11 +158,11 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         }
 
         /// <summary>
-        /// Try to resolve srevice
+        /// 尝试解析指定解析范围内的服务
         /// </summary>
-        /// <param name="serviceType">Type</param>
-        /// <param name="scope">Scope; pass null to automatically resolve the current scope</param>
-        /// <param name="instance">Resolved service</param>
+        /// <param name="serviceType">类型</param>
+        /// <param name="scope">解析范围; 传递null以自动解析当前作用域</param>
+        /// <param name="instance">解析服务</param>
         /// <returns>Value indicating whether service has been successfully resolved</returns>
         public virtual bool TryResolve(Type serviceType, ILifetimeScope scope, out object instance)
         {
@@ -176,16 +175,15 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         }
 
         /// <summary>
-        /// Check whether some service is registered (can be resolved)
+        /// 检查一些服务在指定解析范围内是否已注册（可以解析）
         /// </summary>
-        /// <param name="serviceType">Type</param>
-        /// <param name="scope">Scope; pass null to automatically resolve the current scope</param>
-        /// <returns>Result</returns>
+        /// <param name="serviceType">类型</param>
+        /// <param name="scope">解析范围; 传递null以自动解析当前作用域</param>
+        /// <returns>结果</returns>
         public virtual bool IsRegistered(Type serviceType, ILifetimeScope scope = null)
         {
             if (scope == null)
             {
-                //no scope specified
                 scope = Scope();
             }
             return scope.IsRegistered(serviceType);
@@ -194,8 +192,8 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         /// <summary>
         /// Resolve optional
         /// </summary>
-        /// <param name="serviceType">Type</param>
-        /// <param name="scope">Scope; pass null to automatically resolve the current scope</param>
+        /// <param name="serviceType">类型</param>
+        /// <param name="scope">>解析范围; 传递null以自动解析当前作用域</param>
         /// <returns>Resolved service</returns>
         public virtual object ResolveOptional(Type serviceType, ILifetimeScope scope = null)
         {
@@ -208,9 +206,9 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         }
 
         /// <summary>
-        /// Get current scope
+        /// 获取当前解析范围
         /// </summary>
-        /// <returns>Scope</returns>
+        /// <returns>解析范围</returns>
         public virtual ILifetimeScope Scope()
         {
             try
@@ -218,18 +216,19 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
                 if (HttpContext.Current != null)
                     return AutofacDependencyResolver.Current.RequestLifetimeScope;
 
-                //when such lifetime scope is returned, you should be sure that it'll be disposed once used (e.g. in schedule tasks)
+                //当返回这样的生命范围时，你应该确定它将被处理一次使用（例如在计划任务中）
                 return Container.BeginLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
             }
             catch (Exception)
             {
-                //we can get an exception here if RequestLifetimeScope is already disposed
-                //for example, requested in or after "Application_EndRequest" handler
-                //but note that usually it should never happen
+                //如果RequestLifetimeScope已经处理，我们可以在此处获取异常
+                //例如，在“Application_EndRequest”处理程序中或之后请求
+                //但是请注意，通常它永远不会发生
 
-                //when such lifetime scope is returned, you should be sure that it'll be disposed once used (e.g. in schedule tasks)
+                //当返回这样的生命范围时，你应该确定它将被处理一次使用（例如在计划任务中）
                 return Container.BeginLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
             }
         }
+
     }
 }
