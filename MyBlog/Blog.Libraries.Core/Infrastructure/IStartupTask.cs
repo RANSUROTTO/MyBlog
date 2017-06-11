@@ -6,13 +6,14 @@
     public interface IStartupTask
     {
         /// <summary>
-        /// 执行方法
+        /// 启动时执行方法
         /// </summary>
         void Execute();
 
         /// <summary>
-        /// 顺序
+        /// 启动任务顺序
         /// </summary>
         int Order { get; }
+
     }
 }
