@@ -107,6 +107,7 @@
     <Compile Include="Infrastructure\IEngine.cs" />
     <Compile Include="Infrastructure\IStartupTask.cs" />
     <Compile Include="Infrastructure\Singleton.cs" />
+    <Compile Include="Infrastructure\SiteEngine.cs" />
     <Compile Include="Infrastructure\TypeFinder\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\ITypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
