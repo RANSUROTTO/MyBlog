@@ -102,6 +102,7 @@
     <Compile Include="Fakes\FakeHttpResponse.cs" />
     <Compile Include="Fakes\FakeHttpSessionState.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
     <Compile Include="Infrastructure\EngineContext.cs" />
     <Compile Include="Infrastructure\IEngine.cs" />
     <Compile Include="Infrastructure\IStartupTask.cs" />
