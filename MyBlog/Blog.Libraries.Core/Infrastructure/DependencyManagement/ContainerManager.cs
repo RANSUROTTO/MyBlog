@@ -51,8 +51,6 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
 
         #region Methods
 
-        #endregion
-
         /// <summary>
         /// 通过指定类型进行解析
         /// </summary>
@@ -111,27 +109,26 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         }
 
         /// <summary>
-        /// Resolve unregistered service
+        /// 解析未注册的服务
         /// </summary>
-        /// <typeparam name="T">Type</typeparam>
-        /// <param name="scope">Scope; pass null to automatically resolve the current scope</param>
-        /// <returns>Resolved service</returns>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="scope">解析范围; 传递null以自动解析当前作用域</param>
+        /// <returns>解析后的服务</returns>
         public virtual T ResolveUnregistered<T>(ILifetimeScope scope = null) where T : class
         {
             return ResolveUnregistered(typeof(T), scope) as T;
         }
 
         /// <summary>
-        /// Resolve unregistered service
+        /// 解析未注册的服务
         /// </summary>
-        /// <param name="type">Type</param>
-        /// <param name="scope">Scope; pass null to automatically resolve the current scope</param>
-        /// <returns>Resolved service</returns>
+        /// <param name="type">类型</param>
+        /// <param name="scope">解析范围; 传递null以自动解析当前作用域</param>
+        /// <returns>解析后的服务</returns>
         public virtual object ResolveUnregistered(Type type, ILifetimeScope scope = null)
         {
             if (scope == null)
             {
-                //no scope specified
                 scope = Scope();
             }
             var constructors = type.GetConstructors();
@@ -163,7 +160,7 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         /// <param name="serviceType">类型</param>
         /// <param name="scope">解析范围; 传递null以自动解析当前作用域</param>
         /// <param name="instance">解析服务</param>
-        /// <returns>Value indicating whether service has been successfully resolved</returns>
+        /// <returns>指示服务是否已成功解决的值</returns>
         public virtual bool TryResolve(Type serviceType, ILifetimeScope scope, out object instance)
         {
             if (scope == null)
@@ -190,11 +187,11 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         }
 
         /// <summary>
-        /// Resolve optional
+        /// 尝试解析指定范围内的服务,解析失败返回null
         /// </summary>
         /// <param name="serviceType">类型</param>
         /// <param name="scope">>解析范围; 传递null以自动解析当前作用域</param>
-        /// <returns>Resolved service</returns>
+        /// <returns>解析后的服务</returns>
         public virtual object ResolveOptional(Type serviceType, ILifetimeScope scope = null)
         {
             if (scope == null)
@@ -229,6 +226,8 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
                 return Container.BeginLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
             }
         }
+
+        #endregion
 
     }
 }
