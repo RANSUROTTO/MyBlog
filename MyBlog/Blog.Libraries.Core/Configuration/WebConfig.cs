@@ -1,28 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace Blog.Libraries.Core.Configuration
 {
-    public class WebConfig : IConfigurationSectionHandler
+    public class WebConfig : BaseConfig<WebConfig>
     {
-        public object Create(object parent, object configContext, XmlNode section)
+        /// <summary>
+        /// 创建一个配置处理程序
+        /// </summary>
+        /// <param name="section">配置文件WebCofig xml父节点</param>
+        public override WebConfig Create(XmlNode section)
         {
-            var config = new WebConfig();
+            Config = new WebConfig();
 
-            //Initialization properties
+            //初始化属性值
+            var startupNode = section.SelectSingleNode("Startup");
+            Config.IgnoreStartupTasks = GetBool(startupNode, "IgnoreStartupTasks");
 
-
-            return config;
+            return Config;
         }
 
         #region Properties
 
-
+        /// <summary>
+        /// 是否忽略运行应用程序启动任务
+        /// </summary>
+        public bool IgnoreStartupTasks { get; set; }
 
         #endregion
 

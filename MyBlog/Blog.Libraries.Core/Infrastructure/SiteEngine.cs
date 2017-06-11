@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Mvc;
 using Autofac;
+using Autofac.Integration.Mvc;
 using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Infrastructure.DependencyManagement;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
@@ -15,6 +14,7 @@ namespace Blog.Libraries.Core.Infrastructure
     /// </summary>
     public class SiteEngine : IEngine
     {
+
         #region Fields
 
         private ContainerManager _containerManager;
@@ -35,7 +35,32 @@ namespace Blog.Libraries.Core.Infrastructure
 
         #region Methods
 
+        public virtual void Initialize(WebConfig config)
+        {
+            //依赖注册
+            RegisterDependencies(config);
 
+            //运行启动任务
+            if (!config.IgnoreStartupTasks)
+            {
+                RunStartupTasks();
+            }
+        }
+
+        public virtual T Resolve<T>() where T : class
+        {
+            return ContainerManager.Resolve<T>();
+        }
+
+        public virtual object Resolve(Type type)
+        {
+            return ContainerManager.Resolve(type);
+        }
+
+        public virtual T[] ResolveAll<T>()
+        {
+            return ContainerManager.ResolveAll<T>();
+        }
 
         #endregion
 
@@ -49,10 +74,26 @@ namespace Blog.Libraries.Core.Infrastructure
         {
             var builder = new ContainerBuilder();
             var container = builder.Build();
-            this._containerManager = new ContainerManager(container);
+            _containerManager = new ContainerManager(container);
 
+            var typeFinder = new WebAppTypeFinder();
+            builder = new ContainerBuilder();
+            builder.RegisterInstance(config).As<WebConfig>().SingleInstance();
+            builder.RegisterInstance(this).As<IEngine>().SingleInstance();
+            builder.RegisterInstance(typeFinder).As<ITypeFinder>().SingleInstance();
+            builder.Update(container);
 
+            //register dependencies provided by other assemblies
+            builder = new ContainerBuilder();
+            var drTypes = typeFinder.FindClassesOfType<IDependencyRegistrar>();
+            var drInstances = drTypes.Select(drType => (IDependencyRegistrar)Activator.CreateInstance(drType)).ToList();
+            //sort
+            drInstances = drInstances.AsQueryable().OrderBy(t => t.Order).ToList();
+            drInstances.ForEach(p => p.Register(builder, typeFinder, config));
+            builder.Update(container);
 
+            //set dependency resolver
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
         /// <summary>

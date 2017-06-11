@@ -1,0 +1,7 @@
+
+1.Blog.Libraries.Core.Infrastructure.SiteEngine.cs
+
+2.Blog.Libraries.Core.Configuration.WebConfig.cs
+	配置在web启动项目的 Web.config配置文件的 webconfig 节点下
+	<section name="WebConfig" type="Blog.Libraries.Core.Configuration.WebConfig" requirePermission="false" />
+	<WebConfg></WebConfig>
