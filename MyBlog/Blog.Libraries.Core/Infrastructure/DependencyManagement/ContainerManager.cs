@@ -29,7 +29,7 @@ namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
         /// <param name="container">容器</param>
         public ContainerManager(IContainer container)
         {
-            this._container = container;
+            _container = container;
         }
 
         #endregion
