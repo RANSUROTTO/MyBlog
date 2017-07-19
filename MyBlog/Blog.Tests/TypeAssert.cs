@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 namespace Blog.Tests
 {
+
     /// <summary>
     /// 包含用于单元测试的类型断言
     /// </summary>
@@ -58,4 +59,55 @@ namespace Blog.Tests
         }
 
     }
+
+    /// <summary>
+    /// 针对类型断言类(TypeAssert)的单元测试
+    /// </summary>
+    [TestFixture]
+    public class TypeAssertTests
+    {
+
+        #region UnitTest TypeAssert.AreEqual
+
+        [Test]
+        public void PassesOnTypeEqualsByObject()
+        {
+            string str1 = "123";
+            string str2 = "abc";
+            TypeAssert.AreEqual(str1, str2);
+        }
+
+        [Test]
+        public void PassesOnTypeEqualsByType()
+        {
+            string str = "abc";
+            TypeAssert.AreEqual(typeof(string), str);
+        }
+
+        #endregion
+
+        #region UnitTest TypeAssert.Equals_Generice
+
+        [Test]
+        public void PassesOnTypeEquals_generice()
+        {
+            string str = "abc";
+            TypeAssert.Equals<string>(str);
+        }
+
+        #endregion
+
+        #region UnitTest TypeAssert.Is_Generice
+
+        [Test]
+        public void PassesTypeIs_generice()
+        {
+            string str = "abc";
+            TypeAssert.Is<object>(str);
+        }
+
+        #endregion
+
+    }
+
 }
