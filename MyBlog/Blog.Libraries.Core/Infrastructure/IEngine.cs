@@ -4,11 +4,13 @@ using Blog.Libraries.Core.Infrastructure.DependencyManagement;
 
 namespace Blog.Libraries.Core.Infrastructure
 {
+
     /// <summary>
     /// 实现该接口可作为构成提供项目各种服务的引擎
     /// </summary>
     public interface IEngine
     {
+
         /// <summary>
         /// 容器管理对象
         /// </summary>
