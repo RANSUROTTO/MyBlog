@@ -78,6 +78,28 @@ namespace Blog.Tests
             Assert.AreEqual(expected, actual, message, args: null);
         }
 
+        /// <summary>
+        /// 断言两个对象不相等
+        /// </summary>
+        /// <param name="actual">实际对象</param>
+        /// <param name="expected">预期对象</param>
+        public static T TestNotEqual<T>(this T actual, object expected)
+        {
+            Assert.AreNotEqual(expected, actual);
+            return actual;
+        }
+
+        ///<summary>
+        /// 断言两个对象不相等,相等时显示错误消息
+        ///</summary>
+        ///<param name="actual">实际对象</param>
+        ///<param name="expected">预期对象</param>
+        ///<param name="message">错误消息</param>
+        public static void TestNotEqual(this object actual, object expected, string message)
+        {
+            Assert.AreNotEqual(expected, actual, message, args: null);
+        }
+
         #endregion
 
         #region Test exception
@@ -116,7 +138,7 @@ namespace Blog.Tests
         /// </summary>
         /// <param name="actual">实际对象</param>
         /// <param name="expected">预期对象</param>
-        public static void ShouldBeTheSameAs(this object actual, object expected)
+        public static void TestBeTheSameAs(this object actual, object expected)
         {
             Assert.AreSame(expected, actual);
         }
@@ -126,7 +148,7 @@ namespace Blog.Tests
         /// </summary>
         /// <param name="actual">实际对象</param>
         /// <param name="expected">预期对象</param>
-        public static void ShouldBeNotBeTheSameAs(this object actual, object expected)
+        public static void TestBeNotBeTheSameAs(this object actual, object expected)
         {
             Assert.AreNotSame(expected, actual);
         }
@@ -138,7 +160,7 @@ namespace Blog.Tests
         /// <summary>
         /// 断言条件为true
         /// </summary>
-        public static void ShouldBeTrue(this bool source)
+        public static void TestBeTrue(this bool source)
         {
             Assert.IsTrue(source);
         }
@@ -147,7 +169,7 @@ namespace Blog.Tests
         /// 断言条件为false
         /// </summary>
         /// <param name="source"></param>
-        public static void ShouldBeFalse(this bool source)
+        public static void TestBeFalse(this bool source)
         {
             Assert.IsFalse(source);
         }
@@ -161,7 +183,7 @@ namespace Blog.Tests
         /// </summary>
         /// <param name="actual">实际字符串</param>
         /// <param name="expected">预期字符串</param>
-        public static void AssertSameStringAs(this string actual, string expected)
+        public static void TestStringCompare(this string actual, string expected)
         {
             Assert.IsTrue(string.Equals(actual, expected, StringComparison.InvariantCultureIgnoreCase));
         }
