@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace Blog.Tests
@@ -20,10 +16,9 @@ namespace Blog.Tests
         /// 断言对象为null
         /// </summary>
         /// <param name="obj">预期对象</param>
-        public static T TestIsNull<T>(this T obj)
+        public static void TestIsNull<T>(this T obj)
         {
             Assert.IsNull(obj);
-            return obj;
         }
 
         /// <summary>
@@ -31,10 +26,9 @@ namespace Blog.Tests
         /// </summary>
         /// <param name="obj">预期对象</param>
         /// <param name="message">错误消息</param>
-        public static T TestIsNull<T>(this T obj, string message)
+        public static void TestIsNull<T>(this T obj, string message)
         {
             Assert.IsNull(obj, message);
-            return obj;
         }
 
         /// <summary>
@@ -86,7 +80,7 @@ namespace Blog.Tests
 
         #endregion
 
-        #region Test Exception
+        #region Test exception
 
         /// <summary>
         /// 断言一个测试函数会抛出指定类型异常
@@ -101,7 +95,7 @@ namespace Blog.Tests
 
         #endregion
 
-        #region Test Is Instance
+        #region Test is instance of
 
         /// <summary>
         /// 断言预期对象是给定类型的实例
@@ -115,7 +109,7 @@ namespace Blog.Tests
 
         #endregion
 
-        #region Test Same as 
+        #region Test same as 
 
         /// <summary>
         /// 断言两个对象引用相同
@@ -139,7 +133,7 @@ namespace Blog.Tests
 
         #endregion
 
-        #region Test Boolean
+        #region Test boolean
 
         /// <summary>
         /// 断言条件为true
@@ -173,49 +167,6 @@ namespace Blog.Tests
         }
 
         #endregion
-
-        /* public static T PropertiesShouldEqual<T>(this T actual, T expected, params string[] filters)
-         {
-             var properties = typeof(T).GetProperties().ToList();
-
-             var filterByEnteties = new List<string>();
-             var values = new Dictionary<string, object>();
-
-             foreach (var propertyInfo in properties.ToList())
-             {
-                 //skip by filter
-                 if (filters.Any(f => f == propertyInfo.Name || f + "Id" == propertyInfo.Name) || propertyInfo.Name == "Id")
-                     continue;
-                 var value = propertyInfo.GetValue(actual);
-                 values.Add(propertyInfo.Name, value);
-
-                 if (value == null)
-                     continue;
-
-                 //skip array and System.Collections.Generic types
-                 if (value.GetType().IsArray || value.GetType().Namespace == "System.Collections.Generic")
-                 {
-                     properties.Remove(propertyInfo);
-                     continue;
-                 }
-
-                 if (!(value is BaseEntity))
-                     continue;
-
-                 //skip BaseEntity types and enteties Id
-                 filterByEnteties.Add(propertyInfo.Name + "Id");
-                 properties.Remove(propertyInfo);
-             }
-
-             foreach (var propertyInfo in properties.Where(p => values.ContainsKey(p.Name)))
-             {
-                 if (filterByEnteties.Any(f => f == propertyInfo.Name))
-                     continue;
-
-                 Assert.AreEqual(values[propertyInfo.Name], propertyInfo.GetValue(expected), string.Format("The property \"{0}.{1}\" of these objects is not equal", typeof(T).Name, propertyInfo.Name));
-             }
-             return actual;
-         }*/
 
         #region Utilities
 
