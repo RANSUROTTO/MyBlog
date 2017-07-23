@@ -5,3 +5,25 @@
 	配置在web启动项目的 Web.config配置文件的 webconfig 节点下
 	<section name="WebConfig" type="Blog.Libraries.Core.Configuration.WebConfig" requirePermission="false" />
 	<WebConfg></WebConfig>
+
+
+关于Nuget包的相关文档:
+Autofac:
+http://docs.autofac.org/en/v4.0.0/
+Autofac是.NET Core，ASP.NET Core，.NET 4.5.1+，通用Windows应用程序 等应用的控制反转容器
+
+Nunit:
+http://nunit.org/documentation/
+NUnit是可以应用于所有.Net语言的单元测试框架
+
+Rhino Mocks:
+http://www.ayende.com/wiki/Rhino+Mocks.ashx?AspxAutoDetectCookieSupport=1
+.Net平台的动态模拟对象框架,目的是通过允许开发人员创建自定义对象的模拟实现并使用单元测试验证交互来简化测试.
+
+StackExchange.Redis:
+https://stackexchange.github.io/StackExchange.Redis/
+StackExchange.Redis是.NET语言（C＃等）的高性能通用Redis客户端
+
+RedLock.net:
+https://github.com/samcook/RedLock.net
+在C＃中实现Redlock分布式锁定算法

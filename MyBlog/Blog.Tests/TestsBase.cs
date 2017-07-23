@@ -7,7 +7,10 @@ namespace Blog.Tests
     public abstract class TestsBase
     {
 
-        protected MockRepository mocks;
+        /// <summary>
+        /// MockRepository实例 Rhino Mocks:模拟对象创建管理的框架
+        /// </summary>
+        protected MockRepository Mocks;
 
         /// <summary>
         /// 代表每个测试方法前先调用该方法实例化RhinoMocks对象
@@ -15,7 +18,7 @@ namespace Blog.Tests
         [SetUp]
         public virtual void SetUp()
         {
-            mocks = new MockRepository();
+            Mocks = new MockRepository();
         }
 
         /// <summary>
@@ -24,10 +27,11 @@ namespace Blog.Tests
         [TearDown]
         public virtual void TearDown()
         {
-            if (mocks != null)
+            if (Mocks != null)
             {
-                mocks.ReplayAll();
-                mocks.VerifyAll();
+                Mocks.ReplayAll();
+                Mocks.VerifyAll();
+                Mocks = null;
             }
         }
 
