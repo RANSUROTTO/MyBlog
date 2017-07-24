@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 namespace Blog.Libraries.Core.Infrastructure.TypeFinder
 {
 
-
     public class AppDomainTypeFinder : ITypeFinder
     {
 
@@ -208,7 +207,7 @@ namespace Blog.Libraries.Core.Infrastructure.TypeFinder
         }
 
         /// <summary>
-        /// 检查一个dll是否匹配模式
+        /// 检查一个dll是否匹配正则
         /// </summary>
         protected virtual bool Matches(string assemblyFullName, string pattern)
         {

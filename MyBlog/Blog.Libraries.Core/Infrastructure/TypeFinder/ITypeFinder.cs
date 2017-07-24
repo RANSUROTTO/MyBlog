@@ -16,14 +16,14 @@ namespace Blog.Libraries.Core.Infrastructure.TypeFinder
         IList<Assembly> GetAssemblies();
 
         /// <summary>  
-        /// 获取一个集合，该集合包含派生assignTypeFrom类型的类
+        /// 获取一个集合，该集合包含派生assignTypeFrom类型的派生类
         /// </summary>  
         /// <param name="assignTypeFrom">指定父类</param>  
         /// <param name="onlyConcreteClasses">是否只查找具体类</param>
         IEnumerable<Type> FindClassesOfType(Type assignTypeFrom, bool onlyConcreteClasses = true);
 
         /// <summary>  
-        /// 获取一个集合,该集合包含从assemblies程序集中派生自assignTypeFrom类的类
+        /// 获取一个集合,该集合包含从assemblies程序集中派生自assignTypeFrom类的派生类
         /// </summary>  
         /// <param name="assignTypeFrom">指定父类</param>  
         /// <param name="assemblies">指定被查找的程序集集合</param>  
