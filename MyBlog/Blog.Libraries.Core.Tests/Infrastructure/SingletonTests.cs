@@ -5,9 +5,25 @@ using Blog.Tests;
 
 namespace Blog.Libraries.Core.Tests.Infrastructure
 {
+
     [TestFixture]
     public class SingletonTests
     {
+
+        /// <summary>
+        /// 断言两个不同静态泛型类的非派生成员引用和值不相等
+        /// </summary>
+        [Test]
+        public void Singleton_NotEqual_Generice()
+        {
+            Singleton<int>.Instance = 1;
+            Singleton<double>.Instance = 2.0;
+
+            typeof(Singleton<int>).TestNotEqual(typeof(Singleton<double>));
+            typeof(Singleton<int>).TestBeNotBeTheSameAs(typeof(Singleton<double>));
+            Singleton<int>.Instance.TestNotEqual(Singleton<double>.Instance);
+            Singleton<int>.Instance.TestBeNotBeTheSameAs(Singleton<double>.Instance);
+        }
 
         /// <summary>
         /// 断言通过单例存储基类获取未赋值的单例值为null
@@ -44,16 +60,6 @@ namespace Blog.Libraries.Core.Tests.Infrastructure
         }
 
         /// <summary>
-        /// 断言通过单例存储基类获取未赋值的字典单例长度为0
-        /// </summary>
-        [Test]
-        public void SingletonDictionary_IsCreateByDefault_LengthEqual0()
-        {
-            var instance = SingletonDictionary<SingletonTests, object>.Instance;
-            instance.Count.TestEqual(0, "instance length was not 0");
-        }
-
-        /// <summary>
         /// 断言单例存储基类存储的字典单例可以存储东西
         /// </summary>
         [Test]
@@ -74,16 +80,6 @@ namespace Blog.Libraries.Core.Tests.Infrastructure
         {
             var instance = SingletonList<SingletonTests>.Instance;
             instance.TestIsNotNull("SingletonList<SingletonTests>.Instance was null");
-        }
-
-        /// <summary>
-        /// 断言通过单例存储基类获取未赋值的集合单例长度为0
-        /// </summary>
-        [Test]
-        public void SingletonList_IsCreateByDefault_LengthEqual0()
-        {
-            var instance = SingletonList<SingletonTests>.Instance;
-            instance.Count.TestEqual(0, "instance length was not 0");
         }
 
         /// <summary>

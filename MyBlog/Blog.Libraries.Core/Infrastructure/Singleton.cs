@@ -56,7 +56,6 @@ namespace Blog.Libraries.Core.Infrastructure
     {
         static SingletonList()
         {
-            //Singleton<T> Set
             Singleton<IList<T>>.Instance = new List<T>();
         }
 
