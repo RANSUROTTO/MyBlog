@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Core.Infrastructure;
 using NUnit.Framework;
 using Blog.Tests;
@@ -70,9 +66,39 @@ namespace Blog.Libraries.Core.Tests.Infrastructure
             instance[typeof(SingletonTests)].TestBeTheSameAs(this);
         }
 
+        /// <summary>
+        /// 断言通过单例存储基类获取未赋值的集合单例不为null 为new List
+        /// </summary>
+        [Test]
+        public void SingletonList_IsCreatedByDefault()
+        {
+            var instance = SingletonList<SingletonTests>.Instance;
+            instance.TestIsNotNull("SingletonList<SingletonTests>.Instance was null");
+        }
 
+        /// <summary>
+        /// 断言通过单例存储基类获取未赋值的集合单例长度为0
+        /// </summary>
+        [Test]
+        public void SingletonList_IsCreateByDefault_LengthEqual0()
+        {
+            var instance = SingletonList<SingletonTests>.Instance;
+            instance.Count.TestEqual(0, "instance length was not 0");
+        }
 
+        /// <summary>
+        /// 断言单例存储基类存储的集合单例可以存储东西
+        /// </summary>
+        [Test]
+        public void SingletonList_CanStoreStuff()
+        {
+            var instance = SingletonList<SingletonTests>.Instance;
+            instance.Insert(0, this);
 
+            instance.Count.TestNotEqual(0, "length of instance was 0");
+            instance[0].TestBeTheSameAs(this);
+        }
 
     }
+
 }
