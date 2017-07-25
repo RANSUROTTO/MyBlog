@@ -246,12 +246,12 @@ namespace Blog.Libraries.Core.Infrastructure.TypeFinder
         }
 
         /// <summary>
-        /// Does type implement generic?
+        /// 打开类型通用实现
         /// </summary>
         /// <param name="type"></param>
         /// <param name="openGeneric"></param>
         /// <returns></returns>
-        protected virtual bool DoesTypeImplementOpenGeneric(Type type, Type openGeneric)
+        public virtual bool DoesTypeImplementOpenGeneric(Type type, Type openGeneric)
         {
             try
             {

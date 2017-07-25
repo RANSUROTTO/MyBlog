@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
 using NUnit.Framework;
 using Blog.Tests;
-using NUnit.Framework.Internal;
 
 namespace Blog.Libraries.Core.Tests.Infrastructure
 {
@@ -99,8 +94,40 @@ namespace Blog.Libraries.Core.Tests.Infrastructure
 
             #endregion
 
+        }
 
+        [TestFixture]
+        public class WebAppTypeFinderTests
+        {
 
+            private WebAppTypeFinder _finder;
+
+            #region Public Tests
+
+            [SetUp]
+            public void SetUp()
+            {
+                _finder = new WebAppTypeFinder();
+            }
+
+            [TearDown]
+            public void TearDown()
+            {
+                _finder = null;
+            }
+
+            #endregion
+
+            #region Tests GetBinDirectory
+
+            [Test]
+            public void Passes_GetBinDirectory_NotEqualNull()
+            {
+                string directoryPath = _finder.GetBinDirectory();
+                directoryPath.TestIsNotNull("directoryPath is null");
+            }
+
+            #endregion
 
         }
 
