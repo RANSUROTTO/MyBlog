@@ -8,6 +8,7 @@ namespace Blog.Libraries.Core.Tests.Infrastructure
 
     public class TypeFinderTests
     {
+
         [TestFixture]
         public class AppDomainTypeFinderTests
         {
@@ -130,6 +131,7 @@ namespace Blog.Libraries.Core.Tests.Infrastructure
             #endregion
 
         }
+
 
         public interface ISomeInterface { }
 

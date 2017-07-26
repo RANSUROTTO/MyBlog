@@ -108,6 +108,28 @@ namespace Blog.Tests
 
         #endregion
 
+        [Test]
+        public void PassesStringIsNotPrimitive()
+        {
+            string str = "";
+            str.GetType().IsPrimitive.TestBeFalse();
+        }
+
+        [Test]
+        public void PassesStringEmptySplitNotTriggerException()
+        {
+            try
+            {
+                string str = string.Empty;
+                string[] strs = str.Split(';');
+                strs.TestIsNotNull();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("method throw exception,exceptionMessage:{0}", ex.Message);
+            }
+        }
+
     }
 
 }
