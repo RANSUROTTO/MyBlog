@@ -122,7 +122,7 @@ namespace Blog.Libraries.Core
 
     /// <summary>
     /// 设置使用特性<seealso cref="AllowAutoBuilderPropertyAttribute"/>的属性允许哪种操作
-    /// 该枚举使用Flags,应主动为枚举值赋标识数值(2的幂)
+    /// 该枚举使用Flags特性,应主动为枚举值赋标识数值(2的幂)
     /// 参考:https://stackoverflow.com/questions/8447/what-does-the-flags-enum-attribute-mean-in-c
     /// </summary>
     [Flags]

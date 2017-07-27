@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using Blog.Tests;
 
@@ -29,7 +26,7 @@ namespace Blog.Libraries.Core.Tests
         public void PassesAutoBuilderInterface_Builder_AllowRead()
         {
             string str = "Id=1;AppKey=abcdefg;Md5Key=e12306";
-            AutoBuilderBaseModel model = new AutoBuilderBaseModel(str);
+            AutoBuilderBaseTestModel model = new AutoBuilderBaseTestModel(str);
             model.Id.TestEqual(0);
             model.AppKey.TestEqual("abcdefg");
             model.Md5Key.TestEqual("e12306");
@@ -38,7 +35,7 @@ namespace Blog.Libraries.Core.Tests
         [Test]
         public void PassesAutoBuilderInterface_GetSettings_AllowWrite()
         {
-            AutoBuilderBaseModel model = new AutoBuilderBaseModel
+            AutoBuilderBaseTestModel model = new AutoBuilderBaseTestModel
             {
                 Id = 1,
                 AppKey = "abcdefg",
@@ -58,15 +55,18 @@ namespace Blog.Libraries.Core.Tests
             });
         }
 
+        /// <summary>
+        /// Test Model
+        /// </summary>
         [Serializable]
-        public class AutoBuilderBaseModel : AutoBuilderBaseInterface
+        public class AutoBuilderBaseTestModel : AutoBuilderBaseInterface
         {
 
-            public AutoBuilderBaseModel() { }
+            public AutoBuilderBaseTestModel() { }
 
-            public AutoBuilderBaseModel(string args) : base(args) { }
+            public AutoBuilderBaseTestModel(string args) : base(args) { }
 
-            public AutoBuilderBaseModel(string[] args) : base(args) { }
+            public AutoBuilderBaseTestModel(string[] args) : base(args) { }
 
             [AllowAutoBuilderProperty(AutoBuilderAttributeTargets.AllowWrite)]
             public long Id { get; set; }
