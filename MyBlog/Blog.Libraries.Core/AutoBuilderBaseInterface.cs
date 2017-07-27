@@ -14,6 +14,10 @@ namespace Blog.Libraries.Core
     public abstract class AutoBuilderBaseInterface
     {
 
+        #region Ctor
+
+        protected AutoBuilderBaseInterface() { }
+
         /// <summary>
         /// 通过字符串来初始化该类型的派生类属性的值
         /// </summary>
@@ -35,9 +39,9 @@ namespace Blog.Libraries.Core
                         PropertyInfo property = GetType().GetProperty(key);
                         if (property.CanWrite
                             && property.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>() != null
-                            && property.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>().Target == AutoBuilderAttributeTargets.AllowRead)
+                            && (property.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>().Target & AutoBuilderAttributeTargets.AllowRead) != 0)
                         {
-                            dynamic value = Convert.ChangeType(p.Split('=')[1], property.GetType());
+                            dynamic value = Convert.ChangeType(p.Split('=')[1], property.PropertyType);
                             property.SetValue(this, value);
                         }
                     }
@@ -51,6 +55,8 @@ namespace Blog.Libraries.Core
             }
         }
 
+        #endregion
+
     }
 
     /// <summary>
@@ -60,6 +66,8 @@ namespace Blog.Libraries.Core
     public static class AutoBuilderBaseInterfaceExtensions
     {
 
+        #region Extensions
+
         /// <summary>
         /// 写出构建类初始化属性字符串
         /// </summary>
@@ -68,7 +76,7 @@ namespace Blog.Libraries.Core
             StringBuilder sb = new StringBuilder();
             var properties = t.GetType().GetProperties()
                 .Where(p => p.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>() != null
-                    && p.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>().Target == AutoBuilderAttributeTargets.AllowWrite).ToList();
+                    && (p.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>().Target & AutoBuilderAttributeTargets.AllowWrite) != 0).ToList();
             for (int i = 0; i < properties.Count; i++)
             {
                 string key = properties[i].Name;
@@ -80,6 +88,8 @@ namespace Blog.Libraries.Core
             return sb.ToString();
         }
 
+        #endregion
+
     }
 
     /// <summary>
@@ -90,17 +100,30 @@ namespace Blog.Libraries.Core
     public class AllowAutoBuilderPropertyAttribute : Attribute
     {
 
+        #region Properties
+
         public AutoBuilderAttributeTargets Target { get; set; }
 
+        #endregion
+
+        #region Ctor
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public AllowAutoBuilderPropertyAttribute(AutoBuilderAttributeTargets taget = AutoBuilderAttributeTargets.AllowAll)
         {
             Target = taget;
         }
 
+        #endregion
+
     }
 
     /// <summary>
     /// 设置使用特性<seealso cref="AllowAutoBuilderPropertyAttribute"/>的属性允许哪种操作
+    /// 该枚举使用Flags,应主动为枚举值赋标识数值(2的幂)
+    /// 参考:https://stackoverflow.com/questions/8447/what-does-the-flags-enum-attribute-mean-in-c
     /// </summary>
     [Flags]
     [Serializable]
@@ -110,11 +133,11 @@ namespace Blog.Libraries.Core
         /// <summary>
         /// 允许读取初始化属性
         /// </summary>
-        AllowRead,
+        AllowRead = 1,
         /// <summary>
         /// 允许写出属性字符串
         /// </summary>
-        AllowWrite,
+        AllowWrite = 2,
         /// <summary>
         /// 全部允许
         /// </summary>

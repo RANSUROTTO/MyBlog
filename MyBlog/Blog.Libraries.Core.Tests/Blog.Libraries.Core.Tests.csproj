@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoBuilderBaseInterfaceTests.cs" />
     <Compile Include="Infrastructure\SingletonTests.cs" />
     <Compile Include="Infrastructure\TypeFinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
