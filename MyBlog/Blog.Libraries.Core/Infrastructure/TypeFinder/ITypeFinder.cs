@@ -48,4 +48,5 @@ namespace Blog.Libraries.Core.Infrastructure.TypeFinder
         IEnumerable<Type> FindClassesOfType<T>(IEnumerable<Assembly> assemblies, bool onlyConcreteClasses = true);
 
     }
+
 }
