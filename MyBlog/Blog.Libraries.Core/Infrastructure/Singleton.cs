@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Blog.Libraries.Core.Infrastructure
 {
+
     /// <summary>
     /// 提供存储所有单例对象的基类
     /// </summary>
