@@ -74,6 +74,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Libraries.Services.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Tests", "Blog.Tests\Blog.Tests.csproj", "{BDB9366B-B4A3-4CA6-B855-4ECFEA923F3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Libraries.Gateway", "Blog.Libraries.Gateway\Blog.Libraries.Gateway.csproj", "{4625E490-30C3-4598-AD48-8BFBF3D34C62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +126,10 @@ Global
 		{BDB9366B-B4A3-4CA6-B855-4ECFEA923F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB9366B-B4A3-4CA6-B855-4ECFEA923F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB9366B-B4A3-4CA6-B855-4ECFEA923F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4625E490-30C3-4598-AD48-8BFBF3D34C62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4625E490-30C3-4598-AD48-8BFBF3D34C62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4625E490-30C3-4598-AD48-8BFBF3D34C62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4625E490-30C3-4598-AD48-8BFBF3D34C62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,5 +147,6 @@ Global
 		{FB222B9B-D14F-4997-836E-73BFA3541F67} = {2ACDD247-ACEF-4F06-887E-F16A41A56936}
 		{691E021B-F39E-49D1-A9E9-6E9994E4752B} = {2ACDD247-ACEF-4F06-887E-F16A41A56936}
 		{BDB9366B-B4A3-4CA6-B855-4ECFEA923F3E} = {2ACDD247-ACEF-4F06-887E-F16A41A56936}
+		{4625E490-30C3-4598-AD48-8BFBF3D34C62} = {87B17C27-91E0-4F21-A9A8-2CBD5959EE4D}
 	EndGlobalSection
 EndGlobal
