@@ -4,11 +4,13 @@ using System.Reflection;
 
 namespace Blog.Libraries.Core.Infrastructure.TypeFinder
 {
+
     /// <summary>
     /// 类型查找器接口
     /// </summary>
     public interface ITypeFinder
     {
+
         /// <summary>  
         /// 获取程序集列表  
         /// </summary>  
