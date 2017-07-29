@@ -93,6 +93,7 @@
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Caching\PerRequestCacheManager.cs" />
+    <Compile Include="Caching\RedisCaching\IRedisConnectionWrapper.cs" />
     <Compile Include="Configuration\BaseConfig.cs" />
     <Compile Include="Configuration\WebConfig.cs" />
     <Compile Include="Fakes\FakeHttpContext.cs" />
@@ -120,7 +121,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Caching\RedisCaching\" />
     <Folder Include="Data\" />
     <Folder Include="Html\" />
   </ItemGroup>
