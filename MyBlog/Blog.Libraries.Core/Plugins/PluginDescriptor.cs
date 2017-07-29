@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Blog.Libraries.Core.Infrastructure;
 
 namespace Blog.Libraries.Core.Plugins
 {
@@ -117,7 +115,28 @@ namespace Blog.Libraries.Core.Plugins
 
         #endregion
 
+        #region Methods
 
+        public virtual T Instance<T>() where T : class, IPlugin
+        {
+            object instance;
+            if (!EngineContext.Current.ContainerManager.TryResolve(PluginType, null, out instance))
+            {
+                //not resolve
+                instance = EngineContext.Current.ContainerManager.ResolveUnregistered(PluginType);
+            }
+            var typedInstance = instance as T;
+            if (typedInstance != null)
+                typedInstance.PluginDescriptor = this;
+            return typedInstance;
+        }
+
+        public virtual IPlugin Instance()
+        {
+            return Instance<IPlugin>();
+        }
+
+        #endregion
 
         #region Utilities
 
@@ -149,7 +168,6 @@ namespace Blog.Libraries.Core.Plugins
         }
 
         #endregion
-
 
     }
 }
