@@ -109,6 +109,8 @@
     <Compile Include="Infrastructure\TypeFinder\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\ITypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\PluginDescriptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,7 +121,6 @@
     <Folder Include="Caching\RedisCaching\" />
     <Folder Include="Data\" />
     <Folder Include="Html\" />
-    <Folder Include="Plugins\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
