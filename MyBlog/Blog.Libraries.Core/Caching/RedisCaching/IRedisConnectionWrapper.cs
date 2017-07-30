@@ -10,9 +10,9 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
 {
 
     /// <summary>
-    /// Redis连接管理
+    /// Redis连接管理器
     /// </summary>
-    interface IRedisConnectionWrapper : IDisposable
+    public interface IRedisConnectionWrapper : IDisposable
     {
 
         /// <summary>
