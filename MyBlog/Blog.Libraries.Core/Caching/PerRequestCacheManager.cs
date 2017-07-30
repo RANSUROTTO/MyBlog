@@ -71,7 +71,7 @@ namespace Blog.Libraries.Core.Caching
             }
         }
 
-        public virtual bool Any(string key)
+        public virtual bool HasKey(string key)
         {
             var items = GetItems();
 

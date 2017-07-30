@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -42,12 +42,12 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RedLock, Version=1.7.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RedLock.net.1.7.4\lib\net45\RedLock.dll</HintPath>
+    <Reference Include="RedLock, Version=1.7.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RedLock.net.1.7.5\lib\net45\RedLock.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StackExchange.Redis, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.2.3\lib\net45\StackExchange.Redis.dll</HintPath>
+    <Reference Include="StackExchange.Redis, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.5\lib\net45\StackExchange.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -94,6 +94,7 @@
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Caching\PerRequestCacheManager.cs" />
     <Compile Include="Caching\RedisCaching\IRedisConnectionWrapper.cs" />
+    <Compile Include="Caching\RedisCaching\RedisConnectionWrapper.cs" />
     <Compile Include="Configuration\BaseConfig.cs" />
     <Compile Include="Configuration\WebConfig.cs" />
     <Compile Include="Fakes\FakeHttpContext.cs" />

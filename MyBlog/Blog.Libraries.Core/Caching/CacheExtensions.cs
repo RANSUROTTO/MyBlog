@@ -36,7 +36,7 @@ namespace Blog.Libraries.Core.Caching
         /// <returns>缓存对象</returns>
         public static T Get<T>(this ICacheManager cacheManager, string key, int cacheTime, Func<T> acquire)
         {
-            if (cacheManager.Any(key))
+            if (cacheManager.HasKey(key))
             {
                 return cacheManager.Get<T>(key);
             }

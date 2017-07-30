@@ -43,7 +43,7 @@ namespace Blog.Libraries.Core.Caching
             Cache.Add(new CacheItem(key, data), policy);
         }
 
-        public virtual bool Any(string key)
+        public virtual bool HasKey(string key)
         {
             return Cache.Contains(key);
         }

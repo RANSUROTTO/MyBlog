@@ -19,11 +19,6 @@ namespace Blog.Libraries.Core
         protected AutoBuilderBaseInterface() { }
 
         /// <summary>
-        /// 通过字符串来初始化该类型的派生类属性的值
-        /// </summary>
-        protected AutoBuilderBaseInterface(string args) : this(args.Split(';')) { }
-
-        /// <summary>
         /// 通过字符串数组来初始化该类型的派生类属性的值
         /// </summary>
         protected AutoBuilderBaseInterface(string[] args)
@@ -54,6 +49,11 @@ namespace Blog.Libraries.Core
                 });
             }
         }
+
+        /// <summary>
+        /// 通过字符串来初始化该类型的派生类属性的值
+        /// </summary>
+        protected AutoBuilderBaseInterface(string args) : this(args.Split(';')) { }
 
         #endregion
 

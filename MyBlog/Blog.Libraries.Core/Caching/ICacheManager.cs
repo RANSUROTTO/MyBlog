@@ -30,7 +30,7 @@ namespace Blog.Libraries.Core.Caching
         /// </summary>
         /// <param name="key">key</param>
         /// <returns>结果</returns>
-        bool Any(string key);
+        bool HasKey(string key);
 
         /// <summary>
         /// 从缓存中删除指定键的值
