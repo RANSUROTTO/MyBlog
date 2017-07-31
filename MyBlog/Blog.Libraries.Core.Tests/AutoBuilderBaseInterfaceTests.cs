@@ -5,6 +5,7 @@ using Blog.Tests;
 
 namespace Blog.Libraries.Core.Tests
 {
+
     [TestFixture]
     public class AutoBuilderBaseInterfaceTests
     {
@@ -80,4 +81,5 @@ namespace Blog.Libraries.Core.Tests
         }
 
     }
+
 }
