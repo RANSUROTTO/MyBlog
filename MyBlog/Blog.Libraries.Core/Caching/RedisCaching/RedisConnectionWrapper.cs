@@ -74,8 +74,11 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
 
         public void Dispose()
         {
+            _connection?.Close();
             _connection?.Dispose();
             _redisLockFactory?.Dispose();
+            _connection = null;
+            _redisLockFactory = null;
         }
 
         #endregion

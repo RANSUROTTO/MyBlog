@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using Blog.Libraries.Core.Infrastructure;
-using Newtonsoft.Json;
 
 namespace Blog.Libraries.Core.Caching.RedisCaching
 {
@@ -13,7 +10,7 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
     /// <summary>
     /// Redis缓存管理
     /// </summary>
-    public class RedisCacheManager : ICacheManager
+    public class RedisCacheManager : IRedisCacheManager
     {
 
         #region Fields
@@ -38,22 +35,17 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
             this._connectionWrapper = connectionWrapper;
             this._db = _connectionWrapper.GetDatabase();
 
-            this._perRequestCacheManager = EngineContext.Current.Resolve<ICacheManager>();
+            //Unit tests need to annot the following code
+            //this._perRequestCacheManager = EngineContext.Current.Resolve<ICacheManager>();
         }
 
         #endregion
 
         #region Methods
 
-        /// <summary>
-        /// 通过键值获取关联的缓存数据
-        /// </summary>
-        /// <typeparam name="T">类型</typeparam>
-        /// <param name="key">key</param>
-        /// <returns>与键值关联的值</returns>
         public virtual T Get<T>(string key)
         {
-            if (_perRequestCacheManager.HasKey(key))
+            if (_perRequestCacheManager?.HasKey(key) ?? false)
                 return _perRequestCacheManager.Get<T>(key);
 
             var rValue = _db.StringGet(key);
@@ -61,16 +53,10 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
                 return default(T);
             var result = Deserialize<T>(rValue);
 
-            _perRequestCacheManager.Set(key, result, 0);
+            _perRequestCacheManager?.Set(key, result, 0);
             return result;
         }
 
-        /// <summary>
-        /// 将键和对象添加到缓存中
-        /// </summary>
-        /// <param name="key">key</param>
-        /// <param name="data">Data</param>
-        /// <param name="cacheTime">缓存时间/单位:分钟</param>
         public virtual void Set(string key, object data, int cacheTime)
         {
             if (data == null)
@@ -82,30 +68,17 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
             _db.StringSet(key, entryBytes, expiresIn);
         }
 
-        /// <summary>
-        /// 获取一个布尔值,表示指定key值是否存在管理缓存数据
-        /// </summary>
-        /// <param name="key">key</param>
-        /// <returns>结果</returns>
         public virtual bool HasKey(string key)
         {
             return _db.KeyExists(key);
         }
 
-        /// <summary>
-        /// 通过指定key值删除对应缓存
-        /// </summary>
-        /// <param name="key">key</param>
         public virtual void Remove(string key)
         {
             _db.KeyDelete(key);
-            _perRequestCacheManager.Remove(key);
+            _perRequestCacheManager?.Remove(key);
         }
 
-        /// <summary>
-        /// 按指定模式删除缓存
-        /// </summary>
-        /// <param name="pattern">正则表达式</param>
         public virtual void RemoveByPattern(string pattern)
         {
             foreach (var ep in _connectionWrapper.GetEndPoints())
@@ -117,9 +90,6 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
             }
         }
 
-        /// <summary>
-        /// 清空缓存
-        /// </summary>
         public virtual void Clear()
         {
             foreach (var ep in _connectionWrapper.GetEndPoints())
@@ -137,9 +107,41 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
             }
         }
 
-        /// <summary>
-        /// Dispose
-        /// </summary>
+        #region List Operating
+
+        public virtual void ListSet(string key, object data)
+        {
+            if (data == null)
+                return;
+
+            var entryBytes = Serialize(data);
+
+            _db.ListLeftPush(key, entryBytes);
+        }
+
+        public virtual long ListGetLenth(string key)
+        {
+            return _db.ListLength(key);
+        }
+
+        public virtual T ListGetItem<T>(string key, long index)
+        {
+            var rValue = _db.ListGetByIndex(key, index);
+            if (!rValue.HasValue)
+                return default(T);
+
+            //反序列化
+            var rResult = Deserialize<T>(rValue);
+
+            return rResult;
+        }
+
+        #endregion
+
+        #region Hash Operating
+
+        #endregion
+
         public virtual void Dispose()
         {
             _connectionWrapper?.Dispose();
