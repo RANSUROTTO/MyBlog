@@ -29,15 +29,37 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
         /// <summary>
         /// 通过key和索引长度在List类型的Redis缓存中获取精确的缓存值
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <param name="index"></param>
-        /// <returns></returns>
+        /// <returns>缓存</returns>
         T ListGetItem<T>(string key, long index);
 
+        /// <summary>
+        /// 通过key值在Redis缓存中查找List缓存值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>List缓存</returns>
+        List<T> ListRange<T>(string key);
 
+        /// <summary>
+        /// 入队
+        /// </summary>
+        void ListRightSet<T>(string key, T value);
 
+        /// <summary>
+        /// 出队
+        /// </summary>
+        T ListRightPop<T>(string key);
 
+        /// <summary>
+        /// 入栈
+        /// </summary>
+        void ListLeftSet<T>(string key, T value);
+
+        /// <summary>
+        /// 出栈
+        /// </summary>
+        T ListLeftPop<T>(string key);
 
         #endregion
 

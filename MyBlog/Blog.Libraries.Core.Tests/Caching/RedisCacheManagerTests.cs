@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-using Blog.Libraries.Core.Caching;
+﻿using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.Caching.RedisCaching;
-using Blog.Libraries.Core.Configuration;
-using Blog.Libraries.Core.Infrastructure;
-using Blog.Libraries.Core.Infrastructure.DependencyManagement;
-using Blog.Libraries.Core.Infrastructure.TypeFinder;
-using NUnit.Framework;
 using Blog.Tests;
+using NUnit.Framework;
 
-namespace Blog.Libraries.Core.Tests
+namespace Blog.Libraries.Core.Tests.Caching
 {
 
     /// <summary>
@@ -38,13 +28,13 @@ namespace Blog.Libraries.Core.Tests
         /// </summary>
         static RedisCacheManagerTests()
         {
-            _redisConnectionWrapper = new RedisConnectionWrapper("127.0.0.1:6379");
+            _redisConnectionWrapper = new RedisConnectionWrapper("127.0.0.1:6379,allowAdmin=true");
             _redisCacheManager = new RedisCacheManager(_redisConnectionWrapper);
         }
 
         #endregion
 
-        [Test]
+        /*[Test]*/
         public void PassesRedisCacheManager_SetString_Success()
         {
             _redisCacheManager.Set("username", "Joe San", 2400);
@@ -54,9 +44,14 @@ namespace Blog.Libraries.Core.Tests
             _redisCacheManager.HasKey("username").TestBeFalse();
         }
 
-
-
-
+        /*[Test]*/
+        public void PassesRedisCacheManager_Clear_Success()
+        {
+            _redisCacheManager.Set("clear_test", "test_value", 2400);
+            _redisCacheManager.HasKey("clear_test").TestBeTrue();
+            _redisCacheManager.Clear();
+            _redisCacheManager.HasKey("clear_test").TestBeFalse();
+        }
 
     }
 

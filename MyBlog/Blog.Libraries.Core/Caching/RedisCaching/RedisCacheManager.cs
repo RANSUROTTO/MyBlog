@@ -10,7 +10,7 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
     /// <summary>
     /// Redis缓存管理
     /// </summary>
-    public class RedisCacheManager : IRedisCacheManager
+    public class RedisCacheManager : ICacheManager
     {
 
         #region Fields
@@ -97,50 +97,13 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
                 var server = _connectionWrapper.GetServer(ep);
 
                 //可以取消注释下面的代码
-                //但是它需要有管理权限,allowAdmin=true
+                //但是它们需要有管理权限,allowAdmin=true
                 //server.FlushDatabase();
-
-                //通过迭代键进行删除不会为权限问题而困扰
                 var keys = server.Keys(database: _db.Database);
                 foreach (var key in keys)
                     Remove(key);
             }
         }
-
-        #region List Operating
-
-        public virtual void ListSet(string key, object data)
-        {
-            if (data == null)
-                return;
-
-            var entryBytes = Serialize(data);
-
-            _db.ListLeftPush(key, entryBytes);
-        }
-
-        public virtual long ListGetLenth(string key)
-        {
-            return _db.ListLength(key);
-        }
-
-        public virtual T ListGetItem<T>(string key, long index)
-        {
-            var rValue = _db.ListGetByIndex(key, index);
-            if (!rValue.HasValue)
-                return default(T);
-
-            //反序列化
-            var rResult = Deserialize<T>(rValue);
-
-            return rResult;
-        }
-
-        #endregion
-
-        #region Hash Operating
-
-        #endregion
 
         public virtual void Dispose()
         {

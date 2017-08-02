@@ -52,7 +52,7 @@
     <Compile Include="Infrastructure\SingletonTests.cs" />
     <Compile Include="Infrastructure\TypeFinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RedisCacheManagerTests.cs" />
+    <Compile Include="Caching\RedisCacheManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
