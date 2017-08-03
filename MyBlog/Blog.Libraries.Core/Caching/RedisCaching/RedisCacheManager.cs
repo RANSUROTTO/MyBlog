@@ -97,8 +97,8 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
                 var server = _connectionWrapper.GetServer(ep);
 
                 //可以取消注释下面的代码
-                //但是它们需要有管理权限,allowAdmin=true
                 //server.FlushDatabase();
+                //但是它们需要有管理权限,allowAdmin=true
                 var keys = server.Keys(database: _db.Database);
                 foreach (var key in keys)
                     Remove(key);

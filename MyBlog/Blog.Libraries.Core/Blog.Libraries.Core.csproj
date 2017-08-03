@@ -97,7 +97,6 @@
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Caching\MemoryCacheManager.cs" />
     <Compile Include="Caching\PerRequestCacheManager.cs" />
-    <Compile Include="Caching\RedisCaching\IRedisCacheManager.cs" />
     <Compile Include="Caching\RedisCaching\IRedisConnectionWrapper.cs" />
     <Compile Include="Caching\RedisCaching\RedisCacheManager.cs" />
     <Compile Include="Caching\RedisCaching\RedisConnectionWrapper.cs" />
@@ -129,6 +128,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Caching\CouchbaseCaching\" />
+    <Folder Include="Caching\MemCaching\" />
     <Folder Include="Html\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

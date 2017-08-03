@@ -56,7 +56,7 @@ namespace Blog.Libraries.Core.Caching
         public static void RemoveByPattern(this ICacheManager cacheManager, string pattern, IEnumerable<string> keys)
         {
             var regex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            //如果键值 匹配 正则表达式，则删除该缓存项
+            //如果键值匹配正则表达式，则删除该缓存项
             foreach (var key in keys.Where(p => regex.IsMatch(p.ToString())).ToList())
                 cacheManager.Remove(key);
         }
