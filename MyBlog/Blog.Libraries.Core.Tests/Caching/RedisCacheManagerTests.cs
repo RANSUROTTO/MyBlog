@@ -11,6 +11,7 @@ namespace Blog.Libraries.Core.Tests.Caching
     /// 运行前请注释RedisCacheManager构造函数中的_perRequestCacheManager依赖解析
     /// </summary>
     [TestFixture]
+    [Ignore("Annotated RedisCacheManager.cs constructor within the specified code")]
     public class RedisCacheManagerTests
     {
 
@@ -34,7 +35,7 @@ namespace Blog.Libraries.Core.Tests.Caching
 
         #endregion
 
-        /*[Test]*/
+        [Test]
         public void PassesRedisCacheManager_SetString_Success()
         {
             _redisCacheManager.Set("username", "Joe San", 2400);
@@ -44,7 +45,7 @@ namespace Blog.Libraries.Core.Tests.Caching
             _redisCacheManager.HasKey("username").TestBeFalse();
         }
 
-        /*[Test]*/
+        [Test]
         public void PassesRedisCacheManager_Clear_Success()
         {
             _redisCacheManager.Set("clear_test", "test_value", 2400);

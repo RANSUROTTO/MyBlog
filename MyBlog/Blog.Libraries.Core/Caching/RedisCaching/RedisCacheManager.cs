@@ -36,7 +36,7 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
             this._db = _connectionWrapper.GetDatabase();
 
             //Unit tests need to annot the following code
-            //this._perRequestCacheManager = EngineContext.Current.Resolve<ICacheManager>();
+            this._perRequestCacheManager = EngineContext.Current.Resolve<ICacheManager>();
         }
 
         #endregion

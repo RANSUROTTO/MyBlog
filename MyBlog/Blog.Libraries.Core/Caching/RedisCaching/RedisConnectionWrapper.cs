@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using RedLock;
 using StackExchange.Redis;
 
 namespace Blog.Libraries.Core.Caching.RedisCaching
 {
+
+    /// <summary>
+    /// Redis连接包装实现类
+    /// 它应该被注册为单例的生命周期形式
+    /// </summary>
     public class RedisConnectionWrapper : IRedisConnectionWrapper
     {
 
@@ -29,6 +31,15 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
         private volatile ConnectionMultiplexer _connection;
         private volatile RedisLockFactory _redisLockFactory;
         private readonly object _lock = new object();
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// 获得连接字符串
+        /// </summary>
+        protected string ConnectionString { get { return _connectionString.Value; } }
 
         #endregion
 
@@ -86,11 +97,6 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
         #region Utilities
 
         /// <summary>
-        /// 获得连接字符串
-        /// </summary>
-        protected string ConnectionString { get { return _connectionString.Value; } }
-
-        /// <summary>
         /// 获得Redis管理器
         /// </summary>
         /// <returns></returns>
@@ -105,7 +111,7 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
                 //连接断开。 处理连接...
                 _connection?.Dispose();
 
-                //Creating new instance of Redis Connection
+                //创建新的Redis连接实例
                 _connection = ConnectionMultiplexer.Connect(_connectionString.Value);
             }
 
