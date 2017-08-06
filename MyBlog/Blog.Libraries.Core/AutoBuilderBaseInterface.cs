@@ -32,13 +32,16 @@ namespace Blog.Libraries.Core
                     {
                         string key = p.Split('=')[0];
                         PropertyInfo property = GetType().GetProperty(key);
-                        if (property.CanWrite
-                            && property.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>() != null
-                            && (property.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>().Target & AutoBuilderAttributeTargets.AllowRead) != 0)
+
+                        var attribute = property.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>();
+
+                        if (attribute != null
+                            && (attribute.Target & AutoBuilderAttributeTargets.AllowRead) != 0)
                         {
                             dynamic value = Convert.ChangeType(p.Split('=')[1], property.PropertyType);
                             property.SetValue(this, value);
                         }
+
                     }
                     catch
                     {
@@ -74,9 +77,15 @@ namespace Blog.Libraries.Core
         public static string GetSettings<T>(this T t) where T : AutoBuilderBaseInterface
         {
             StringBuilder sb = new StringBuilder();
+
             var properties = t.GetType().GetProperties()
-                .Where(p => p.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>() != null
-                    && (p.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>().Target & AutoBuilderAttributeTargets.AllowWrite) != 0).ToList();
+                .Where(p =>
+                {
+                    var attribute = p.GetCustomAttribute<AllowAutoBuilderPropertyAttribute>();
+                    return attribute != null
+                        && (attribute.Target & AutoBuilderAttributeTargets.AllowWrite) != 0;
+                }).ToList();
+
             for (int i = 0; i < properties.Count; i++)
             {
                 string key = properties[i].Name;
@@ -85,6 +94,7 @@ namespace Blog.Libraries.Core
                 if (i > 0) temp = ";" + temp;
                 sb.Append(temp);
             }
+
             return sb.ToString();
         }
 

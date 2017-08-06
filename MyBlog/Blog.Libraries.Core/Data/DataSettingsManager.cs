@@ -101,6 +101,32 @@ namespace Blog.Libraries.Core.Data
             return settingString.ToString();
         }
 
+        /// <summary>
+        /// 加载数据源设置实例
+        /// </summary>
+        public virtual DataSettings LoadSettings(string filePath = null)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                filePath = Path.Combine("", filename);
+
+            if (File.Exists(filePath))
+            {
+                string text = File.ReadAllText(filePath);
+                return ParseSettins(text);
+            }
+
+            return new DataSettings();
+        }
+
+        /// <summary>
+        /// 保存数据源设置实例信息到文件
+        /// </summary>
+        /// <param name="settings"></param>
+        public virtual void SaveSettings(DataSettings settings)
+        {
+
+        }
+
         #endregion
 
     }
