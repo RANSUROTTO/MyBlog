@@ -121,10 +121,27 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 保存数据源设置实例信息到文件
         /// </summary>
-        /// <param name="settings"></param>
-        public virtual void SaveSettings(DataSettings settings)
+        /// <param name="settings">数据源设置实例</param>
+        /// <param name="filePath">文件存储目录</param>
+        public virtual void SaveSettings(DataSettings settings, string filePath = null)
         {
+            if (settings == null)
+                throw new ArgumentNullException("settings");
 
+            if (string.IsNullOrEmpty(filePath))
+                filePath = Path.Combine("~/App_Data/", filename);
+
+            //not exists,create
+            if (!File.Exists(filePath))
+            {
+                using (File.Create(filePath))
+                {
+
+                }
+            }
+
+            //write
+            File.WriteAllText(filePath, this.ComposeSettings(settings));
         }
 
         #endregion
