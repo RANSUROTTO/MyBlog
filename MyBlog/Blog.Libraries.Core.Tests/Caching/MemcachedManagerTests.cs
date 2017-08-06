@@ -48,6 +48,15 @@ namespace Blog.Libraries.Core.Tests.Caching
 
         }
 
+        [Test]
+        public void PassesMemcachedManager_SetLengthOfKeyGt255Bytes_Fail()
+        {
+            _client.Set(
+                "keylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylength",
+                "value", 1000);
+            _client.HasKey("keylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylengthkeylength").TestBeFalse();
+        }
+
     }
 
 }

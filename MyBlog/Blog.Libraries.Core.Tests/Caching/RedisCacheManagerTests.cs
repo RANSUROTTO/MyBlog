@@ -38,7 +38,7 @@ namespace Blog.Libraries.Core.Tests.Caching
         [Test]
         public void PassesRedisCacheManager_SetString_Success()
         {
-            _redisCacheManager.Set("username", "Joe San", 2400);
+            _redisCacheManager.Set("username", "Joe San", int.MaxValue);
             _redisCacheManager.HasKey("username").TestBeTrue();
             _redisCacheManager.Get<string>("username").TestEqual("Joe San", "redis cache:key[username] cache value not equal 'Joe San'");
             _redisCacheManager.Remove("username");
@@ -48,7 +48,7 @@ namespace Blog.Libraries.Core.Tests.Caching
         [Test]
         public void PassesRedisCacheManager_Clear_Success()
         {
-            _redisCacheManager.Set("clear_test", "test_value", 2400);
+            _redisCacheManager.Set("clear_test", "test_value", int.MaxValue);
             _redisCacheManager.HasKey("clear_test").TestBeTrue();
             _redisCacheManager.Clear();
             _redisCacheManager.HasKey("clear_test").TestBeFalse();
