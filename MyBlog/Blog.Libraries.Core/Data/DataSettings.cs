@@ -18,7 +18,7 @@ namespace Blog.Libraries.Core.Data
         }
 
         /// <summary>
-        /// 数据源提供商  ../mysql,sqlserver,oracle
+        /// 数据源提供商  ../mysql,sqlserver,oracle,sqllite
         /// </summary>
         public string DataProvider { get; set; }
 
