@@ -9,6 +9,8 @@ namespace Blog.Libraries.Core.Data
     public class DataSettings
     {
 
+        #region Ctor
+
         /// <summary>
         /// Ctor
         /// </summary>
@@ -16,6 +18,10 @@ namespace Blog.Libraries.Core.Data
         {
             RawDataSettings = new Dictionary<string, string>();
         }
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// 数据源提供商  ../mysql,sqlserver,oracle,sqllite
@@ -32,13 +38,20 @@ namespace Blog.Libraries.Core.Data
         /// </summary>
         public IDictionary<string, string> RawDataSettings { get; private set; }
 
+        #endregion
+
+        #region Utilities
+
         /// <summary>
         /// 获取一个值,指示数据源连接信息是否有效
         /// </summary>
         public bool IsValid()
         {
-            return !string.IsNullOrEmpty(this.DataProvider) && !string.IsNullOrEmpty(this.DataConnectionString);
+            return !string.IsNullOrEmpty(this.DataProvider)
+                && !string.IsNullOrEmpty(this.DataConnectionString);
         }
+
+        #endregion
 
     }
 

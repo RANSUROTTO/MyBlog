@@ -51,6 +51,7 @@
     <Compile Include="AutoBuilderBaseInterfaceTests.cs" />
     <Compile Include="Caching\MemcachedManagerTests.cs" />
     <Compile Include="Caching\MemoryCacheManagerTests.cs" />
+    <Compile Include="Extensions\TypeExtensionsTests.cs" />
     <Compile Include="Infrastructure\SingletonTests.cs" />
     <Compile Include="Infrastructure\TypeFinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

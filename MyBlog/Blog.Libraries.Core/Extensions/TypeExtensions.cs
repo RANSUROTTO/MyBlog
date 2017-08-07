@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Blog.Libraries.Core.Extension
+namespace Blog.Libraries.Core.Extensions
 {
-    public static class TypeExtension
+    public static class TypeExtensions
     {
 
         /// <summary>
