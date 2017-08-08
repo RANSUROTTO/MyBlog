@@ -113,6 +113,7 @@
     <Compile Include="Data\DataSettingsHelper.cs" />
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
+    <Compile Include="Data\IRepository.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Fakes\FakeHttpContext.cs" />
     <Compile Include="Fakes\FakeHttpRequest.cs" />

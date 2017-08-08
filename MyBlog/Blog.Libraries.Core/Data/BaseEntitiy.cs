@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Blog.Libraries.Core.Data
 {
-    public class BaseEntitiy
+    public abstract class BaseEntitiy
     {
 
         /// <summary>
         /// 实体主键
         /// </summary>
         public long Id { get; set; }
+
+        /// <summary>
+        /// Guid
+        /// </summary>
+        public Guid Guid { get; set; }
 
         /// <summary>
         /// 实体创建时间
