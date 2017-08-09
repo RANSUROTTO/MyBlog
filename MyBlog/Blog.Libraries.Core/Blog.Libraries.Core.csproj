@@ -105,6 +105,7 @@
     <Compile Include="Caching\RedisCaching\IRedisConnectionWrapper.cs" />
     <Compile Include="Caching\RedisCaching\RedisCacheManager.cs" />
     <Compile Include="Caching\RedisCaching\RedisConnectionWrapper.cs" />
+    <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
     <Compile Include="Configuration\BaseConfig.cs" />
     <Compile Include="Configuration\WebConfig.cs" />
     <Compile Include="Data\BaseEntity.cs" />
