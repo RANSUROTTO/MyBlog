@@ -107,7 +107,7 @@
     <Compile Include="Caching\RedisCaching\RedisConnectionWrapper.cs" />
     <Compile Include="Configuration\BaseConfig.cs" />
     <Compile Include="Configuration\WebConfig.cs" />
-    <Compile Include="Data\BaseEntitiy.cs" />
+    <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\DataProviderManager.cs" />
     <Compile Include="Data\DataSettings.cs" />
     <Compile Include="Data\DataSettingsHelper.cs" />

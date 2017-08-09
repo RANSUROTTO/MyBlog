@@ -7,7 +7,7 @@ namespace Blog.Libraries.Core.Data
     /// <summary>
     /// 仓储
     /// </summary>
-    public partial interface IRepository<T> where T : BaseEntitiy
+    public partial interface IRepository<T> where T : BaseEntity
     {
 
         /// <summary>
@@ -57,6 +57,54 @@ namespace Blog.Libraries.Core.Data
         /// 获取实体表格
         /// </summary>
         IQueryable<T> Table { get; }
+
+    }
+
+    public partial interface IRepository<T> where T : BaseEntity
+    {
+
+        /// <summary>
+        /// 根据标识符异步获得实体对象
+        /// </summary>
+        /// <param name="id">标识符</param>
+        /// <returns>实体</returns>
+        T GetByIdAsync(object id);
+
+        /// <summary>
+        /// 异步插入实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void InsertAsync(T entity);
+
+        /// <summary>
+        /// 异步插入多个实体通过集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        void InsertAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 异步更新实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void UpdateAsync(T entity);
+
+        /// <summary>
+        /// 异步更新多个实体通过集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        void UpdateAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 异步删除实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void DeleteAsync(T entity);
+
+        /// <summary>
+        /// 异步删除多个实体通过集合
+        /// </summary>
+        /// <param name="entities"></param>
+        void DeleteAsync(IEnumerable<T> entities);
 
     }
 
