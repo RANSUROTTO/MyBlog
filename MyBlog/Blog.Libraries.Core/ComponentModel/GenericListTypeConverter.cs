@@ -14,12 +14,12 @@ namespace Blog.Libraries.Core.ComponentModel
     public class GenericListTypeConverter<T> : TypeConverter
     {
 
-        protected readonly TypeConverter typeConverter;
+        protected readonly TypeConverter TypeConverter;
 
         public GenericListTypeConverter()
         {
-            typeConverter = TypeDescriptor.GetConverter(typeof(T));
-            if (typeConverter == null)
+            TypeConverter = TypeDescriptor.GetConverter(typeof(T));
+            if (TypeConverter == null)
                 throw new InvalidOperationException("No type converter exists for type " + typeof(T).FullName);
         }
 
@@ -59,7 +59,7 @@ namespace Blog.Libraries.Core.ComponentModel
                 var result = new List<T>();
                 Array.ForEach(items, p =>
                 {
-                    object item = typeConverter.ConvertFromInvariantString(p);
+                    object item = TypeConverter.ConvertFromInvariantString(p);
                     if (item != null) result.Add((T)item);
                 });
                 return result;

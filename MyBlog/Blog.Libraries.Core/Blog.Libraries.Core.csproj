@@ -96,7 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoBuilderBaseInterface.cs" />
+    <Compile Include="Configuration\AutoBuilderBaseInterface.cs" />
     <Compile Include="Caching\CacheExtensions.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="Caching\MemCaching\MemcachedManager.cs" />

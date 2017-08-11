@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Blog.Libraries.Core
+namespace Blog.Libraries.Core.Configuration
 {
 
     /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Blog.Libraries.Core.Configuration;
 using NUnit.Framework;
 using Blog.Tests;
 
