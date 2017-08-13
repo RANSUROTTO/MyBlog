@@ -39,11 +39,34 @@ namespace Blog.Libraries.Core.Helper
 
         public string GetUrlReferrer()
         {
-            throw new NotImplementedException();
+            string referrerUrl = string.Empty;
+            if (IsRequestAvailable(_httpContext) && _httpContext.Request.UrlReferrer != null)
+                referrerUrl = _httpContext.Request.UrlReferrer.PathAndQuery;
+
+            return referrerUrl;
         }
 
         public string GetCurrentIpAddress()
         {
+            if (!IsRequestAvailable(_httpContext))
+                return string.Empty;
+
+            var result = "";
+            try
+            {
+                if (_httpContext.Request.Headers != null)
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+
             throw new NotImplementedException();
         }
 
@@ -118,7 +141,28 @@ namespace Blog.Libraries.Core.Helper
             set { throw new NotImplementedException(); }
         }
 
+        #region Utilities
 
+        /// <summary>
+        /// 检查httpcontext对象请求是否可用
+        /// </summary>
+        protected virtual bool IsRequestAvailable(HttpContextBase httpContext)
+        {
+            if (httpContext == null)
+                return false;
+            try
+            {
+                if (httpContext.Request == null)
+                    return false;
+            }
+            catch (HttpException)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        #endregion
 
 
 

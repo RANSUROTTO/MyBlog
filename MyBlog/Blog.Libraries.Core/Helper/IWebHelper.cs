@@ -7,7 +7,7 @@ namespace Blog.Libraries.Core.Helper
     {
 
         /// <summary>
-        /// 获取url链接
+        /// 获取引用url链接(AbsoloutePath and Query)
         /// </summary>
         /// <returns>url链接</returns>
         string GetUrlReferrer();
