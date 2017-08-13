@@ -23,7 +23,7 @@ namespace Blog.Libraries.Core.Caching.MemCaching
 
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         public MemcachedManager(string sectionName)
         {

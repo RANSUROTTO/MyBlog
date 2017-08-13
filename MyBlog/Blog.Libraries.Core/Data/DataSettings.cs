@@ -9,7 +9,7 @@ namespace Blog.Libraries.Core.Data
     public class DataSettings
     {
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Ctor

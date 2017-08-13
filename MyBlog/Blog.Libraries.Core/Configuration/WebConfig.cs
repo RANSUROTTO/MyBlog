@@ -5,6 +5,7 @@ namespace Blog.Libraries.Core.Configuration
 {
     public class WebConfig : BaseConfig<WebConfig>
     {
+
         /// <summary>
         /// 创建一个配置处理程序
         /// </summary>

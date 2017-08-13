@@ -120,6 +120,9 @@
     <Compile Include="Fakes\FakeHttpRequest.cs" />
     <Compile Include="Fakes\FakeHttpResponse.cs" />
     <Compile Include="Fakes\FakeHttpSessionState.cs" />
+    <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\IWebHelper.cs" />
+    <Compile Include="Helper\WebHelper.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
     <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
     <Compile Include="Infrastructure\EngineContext.cs" />

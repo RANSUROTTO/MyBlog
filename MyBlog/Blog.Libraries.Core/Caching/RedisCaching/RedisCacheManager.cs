@@ -21,7 +21,7 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
 
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Ctor

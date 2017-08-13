@@ -14,7 +14,7 @@ namespace Blog.Libraries.Core.Configuration
     public abstract class AutoBuilderBaseInterface
     {
 
-        #region Ctor
+        #region Constructor
 
         protected AutoBuilderBaseInterface() { }
 
@@ -116,7 +116,7 @@ namespace Blog.Libraries.Core.Configuration
 
         #endregion
 
-        #region Ctor
+        #region Constructor
 
         /// <summary>
         /// Ctor
