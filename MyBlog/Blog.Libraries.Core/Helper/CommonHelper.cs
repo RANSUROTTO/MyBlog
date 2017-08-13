@@ -9,8 +9,6 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 
@@ -154,20 +152,18 @@ namespace Blog.Libraries.Core.Helper
         /// <returns>结果</returns>
         public static bool AreNullOrEmpty(params string[] stringsToValidate)
         {
-            // ReSharper disable once ConvertClosureToMethodGroup
             return stringsToValidate.Any(p => string.IsNullOrEmpty(p));
         }
 
         /// <summary>
-        /// Compare two arrasy
+        /// 比较两个数组
         /// </summary>
-        /// <typeparam name="T">Type</typeparam>
-        /// <param name="a1">Array 1</param>
-        /// <param name="a2">Array 2</param>
-        /// <returns>Result</returns>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="a1">数组1</param>
+        /// <param name="a2">数组2</param>
+        /// <returns>结果</returns>
         public static bool ArraysEqual<T>(T[] a1, T[] a2)
         {
-            //also see Enumerable.SequenceEqual(a1, a2);
             if (ReferenceEquals(a1, a2))
                 return true;
 
@@ -182,22 +178,23 @@ namespace Blog.Libraries.Core.Helper
             {
                 if (!comparer.Equals(a1[i], a2[i])) return false;
             }
+
             return true;
         }
 
         private static AspNetHostingPermissionLevel? _trustLevel;
         /// <summary>
-        /// Finds the trust level of the running application (http://blogs.msdn.com/dmitryr/archive/2007/01/23/finding-out-the-current-trust-level-in-asp-net.aspx)
+        /// 查找正在运行的应用程序的信任级别
         /// </summary>
-        /// <returns>The current trust level.</returns>
+        /// <returns>信用等级</returns>
         public static AspNetHostingPermissionLevel GetTrustLevel()
         {
             if (!_trustLevel.HasValue)
             {
-                //set minimum
+                //默认指示不授予任何权限
                 _trustLevel = AspNetHostingPermissionLevel.None;
 
-                //determine maximum
+                //确认最高权限
                 foreach (AspNetHostingPermissionLevel trustLevel in new[] {
                                 AspNetHostingPermissionLevel.Unrestricted,
                                 AspNetHostingPermissionLevel.High,
@@ -210,7 +207,7 @@ namespace Blog.Libraries.Core.Helper
                     {
                         new AspNetHostingPermission(trustLevel).Demand();
                         _trustLevel = trustLevel;
-                        break; //we've set the highest permission we can
+                        break; //我们确定了最高的权限
                     }
                     catch (System.Security.SecurityException)
                     {
@@ -222,11 +219,11 @@ namespace Blog.Libraries.Core.Helper
         }
 
         /// <summary>
-        /// Sets a property on an object to a valuae.
+        /// 为对象的属性赋值
         /// </summary>
-        /// <param name="instance">The object whose property to set.</param>
-        /// <param name="propertyName">The name of the property to set.</param>
-        /// <param name="value">The value to set the property to.</param>
+        /// <param name="instance">需要赋值属性值的对象</param>
+        /// <param name="propertyName">需要赋值的属性的名称</param>
+        /// <param name="value">需要赋予的值</param>
         public static void SetProperty(object instance, string propertyName, object value)
         {
             if (instance == null) throw new ArgumentNullException("instance");
@@ -244,23 +241,34 @@ namespace Blog.Libraries.Core.Helper
         }
 
         /// <summary>
-        /// Converts a value to a destination type.
+        /// 将值转换为目标类型
         /// </summary>
-        /// <param name="value">The value to convert.</param>
-        /// <param name="destinationType">The type to convert the value to.</param>
-        /// <returns>The converted value.</returns>
+        /// <param name="value">值</param>
+        /// <param name="destinationType">目标类型</param>
+        /// <returns>转换后的值</returns>
         public static object To(object value, Type destinationType)
         {
             return To(value, destinationType, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
-        /// Converts a value to a destination type.
+        /// 将值转换为目标类型
         /// </summary>
-        /// <param name="value">The value to convert.</param>
-        /// <param name="destinationType">The type to convert the value to.</param>
+        /// <param name="value">值</param>
+        /// <typeparam name="T">目标类型</typeparam>
+        /// <returns>转换后的值</returns>
+        public static T To<T>(object value)
+        {
+            return (T)To(value, typeof(T));
+        }
+
+        /// <summary>
+        /// 将值转换为目标类型
+        /// </summary>
+        /// <param name="value">值</param>
+        /// <param name="destinationType">目标类型</param>
         /// <param name="culture">Culture</param>
-        /// <returns>The converted value.</returns>
+        /// <returns>转换后的值</returns>
         public static object To(object value, Type destinationType, CultureInfo culture)
         {
             if (value != null)
@@ -268,11 +276,11 @@ namespace Blog.Libraries.Core.Helper
                 var sourceType = value.GetType();
 
                 var destinationConverter = TypeDescriptor.GetConverter(destinationType);
-                if (destinationConverter != null && destinationConverter.CanConvertFrom(value.GetType()))
+                if (destinationConverter.CanConvertFrom(value.GetType()))
                     return destinationConverter.ConvertFrom(null, culture, value);
 
                 var sourceConverter = TypeDescriptor.GetConverter(sourceType);
-                if (sourceConverter != null && sourceConverter.CanConvertTo(destinationType))
+                if (sourceConverter.CanConvertTo(destinationType))
                     return sourceConverter.ConvertTo(null, culture, value, destinationType);
 
                 if (destinationType.IsEnum && value is int)
@@ -285,60 +293,11 @@ namespace Blog.Libraries.Core.Helper
         }
 
         /// <summary>
-        /// Converts a value to a destination type.
-        /// </summary>
-        /// <param name="value">The value to convert.</param>
-        /// <typeparam name="T">The type to convert the value to.</typeparam>
-        /// <returns>The converted value.</returns>
-        public static T To<T>(object value)
-        {
-            //return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
-            return (T)To(value, typeof(T));
-        }
-
-        /// <summary>
-        /// Convert enum for front-end
-        /// </summary>
-        /// <param name="str">Input string</param>
-        /// <returns>Converted string</returns>
-        public static string ConvertEnum(string str)
-        {
-            if (string.IsNullOrEmpty(str)) return string.Empty;
-            string result = string.Empty;
-            foreach (var c in str)
-                if (c.ToString() != c.ToString().ToLower())
-                    result += " " + c.ToString();
-                else
-                    result += c.ToString();
-
-            //ensure no spaces (e.g. when the first letter is upper case)
-            result = result.TrimStart();
-            return result;
-        }
-
-        /// <summary>
-        /// Set Telerik (Kendo UI) culture
-        /// </summary>
-        public static void SetTelerikCulture()
-        {
-            //little hack here
-            //always set culture to 'en-US' (Kendo UI has a bug related to editing decimal values in other cultures). Like currently it's done for admin area in Global.asax.cs
-
-            var culture = new CultureInfo("en-US");
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
-        }
-
-        /// <summary>
-        /// Get difference in years
-        /// </summary>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns></returns>
+        /// 获取时间年差异
+        /// </summary>        
         public static int GetDifferenceInYears(DateTime startDate, DateTime endDate)
         {
             //source: http://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-in-c
-            //this assumes you are looking for the western idea of age and not using East Asian reckoning.
             int age = endDate.Year - startDate.Year;
             if (startDate > endDate.AddYears(-age))
                 age--;
@@ -346,24 +305,23 @@ namespace Blog.Libraries.Core.Helper
         }
 
         /// <summary>
-        /// Maps a virtual path to a physical disk path.
+        /// 映射到物理磁盘路径的虚拟路径.
         /// </summary>
-        /// <param name="path">The path to map. E.g. "~/bin"</param>
-        /// <returns>The physical path. E.g. "c:\inetpub\wwwroot\bin"</returns>
+        /// <param name="path">映射路径. E.g. "~/bin"</param>
+        /// <returns>物理路径. E.g. "c:\inetpub\wwwroot\bin"</returns>
         public static string MapPath(string path)
         {
             if (HostingEnvironment.IsHosted)
             {
-                //hosted
+                //托管
                 return HostingEnvironment.MapPath(path);
             }
 
-            //not hosted. For example, run in unit tests
+            //没有托管 例如,运行在单元测试
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             path = path.Replace("~/", "").TrimStart('/').Replace('/', '\\');
             return Path.Combine(baseDirectory, path);
         }
-
 
     }
 
