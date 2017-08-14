@@ -3,6 +3,9 @@
 namespace Blog.Libraries.Core.Helper
 {
 
+    /// <summary>
+    /// 代表一个常用的Web帮助类
+    /// </summary>
     public interface IWebHelper
     {
 
@@ -13,7 +16,7 @@ namespace Blog.Libraries.Core.Helper
         string GetUrlReferrer();
 
         /// <summary>
-        /// 获取上下文ip地址
+        /// 获取客户端ip地址
         /// </summary>
         /// <returns>url链接</returns>
         string GetCurrentIpAddress();
@@ -72,7 +75,7 @@ namespace Blog.Libraries.Core.Helper
         bool IsStaticResource(HttpRequest request);
 
         /// <summary>
-        /// 修改查询字符串
+        /// 修改查询字符串 [合并querystring,覆盖anchor]
         /// </summary>
         /// <param name="url">需要修改的url</param>
         /// <param name="queryStringModification">查询字符串修改</param>
@@ -84,7 +87,7 @@ namespace Blog.Libraries.Core.Helper
         /// 从url中删除查询字符串
         /// </summary>
         /// <param name="url">需要修改的url</param>
-        /// <param name="queryString">要删除的查询字符串</param>
+        /// <param name="queryString">要删除的查询字符串键值</param>
         /// <returns>修改后的url</returns>
         string RemoveQueryString(string url, string queryString);
 
@@ -103,7 +106,7 @@ namespace Blog.Libraries.Core.Helper
         void RestartAppDomain(bool makeRedirect = false, string redirectUrl = "");
 
         /// <summary>
-        /// 获取一个值，该值指示客户端是否被重定向到新位置
+        /// 获取一个值，该值指示请求是否被重定向
         /// </summary>
         bool IsRequestBeingRedirected { get; }
 
