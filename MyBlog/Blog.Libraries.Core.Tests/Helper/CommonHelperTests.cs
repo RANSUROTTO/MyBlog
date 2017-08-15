@@ -57,6 +57,14 @@ namespace Blog.Libraries.Core.Tests.Helper
             CommonHelper.EnsureNotNull(str).TestEqual(string.Empty);
         }
 
+        [Test]
+        public void Passess_AreNullOrEmptyByArray_Success()
+        {
+            string[] strs = { "a", "b", "", "c" };
+            CommonHelper.AreNullOrEmpty(strs).TestBeTrue();
+            strs[2] = "d";
+            CommonHelper.AreNullOrEmpty(strs).TestBeFalse();
+        }
 
 
     }
