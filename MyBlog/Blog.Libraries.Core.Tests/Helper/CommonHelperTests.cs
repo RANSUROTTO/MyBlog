@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Core.Helper;
 using Blog.Tests;
 using NUnit.Framework;
@@ -74,8 +70,34 @@ namespace Blog.Libraries.Core.Tests.Helper
             CommonHelper.ArraysEqual(array1, array2).TestBeTrue();
         }
 
+        [Test]
+        public void Passess_SetProperty_Success()
+        {
+            var model = new SetPropertyUnitTestModel();
+            CommonHelper.SetProperty(model, "Name", "lancelot");
+            model.Name.TestEqual("lancelot");
+        }
 
+        [Test]
+        public void Passes_To_Convert_Success()
+        {
+            int i = 10;
+            string j = CommonHelper.To<string>(i);
+            j.TestEqual("10");
+        }
 
+        [Test]
+        public void Passes_GetDifferenceInYears_Success()
+        {
+            DateTime date1 = new DateTime(2012, 11, 2);
+            DateTime date2 = new DateTime(2017, 2, 3);
+            CommonHelper.GetDifferenceInYears(date1, date2).TestEqual(4);
+        }
+
+        public class SetPropertyUnitTestModel
+        {
+            public string Name { get; set; }
+        }
 
     }
 
