@@ -66,6 +66,16 @@ namespace Blog.Libraries.Core.Tests.Helper
             CommonHelper.AreNullOrEmpty(strs).TestBeFalse();
         }
 
+        [Test]
+        public void Passes_ArrayEqual_Success()
+        {
+            var array1 = new[] { 1, 2, 3, 4, 5 };
+            var array2 = new[] { 1, 2, 3, 4, 5 };
+            CommonHelper.ArraysEqual(array1, array2).TestBeTrue();
+        }
+
+
+
 
     }
 
