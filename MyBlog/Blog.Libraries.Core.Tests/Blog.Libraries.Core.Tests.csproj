@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,12 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoBuilderBaseInterfaceTests.cs" />
+    <Compile Include="Configuration\AutoBuilderBaseInterfaceTests.cs" />
     <Compile Include="Caching\MemcachedManagerTests.cs" />
     <Compile Include="Caching\MemoryCacheManagerTests.cs" />
     <Compile Include="ComponentModel\GenericListTypeConverterTests.cs" />
     <Compile Include="Extensions\TypeExtensionsTests.cs" />
     <Compile Include="Helper\CommonHelperTests.cs" />
+    <Compile Include="Helper\WebHelperTests.cs" />
     <Compile Include="Infrastructure\SingletonTests.cs" />
     <Compile Include="Infrastructure\TypeFinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

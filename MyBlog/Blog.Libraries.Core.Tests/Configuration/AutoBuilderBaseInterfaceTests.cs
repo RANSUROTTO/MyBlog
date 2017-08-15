@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Blog.Libraries.Core.Configuration;
-using NUnit.Framework;
 using Blog.Tests;
+using NUnit.Framework;
 
-namespace Blog.Libraries.Core.Tests
+namespace Blog.Libraries.Core.Tests.Configuration
 {
 
     [TestFixture]

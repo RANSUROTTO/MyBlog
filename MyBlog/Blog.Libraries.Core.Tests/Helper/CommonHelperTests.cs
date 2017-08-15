@@ -31,7 +31,7 @@ namespace Blog.Libraries.Core.Tests.Helper
         }
 
         [Test]
-        public void Passess_GenerateRandomInteger_Success()
+        public void Passes_GenerateRandomInteger_Success()
         {
             int number = CommonHelper.GenerateRandomInteger();
             (number >= 0).TestBeTrue();
@@ -39,7 +39,7 @@ namespace Blog.Libraries.Core.Tests.Helper
         }
 
         [Test]
-        public void Passess_EnsureNumericOnly_Success()
+        public void Passes_EnsureNumericOnly_Success()
         {
             string str = "123456a789";
             string numberStr = CommonHelper.EnsureNumericOnly(str);
@@ -47,14 +47,14 @@ namespace Blog.Libraries.Core.Tests.Helper
         }
 
         [Test]
-        public void Passess_EnsureStringIsNotNull_Success()
+        public void Passes_EnsureStringIsNotNull_Success()
         {
             string str = null;
             CommonHelper.EnsureNotNull(str).TestEqual(string.Empty);
         }
 
         [Test]
-        public void Passess_AreNullOrEmptyByArray_Success()
+        public void Passes_AreNullOrEmptyByArray_Success()
         {
             string[] strs = { "a", "b", "", "c" };
             CommonHelper.AreNullOrEmpty(strs).TestBeTrue();
@@ -71,7 +71,7 @@ namespace Blog.Libraries.Core.Tests.Helper
         }
 
         [Test]
-        public void Passess_SetProperty_Success()
+        public void Passes_SetProperty_Success()
         {
             var model = new SetPropertyUnitTestModel();
             CommonHelper.SetProperty(model, "Name", "lancelot");
