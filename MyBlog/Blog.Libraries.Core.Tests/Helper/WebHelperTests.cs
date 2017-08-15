@@ -21,6 +21,20 @@ namespace Blog.Libraries.Core.Tests.Helper
         private IWebHelper _webHelper;
 
         [Test]
+        public void Passes_GetUrlReferrer_Success()
+        {
+            var uri = new Uri("http://www.example.com/request");
+            var uriReferrer = new Uri("http://www.example.com/referrer?name=lancelot");
+            var httpRequest = new FakeHttpRequest("~/request", uri, uriReferrer);
+            _httpContext = new FakeHttpContext("~/");
+            (_httpContext as FakeHttpContext)?.SetRequest(httpRequest);
+            _webHelper = new WebHelper(_httpContext);
+            //Tests
+            var result = _webHelper.GetUrlReferrer();
+            result.TestEqual("/referrer?name=lancelot");
+        }
+
+        [Test]
         public void Passes_ServerVariables_Get_Success()
         {
             var serverVariables = new NameValueCollection();
