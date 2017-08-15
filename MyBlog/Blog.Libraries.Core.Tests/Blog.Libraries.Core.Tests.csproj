@@ -53,6 +53,7 @@
     <Compile Include="Caching\MemoryCacheManagerTests.cs" />
     <Compile Include="ComponentModel\GenericListTypeConverterTests.cs" />
     <Compile Include="Extensions\TypeExtensionsTests.cs" />
+    <Compile Include="Helper\CommonHelperTests.cs" />
     <Compile Include="Infrastructure\SingletonTests.cs" />
     <Compile Include="Infrastructure\TypeFinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,9 +73,7 @@
       <Name>Blog.Tests</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helper\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
