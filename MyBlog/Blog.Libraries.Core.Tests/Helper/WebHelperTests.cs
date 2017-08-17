@@ -48,6 +48,10 @@ namespace Blog.Libraries.Core.Tests.Helper
             _webHelper.ServerVariables("key3").TestEqual(string.Empty);
         }
 
+        [Test]
+        public void Passess_IsStaticResource_Success()
+        {
+        }
 
 
 
