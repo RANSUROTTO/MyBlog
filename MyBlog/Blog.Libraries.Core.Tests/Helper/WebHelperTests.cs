@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Blog.Libraries.Core.Helper;
-using System.Web;
 using Blog.Libraries.Core.Fakes;
+using Blog.Libraries.Core.Helper;
 using NUnit.Framework;
+using System.Web;
 using Blog.Tests;
 
 namespace Blog.Libraries.Core.Tests.Helper
@@ -48,8 +48,8 @@ namespace Blog.Libraries.Core.Tests.Helper
         public void Passess_ModifyQueryString_Success()
         {
             string url = "/Request?parameter=123#nav1";
-            HttpContextBase httpContext = new FakeHttpContext("~/");
-            _webHelper = new WebHelper(httpContext);
+            _httpContext = new FakeHttpContext("~/");
+            _webHelper = new WebHelper(_httpContext);
 
             //不覆盖
             _webHelper.ModifyQueryString(url, "property=abc", "nva2").ToLower()
@@ -64,8 +64,8 @@ namespace Blog.Libraries.Core.Tests.Helper
         public void Passess_RemoveQueryString_Success()
         {
             string url = "/Request?parameter=123#nav1";
-            HttpContextBase httpContext = new FakeHttpContext("~/");
-            _webHelper = new WebHelper(httpContext);
+            _httpContext = new FakeHttpContext("~/");
+            _webHelper = new WebHelper(_httpContext);
 
             _webHelper.RemoveQueryString(url, "parameter").TestEqual("/request#nav1".ToLower());
 
@@ -73,8 +73,17 @@ namespace Blog.Libraries.Core.Tests.Helper
             _webHelper.RemoveQueryString(url, "parameter").TestEqual("/request?property=abc#nav1".ToLower());
         }
 
+        [Test]
+        public void Passess_QueryString_Convert_Success()
+        {
+            _httpContext = new FakeHttpContext("~/");
+            var queryStringCollection = new NameValueCollection { { "flag", "true" } };
+            (_httpContext as FakeHttpContext).SetRequest(new FakeHttpRequest("/Request", "GET", null, queryStringCollection, null, null));
+            _webHelper = new WebHelper(_httpContext);
 
-
+            bool flag = _webHelper.QueryString<bool>("flag");
+            flag.TestBeTrue();
+        }
 
     }
 

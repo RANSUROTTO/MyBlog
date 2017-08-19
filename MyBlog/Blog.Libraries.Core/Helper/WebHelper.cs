@@ -457,7 +457,7 @@ namespace Blog.Libraries.Core.Helper
             if (IsRequestAvailable(_httpContext) && _httpContext.Request.QueryString[name] != null)
                 queryParam = _httpContext.Request.QueryString[name];
 
-            if (!String.IsNullOrEmpty(queryParam))
+            if (!string.IsNullOrEmpty(queryParam))
                 return CommonHelper.To<T>(queryParam);
 
             return default(T);
