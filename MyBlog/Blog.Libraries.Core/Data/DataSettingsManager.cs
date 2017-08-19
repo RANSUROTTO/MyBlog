@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using Blog.Libraries.Core.Extensions;
+using Blog.Libraries.Core.Helper;
 
 namespace Blog.Libraries.Core.Data
 {
@@ -105,7 +106,7 @@ namespace Blog.Libraries.Core.Data
         public virtual DataSettings LoadSettings(string filePath = null)
         {
             if (string.IsNullOrEmpty(filePath))
-                filePath = Path.Combine("", filename);
+                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), filename);
 
             if (File.Exists(filePath))
             {
@@ -127,7 +128,7 @@ namespace Blog.Libraries.Core.Data
                 throw new ArgumentNullException("settings");
 
             if (string.IsNullOrEmpty(filePath))
-                filePath = Path.Combine("~/App_Data/", filename);
+                filePath = Path.Combine(CommonHelper.MapPath("~/App_Data/"), filename);
 
             //not exists,create
             if (!File.Exists(filePath))
