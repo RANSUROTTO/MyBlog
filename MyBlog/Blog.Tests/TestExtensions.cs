@@ -185,7 +185,7 @@ namespace Blog.Tests
         /// <param name="expected">预期字符串</param>
         public static void TestStringCompare(this string actual, string expected)
         {
-            Assert.IsTrue(string.Equals(actual, expected, StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(string.Equals(actual, expected, StringComparison.OrdinalIgnoreCase));
         }
 
         #endregion

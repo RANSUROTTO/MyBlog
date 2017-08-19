@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Core.Helper;
 using System.Web;
 using Blog.Libraries.Core.Fakes;
@@ -49,9 +45,34 @@ namespace Blog.Libraries.Core.Tests.Helper
         }
 
         [Test]
-        public void Passess_IsStaticResource_Success()
+        public void Passess_ModifyQueryString_Success()
         {
+            string url = "/Request?parameter=123#nav1";
+            HttpContextBase httpContext = new FakeHttpContext("~/");
+            _webHelper = new WebHelper(httpContext);
+
+            //不覆盖
+            _webHelper.ModifyQueryString(url, "property=abc", "nva2").ToLower()
+                .TestEqual("/Request?parameter=123&property=abc#nva2".ToLower());
+
+            //覆盖
+            _webHelper.ModifyQueryString(url, "property=abc&parameter=456", "nva2").ToLower()
+                .TestEqual("/Request?parameter=456&property=abc#nva2".ToLower());
         }
+
+        [Test]
+        public void Passess_RemoveQueryString_Success()
+        {
+            string url = "/Request?parameter=123#nav1";
+            HttpContextBase httpContext = new FakeHttpContext("~/");
+            _webHelper = new WebHelper(httpContext);
+
+            _webHelper.RemoveQueryString(url, "parameter").TestEqual("/request#nav1".ToLower());
+
+            url = "/Request?parameter=123&property=abc#nav1";
+            _webHelper.RemoveQueryString(url, "parameter").TestEqual("/request?property=abc#nav1".ToLower());
+        }
+
 
 
 

@@ -74,7 +74,7 @@ namespace Blog.Libraries.Core.Helper
                     //它用于识别连接到Web服务器的客户端的IP地址
                     //通过HTTP代理或负载平衡器
                     string xff = _httpContext.Request.Headers.AllKeys
-                        .Where(x => forwardedHttpHeader.Equals(x, StringComparison.InvariantCultureIgnoreCase))
+                        .Where(x => forwardedHttpHeader.Equals(x, StringComparison.OrdinalIgnoreCase))
                         .Select(k => _httpContext.Request.Headers[k])
                         .FirstOrDefault();
 
@@ -300,14 +300,14 @@ namespace Blog.Libraries.Core.Helper
             string str2 = string.Empty;
             if (url.Contains("#"))
             {
-                str2 = url.Substring(url.IndexOf("#") + 1);
-                url = url.Substring(0, url.IndexOf("#"));
+                str2 = url.Substring(url.IndexOf("#", StringComparison.Ordinal) + 1);
+                url = url.Substring(0, url.IndexOf("#", StringComparison.Ordinal));
             }
 
             if (url.Contains("?"))
             {
-                str = url.Substring(url.IndexOf("?") + 1);
-                url = url.Substring(0, url.IndexOf("?"));
+                str = url.Substring(url.IndexOf("?", StringComparison.Ordinal) + 1);
+                url = url.Substring(0, url.IndexOf("?", StringComparison.Ordinal));
             }
 
             if (!string.IsNullOrEmpty(queryStringModification))
@@ -315,11 +315,11 @@ namespace Blog.Libraries.Core.Helper
                 if (!string.IsNullOrEmpty(str))
                 {
                     var dictionary = new Dictionary<string, string>();
-                    foreach (string str3 in str.Split(new[] { '&' }))
+                    foreach (string str3 in str.Split('&'))
                     {
                         if (!string.IsNullOrEmpty(str3))
                         {
-                            string[] strArray = str3.Split(new[] { '=' });
+                            string[] strArray = str3.Split('=');
                             if (strArray.Length == 2)
                             {
                                 if (!dictionary.ContainsKey(strArray[0]))
@@ -338,11 +338,11 @@ namespace Blog.Libraries.Core.Helper
                             }
                         }
                     }
-                    foreach (string str4 in queryStringModification.Split(new[] { '&' }))
+                    foreach (string str4 in queryStringModification.Split('&'))
                     {
                         if (!string.IsNullOrEmpty(str4))
                         {
-                            string[] strArray2 = str4.Split(new[] { '=' });
+                            string[] strArray2 = str4.Split('=');
                             if (strArray2.Length == 2)
                             {
                                 dictionary[strArray2[0]] = strArray2[1];
@@ -395,6 +395,13 @@ namespace Blog.Libraries.Core.Helper
             queryString = queryString.ToLowerInvariant();
 
             string str = string.Empty;
+            string str2 = string.Empty;
+
+            if (url.Contains("#"))
+            {
+                str2 = url.Substring(url.IndexOf("#", StringComparison.Ordinal) + 1);
+                url = url.Substring(0, url.IndexOf("#", StringComparison.Ordinal));
+            }
             if (url.Contains("?"))
             {
                 str = url.Substring(url.IndexOf("?") + 1);
@@ -441,7 +448,7 @@ namespace Blog.Libraries.Core.Helper
                 }
             }
 
-            return (url + (string.IsNullOrEmpty(str) ? "" : ("?" + str)));
+            return (url + (string.IsNullOrEmpty(str) ? "" : ("?" + str)) + (string.IsNullOrEmpty(str2) ? "" : ("#" + str2)));
         }
 
         public virtual T QueryString<T>(string name)
