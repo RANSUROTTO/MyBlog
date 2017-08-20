@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Libraries.Core.ComponentModel
 {
@@ -90,6 +89,25 @@ namespace Blog.Libraries.Core.ComponentModel
         /// </summary>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
+            if (destinationType == typeof(string))
+            {
+                StringBuilder result = new StringBuilder();
+                if (value != null)
+                {
+                    int counter = 0;
+                    var dictionary = (IDictionary<K, V>)value;
+                    foreach (var keyValue in dictionary)
+                    {
+                        result.Append(string.Format("{0}, {1}", Convert.ToString(keyValue.Key, CultureInfo.InvariantCulture), Convert.ToString(keyValue.Value, CultureInfo.InvariantCulture)));
+
+                        if (counter != dictionary.Count - 1)
+                            result.Append(";");
+
+                        counter++;
+                    }
+                }
+                return result.ToString();
+            }
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
