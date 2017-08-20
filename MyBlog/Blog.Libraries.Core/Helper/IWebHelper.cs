@@ -53,20 +53,20 @@ namespace Blog.Libraries.Core.Helper
         /// </summary>
         /// <param name="useSsl">使用ssl</param>
         /// <returns>主机位置</returns>
-        string GetStoreHost(bool useSsl);
+        string GetHost(bool useSsl);
 
         /// <summary>
         /// 获取存储位置
         /// </summary>
         /// <returns>存储位置</returns>
-        string GetStoreLocation();
+        string GetLocation();
 
         /// <summary>
         /// 获取存储位置
         /// </summary>
         /// <param name="useSsl">使用ssl</param>
         /// <returns>存储位置</returns>
-        string GetStoreLocation(bool useSsl);
+        string GetLocation(bool useSsl);
 
         /// <summary>
         /// 获取该请求是否为请求指定不需要处理的静态资源之一
@@ -79,7 +79,7 @@ namespace Blog.Libraries.Core.Helper
         /// </summary>
         /// <param name="url">需要修改的url</param>
         /// <param name="queryStringModification">查询字符串修改</param>
-        /// <param name="anchor">Anchor</param>
+        /// <param name="anchor">锚链接</param>
         /// <returns>修改后的url</returns>
         string ModifyQueryString(string url, string queryStringModification, string anchor);
 

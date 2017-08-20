@@ -7,10 +7,6 @@
 	<WebConfg></WebConfig>
 
 
-WebHelper未完成
-
-
-
 关于Nuget包的相关文档:
 Autofac:
 http://docs.autofac.org/en/v4.0.0/

@@ -119,7 +119,7 @@ namespace Blog.Libraries.Core.Helper
                 return string.Empty;
 
             //让主机考虑使用SSL
-            var url = GetStoreHost(useSsl).TrimEnd('/');
+            var url = GetHost(useSsl).TrimEnd('/');
 
             //获取或不添加查询字符串的完整URL
             url += includeQueryString ? _httpContext.Request.RawUrl : _httpContext.Request.Path;
@@ -177,9 +177,8 @@ namespace Blog.Libraries.Core.Helper
             return result;
         }
 
-        public virtual string GetStoreHost(bool useSsl)
+        public virtual string GetHost(bool useSsl)
         {
-            throw new NotImplementedException();
             var result = "";
             var httpHost = ServerVariables("HTTP_HOST");
             if (!string.IsNullOrEmpty(httpHost))
@@ -189,80 +188,33 @@ namespace Blog.Libraries.Core.Helper
                     result += "/";
             }
 
-            /*if (DataSettingsHelper.DatabaseInstalled())
+            if (useSsl)
             {
-                #region Database is installed
-
-                //let's resolve IWorkContext  here.
-                //Do not inject it via constructor  because it'll cause circular references
-                var storeContext = EngineContext.Current.Resolve<IStoreContext>();
-                var currentStore = storeContext.CurrentStore;
-                if (currentStore == null)
-                    throw new Exception("Current store cannot be loaded");
-
-                if (String.IsNullOrWhiteSpace(httpHost))
-                {
-                    //HTTP_HOST variable is not available.
-                    //This scenario is possible only when HttpContext is not available (for example, running in a schedule task)
-                    //in this case use URL of a store entity configured in admin area
-                    result = currentStore.Url;
-                    if (!result.EndsWith("/"))
-                        result += "/";
-                }
-
-                if (useSsl)
-                {
-                    result = !String.IsNullOrWhiteSpace(currentStore.SecureUrl) ?
-                        //Secure URL specified. 
-                        //So a store owner don't want it to be detected automatically.
-                        //In this case let's use the specified secure URL
-                        currentStore.SecureUrl :
-                        //Secure URL is not specified.
-                        //So a store owner wants it to be detected automatically.
-                        result.Replace("http:/", "https:/");
-                }
-                else
-                {
-                    if (currentStore.SslEnabled && !String.IsNullOrWhiteSpace(currentStore.SecureUrl))
-                    {
-                        //SSL is enabled in this store and secure URL is specified.
-                        //So a store owner don't want it to be detected automatically.
-                        //In this case let's use the specified non-secure URL
-                        result = currentStore.Url;
-                    }
-                }
-                #endregion
+                result = result.Replace("http:/", "https:/");
             }
-            else
-            {
-                #region Database is not installed
-                if (useSsl)
-                {
-                    //Secure URL is not specified.
-                    //So a store owner wants it to be detected automatically.
-                    result = result.Replace("http:/", "https:/");
-                }
-                #endregion
-            }*/
 
             if (!result.EndsWith("/"))
                 result += "/";
+
             return result.ToLowerInvariant();
         }
 
-        public virtual string GetStoreLocation()
+        public virtual string GetLocation()
         {
             bool useSsl = IsCurrentConnectionSecured();
-            return GetStoreLocation(useSsl);
+            return GetLocation(useSsl);
         }
 
-        public virtual string GetStoreLocation(bool useSsl)
+        public virtual string GetLocation(bool useSsl)
         {
-            string result = GetStoreHost(useSsl);
+            string result = GetHost(useSsl);
+
             if (result.EndsWith("/"))
                 result = result.Substring(0, result.Length - 1);
+
             if (IsRequestAvailable(_httpContext))
                 result = result + _httpContext.Request.ApplicationPath;
+
             if (!result.EndsWith("/"))
                 result += "/";
 
