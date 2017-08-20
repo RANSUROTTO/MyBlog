@@ -16,6 +16,11 @@ namespace Blog.Libraries.Core.ComponentModel
 
         protected readonly TypeConverter TypeConverter;
 
+        #region Constructor
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public GenericListTypeConverter()
         {
             TypeConverter = TypeDescriptor.GetConverter(typeof(T));
@@ -23,19 +28,13 @@ namespace Blog.Libraries.Core.ComponentModel
                 throw new InvalidOperationException("No type converter exists for type " + typeof(T).FullName);
         }
 
-        /// <summary>
-        /// 从逗号分割的字符串获取字符串数组
-        /// </summary>
-        /// <param name="input">字符串</param>
-        /// <returns>分割后的字符串数组</returns>
-        protected virtual string[] GetStringByArray(string input)
-        {
-            return string.IsNullOrEmpty(input) ? new string[0] : input.Split(',').Select(p => p.Trim()).ToArray();
-        }
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// 获取一个值，表示该转换器是否可以
-        /// 将给定源类型中的对象转换为转换器的本机类型
+        /// 将给定源类型中的对象转换为转换器的类型
         /// 使用上下文
         /// </summary>
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -49,7 +48,9 @@ namespace Blog.Libraries.Core.ComponentModel
         }
 
         /// <summary>
-        /// 将给定对象转换为转换器的本机类型
+        /// 将给定对象转换为转换器的类型
+        /// 目前实现的例子:
+        /// string:"1,2,3,4" => list:{1,2,3,4}
         /// </summary>
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
@@ -69,6 +70,8 @@ namespace Blog.Libraries.Core.ComponentModel
 
         /// <summary>
         /// 使用指定的上下文和参数将给定值对象转换为指定的目标类型
+        /// 目前实现的例子:
+        /// list:{1,2,3,4} => string:"1,2,3,4"
         /// </summary>
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
@@ -89,6 +92,22 @@ namespace Blog.Libraries.Core.ComponentModel
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }
+
+        #endregion
+
+        #region Utilities
+
+        /// <summary>
+        /// 从逗号分割的字符串获取字符串数组
+        /// </summary>
+        /// <param name="input">字符串</param>
+        /// <returns>分割后的字符串数组</returns>
+        protected virtual string[] GetStringByArray(string input)
+        {
+            return string.IsNullOrEmpty(input) ? new string[0] : input.Split(',').Select(p => p.Trim()).ToArray();
+        }
+
+        #endregion
 
     }
 

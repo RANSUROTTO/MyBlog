@@ -53,6 +53,8 @@
     <Compile Include="Caching\MemcachedManagerTests.cs" />
     <Compile Include="Caching\MemoryCacheManagerTests.cs" />
     <Compile Include="ComponentModel\GenericListTypeConverterTests.cs" />
+    <Compile Include="Extensions\ArrayExtensionsTests.cs" />
+    <Compile Include="Extensions\CommonExtensionsTests.cs" />
     <Compile Include="Extensions\TypeExtensionsTests.cs" />
     <Compile Include="Helper\CommonHelperTests.cs" />
     <Compile Include="Helper\WebHelperTests.cs" />

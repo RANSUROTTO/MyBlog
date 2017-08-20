@@ -54,7 +54,7 @@ namespace Blog.Libraries.Core.Data
         void Delete(IEnumerable<T> entities);
 
         /// <summary>
-        /// 获取实体表格
+        /// 获取实体数据集
         /// </summary>
         IQueryable<T> Table { get; }
 

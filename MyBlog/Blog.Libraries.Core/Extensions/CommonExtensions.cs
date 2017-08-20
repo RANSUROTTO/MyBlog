@@ -2,6 +2,9 @@
 namespace Blog.Libraries.Core.Extensions
 {
 
+    /// <summary>
+    /// 一个常用的扩展类
+    /// </summary>
     public static class CommonExtensions
     {
 

@@ -2,6 +2,10 @@
 
 namespace Blog.Libraries.Core.Extensions
 {
+
+    /// <summary>
+    /// 针对类型的扩展类
+    /// </summary>
     public static class TypeExtensions
     {
 

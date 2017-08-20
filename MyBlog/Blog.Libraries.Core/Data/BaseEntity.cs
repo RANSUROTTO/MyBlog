@@ -5,13 +5,15 @@ namespace Blog.Libraries.Core.Data
     public abstract class BaseEntity
     {
 
+        #region Properties
+
         /// <summary>
         /// 实体主键
         /// </summary>
         public long Id { get; set; }
 
         /// <summary>
-        /// Guid
+        /// 全球唯一标识符
         /// </summary>
         public Guid Guid { get; set; }
 
@@ -24,6 +26,10 @@ namespace Blog.Libraries.Core.Data
         /// 实体是否已被删除
         /// </summary>
         public bool IsDelete { get; set; }
+
+        #endregion
+
+        #region Methods
 
         public static bool operator ==(BaseEntity x, BaseEntity y) => Equals(x, y);
 
@@ -54,6 +60,8 @@ namespace Blog.Libraries.Core.Data
         {
             return this.Id.GetHashCode();
         }
+
+        #endregion
 
     }
 
