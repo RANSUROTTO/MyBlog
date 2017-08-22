@@ -98,7 +98,7 @@ namespace Blog.Libraries.Core.ComponentModel
                     var dictionary = (IDictionary<K, V>)value;
                     foreach (var keyValue in dictionary)
                     {
-                        result.Append(string.Format("{0}, {1}", Convert.ToString(keyValue.Key, CultureInfo.InvariantCulture), Convert.ToString(keyValue.Value, CultureInfo.InvariantCulture)));
+                        result.Append(string.Format("{0},{1}", Convert.ToString(keyValue.Key, CultureInfo.InvariantCulture), Convert.ToString(keyValue.Value, CultureInfo.InvariantCulture)));
 
                         if (counter != dictionary.Count - 1)
                             result.Append(";");
