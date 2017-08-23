@@ -1,11 +1,11 @@
 ﻿using System;
 using Blog.Libraries.Core.Data;
 
-namespace Blog.Libraries.Core.Domain.Customers
+namespace Blog.Libraries.Core.Domain.Members
 {
 
     /// <summary>
-    /// 用户
+    /// 代表一个用户
     /// </summary>
     public class Customer : BaseEntity
     {

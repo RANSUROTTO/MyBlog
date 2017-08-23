@@ -5,6 +5,17 @@ namespace Blog.Libraries.Core.Data
     public abstract class BaseEntity
     {
 
+        #region Constructor
+
+        protected BaseEntity()
+        {
+            this.Guid = new Guid();
+            this.CreateAt = DateTime.UtcNow;
+            this.IsDeleted = false;
+        }
+
+        #endregion
+
         #region Properties
 
         /// <summary>
