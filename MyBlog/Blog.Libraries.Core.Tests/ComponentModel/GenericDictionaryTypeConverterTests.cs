@@ -8,30 +8,30 @@ namespace Blog.Libraries.Core.Tests.ComponentModel
 {
 
     [TestFixture]
-    public class GenericeDictionaryTypeConverterTests
+    public class GenericDictionaryTypeConverterTests
     {
 
         [SetUp]
         public void SetUp()
         {
             TypeDescriptor.AddAttributes(typeof(Dictionary<string, string>)
-                , new TypeConverterAttribute(typeof(GenericeDictionaryTypeConverter<string, string>)));
+                , new TypeConverterAttribute(typeof(GenericDictionaryTypeConverter<string, string>)));
             TypeDescriptor.AddAttributes(typeof(Dictionary<int, string>)
-                , new TypeConverterAttribute(typeof(GenericeDictionaryTypeConverter<int, string>)));
+                , new TypeConverterAttribute(typeof(GenericDictionaryTypeConverter<int, string>)));
         }
 
         [Test]
         public void Passes_DictionaryConverter_Equal_GenericeDictionaryTypeConverterStringKeyStringValue()
         {
             var converter = TypeDescriptor.GetConverter(typeof(Dictionary<string, string>));
-            converter.GetType().TestEqual(typeof(GenericeDictionaryTypeConverter<string, string>));
+            converter.GetType().TestEqual(typeof(GenericDictionaryTypeConverter<string, string>));
         }
 
         [Test]
         public void Passes_DictionaryConverter_Euqal_GenericeDictionaryTypeConverterIntKeyStringValue()
         {
             var conveter = TypeDescriptor.GetConverter(typeof(Dictionary<int, string>));
-            conveter.GetType().TestEqual(typeof(GenericeDictionaryTypeConverter<int, string>));
+            conveter.GetType().TestEqual(typeof(GenericDictionaryTypeConverter<int, string>));
         }
 
         [Test]

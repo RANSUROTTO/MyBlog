@@ -2,7 +2,7 @@
 using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
 
-namespace Blog.Libraries.Core.Infrastructure.DependencyManagement
+namespace Blog.Libraries.Core.Infrastructure
 {
     /// <summary>
     /// 依赖注册接口

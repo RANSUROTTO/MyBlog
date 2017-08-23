@@ -96,7 +96,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComponentModel\GenericeDictionaryTypeConverter.cs" />
+    <Compile Include="Common\MimeTypes.cs" />
+    <Compile Include="ComponentModel\GenericDictionaryTypeConverter.cs" />
     <Compile Include="Configuration\AutoBuilderBaseInterface.cs" />
     <Compile Include="Caching\CacheExtensions.cs" />
     <Compile Include="Caching\ICacheManager.cs" />
@@ -128,7 +129,7 @@
     <Compile Include="Helper\WebHelper.cs" />
     <Compile Include="Helper\XmlHelper.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
-    <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
+    <Compile Include="Infrastructure\IDependencyRegistrar.cs" />
     <Compile Include="Infrastructure\EngineContext.cs" />
     <Compile Include="Infrastructure\IEngine.cs" />
     <Compile Include="Infrastructure\IStartupTask.cs" />

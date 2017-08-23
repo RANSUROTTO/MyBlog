@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Blog.Libraries.Core.ComponentModel
 {
-    public class GenericeDictionaryTypeConverter<K, V> : TypeConverter
+    public class GenericDictionaryTypeConverter<K, V> : TypeConverter
     {
 
         protected readonly TypeConverter typeConverterKey;
@@ -18,7 +18,7 @@ namespace Blog.Libraries.Core.ComponentModel
         /// <summary>
         /// Ctor
         /// </summary>
-        public GenericeDictionaryTypeConverter()
+        public GenericDictionaryTypeConverter()
         {
             typeConverterKey = TypeDescriptor.GetConverter(typeof(K));
             if (typeConverterKey == null)

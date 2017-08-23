@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComponentModel\GenericeDictionaryTypeConverterTests.cs" />
+    <Compile Include="ComponentModel\GenericDictionaryTypeConverterTests.cs" />
     <Compile Include="Configuration\AutoBuilderBaseInterfaceTests.cs" />
     <Compile Include="Caching\MemcachedManagerTests.cs" />
     <Compile Include="Caching\MemoryCacheManagerTests.cs" />
