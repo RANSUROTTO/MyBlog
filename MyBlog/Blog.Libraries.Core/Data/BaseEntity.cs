@@ -25,7 +25,7 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 实体是否已被删除
         /// </summary>
-        public bool IsDelete { get; set; }
+        public bool IsDeleted { get; set; }
 
         #endregion
 
