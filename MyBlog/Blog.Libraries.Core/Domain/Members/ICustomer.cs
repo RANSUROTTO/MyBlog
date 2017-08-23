@@ -1,5 +1,4 @@
 ﻿using System;
-using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Core.Domain.Members
 {
@@ -7,7 +6,7 @@ namespace Blog.Libraries.Core.Domain.Members
     /// <summary>
     /// 代表一个用户
     /// </summary>
-    public class Customer : BaseEntity
+    public interface ICustomer
     {
 
         /// <summary>

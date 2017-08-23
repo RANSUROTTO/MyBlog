@@ -6,7 +6,7 @@ namespace Blog.Libraries.Core.Domain.Members
     /// <summary>
     /// 代表一个游客
     /// </summary>
-    public class Guest : BaseEntity
+    public interface IGuest
     {
 
     }

@@ -110,6 +110,7 @@
     <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
     <Compile Include="Configuration\BaseConfig.cs" />
     <Compile Include="Configuration\WebConfig.cs" />
+    <Compile Include="Context\IWorkContext.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\DataProviderManager.cs" />
     <Compile Include="Data\DataSettings.cs" />
@@ -117,11 +118,11 @@
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Domain\Members\Admin.cs" />
-    <Compile Include="Domain\Members\Customer.cs" />
+    <Compile Include="Domain\Members\IAdmin.cs" />
+    <Compile Include="Domain\Members\ICustomer.cs" />
     <Compile Include="Domain\Localization\Language.cs" />
     <Compile Include="Domain\Localization\LocaleStringResource.cs" />
-    <Compile Include="Domain\Members\Guest.cs" />
+    <Compile Include="Domain\Members\IGuest.cs" />
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\CommonExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
