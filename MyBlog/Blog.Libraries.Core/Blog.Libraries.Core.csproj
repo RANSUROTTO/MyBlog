@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Caching\CouchbaseCaching\" />
+    <Folder Include="Domain\" />
     <Folder Include="Html\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
