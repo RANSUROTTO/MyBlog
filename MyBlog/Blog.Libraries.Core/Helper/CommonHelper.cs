@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
+using Blog.Libraries.Core.Common;
 
 namespace Blog.Libraries.Core.Helper
 {
@@ -33,7 +34,7 @@ namespace Blog.Libraries.Core.Helper
 
             if (!IsValidEmail(output))
             {
-                throw new Exception("Email is not valid.");
+                throw new SiteException("邮箱验证不通过");
             }
 
             return output;

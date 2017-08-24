@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blog.Libraries.Core.Common;
 using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Data.Provider
@@ -30,12 +31,13 @@ namespace Blog.Libraries.Data.Provider
         {
             var providerName = Settings.DataProvider;
             if (string.IsNullOrEmpty(providerName))
-                throw new Exception("Settings is null or empty");
+                throw new SiteException("数据设置中没有包含的数据提供者名称");
 
+            //Create Provider
             switch (providerName.ToLowerInvariant())
             {
                 default:
-                    throw new Exception(string.Format("Not supported dataprovider name: {0}", providerName));
+                    throw new SiteException(string.Format("不支持的数据提供者名称：{0}", providerName));
             }
         }
 
