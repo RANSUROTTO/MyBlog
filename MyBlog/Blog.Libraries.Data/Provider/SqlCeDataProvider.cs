@@ -1,31 +1,31 @@
 ﻿using System.Data.Common;
-using Blog.Libraries.Core.Data;
 using System.Data.Entity;
-using MySql.Data.Entity;
-using MySql.Data.MySqlClient;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Data.Provider
 {
 
-    public class MySqlDataProvider : IDataProvider
+    public class SqlCeDataProvider : IDataProvider
     {
 
         #region Properties
 
         /// <summary>
-        /// MySql数据库支持存储过程
+        /// SqlCe数据库不支持存储过程
         /// </summary>
         public virtual bool StoredProceduredSupported
         {
-            get { return true; }
+            get { return false; }
         }
 
         /// <summary>
-        /// MySql数据库支持备份
+        /// SqlCe不支持备份
         /// </summary>
         public virtual bool BackupSupported
         {
-            get { return true; }
+            get { return false; }
         }
 
         #endregion
@@ -33,26 +33,22 @@ namespace Blog.Libraries.Data.Provider
         #region Methods
 
         /// <summary>
-        /// 初始化MySql数据库连接工厂
+        /// 初始化SqlCe数据库连接工厂
         /// </summary>
         public virtual void InitConnectionFactory()
         {
-            var connectionFactory = new MySqlConnectionFactory();
+            var connectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
 #pragma warning disable 618
             Database.DefaultConnectionFactory = connectionFactory;
 #pragma warning restore 618
         }
 
-        /// <summary>
-        /// 初始化MySql数据库设置
-        /// </summary>
         public virtual void SetDatabaseInitializer()
         {
-
         }
 
         /// <summary>
-        /// 初始化MySql数据库
+        /// 初始化SqlCe数据库
         /// </summary>
         public virtual void InitDatabase()
         {
@@ -62,7 +58,7 @@ namespace Blog.Libraries.Data.Provider
 
         public virtual DbParameter GetParameter()
         {
-            return new MySqlParameter();
+            return new SqlParameter();
         }
 
         public virtual int SupportedLengthOfBinaryHash()

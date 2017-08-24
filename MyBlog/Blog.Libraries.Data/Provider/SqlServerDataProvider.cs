@@ -16,7 +16,7 @@ namespace Blog.Libraries.Data.Provider
         #region Properties
 
         /// <summary>
-        /// SqlServer支持存储过程
+        /// SqlServer数据库支持存储过程
         /// </summary>
         public virtual bool StoredProceduredSupported
         {
@@ -24,11 +24,43 @@ namespace Blog.Libraries.Data.Provider
         }
 
         /// <summary>
-        /// SqlServer支持备份
+        /// SqlServer数据库支持备份
         /// </summary>
         public virtual bool BackupSupported
         {
             get { return true; }
+        }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// 初始化SqlServer数据库连接创建工厂
+        /// </summary>
+        public virtual void InitConnectionFactory()
+        {
+            var connectionFactory = new SqlConnectionFactory();
+#pragma warning disable 618
+            Database.DefaultConnectionFactory = connectionFactory;
+#pragma warning restore 618
+        }
+
+        /// <summary>
+        /// 初始化SqlServer数据库设置
+        /// </summary>
+        public virtual void SetDatabaseInitializer()
+        {
+
+        }
+
+        /// <summary>
+        /// 初始化SqlServer数据库
+        /// </summary>
+        public virtual void InitDatabase()
+        {
+            InitConnectionFactory();
+            SetDatabaseInitializer();
         }
 
         /// <summary>
@@ -43,38 +75,6 @@ namespace Blog.Libraries.Data.Provider
         public virtual int SupportedLengthOfBinaryHash()
         {
             return 800;
-        }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// 初始化数据库连接创建工厂
-        /// </summary>
-        public virtual void InitConnectionFactory()
-        {
-            var connectionFactory = new SqlConnectionFactory();
-#pragma warning disable 618
-            Database.DefaultConnectionFactory = connectionFactory;
-#pragma warning restore 618
-        }
-
-        /// <summary>
-        /// 初始化数据库设置
-        /// </summary>
-        public virtual void SetDatabaseInitializer()
-        {
-
-        }
-
-        /// <summary>
-        /// 初始化数据库
-        /// </summary>
-        public virtual void InitDatabase()
-        {
-            InitConnectionFactory();
-            SetDatabaseInitializer();
         }
 
         #endregion

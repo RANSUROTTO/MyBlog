@@ -61,6 +61,7 @@
     <Compile Include="Provider\BaseDataProviderManager.cs" />
     <Compile Include="Provider\EFDataProviderManager.cs" />
     <Compile Include="Provider\MySqlDataProvider.cs" />
+    <Compile Include="Provider\SqlCeDataProvider.cs" />
     <Compile Include="Provider\SqlServerDataProvider.cs" />
   </ItemGroup>
   <ItemGroup>
