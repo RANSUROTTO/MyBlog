@@ -21,8 +21,10 @@ namespace Blog.Libraries.Core.Tests.Extensions
                 "4",
                 "5"
             };
-            string str = array.Join(",");
+            string str = array.Join();
             str.TestEqual("1,2,3,4,5");
+            string str2 = array.Join("-");
+            str2.TestEqual("1-2-3-4-5");
         }
 
     }
