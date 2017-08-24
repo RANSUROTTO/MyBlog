@@ -8,8 +8,6 @@ namespace Blog.Libraries.Core.Tests.Extensions
     public class TypeExtensionsTests
     {
 
-        #region Unit Test IsBasicTypeOrString
-
         [Test]
         public void Passes_ShortIsBasicType()
         {
@@ -57,8 +55,6 @@ namespace Blog.Libraries.Core.Tests.Extensions
         {
             typeof(string).IsBasicTypeOrString().TestBeTrue();
         }
-
-        #endregion
 
     }
 }
