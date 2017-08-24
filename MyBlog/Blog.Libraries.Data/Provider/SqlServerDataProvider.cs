@@ -13,34 +13,7 @@ namespace Blog.Libraries.Data.Provider
     public class SqlServerDataProvider : IDataProvider
     {
 
-        /// <summary>
-        /// 初始化数据库连接创建工厂
-        /// </summary>
-        public virtual void InitConnectionFactory()
-        {
-            var connectionFactory = new SqlConnectionFactory();
-#pragma warning disable 618
-            Database.DefaultConnectionFactory = connectionFactory;
-#pragma warning restore 618
-        }
-
-        /// <summary>
-        /// 初始化数据库设置
-        /// </summary>
-        public virtual void SetDatabaseInitializer()
-        {
-
-        }
-
-        /// <summary>
-        /// 初始化数据库
-        /// </summary>
-        // ReSharper disable once FunctionRecursiveOnAllPaths
-        public virtual void InitDatabase()
-        {
-            InitDatabase();
-            SetDatabaseInitializer();
-        }
+        #region Properties
 
         /// <summary>
         /// SqlServer支持存储过程
@@ -71,6 +44,40 @@ namespace Blog.Libraries.Data.Provider
         {
             return 800;
         }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// 初始化数据库连接创建工厂
+        /// </summary>
+        public virtual void InitConnectionFactory()
+        {
+            var connectionFactory = new SqlConnectionFactory();
+#pragma warning disable 618
+            Database.DefaultConnectionFactory = connectionFactory;
+#pragma warning restore 618
+        }
+
+        /// <summary>
+        /// 初始化数据库设置
+        /// </summary>
+        public virtual void SetDatabaseInitializer()
+        {
+
+        }
+
+        /// <summary>
+        /// 初始化数据库
+        /// </summary>
+        public virtual void InitDatabase()
+        {
+            InitConnectionFactory();
+            SetDatabaseInitializer();
+        }
+
+        #endregion
 
     }
 
