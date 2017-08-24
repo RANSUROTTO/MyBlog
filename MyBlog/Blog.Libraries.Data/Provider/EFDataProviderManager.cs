@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Blog.Libraries.Core.Common;
+﻿using Blog.Libraries.Core.Common;
 using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Data.Provider
@@ -36,6 +31,12 @@ namespace Blog.Libraries.Data.Provider
             //Create Provider
             switch (providerName.ToLowerInvariant())
             {
+                case "sqlserver":
+                    return new SqlServerDataProvider();
+                case "mysql":
+                    return new MySqlDataProvider();
+                case "sqlce":
+                    return new SqlCeDataProvider();
                 default:
                     throw new SiteException(string.Format("不支持的数据提供者名称：{0}", providerName));
             }
