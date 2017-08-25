@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
+using System.Data.Entity.Infrastructure;
 
 namespace Blog.Libraries.Data.Context
 {
@@ -42,10 +43,38 @@ namespace Blog.Libraries.Data.Context
         IList<T> ExecuteStoredProcedureList<T>(string commandText, params object[] parameters)
             where T : BaseEntity, new();
 
-
+        /// <summary>
+        /// 执行Sql语句查询
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <param name="sql">Sql语句</param>
+        /// <param name="parameters">参数</param>
         IEnumerable<T> SqlQuery<T>(string sql, params object[] parameters);
 
+        /// <summary>
+        /// 执行Sql命令
+        /// </summary>
+        /// <param name="sql">Sql语句</param>
+        /// <param name="doNotEnsureTransaction">非事务保证</param>
+        /// <param name="timeout">超时时间</param>
+        /// <param name="parameters">参数</param>
         int ExecuteSqlCommand(string sql, bool doNotEnsureTransaction = false, int? timeout = null, params object[] parameters);
+
+        /// <summary>
+        /// 设置实体在上下文的状态
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <param name="entity">待设置状态的实体</param>
+        /// <param name="state">目标状态</param>
+        void SetEntityState<T>(T entity, EntityState state) where T : BaseEntity;
+
+        /// <summary>
+        /// 获得实体状态
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        DbEntityEntry Entry<T>(T entity) where T : BaseEntity;
 
     }
 
