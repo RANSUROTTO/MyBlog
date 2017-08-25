@@ -65,12 +65,12 @@
     <Compile Include="Provider\MySqlDataProvider.cs" />
     <Compile Include="Provider\SqlCeDataProvider.cs" />
     <Compile Include="Provider\SqlServerDataProvider.cs" />
+    <Compile Include="Repository\EfRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
     <Folder Include="Initializers\" />
     <Folder Include="Mapping\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">

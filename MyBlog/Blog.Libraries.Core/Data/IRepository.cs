@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Blog.Libraries.Core.Data
 {
@@ -68,7 +69,7 @@ namespace Blog.Libraries.Core.Data
         /// </summary>
         /// <param name="id">标识符</param>
         /// <returns>实体</returns>
-        T GetByIdAsync(object id);
+        Task<T> GetByIdAsync(object id);
 
         /// <summary>
         /// 异步插入实体
