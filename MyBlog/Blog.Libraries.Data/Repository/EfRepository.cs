@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Context;
@@ -71,70 +71,217 @@ namespace Blog.Libraries.Data.Repository
             return result;
         }
 
-        public virtual void InsertAsync(T entity)
-        {
-            Entities.Add(entity);
-            _context.SaveChangesAsync();
-        }
-
-        public virtual void InsertAsync(IEnumerable<T> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void UpdateAsync(IEnumerable<T> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void DeleteAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void DeleteAsync(IEnumerable<T> entities)
-        {
-            throw new NotImplementedException();
-        }
-
         public virtual void Insert(T entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (entity == null)
+                    throw new ArgumentNullException("entity");
+
+                Entities.Add(entity);
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual void Insert(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                foreach (var entity in entities)
+                    Entities.Add(entity);
+
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual async Task InsertAsync(T entity)
+        {
+            try
+            {
+                if (entity == null)
+                    throw new ArgumentNullException("entity");
+
+                Entities.Add(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual async Task InsertAsync(IEnumerable<T> entities)
+        {
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                foreach (var entity in entities)
+                    Entities.Add(entity);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual void Update(T entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (entity == null)
+                    throw new ArgumentNullException("entity");
+
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual void Update(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual async Task UpdateAsync(T entity)
+        {
+            try
+            {
+                if (entity == null)
+                    throw new ArgumentNullException("entity");
+
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual async Task UpdateAsync(IEnumerable<T> entities)
+        {
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual void Delete(T entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (entity == null)
+                    throw new ArgumentNullException("entity");
+
+                Entities.Remove(entity);
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual void Delete(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                foreach (var entity in entities)
+                    Entities.Remove(entity);
+
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual async Task DeleteAsync(T entity)
+        {
+            try
+            {
+                if (entity == null)
+                    throw new ArgumentNullException("entity");
+
+                Entities.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual async Task DeleteAsync(IEnumerable<T> entities)
+        {
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                foreach (var entity in entities)
+                    Entities.Remove(entity);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         #endregion
 
         #region Utilities
+
+        /// <summary>
+        /// 获取所有错误
+        /// </summary>
+        protected string GetFullErrorText(DbEntityValidationException exc)
+        {
+            var msg = string.Empty;
+            foreach (var validationErrors in exc.EntityValidationErrors)
+                foreach (var error in validationErrors.ValidationErrors)
+                    msg += string.Format("属性: {0} 错误: {1}", error.PropertyName, error.ErrorMessage) + Environment.NewLine;
+            return msg;
+        }
 
         #endregion
 

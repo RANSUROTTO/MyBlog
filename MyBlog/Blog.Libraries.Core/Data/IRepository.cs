@@ -75,37 +75,37 @@ namespace Blog.Libraries.Core.Data
         /// 异步插入实体
         /// </summary>
         /// <param name="entity">实体</param>
-        void InsertAsync(T entity);
+        Task InsertAsync(T entity);
 
         /// <summary>
         /// 异步插入多个实体通过集合
         /// </summary>
         /// <param name="entities">实体集合</param>
-        void InsertAsync(IEnumerable<T> entities);
+        Task InsertAsync(IEnumerable<T> entities);
 
         /// <summary>
         /// 异步更新实体
         /// </summary>
         /// <param name="entity">实体</param>
-        void UpdateAsync(T entity);
+        Task UpdateAsync(T entity);
 
         /// <summary>
         /// 异步更新多个实体通过集合
         /// </summary>
         /// <param name="entities">实体集合</param>
-        void UpdateAsync(IEnumerable<T> entities);
+        Task UpdateAsync(IEnumerable<T> entities);
 
         /// <summary>
         /// 异步删除实体
         /// </summary>
         /// <param name="entity">实体</param>
-        void DeleteAsync(T entity);
+        Task DeleteAsync(T entity);
 
         /// <summary>
         /// 异步删除多个实体通过集合
         /// </summary>
         /// <param name="entities"></param>
-        void DeleteAsync(IEnumerable<T> entities);
+        Task DeleteAsync(IEnumerable<T> entities);
 
     }
 
