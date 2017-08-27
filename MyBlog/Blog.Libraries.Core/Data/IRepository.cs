@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Blog.Libraries.Core.Data
 {
@@ -16,7 +19,7 @@ namespace Blog.Libraries.Core.Data
         /// </summary>
         /// <param name="id">标识符</param>
         /// <returns>实体</returns>
-        T GetById(object id);
+        T GetById(params object[] id);
 
         /// <summary>
         /// 插入实体
@@ -35,6 +38,13 @@ namespace Blog.Libraries.Core.Data
         /// </summary>
         /// <param name="entity">实体</param>
         void Update(T entity);
+
+        /// <summary>
+        /// 更新实体,指定更新属性
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <param name="fields">属性</param>
+        void Update(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
 
         /// <summary>
         /// 更新多个实体通过集合
@@ -69,7 +79,7 @@ namespace Blog.Libraries.Core.Data
         /// </summary>
         /// <param name="id">标识符</param>
         /// <returns>实体</returns>
-        Task<T> GetByIdAsync(object id);
+        Task<T> GetByIdAsync(params object[] id);
 
         /// <summary>
         /// 异步插入实体
@@ -88,6 +98,13 @@ namespace Blog.Libraries.Core.Data
         /// </summary>
         /// <param name="entity">实体</param>
         Task UpdateAsync(T entity);
+
+        /// <summary>
+        /// 异步更新实体,指定更新属性
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <param name="fields">属性</param>
+        Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
 
         /// <summary>
         /// 异步更新多个实体通过集合

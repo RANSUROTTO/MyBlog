@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Context;
@@ -15,7 +17,7 @@ namespace Blog.Libraries.Data.Repository
 
         #region Field
 
-        private IDbContext _context;
+        private readonly IDbContext _context;
 
         private IDbSet<T> _entities;
 
@@ -57,17 +59,14 @@ namespace Blog.Libraries.Data.Repository
 
         #region Methods
 
-        public virtual T GetById(object id)
+        public virtual T GetById(params object[] id)
         {
             return Entities.Find(id);
         }
 
-        public virtual Task<T> GetByIdAsync(object id)
+        public virtual Task<T> GetByIdAsync(params object[] id)
         {
-            var result = Task.Run(() =>
-            {
-                return Entities.Find(id);
-            });
+            var result = Task.Run(() => Entities.Find(id));
             return result;
         }
 
@@ -78,6 +77,7 @@ namespace Blog.Libraries.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
+                entity.CreateAt = DateTime.UtcNow;
                 Entities.Add(entity);
                 _context.SaveChanges();
             }
@@ -95,7 +95,10 @@ namespace Blog.Libraries.Data.Repository
                     throw new ArgumentNullException("entities");
 
                 foreach (var entity in entities)
+                {
+                    entity.CreateAt = DateTime.UtcNow;
                     Entities.Add(entity);
+                }
 
                 _context.SaveChanges();
             }
@@ -112,6 +115,7 @@ namespace Blog.Libraries.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
+                entity.CreateAt = DateTime.UtcNow;
                 Entities.Add(entity);
                 await _context.SaveChangesAsync();
             }
@@ -129,7 +133,10 @@ namespace Blog.Libraries.Data.Repository
                     throw new ArgumentNullException("entities");
 
                 foreach (var entity in entities)
+                {
+                    entity.CreateAt = DateTime.UtcNow;
                     Entities.Add(entity);
+                }
 
                 await _context.SaveChangesAsync();
             }
@@ -152,6 +159,11 @@ namespace Blog.Libraries.Data.Repository
             {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
+        }
+
+        public virtual void Update(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual void Update(IEnumerable<T> entities)
@@ -182,6 +194,11 @@ namespace Blog.Libraries.Data.Repository
             {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
             }
+        }
+
+        public Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual async Task UpdateAsync(IEnumerable<T> entities)
