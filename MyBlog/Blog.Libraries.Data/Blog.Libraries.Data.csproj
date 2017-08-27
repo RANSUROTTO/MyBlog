@@ -65,6 +65,8 @@
     <Compile Include="Domain\Members\Customer.cs" />
     <Compile Include="Domain\Members\Guest.cs" />
     <Compile Include="Domain\Tasks\ScheduleTask.cs" />
+    <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
+    <Compile Include="Mapping\Loggin\LogMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\BaseDataProviderManager.cs" />
     <Compile Include="Provider\EFDataProviderManager.cs" />
@@ -75,7 +77,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Initializers\" />
-    <Folder Include="Mapping\" />
+    <Folder Include="Mapping\Localization\" />
+    <Folder Include="Mapping\Members\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
