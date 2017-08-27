@@ -145,10 +145,6 @@
     <Compile Include="Infrastructure\TypeFinder\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\ITypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
-    <Compile Include="Plugins\IPlugin.cs" />
-    <Compile Include="Plugins\IPluginFinder.cs" />
-    <Compile Include="Plugins\LoadPluginsMode.cs" />
-    <Compile Include="Plugins\PluginDescriptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
