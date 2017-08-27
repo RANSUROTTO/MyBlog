@@ -13,7 +13,7 @@ namespace Blog.Libraries.Core.Domain.Members
         /// <summary>
         /// 获取或设置管理员昵称
         /// </summary>
-        string NickName { get; set; }
+        string AdminName { get; set; }
 
     }
 

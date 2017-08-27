@@ -59,6 +59,9 @@
   <ItemGroup>
     <Compile Include="Context\DbObjectContext.cs" />
     <Compile Include="Context\IDbContext.cs" />
+    <Compile Include="Domain\Members\Admin.cs" />
+    <Compile Include="Domain\Members\Customer.cs" />
+    <Compile Include="Domain\Members\Guest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\BaseDataProviderManager.cs" />
     <Compile Include="Provider\EFDataProviderManager.cs" />
@@ -68,7 +71,6 @@
     <Compile Include="Repository\EfRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="Initializers\" />
     <Folder Include="Mapping\" />
   </ItemGroup>
