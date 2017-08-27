@@ -7,6 +7,10 @@
 	<WebConfg></WebConfig>
 
 
+1.数据库连接创建工厂不完善
+2.EfRepository不完善
+
+
 关于Nuget包的相关文档:
 Autofac:
 http://docs.autofac.org/en/v4.0.0/
