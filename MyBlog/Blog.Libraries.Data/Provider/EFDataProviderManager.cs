@@ -7,7 +7,6 @@ namespace Blog.Libraries.Data.Provider
     /// <summary>
     /// Entity Framework 数据提供者管理类
     /// </summary>
-    // ReSharper disable once InconsistentNaming
     public class EFDataProviderManager : BaseDataProviderManager
     {
 

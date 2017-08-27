@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -41,10 +45,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyRegistrar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Themes\" />
+    <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
+      <Project>{df1821a4-b68b-4dbf-8b03-1eef22c41971}</Project>
+      <Name>Blog.Libraries.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Libraries.Data\Blog.Libraries.Data.csproj">
+      <Project>{2fe05ace-2d15-47a8-ac0f-e2a75f61ae3f}</Project>
+      <Name>Blog.Libraries.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Libraries.Services\Blog.Libraries.Services.csproj">
+      <Project>{cb33a7ab-a142-4758-80f2-94f0da2fb396}</Project>
+      <Name>Blog.Libraries.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
