@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbObjectContext.cs" />
+    <Compile Include="Context\EntityContext.cs" />
     <Compile Include="Context\IDbContext.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />

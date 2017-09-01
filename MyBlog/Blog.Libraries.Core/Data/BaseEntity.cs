@@ -34,6 +34,11 @@ namespace Blog.Libraries.Core.Data
         public DateTime CreateAt { get; set; }
 
         /// <summary>
+        /// 并发标识
+        /// </summary>
+        public byte[] TimeStamp { get; set; }
+
+        /// <summary>
         /// 实体是否已被删除
         /// </summary>
         public bool IsDeleted { get; set; }
