@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Blog.Libraries.Core.Domain.Localization;
+﻿using Blog.Libraries.Core.Domain.Localization;
 
 namespace Blog.Libraries.Data.Mapping.Localization
 {
@@ -13,7 +8,14 @@ namespace Blog.Libraries.Data.Mapping.Localization
 
         public LocaleStringResourceMap()
         {
+            this.ToTable("LocaleStringResource");
+            this.HasKey(p => p.Id);
+            this.Property(p => p.ResourceName).IsRequired().HasMaxLength(200);
+            this.Property(p => p.ResourceValue).IsRequired();
 
+            this.HasRequired(p => p.Language)
+                .WithMany(p => p.LocaleStringResources)
+                .Map(p => p.MapKey("Language_Id"));
         }
 
     }

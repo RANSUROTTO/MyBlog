@@ -12,10 +12,19 @@ namespace Blog.Libraries.Core.Domain.Localization
     {
 
         /// <summary>
-        /// 
+        /// 获取或设置资源名称
         /// </summary>
         public string ResourceName { get; set; }
 
+        /// <summary>
+        /// 获取或设置资源值
+        /// </summary>
+        public string ResourceValue { get; set; }
+
+        /// <summary>
+        /// 获取或设置语言身份
+        /// </summary>
+        public Language Language { get; set; }
 
     }
 

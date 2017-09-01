@@ -15,11 +15,9 @@ namespace Blog.Libraries.Data.Mapping.Loggin
 
             this.Property(p => p.LogLevel)
                 .HasColumnName("LogLevel_Id");
-
             this.HasOptional(p => p.Customer)
                 .WithMany()
-                .Map(p => p.MapKey("Customer_Id"))
-                .WillCascadeOnDelete(false);
+                .Map(p => p.MapKey("Customer_Id"));
         }
 
     }
