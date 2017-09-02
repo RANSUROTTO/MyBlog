@@ -30,6 +30,7 @@ namespace Blog.Libraries.Core.Domain.Localization
         /// </summary>
         public int DisplayOrder { get; set; }
 
+
         private ICollection<LocaleStringResource> _localeStringResources;
 
         /// <summary>

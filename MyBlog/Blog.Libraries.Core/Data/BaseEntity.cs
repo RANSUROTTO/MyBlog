@@ -36,7 +36,7 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 并发标识
         /// </summary>
-        public byte[] TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
 
         /// <summary>
         /// 实体是否已被删除

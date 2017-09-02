@@ -9,8 +9,6 @@ namespace Blog.Libraries.Data.Mapping.Loggin
         public LogMap()
         {
             this.ToTable("Log");
-            this.HasKey(p => p.Id);
-            this.Property(p => p.TimeStamp).IsRowVersion();
             this.Property(p => p.ShortMessage).IsRequired();
             this.Property(p => p.IpAddress).HasMaxLength(200);
             this.Property(p => p.PageUrl).HasMaxLength(500);
