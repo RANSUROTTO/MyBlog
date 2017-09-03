@@ -21,7 +21,7 @@ namespace Blog.Libraries.Data.Provider
         /// 加载数据提供者
         /// </summary>
         /// <returns>数据提供者</returns>
-        protected override IDataProvider LoadDataProvider()
+        public override IDataProvider LoadDataProvider()
         {
             var providerName = Settings.DataProvider;
             if (string.IsNullOrEmpty(providerName))

@@ -70,6 +70,7 @@
     <Compile Include="Mapping\Localization\LanguageMap.cs" />
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
     <Compile Include="Mapping\Loggin\LogMap.cs" />
+    <Compile Include="Mapping\Members\AdminMap.cs" />
     <Compile Include="Mapping\Members\CustomerMap.cs" />
     <Compile Include="Mapping\Members\GuestMap.cs" />
     <Compile Include="Migrations\201709031109398_Intial.cs" />

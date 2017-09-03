@@ -26,7 +26,7 @@ namespace Blog.Libraries.Data.Provider
         /// 加载数据提供者
         /// </summary>
         /// <returns>数据提供者</returns>
-        protected abstract IDataProvider LoadDataProvider();
+        public abstract IDataProvider LoadDataProvider();
 
     }
 

@@ -62,7 +62,7 @@ namespace Blog.Libraries.Data.Domain.Members
         private ICollection<Log> _logs;
 
         /// <summary>
-        /// 获取或设置引发的日志记录
+        /// 获取或设置该用户引发的日志记录
         /// </summary>
         public virtual ICollection<Log> Logs
         {

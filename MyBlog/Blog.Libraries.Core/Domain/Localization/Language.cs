@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Core.Domain.Localization
@@ -40,7 +41,7 @@ namespace Blog.Libraries.Core.Domain.Localization
         {
             get
             {
-                return _localeStringResources ?? (_localeStringResources = new List<LocaleStringResource>());
+                return _localeStringResources?.Where(p => !p.IsDeleted).ToList() ?? (_localeStringResources = new List<LocaleStringResource>());
             }
             set
             {
