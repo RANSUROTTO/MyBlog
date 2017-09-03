@@ -45,7 +45,7 @@ namespace Blog.Libraries.Core.Domain.Members
         /// <summary>
         /// 获取或设置用户最后操作的ip地址
         /// </summary>
-        string LastLoginIpAddress { get; set; }
+        string LastIpAddress { get; set; }
 
         /// <summary>
         /// 获取或设置用户最后登录时间

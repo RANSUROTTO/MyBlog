@@ -50,14 +50,13 @@ namespace Blog.Libraries.Data.Domain.Members
         /// <summary>
         /// 获取或设置用户最后登录的ip地址
         /// </summary>
-        public string LastLoginIpAddress { get; set; }
+        public string LastIpAddress { get; set; }
 
         /// <summary>
         /// 获取或设置用户最后登录时间
         /// </summary>
         public DateTime LastLoginDate { get; set; }
-
-
+        
 
         private ICollection<Log> _logs;
 

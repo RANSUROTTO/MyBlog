@@ -40,7 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Members\CustomerService.cs" />
+    <Compile Include="Members\ICustomerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
+      <Project>{df1821a4-b68b-4dbf-8b03-1eef22c41971}</Project>
+      <Name>Blog.Libraries.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Libraries.Data\Blog.Libraries.Data.csproj">
+      <Project>{2fe05ace-2d15-47a8-ac0f-e2a75f61ae3f}</Project>
+      <Name>Blog.Libraries.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Libraries.Gateway\Blog.Libraries.Gateway.csproj">
+      <Project>{4625e490-30c3-4598-ad48-8bfbf3d34c62}</Project>
+      <Name>Blog.Libraries.Gateway</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
