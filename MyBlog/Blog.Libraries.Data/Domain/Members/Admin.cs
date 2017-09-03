@@ -23,7 +23,12 @@ namespace Blog.Libraries.Data.Domain.Members
         /// <summary>
         /// 获取或设置管理员绑定的用户
         /// </summary>
-        public virtual ICustomer Customer { get; set; }
+        public Customer Customer { get; set; }
+        ICustomer IAdmin.Customer
+        {
+            get { return Customer; }
+            set { }
+        }
 
     }
 

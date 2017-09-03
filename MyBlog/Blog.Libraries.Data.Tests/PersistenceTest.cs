@@ -22,7 +22,6 @@ namespace Blog.Libraries.Data.Tests
         [SetUp]
         public void SetUp()
         {
-
             //TODO fix compilation warning (below)
 #pragma warning disable 0618
             Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
