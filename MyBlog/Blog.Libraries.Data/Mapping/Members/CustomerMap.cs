@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Blog.Libraries.Data.Domain.Members;
+﻿using Blog.Libraries.Data.Domain.Members;
 
 namespace Blog.Libraries.Data.Mapping.Members
 {
@@ -16,8 +11,9 @@ namespace Blog.Libraries.Data.Mapping.Members
             this.Property(p => p.Username).IsRequired().HasMaxLength(50).IsUnicode();
             this.Property(p => p.Password).IsRequired().HasMaxLength(20);
             this.Property(p => p.Email).HasMaxLength(200);
+            this.Property(p => p.LastLoginIpAddress).HasMaxLength(200);
 
-
+            this.HasMany(p => p.Logs).WithOptional(p => p.Customer);
         }
 
     }

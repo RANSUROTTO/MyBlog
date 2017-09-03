@@ -39,7 +39,7 @@ namespace Blog.Libraries.Data.Repository
         {
             get
             {
-                return Entities;
+                return Entities.Where(p => !p.IsDeleted);
             }
         }
 
@@ -223,8 +223,8 @@ namespace Blog.Libraries.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                Entities.Remove(entity);
-                _context.SaveChanges();
+                entity.IsDeleted = true;
+                this.Update(entity);
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -240,9 +240,9 @@ namespace Blog.Libraries.Data.Repository
                     throw new ArgumentNullException("entities");
 
                 foreach (var entity in entities)
-                    Entities.Remove(entity);
+                    entity.IsDeleted = true;
 
-                _context.SaveChanges();
+                this.Update(entities);
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -257,8 +257,8 @@ namespace Blog.Libraries.Data.Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                Entities.Remove(entity);
-                await _context.SaveChangesAsync();
+                entity.IsDeleted = true;
+                await this.UpdateAsync(entity);
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -274,9 +274,9 @@ namespace Blog.Libraries.Data.Repository
                     throw new ArgumentNullException("entities");
 
                 foreach (var entity in entities)
-                    Entities.Remove(entity);
+                    entity.IsDeleted = true;
 
-                await _context.SaveChangesAsync();
+                await this.UpdateAsync(entities);
             }
             catch (DbEntityValidationException dbEx)
             {

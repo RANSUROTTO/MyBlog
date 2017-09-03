@@ -71,13 +71,10 @@
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
     <Compile Include="Mapping\Loggin\LogMap.cs" />
     <Compile Include="Mapping\Members\CustomerMap.cs" />
-    <Compile Include="Migrations\201709021506030_Initial.cs" />
-    <Compile Include="Migrations\201709021506030_Initial.Designer.cs">
-      <DependentUpon>201709021506030_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709021555501_Initial_2.cs" />
-    <Compile Include="Migrations\201709021555501_Initial_2.Designer.cs">
-      <DependentUpon>201709021555501_Initial_2.cs</DependentUpon>
+    <Compile Include="Mapping\Members\GuestMap.cs" />
+    <Compile Include="Migrations\201709031109398_Intial.cs" />
+    <Compile Include="Migrations\201709031109398_Intial.Designer.cs">
+      <DependentUpon>201709031109398_Intial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,11 +99,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709021506030_Initial.resx">
-      <DependentUpon>201709021506030_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709021555501_Initial_2.resx">
-      <DependentUpon>201709021555501_Initial_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709031109398_Intial.resx">
+      <DependentUpon>201709031109398_Intial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
