@@ -43,7 +43,7 @@ namespace Blog.Libraries.Core.Domain.Members
         DateTime? CannotLoginUntilDate { get; set; }
 
         /// <summary>
-        /// 获取或设置用户最后登录的ip地址
+        /// 获取或设置用户最后操作的ip地址
         /// </summary>
         string LastLoginIpAddress { get; set; }
 

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Data.Domain.Logging;
+using System.Linq;
 
 namespace Blog.Libraries.Data.Domain.Members
 {
@@ -53,6 +56,19 @@ namespace Blog.Libraries.Data.Domain.Members
         /// 获取或设置用户最后登录时间
         /// </summary>
         public DateTime LastLoginDate { get; set; }
+
+
+
+        private ICollection<Log> _logs;
+
+        /// <summary>
+        /// 获取或设置该用户引发的日志记录
+        /// </summary>
+        public virtual ICollection<Log> Logs
+        {
+            get { return _logs?.Where(p => !p.IsDeleted).ToList() ?? (_logs = new List<Log>()); }
+            set { _logs = value; }
+        }
 
     }
 

@@ -1,4 +1,6 @@
-﻿using Blog.Libraries.Core.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Core.Domain.Localization
 {
@@ -28,6 +30,24 @@ namespace Blog.Libraries.Core.Domain.Localization
         /// 获取或设置显示顺序
         /// </summary>
         public int DisplayOrder { get; set; }
+
+
+        private ICollection<LocaleStringResource> _localeStringResources;
+
+        /// <summary>
+        /// 获取或设置对应的语言字符串资源
+        /// </summary>
+        public virtual ICollection<LocaleStringResource> LocaleStringResources
+        {
+            get
+            {
+                return _localeStringResources?.Where(p => !p.IsDeleted).ToList() ?? (_localeStringResources = new List<LocaleStringResource>());
+            }
+            set
+            {
+                _localeStringResources = value;
+            }
+        }
 
     }
 

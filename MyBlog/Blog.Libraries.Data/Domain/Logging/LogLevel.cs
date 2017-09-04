@@ -5,7 +5,7 @@ namespace Blog.Libraries.Data.Domain.Logging
     /// <summary>
     /// 代表日志等级
     /// </summary>
-    public enum LogLevel
+    public enum LogLevel : byte
     {
 
         /// <summary>

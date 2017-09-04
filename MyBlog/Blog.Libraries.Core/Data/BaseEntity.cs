@@ -34,6 +34,11 @@ namespace Blog.Libraries.Core.Data
         public virtual DateTime CreateAt { get; set; }
 
         /// <summary>
+        /// 并发标识
+        /// </summary>
+        public DateTime TimeStamp { get; set; }
+
+        /// <summary>
         /// 实体是否已被删除
         /// </summary>
         public bool IsDeleted { get; set; }

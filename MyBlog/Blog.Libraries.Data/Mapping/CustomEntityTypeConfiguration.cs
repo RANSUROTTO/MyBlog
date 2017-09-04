@@ -10,6 +10,8 @@ namespace Blog.Libraries.Data.Mapping
         protected CustomEntityTypeConfiguration()
         {
             this.Initialize();
+            this.HasKey(p => p.Id);
+            this.Property(p => p.TimeStamp).IsConcurrencyToken(true);
         }
 
         /// <summary>
