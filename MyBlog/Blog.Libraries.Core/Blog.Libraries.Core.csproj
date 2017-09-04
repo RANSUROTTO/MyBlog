@@ -110,6 +110,7 @@
     <Compile Include="Caching\RedisCaching\RedisConnectionWrapper.cs" />
     <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
     <Compile Include="Configuration\BaseConfig.cs" />
+    <Compile Include="Configuration\ISettings.cs" />
     <Compile Include="Configuration\WebConfig.cs" />
     <Compile Include="Context\IWorkContext.cs" />
     <Compile Include="Data\BaseEntity.cs" />
