@@ -10,7 +10,8 @@ namespace Blog.Libraries.Data.Context
     /// <summary>
     /// 实体上下文实例
     /// </summary>
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    /*使用Sqlce在单元测试下需要注释这行信息*/
+    /*[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]*/
     public class EntityContext : DbObjectContext
     {
 
@@ -21,7 +22,6 @@ namespace Blog.Libraries.Data.Context
         public EntityContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -39,7 +39,6 @@ namespace Blog.Libraries.Data.Context
 
             base.OnModelCreating(modelBuilder);
         }
-
 
     }
 

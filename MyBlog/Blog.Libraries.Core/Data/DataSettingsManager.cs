@@ -88,7 +88,7 @@ namespace Blog.Libraries.Core.Data
             var settingString = new StringBuilder();
             foreach (var propertiy in typeof(DataSettings).GetProperties())
             {
-                if (propertiy.PropertyType.IsBasicTypeOrString())
+                if (propertiy.PropertyType.IsCSharpBasicTypeOrOtherBasicType())
                 {
                     settingString.AppendFormat("{0}:{1}{2}"
                         , propertiy.Name

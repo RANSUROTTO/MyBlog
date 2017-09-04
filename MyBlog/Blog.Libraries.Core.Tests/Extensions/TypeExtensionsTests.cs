@@ -11,49 +11,49 @@ namespace Blog.Libraries.Core.Tests.Extensions
         [Test]
         public void Passes_ShortIsBasicType()
         {
-            typeof(short).IsBasicTypeOrString().TestBeTrue();
+            typeof(short).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_ByteIsBasicType()
         {
-            typeof(byte).IsBasicTypeOrString().TestBeTrue();
+            typeof(byte).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_IntIsBasicType()
         {
-            typeof(int).IsBasicTypeOrString().TestBeTrue();
+            typeof(int).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_LongIsBasicType()
         {
-            typeof(long).IsBasicTypeOrString().TestBeTrue();
+            typeof(long).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_FloatIsBasicType()
         {
-            typeof(float).IsBasicTypeOrString().TestBeTrue();
+            typeof(float).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_DoubleIsBasicType()
         {
-            typeof(double).IsBasicTypeOrString().TestBeTrue();
+            typeof(double).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_BooleanIsBasicType()
         {
-            typeof(bool).IsBasicTypeOrString().TestBeTrue();
+            typeof(bool).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
         [Test]
         public void Passes_StringIsBasicTypeOfString()
         {
-            typeof(string).IsBasicTypeOrString().TestBeTrue();
+            typeof(string).IsCSharpBasicTypeOrOtherBasicType().TestBeTrue();
         }
 
     }

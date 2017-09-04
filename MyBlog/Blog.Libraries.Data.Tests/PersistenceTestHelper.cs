@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Data.Domain.Logging;
 
 namespace Blog.Libraries.Data.Tests
@@ -21,6 +17,7 @@ namespace Blog.Libraries.Data.Tests
                 ShortMessage = "ShortMessage",
                 FullMessage = "FullMessage",
                 IpAddress = "127.0.0.1",
+                TimeStamp = DateTime.UtcNow,
                 CreateAt = DateTime.UtcNow,
                 Guid = new Guid(),
                 PageUrl = "http://127.0.0.1/url",
@@ -29,7 +26,6 @@ namespace Blog.Libraries.Data.Tests
         }
 
         #endregion
-
 
     }
 

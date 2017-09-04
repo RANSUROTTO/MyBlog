@@ -13,7 +13,6 @@ namespace Blog.Libraries.Data.Mapping.Loggin
             this.Property(p => p.IpAddress).HasMaxLength(200);
             this.Property(p => p.PageUrl).HasMaxLength(500);
             this.Property(p => p.ReferrerUrl).HasMaxLength(500);
-            this.Property(p => p.FullMessage).HasMaxLength(7000);
 
             this.Property(p => p.LogLevel)
                 .HasColumnName("LogLevel_Id");

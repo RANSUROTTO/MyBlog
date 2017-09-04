@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Blog.Libraries.Core.Extensions;
 using NUnit.Framework;
 
 namespace Blog.Tests
@@ -98,6 +101,66 @@ namespace Blog.Tests
         public static void TestNotEqual(this object actual, object expected, string message)
         {
             Assert.AreNotEqual(expected, actual, message, args: null);
+        }
+
+        /// <summary>
+        /// 判断两个对象的属性值是否相等(仅基本类型)
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="actual">实际对象</param>
+        /// <param name="expected">预期对象</param>
+        /// <param name="filters">过滤属性</param>
+        /// <returns></returns>
+        public static T TestPropertiesEqual<T>(this T actual, T expected, params string[] filters)
+        {
+            var properties = typeof(T).GetProperties().ToList();
+
+            var values = new Dictionary<string, object>();
+
+            foreach (var propertyInfo in properties)
+            {
+                //过滤不检查的属性
+                if (filters.Any(p => p == propertyInfo.Name) ||
+                    propertyInfo.Name == "Id" ||
+                    !propertyInfo.PropertyType.IsCSharpBasicTypeOrOtherBasicType())
+                    continue;
+
+                //将属性名和属性值存入字典
+                var value = propertyInfo.GetValue(actual);
+                values.Add(propertyInfo.Name, value);
+            }
+
+            //逐个属性进行相等验证
+            foreach (var propertyInfo in properties.Where(p => values.Keys.Contains(p.Name)))
+            {
+                var value = propertyInfo.GetValue(expected);
+
+                //时间类型比较仅精确到2个毫秒位
+                if (propertyInfo.PropertyType == typeof(DateTime))
+                {
+                    TestDateTimeEqual((DateTime)value, (DateTime)values[propertyInfo.Name]
+                        , string.Format("Datetime property:{0} Is Not Equal", propertyInfo.Name));
+                    continue;
+                }
+
+                TestEqual(values[propertyInfo.Name], value,
+                    string.Format("Property:{0} Is Not Equal", propertyInfo.Name));
+            }
+
+            return actual;
+        }
+
+        /// <summary>
+        /// 比较两个DateTime对象是否相等(不计四舍五入差异)
+        /// </summary>
+        /// <param name="actual">实际对象</param>
+        /// <param name="expected">预期对象</param>
+        /// <param name="errorMessage">不相等时抛出的单元测试失败消息</param>
+        public static void TestDateTimeEqual(this DateTime actual, DateTime expected, string errorMessage = null)
+        {
+            //精确到毫秒比较(不计四舍五入差异)
+            var flag = Math.Abs((actual - expected).TotalMilliseconds) < 1;
+            TestEqual(flag, true, errorMessage);
         }
 
         #endregion
