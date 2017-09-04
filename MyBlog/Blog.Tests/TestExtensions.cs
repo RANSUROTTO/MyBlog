@@ -151,14 +151,13 @@ namespace Blog.Tests
         }
 
         /// <summary>
-        /// 比较两个DateTime对象是否相等(不计四舍五入差异)
+        /// 比较两个DateTime对象是否相等(精确至毫秒)
         /// </summary>
         /// <param name="actual">实际对象</param>
         /// <param name="expected">预期对象</param>
         /// <param name="errorMessage">不相等时抛出的单元测试失败消息</param>
         public static void TestDateTimeEqual(this DateTime actual, DateTime expected, string errorMessage = null)
         {
-            //精确到毫秒比较(不计四舍五入差异)
             var flag = Math.Abs((actual - expected).TotalMilliseconds) < 1;
             TestEqual(flag, true, errorMessage);
         }
