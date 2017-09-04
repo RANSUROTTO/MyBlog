@@ -21,7 +21,7 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 实体主键
         /// </summary>
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
 
         /// <summary>
         /// 全球唯一标识符
@@ -31,7 +31,7 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 实体创建时间
         /// </summary>
-        public DateTime CreateAt { get; set; }
+        public virtual DateTime CreateAt { get; set; }
 
         /// <summary>
         /// 并发标识
