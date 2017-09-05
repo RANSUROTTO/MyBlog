@@ -73,7 +73,11 @@
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Admin.cs" />
     <Compile Include="Domain\Members\Customer.cs" />
+    <Compile Include="Domain\Members\CustomerNameFormat.cs" />
+    <Compile Include="Domain\Members\CustomerSettings.cs" />
     <Compile Include="Domain\Members\Guest.cs" />
+    <Compile Include="Domain\Members\PasswordFormat.cs" />
+    <Compile Include="Domain\Members\UserRegistrationType.cs" />
     <Compile Include="Domain\Tasks\ScheduleTask.cs" />
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\Localization\LanguageMap.cs" />
