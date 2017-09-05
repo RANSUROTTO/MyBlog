@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Blog.Libraries.Core.Data;
 using System.Collections.Generic;
 using Blog.Libraries.Data.Domain.Members;
@@ -33,7 +34,15 @@ namespace Blog.Libraries.Services.Members
 
         public Customer GetCustomerByGuid(Guid customerGuid)
         {
-            throw new NotImplementedException();
+            if (customerGuid == Guid.Empty)
+                return null;
+
+            var query = from c in _customerRepository.Table
+                        where c.Guid == customerGuid
+                        orderby c.Id
+                        select c;
+
+            return query.FirstOrDefault();
         }
 
         public IList<Customer> GetCustomersByIds(long[] customerIds)

@@ -41,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\AuthenticationService.cs" />
+    <Compile Include="Authentication\FromsAuthenticationService.cs" />
     <Compile Include="Authentication\AuthenticationType.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
+    <Compile Include="Members\AdminService.cs" />
     <Compile Include="Members\CustomerService.cs" />
+    <Compile Include="Members\GuestService.cs" />
+    <Compile Include="Members\IAdminService.cs" />
     <Compile Include="Members\ICustomerService.cs" />
+    <Compile Include="Members\IGuestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

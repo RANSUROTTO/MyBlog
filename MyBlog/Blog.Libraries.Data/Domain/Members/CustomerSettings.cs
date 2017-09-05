@@ -10,6 +10,11 @@ namespace Blog.Libraries.Data.Domain.Members
     {
 
         /// <summary>
+        /// 获取或设置身份验证票据名称
+        /// </summary>
+        public string AuthenticationTicketName { get; set; }
+
+        /// <summary>
         /// 获取或设置一个值，指示是否使用用户名而不是电子邮件
         /// </summary>
         public bool UsernamesEnabled { get; set; }
@@ -90,7 +95,7 @@ namespace Blog.Libraries.Data.Domain.Members
         public int? DateOfBirthMinimumAge { get; set; }
 
         /// <summary>
-        /// 指示注册是否需要接受用户隐私协议
+        /// 获取或设置一个值，指示注册是否需要接受用户隐私协议
         /// </summary>
         public bool AcceptPrivacyPolicyEnabled { get; set; }
 

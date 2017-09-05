@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Data.Domain.Members;
 
 namespace Blog.Libraries.Services.Members
@@ -40,8 +37,6 @@ namespace Blog.Libraries.Services.Members
         /// </summary>
         /// <param name="customer">用户</param>
         void UpdateCustomer(Customer customer);
-
-
 
     }
 

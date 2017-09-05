@@ -8,14 +8,14 @@ namespace Blog.Libraries.Services.Authentication
     /// </summary>
     public interface IAuthenticationService
     {
-
         /// <summary>
         /// 登录
         /// </summary>
         /// <param name="guid">Guid</param>
         /// <param name="type">登录用户类型</param>
-        /// <param name="expirantion">过期时间</param>
-        void SignIn(Guid guid, AuthenticationType type, DateTime? expirantion = null);
+        /// <param name="expirantion">过期时间(UTC时间)</param>
+        /// <param name="createPersistentCookie">指示是否创建持久性的Cookie</param>
+        void SignIn(Guid guid, AuthenticationType type, DateTime? expirantion = null, bool createPersistentCookie = true);
 
         /// <summary>
         /// 退出
@@ -28,11 +28,7 @@ namespace Blog.Libraries.Services.Authentication
         /// 获取已登录的用户
         /// </summary>
         /// <typeparam name="T">用户类型</typeparam>
-        /// <param name="type">用户类型枚举</param>
-        /// <returns></returns>
-        T GetAuthenticationMember<T>(AuthenticationType type);
-
-
+        T GetAuthenticationMember<T>() where T : class;
 
     }
 
