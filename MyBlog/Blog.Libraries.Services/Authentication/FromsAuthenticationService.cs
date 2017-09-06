@@ -11,7 +11,7 @@ namespace Blog.Libraries.Services.Authentication
 {
 
     /// <summary>
-    /// 身份验证业务实现
+    /// Froms身份验证业务实现
     /// </summary>
     public class FromsAuthenticationService : IAuthenticationService
     {
@@ -100,12 +100,27 @@ namespace Blog.Libraries.Services.Authentication
 
         public virtual void SignOut(Guid guid, AuthenticationType type)
         {
-            throw new NotImplementedException();
+
+            if (_httpContext?.Request == null
+                || !_httpContext.Request.IsAuthenticated
+                || !(_httpContext.User.Identity is FormsIdentity))
+                return;
+
+            var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
+            var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
+
+            if (ticketDictionary.ContainsKey(type.ToString()))
+                ticketDictionary.Remove(type.ToString());
+
+            //清除已缓存的已身份验证对象
+            RemoveCacheMemberByAuthenticationType(type);
         }
 
         public virtual T GetAuthenticationMember<T>() where T : class
         {
-            var cacheMember = GetCacheMemberByMemberType<T>();
+            var authenticationType = GetAuthenticationTypeByMemberType<T>();
+
+            var cacheMember = GetCacheMemberByAuthenticationType(authenticationType);
             if (cacheMember != null)
                 return (T)cacheMember;
 
@@ -113,8 +128,6 @@ namespace Blog.Libraries.Services.Authentication
                 || !_httpContext.Request.IsAuthenticated
                 || !(_httpContext.User.Identity is FormsIdentity))
                 return null;
-
-            var authenticationType = GetAuthenticationTypeByMemberType<T>();
 
             var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
             var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
@@ -128,32 +141,78 @@ namespace Blog.Libraries.Services.Authentication
 
         #region Utilities
 
-        private object GetMemberByAuthenticationTypeAndTicket(AuthenticationType authenticationType, Dictionary<string, string> ticketDictionary)
+        /// <summary>
+        /// 根据身份验证类型枚举获取已通过froms验证的同身份用户对象
+        /// </summary>
+        private object GetMemberByAuthenticationTypeAndTicket(AuthenticationType type, Dictionary<string, string> ticketDictionary)
         {
-            switch (authenticationType)
+            Guid identityGuid;
+            if (ticketDictionary.ContainsKey(type.ToString())
+                && Guid.TryParse(ticketDictionary[type.ToString()], out identityGuid))
             {
-                case AuthenticationType.Guest:
-                    break;
-                case AuthenticationType.Admin:
-                    break;
-                case AuthenticationType.Customer:
-                    break;
+                switch (type)
+                {
+                    case AuthenticationType.Guest:
+                        _cacheGuest = _guestService.GetGuestByGuid(identityGuid);
+                        break;
+                    case AuthenticationType.Admin:
+                        _cacheAdmin = _adminService.GetAdminByGuid(identityGuid);
+                        break;
+                    case AuthenticationType.Customer:
+                        _cacheCustomer = _customerService.GetCustomerByGuid(identityGuid);
+                        break;
+                    default:
+                        throw new ArgumentException(string.Format("Unsupported Authentication Type {0}", type));
+
+                }
+                return GetCacheMemberByAuthenticationType(type);
             }
             return null;
         }
 
-        private object GetCacheMemberByMemberType<T>()
+        /// <summary>
+        /// 通过身份验证类型枚举尝试获得已通过验证的缓存身份对象
+        /// </summary>
+        private object GetCacheMemberByAuthenticationType(AuthenticationType type)
         {
-            if (typeof(T) == typeof(Guest))
-                return _cacheGuest;
-            if (typeof(T) == typeof(Admin))
-                return _cacheAdmin;
-            if (typeof(T) == typeof(Customer))
-                return _cacheCustomer;
-
-            return null;
+            switch (type)
+            {
+                case AuthenticationType.Guest:
+                    return _cacheGuest;
+                case AuthenticationType.Admin:
+                    return _cacheAdmin;
+                case AuthenticationType.Customer:
+                    return _cacheCustomer;
+                default:
+                    throw new ArgumentException(string.Format("Unsupported Authentication Type {0}", type));
+            }
         }
 
+        /// <summary>
+        /// 通过身份验证类型枚举删除已通过验证的缓存身份对象
+        /// </summary>
+        /// <param name="type"></param>
+        private void RemoveCacheMemberByAuthenticationType(AuthenticationType type)
+        {
+            switch (type)
+            {
+                case AuthenticationType.Guest:
+                    _cacheGuest = null;
+                    break;
+                case AuthenticationType.Admin:
+                    _cacheAdmin = null;
+                    break;
+                case AuthenticationType.Customer:
+                    _cacheCustomer = null;
+                    break;
+                default:
+                    throw new ArgumentException(string.Format("Unsupported Authentication Type {0}", type));
+            }
+        }
+
+        /// <summary>
+        /// 通过类型T获取对应的身份验证类型枚举
+        /// </summary>
         private AuthenticationType GetAuthenticationTypeByMemberType<T>()
         {
             if (typeof(T) == typeof(Guest))
@@ -166,12 +225,18 @@ namespace Blog.Libraries.Services.Authentication
             throw new ArgumentException(string.Format("Unsupported Member Type {0}", typeof(T).Name));
         }
 
+        /// <summary>
+        /// 将froms身份验证票据转换为字符串
+        /// </summary>
         private string AuthenticationTicketToString(Dictionary<string, string> ticketDictionary)
         {
             var dictionaryTypeConverter = TypeDescriptor.GetConverter(typeof(Dictionary<string, string>));
             return (string)dictionaryTypeConverter.ConvertTo(ticketDictionary, typeof(string));
         }
 
+        /// <summary>
+        /// 将字符串转换为froms身份验证票据
+        /// </summary>
         private Dictionary<string, string> StringToAuthenticationTicket(string ticketString)
         {
             var dictionaryTypeConverter = TypeDescriptor.GetConverter(typeof(Dictionary<string, string>));
