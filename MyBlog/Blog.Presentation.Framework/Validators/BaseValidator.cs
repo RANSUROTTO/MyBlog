@@ -27,6 +27,11 @@ namespace Blog.Presentation.Framework.Validators
         /// </summary>
         protected virtual void Initialize()
         { }
+        
+
+
+
+
 
     }
 

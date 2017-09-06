@@ -10,8 +10,8 @@ namespace Blog.Libraries.Data.Context
     /// <summary>
     /// 实体上下文实例
     /// </summary>
-    /*使用Sqlce在单元测试下需要注释这行信息*/
-    /*[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]*/
+    /*在单元测试使用Sqlce下需要注释这行信息*/
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class EntityContext : DbObjectContext
     {
 
