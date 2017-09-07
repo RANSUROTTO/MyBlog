@@ -5,7 +5,7 @@
 
 ## 介绍
   基于Asp.Net Mvc5 + EntityFramework + Autofac的一个分布式(嘛...怎么配是自己决定的嘛)博客系统... <br/>
-  参考开源项目 Nopcommerce 编写(搬了一大堆东西,框架上就改了改验证出了一下分布式的东西...我只是个很菜的业务码农罢了)
+  参考开源项目 Nopcommerce 编写(搬了一大堆东西,给这东西定位花的时间太多了...以后再考虑造轮子换模块A.A )
 
 ## 环境配置
 * 1.搞一台服务器,管你是本地和是云的.依据喜好挑选Windows Server系统[建议2008+](线上部署的是2012)
@@ -21,174 +21,42 @@
 MyBlog 
 ├── Blog.Libraries.Core         核心层
 |   ├── Caching                     缓存设施层
-|   |   ├── RedisCaching            Redis缓存设施
-|   |   ├── MemCaching              Memcached缓存设施
-|   |   ├── CouchbaseCaching        CouchbaseCaching缓存设施
-|   |   └── Null                    没有更多啦~
-|   ├── Common                  常用设施层
-|   ├── ComponentModel          组件层
-|   ├── Configuration           配置层
-|   ├── Data                    持久化层
-|   ├── Domain                  实体层
-|   ├── Extensions              扩展层
-|   ├── Fakes                   测试模拟层
-|   ├── Helper                  常用帮助层
-|   ├── Html                    常用Html帮助层
-|   └── Infrastructure          基础设施层
-|
-├── Blog.Libraries.Data         持久化数据层
-|   ├── Context                 上下文目录
-|   ├── Domain                  实体目录
-|   ├── intializers             初始化目录
-|   ├── Mapping                 实体映射目录
-|   ├── Provider                持久化驱动提供者目录
-|   └── Repository              持久化仓储目录
-|
-├── Blog.Libraries.Services     业务层
-|   ├── Services                业务代码目录
-|   └── Null                    没有更多啦
-|
-├── Blog.Libraries.Gateway      第三方服务层
-|   └── Null                    没有更多啦
-|
-├── Blog.Presentation.Framework 视图框架层
-├── Blog.Presentation.Web       前台MVC项目
-├── Blog.Presentation.Framework 后台MVC项目
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
+|   |   ├── RedisCaching                Redis缓存设施
+|   |   ├── MemCaching                  Memcached缓存设施
+|   |   ├── CouchbaseCaching            CouchbaseCaching缓存设施
+|   |   └── Null                        没有更多啦~
+|   ├── Common                      常用设施层
+|   ├── ComponentModel              组件层
+|   ├── Configuration               配置层
+|   ├── Data                        持久化层
+|   ├── Domain                      实体层
+|   ├── Extensions                  扩展层
+|   ├── Fakes                       测试模拟层
+|   ├── Helper                      常用帮助层
+|   ├── Html                        常用Html帮助层
+|   └── Infrastructure              基础设施层
+|    
+├── Blog.Libraries.Data             持久化层
+|   ├── Context                     上下文目录
+|   ├── Domain                      实体目录
+|   ├── intializers                 初始化目录
+|   ├── Mapping                     实体映射目录
+|   ├── Provider                    持久化驱动提供者目录
+|   └── Repository                  持久化仓储目录
+|    
+├── Blog.Libraries.Services         业务层
+|   ├── Services                    业务代码目录
+|   └── Null                        没有更多啦
+|    
+├── Blog.Libraries.Gateway          第三方服务层
+|   └── Null                        没有更多啦
+|    
+├── Blog.Presentation.Framework     视图框架层
+├── Blog.Presentation.Web           前台MVC项目
+├── Blog.Presentation.Framework     后台MVC项目
+├── Blog.Tests                      单元测试核心
+├── Blog.Libraries.Core.Tests       针对核心层的单元测试
+├── Blog.Libraries.Data.Tests       针对持久层的单元测试
+├── Blog.Libraries.Services.Tests   针对业务层的单元测试
+└── 
 ```
