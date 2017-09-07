@@ -106,12 +106,14 @@
     <Compile Include="Context\WorkContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="DependencyRegistrar.cs" />
+    <Compile Include="Localization\ILocalizedModel.cs" />
+    <Compile Include="Localization\ILocalizedModelLocal.cs" />
+    <Compile Include="Localization\LocalizedString.cs" />
+    <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Localization\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
       <Project>{df1821a4-b68b-4dbf-8b03-1eef22c41971}</Project>
