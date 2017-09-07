@@ -19,12 +19,12 @@
 (不怕吓到你们，都是按文件夹名称翻译过来的...英语好应该能见名识意了)
 ```
 MyBlog 
-├── Blog.Libraries.Core         核心层
+├── Blog.Libraries.Core             核心层
 |   ├── Caching                     缓存设施层
-|   |   ├── RedisCaching                Redis缓存设施
-|   |   ├── MemCaching                  Memcached缓存设施
-|   |   ├── CouchbaseCaching            CouchbaseCaching缓存设施
-|   |   └── Null                        没有更多啦~
+|   |   ├── RedisCaching            Redis缓存设施
+|   |   ├── MemCaching              Memcached缓存设施
+|   |   ├── CouchbaseCaching        CouchbaseCaching缓存设施
+|   |   └── Null                    没有更多啦~
 |   ├── Common                      常用设施层
 |   ├── ComponentModel              组件层
 |   ├── Configuration               配置层
