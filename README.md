@@ -15,25 +15,180 @@
 * 5.把项目代码克隆到本地(git Clone)
 * 6.先听我吹牛逼到这里吧...毕竟项目没完工...嘻嘻嘻
 
-## 项目结构 
-(不怕吓到你们，都是按文件夹名称翻译过来的，英语6的就过了吧.)
+## 项目结构 (2017/9/7)
+(不怕吓到你们，都是按文件夹名称翻译过来的...英语好应该能见名识意了)
 ```
 MyBlog 
-├── Blog.Libraries.Core     核心层
-|   ├── Caching             缓存设施层
-|   |   ├── RedisCaching        Redis缓存设施
-|   |   ├── MemCaching          Memcached缓存设施
-|   |   ├── CouchbaseCaching    CouchbaseCaching缓存设施
-|   ├── Common              常用设施层
-|   ├── ComponentModel      组件层
-|   ├── Configuration       配置层
-|   ├── Data                持久化层
-|   ├── Domain              实体层
-|   ├── Extensions          扩展层
-|   ├── Fakes               测试模拟层
-|   ├── Helper              常用帮助层
-|   ├── Html                常用Html帮助层
-|   └── Infrastructure      基础设施层
+├── Blog.Libraries.Core         核心层
+|   ├── Caching                     缓存设施层
+|   |   ├── RedisCaching            Redis缓存设施
+|   |   ├── MemCaching              Memcached缓存设施
+|   |   ├── CouchbaseCaching        CouchbaseCaching缓存设施
+|   |   └── Null                    没有更多啦~
+|   ├── Common                  常用设施层
+|   ├── ComponentModel          组件层
+|   ├── Configuration           配置层
+|   ├── Data                    持久化层
+|   ├── Domain                  实体层
+|   ├── Extensions              扩展层
+|   ├── Fakes                   测试模拟层
+|   ├── Helper                  常用帮助层
+|   ├── Html                    常用Html帮助层
+|   └── Infrastructure          基础设施层
+|
+├── Blog.Libraries.Data         持久化数据层
+|   ├── Context                 上下文目录
+|   ├── Domain                  实体目录
+|   ├── intializers             初始化目录
+|   ├── Mapping                 实体映射目录
+|   ├── Provider                持久化驱动提供者目录
+|   └── Repository              持久化仓储目录
+|
+├── Blog.Libraries.Services     业务层
+|   ├── Services                业务代码目录
+|   └── Null                    没有更多啦
+|
+├── Blog.Libraries.Gateway      第三方服务层
+|   └── Null                    没有更多啦
+|
+├── Blog.Presentation.Framework 视图框架层
+├── Blog.Presentation.Web       前台MVC项目
+├── Blog.Presentation.Framework 后台MVC项目
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 |
 |
 ```
