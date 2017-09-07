@@ -52,16 +52,16 @@ MyBlog
 |   └── Null                        没有更多啦
 |    
 ├── Blog.Presentation.Framework     视图框架层
-
+|
 ├── Blog.Presentation.Web           前台MVC项目
-
+|
 ├── Blog.Presentation.Framework     后台MVC项目
-
+|
 ├── Blog.Tests                      单元测试核心
-
+|
 ├── Blog.Libraries.Core.Tests       针对核心层的单元测试
-
+|
 ├── Blog.Libraries.Data.Tests       针对持久层的单元测试
-
+|
 └── Blog.Libraries.Services.Tests   针对业务层的单元测试
 ```
