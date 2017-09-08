@@ -9,18 +9,11 @@ namespace Blog.Presentation.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
-            routes.MapRoute(
-                name: "Web_Static_Default",
-                url: "{controller}/{action}.html/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "Blog.Presentation.Web.Controllers" });
-
             routes.MapRoute(
                 name: "Web_Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[] { "Blog.Presentation.Web.Controllers" });
+                namespaces: new[] { "Blog.Presentation.Web.Controllers" });
 
         }
     }
