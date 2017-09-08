@@ -13,13 +13,14 @@ namespace Blog.Presentation.Web
             routes.MapRoute(
                 name: "Web_Static_Default",
                 url: "{controller}/{action}.html/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "Blog.Presentation.Web.Controllers" });
 
             routes.MapRoute(
                 name: "Web_Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "Blog.Presentation.Web.Controllers" });
 
         }
     }
