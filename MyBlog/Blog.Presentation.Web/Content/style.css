@@ -1,0 +1,425 @@
+body {
+    font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+    background: #fff;
+}
+
+a {
+    word-break: break-all;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button{
+    outline: none;
+}
+
+/* nav */
+
+.nav {
+    display: none;
+    background-color: #41b3a6;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.nav .menu {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    background-image: url(/f2e/media/icon-expand.png);
+    background-size:40px 40px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.nav.expand .menu{
+    background-image: url(/f2e/media/icon-close.png);
+}
+
+.nav ul {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    overflow: hidden;
+    transition: all .3s ease;
+    display: none;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    box-shadow:inset 0 1px 0 #fff,0 8px 10px rgba(0,0,0,0.15)
+}
+
+.nav.expand ul{
+    display: block;
+}
+
+.nav ul li {
+    display: block;
+    background-color: #41b3a6;
+    border-top: 1px solid #32a497;
+    height: 40px;
+    padding-left: 20px;
+    transition: all .3s ease;
+}
+
+.nav ul li:hover{
+    cursor: pointer;
+    background-color: #32a497;
+}
+
+.nav li span,
+.nav li a {
+    color: #fff;
+    font-size:16px;
+    line-height: 40px;
+}
+
+
+/* header */
+
+.header {
+    padding: 100px 0 0 0;
+    text-align: center;
+}
+
+.header a {
+    display: inline-block;
+    position: relative;
+}
+
+.header a:hover {
+    cursor: pointer;
+}
+
+.header p {
+    text-align: center;
+}
+
+.header .title {
+    max-height: 80px;
+    line-height: 40px;
+    overflow: hidden;
+    font-size: 30px;
+    color: #4e4e4e;
+    transition: .3s;
+}
+
+.header a:hover .title{
+    transform: rotateX(180deg);
+    opacity: 0;
+}
+
+.header .title+.title{
+    width:100%;
+    position: absolute;
+    top:0;
+    transform: rotateX(180deg);
+    opacity: 0;
+}
+
+.header a:hover .title+.title{
+    transform: rotateX(0);
+    opacity: 1;
+}
+
+.header .sub-title {
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #8a8a8a;
+    padding: 20px 0;
+    transition: .3s;
+}
+
+.header hr {
+    border: 0;
+    border-bottom: 5px solid #41b3a6;
+    width: 300px;
+    margin: auto auto;
+    transition: .3s;
+}
+
+.header a:hover hr {
+    width: 330px;
+}
+
+.header a:hover .sub-title{
+    letter-spacing: 1px;
+}
+
+
+/* container */
+
+.container {
+    max-width: 1300px;
+    min-height: 600px;
+    margin: 75px auto;
+    padding: 0 5%;
+    position: relative;
+}
+
+
+/* left */
+
+.left {
+    margin-right: 200px;
+}
+
+.post {
+    margin: 0 0 70px 0;
+    overflow: hidden;
+}
+
+.post-title img {
+    width: 36px;
+    border-radius: 36px;
+    vertical-align: middle;
+}
+
+.post-title a {
+    font-size: 25px;
+    color: #4e4e4e;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+}
+
+.post-info {
+    color: #afafaf;
+    padding: 10px 0;
+}
+
+.post-info a,
+span {
+    color: #41b3a6;
+}
+
+.post-info a+a {
+    padding-left: 5px;
+}
+
+.post-body * {
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 26px;
+    color: #666;
+}
+
+.post-body a {
+    color: #41b3a6;
+}
+
+.post-body hr {
+    display: none;
+}
+
+.post-body img {
+    padding: 10px 0;
+}
+
+.post-more a {
+    font-size: 15px;
+    color: #41b3a6;
+}
+
+.recommend .post {
+    height: 30px;
+    line-height: 30px;
+    margin: 0 0 20px 0;
+}
+
+.recommend span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
+
+.recommend h3 {
+    font-size: 25px;
+    color: #4e4e4e;
+    margin: 0 0 30px 0;
+}
+
+.recommend .post-title img {
+    width: 30px;
+    border-radius: 30px;
+}
+
+.recommend .post-title a {
+    font-size: 15px;
+}
+
+.recommend .post-info {
+    margin: 0 0 0 10px;
+    padding: 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+
+/* right */
+
+.right {
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+
+.recruit {
+    width: 150px;
+    height: 235px;
+    background-color: #41b3a6;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.v-align {
+    display: inline-block;
+    width: 100%;
+}
+
+.recruit p {
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+}
+
+.recruit p+p {
+    font-size: 20px;
+}
+
+.assort {
+    padding: 60px 0 0 0;
+}
+
+.assort p {
+    font-size: 25px;
+    color: #4e4e4e;
+}
+
+.assort ul {
+    padding: 15px 0 0 0;
+}
+
+.assort ul li {
+    font-size: 15px;
+    padding: 0 0 10px 0;
+    transition: .3s;
+}
+
+.assort ul li:hover{
+    cursor: pointer;
+    transform: translateX(-8px);
+}
+
+.assort ul li a {
+    color: #41b3a6;
+}
+
+.assort ul li span {
+    color: #8a8a8a;
+}
+
+
+/* footer */
+
+.footer {
+    height: 260px;
+    background-color: #41b3a6;
+}
+
+.footer p {
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    line-height: 260px;
+}
+
+
+/* background */
+
+#particles-js {
+    position: absolute;
+    left: 0;
+    top: -50%;
+    z-index: -1;
+}
+
+@media (max-width:960px) {
+    .right {
+        display: none;
+    }
+    .left {
+        margin: 0;
+    }
+    .nav {
+        display: block;
+    }
+    .footer{
+        height: 40px;
+    }
+
+    .footer p{
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width:720px) {
+    .recommend .post-info {
+        display: none;
+    }
+}
+
+/* common */
+.hide{
+    display: none;
+}
+
+/* gotop*/
+#gotop{
+    width: 50px;
+    height: 50px;
+    background-color: #41b3a6;
+    border-radius: 8px;
+    position: fixed;
+    left: 50%;
+    bottom: 100px;
+    margin-left: 25%;
+    border:1px solid #fff;
+    transition: border-radius .3s ease;
+    display: none;
+}
+
+#gotop:hover{
+    background-color: #fff;
+    border-color:#41b3a6;
+    border-radius: 50px;
+}
+
+#gotop a{
+    color:#fff;
+    display: inline-block;
+    line-height: 50px;
+    height: 50px;
+    width:50px;
+    text-align: center;
+    font-size:16px;
+    transition: all .3s ease;
+}
+
+#gotop:hover a{
+    color:#41b3a6;
+}
+
+@media (max-width:960px) {
+    #gotop{
+        display: none;
+    }
+}
