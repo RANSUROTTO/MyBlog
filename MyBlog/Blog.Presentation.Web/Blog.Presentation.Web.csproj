@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Image\icon-close.png" />
+    <Content Include="Content\Image\icon-expand.png" />
     <Content Include="Content\init.css" />
     <Content Include="Content\markdown.css" />
     <Content Include="Content\particles.css" />
@@ -134,6 +136,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Region\Header.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Region\Footer.cshtml" />
+    <Content Include="Views\Region\Assort.cshtml" />
+    <Content Include="Content\Json\particles.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -14,7 +14,15 @@ namespace Blog.Presentation.Web.Controllers
             return View();
         }
 
+        public ActionResult Footer()
+        {
+            return View();
+        }
 
+        public ActionResult Assort()
+        {
+            return View();
+        }
 
     }
 }

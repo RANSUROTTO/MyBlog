@@ -33,7 +33,7 @@ button{
     height: 40px;
     border: none;
     background-color: transparent;
-    background-image: url(/f2e/media/icon-expand.png);
+    background-image: url(/Content/Image/icon-expand.png);
     background-size:40px 40px;
     position: absolute;
     right: 0;
@@ -42,7 +42,7 @@ button{
 }
 
 .nav.expand .menu{
-    background-image: url(/f2e/media/icon-close.png);
+    background-image: url(/Content/Image/icon-close.png);
 }
 
 .nav ul {
