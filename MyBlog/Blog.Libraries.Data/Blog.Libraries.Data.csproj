@@ -69,6 +69,8 @@
     <Compile Include="Context\DbObjectContext.cs" />
     <Compile Include="Context\EntityContext.cs" />
     <Compile Include="Context\IDbContext.cs" />
+    <Compile Include="Domain\Content\Article.cs" />
+    <Compile Include="Domain\Content\Categorie.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Admin.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="Domain\Members\PasswordFormat.cs" />
     <Compile Include="Domain\Members\UserRegistrationType.cs" />
     <Compile Include="Domain\Tasks\ScheduleTask.cs" />
+    <Compile Include="Mapping\Content\ArticleMap.cs" />
+    <Compile Include="Mapping\Content\CategorieMap.cs" />
     <Compile Include="Mapping\CustomEntityTypeConfiguration.cs" />
     <Compile Include="Mapping\Localization\LanguageMap.cs" />
     <Compile Include="Mapping\Localization\LocaleStringResourceMap.cs" />
@@ -86,6 +90,11 @@
     <Compile Include="Mapping\Members\AdminMap.cs" />
     <Compile Include="Mapping\Members\CustomerMap.cs" />
     <Compile Include="Mapping\Members\GuestMap.cs" />
+    <Compile Include="Migrations\201709101153566_Intial.cs" />
+    <Compile Include="Migrations\201709101153566_Intial.Designer.cs">
+      <DependentUpon>201709101153566_Intial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\BaseDataProviderManager.cs" />
     <Compile Include="Provider\EFDataProviderManager.cs" />
@@ -106,6 +115,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709101153566_Intial.resx">
+      <DependentUpon>201709101153566_Intial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
