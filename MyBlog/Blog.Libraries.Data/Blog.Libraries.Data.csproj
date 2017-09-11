@@ -92,11 +92,6 @@
     <Compile Include="Mapping\Members\CustomerMap.cs" />
     <Compile Include="Mapping\Members\CustomerProfileMap.cs" />
     <Compile Include="Mapping\Members\GuestMap.cs" />
-    <Compile Include="Migrations\201709101153566_Intial.cs" />
-    <Compile Include="Migrations\201709101153566_Intial.Designer.cs">
-      <DependentUpon>201709101153566_Intial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\BaseDataProviderManager.cs" />
     <Compile Include="Provider\EFDataProviderManager.cs" />
@@ -117,11 +112,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709101153566_Intial.resx">
-      <DependentUpon>201709101153566_Intial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -13,10 +13,12 @@ namespace Blog.Libraries.Data.Mapping.Members
             this.Property(p => p.Email).HasMaxLength(200);
             this.Property(p => p.LastIpAddress).HasMaxLength(200);
 
-            //nvaigation properties
+            //foreign key
+            this.HasRequired(p => p.CustomerProfile).WithRequiredPrincipal();
 
-            this.HasMany(p => p.Logs).WithOptional(p => p.Customer);
+            //nvaigation properties
             this.HasOptional(p => p.Admin).WithRequired(p => p.Customer);
+            this.HasMany(p => p.Logs).WithOptional(p => p.Customer);
             this.HasMany(p => p.Articles).WithRequired(p => p.Customer);
         }
 

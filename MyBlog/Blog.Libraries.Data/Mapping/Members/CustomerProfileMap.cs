@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Blog.Libraries.Data.Domain.Members;
+﻿using Blog.Libraries.Data.Domain.Members;
 
 namespace Blog.Libraries.Data.Mapping.Members
 {
@@ -22,7 +17,8 @@ namespace Blog.Libraries.Data.Mapping.Members
             this.Property(p => p.Description).HasMaxLength(255);
             this.Property(p => p.Phone).HasMaxLength(11);
 
-            //this.HasRequired(p => p.Customer);
+            //foreign key
+            this.HasRequired(p => p.Customer).WithRequiredDependent().Map(p => p.MapKey("Customer_Id"));
         }
 
     }
