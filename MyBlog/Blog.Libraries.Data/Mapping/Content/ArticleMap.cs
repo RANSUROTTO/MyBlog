@@ -9,6 +9,7 @@ namespace Blog.Libraries.Data.Mapping.Content
         public ArticleMap()
         {
             this.Property(p => p.Title).HasMaxLength(200);
+
             this.HasRequired(p => p.Customer).WithMany().Map(p => p.MapKey("Customer_Id"));
             this.HasRequired(p => p.Categorie).WithMany(p => p.Articles).Map(p => p.MapKey("Categorie_Id"));
         }

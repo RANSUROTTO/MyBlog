@@ -7,7 +7,7 @@ using Blog.Libraries.Data.Domain.Members;
 namespace Blog.Libraries.Services.Members
 {
 
-    public class CustomerService : BaseEntity, ICustomerService
+    public class CustomerService : ICustomerService
     {
 
         #region Fields

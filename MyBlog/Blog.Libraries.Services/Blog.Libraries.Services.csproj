@@ -44,6 +44,10 @@
     <Compile Include="Authentication\FromsAuthenticationService.cs" />
     <Compile Include="Authentication\AuthenticationType.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
+    <Compile Include="Content\ArticleService.cs" />
+    <Compile Include="Content\CategorieService.cs" />
+    <Compile Include="Content\IArticleService.cs" />
+    <Compile Include="Content\ICategorieService.cs" />
     <Compile Include="Members\AdminService.cs" />
     <Compile Include="Members\CustomerService.cs" />
     <Compile Include="Members\GuestService.cs" />
