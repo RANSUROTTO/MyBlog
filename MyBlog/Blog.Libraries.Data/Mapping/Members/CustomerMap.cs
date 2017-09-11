@@ -14,6 +14,7 @@ namespace Blog.Libraries.Data.Mapping.Members
             this.Property(p => p.LastIpAddress).HasMaxLength(200);
 
             //nvaigation properties
+
             this.HasMany(p => p.Logs).WithOptional(p => p.Customer);
             this.HasOptional(p => p.Admin).WithRequired(p => p.Customer);
             this.HasMany(p => p.Articles).WithRequired(p => p.Customer);

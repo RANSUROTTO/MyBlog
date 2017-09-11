@@ -58,12 +58,15 @@ namespace Blog.Libraries.Data.Domain.Members
         /// </summary>
         public DateTime LastLoginDate { get; set; }
 
-
         /// <summary>
         /// 获取该用户绑定的管理员身份
         /// </summary>
         public virtual Admin Admin { get; set; }
 
+        /// <summary>
+        /// 获取该用户绑定的概况资料
+        /// </summary>
+        public virtual CustomerProfile CustomerProfile { get; set; }
 
         private ICollection<Log> _logs;
         /// <summary>

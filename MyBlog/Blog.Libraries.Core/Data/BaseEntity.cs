@@ -26,22 +26,22 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 全球唯一标识符
         /// </summary>
-        public Guid Guid { get; set; }
+        public virtual Guid Guid { get; set; }
 
         /// <summary>
         /// 实体创建时间
         /// </summary>
-        public virtual DateTime CreateAt { get; set; }
+        public virtual DateTime CreateAt { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// 并发标识
         /// </summary>
-        public DateTime TimeStamp { get; set; }
+        public virtual DateTime TimeStamp { get; set; }
 
         /// <summary>
         /// 实体是否已被删除
         /// </summary>
-        public bool IsDeleted { get; set; }
+        public virtual bool IsDeleted { get; set; }
 
         #endregion
 

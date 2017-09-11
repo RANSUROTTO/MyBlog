@@ -1,5 +1,5 @@
 ﻿
-namespace Blog.Libraries.Data.Domain.Members
+namespace Blog.Libraries.Data.Domain.Members.Enum
 {
 
     /// <summary>
