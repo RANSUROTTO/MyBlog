@@ -12,6 +12,7 @@ namespace Blog.Libraries.Data.Mapping.Localization
             this.Property(p => p.ResourceName).IsRequired().HasMaxLength(200);
             this.Property(p => p.ResourceValue).IsRequired();
 
+            //foreign key
             this.HasRequired(p => p.Language)
                 .WithMany(p => p.LocaleStringResources)
                 .Map(p => p.MapKey("Language_Id"));

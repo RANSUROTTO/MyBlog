@@ -14,6 +14,7 @@ namespace Blog.Libraries.Data.Mapping.Loggin
             this.Property(p => p.PageUrl).HasMaxLength(500);
             this.Property(p => p.ReferrerUrl).HasMaxLength(500);
 
+            //foreign key
             this.Property(p => p.LogLevel)
                 .HasColumnName("LogLevel_Id");
             this.HasOptional(p => p.Customer)

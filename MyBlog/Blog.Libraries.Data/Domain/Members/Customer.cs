@@ -4,6 +4,7 @@ using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Data.Domain.Logging;
 using System.Linq;
+using Blog.Libraries.Data.Domain.Content;
 
 namespace Blog.Libraries.Data.Domain.Members
 {
@@ -56,10 +57,15 @@ namespace Blog.Libraries.Data.Domain.Members
         /// 获取或设置用户最后登录时间
         /// </summary>
         public DateTime LastLoginDate { get; set; }
-        
+
+
+        /// <summary>
+        /// 获取该用户绑定的管理员身份
+        /// </summary>
+        public virtual Admin Admin { get; set; }
+
 
         private ICollection<Log> _logs;
-
         /// <summary>
         /// 获取或设置该用户引发的日志记录
         /// </summary>
@@ -67,6 +73,22 @@ namespace Blog.Libraries.Data.Domain.Members
         {
             get { return _logs?.Where(p => !p.IsDeleted).ToList() ?? (_logs = new List<Log>()); }
             set { _logs = value; }
+        }
+
+        private ICollection<Article> _articles;
+        /// <summary>
+        /// 获取或设置该用户下的文章列表
+        /// </summary>
+        public virtual ICollection<Article> Articles
+        {
+            get
+            {
+                return _articles?.Where(p => !p.IsDeleted)?.ToList() ?? (_articles = new List<Article>());
+            }
+            set
+            {
+                _articles = value;
+            }
         }
 
     }

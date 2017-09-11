@@ -9,6 +9,8 @@ namespace Blog.Libraries.Data.Mapping.Content
         public CategorieMap()
         {
             this.Property(p => p.Title).HasMaxLength(200);
+
+            //nvaigation properties
             this.HasMany(p => p.Articles).WithRequired(p => p.Categorie);
         }
 
