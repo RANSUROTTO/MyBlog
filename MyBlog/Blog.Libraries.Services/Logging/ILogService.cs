@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Libraries.Data.Domain.Logging;
+using Blog.Libraries.Data.Domain.Members;
 
 namespace Blog.Libraries.Services.Logging
 {
@@ -16,6 +17,15 @@ namespace Blog.Libraries.Services.Logging
         /// </summary>
         /// <param name="log">日志</param>
         void InsertLog(Log log);
+
+        /// <summary>
+        /// 插入日志
+        /// </summary>
+        /// <param name="logLevel">日志等级</param>
+        /// <param name="shortMessage">简略信息</param>
+        /// <param name="fullMessage">完整信息</param>
+        /// <param name="customer">激发此日志记录的用户</param>
+        void InsertLog(LogLevel logLevel, string shortMessage, string fullMessage = "", Customer customer = null);
 
         /// <summary>
         /// 通过ID获取日志

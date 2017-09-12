@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
+using Blog.Libraries.Core.Helper;
 using Blog.Libraries.Data.Context;
 using Blog.Libraries.Data.Domain.Logging;
+using Blog.Libraries.Data.Domain.Members;
 
 namespace Blog.Libraries.Services.Logging
 {
@@ -15,6 +17,7 @@ namespace Blog.Libraries.Services.Logging
         #region Fields
 
         private readonly IRepository<Log> _logRepository;
+        private readonly IWebHelper _webHelper;
         private readonly IDbContext _dbContext;
 
         #endregion
@@ -22,10 +25,12 @@ namespace Blog.Libraries.Services.Logging
         #region Constructor
 
         public LogService(IRepository<Log> logRepository,
-            IDbContext dbContext)
+            IDbContext dbContext,
+            IWebHelper webHelper)
         {
-            _logRepository = logRepository;
-            _dbContext = dbContext;
+            this._logRepository = logRepository;
+            this._dbContext = dbContext;
+            this._webHelper = webHelper;
         }
 
         #endregion
@@ -36,6 +41,22 @@ namespace Blog.Libraries.Services.Logging
         {
             if (log == null)
                 throw new ArgumentNullException("log");
+
+            _logRepository.Insert(log);
+        }
+
+        public void InsertLog(LogLevel logLevel, string shortMessage, string fullMessage = "", Customer customer = null)
+        {
+            Log log = new Log
+            {
+                LogLevel = logLevel,
+                ShortMessage = shortMessage,
+                FullMessage = fullMessage,
+                IpAddress = _webHelper.GetCurrentIpAddress(),
+                PageUrl = _webHelper.GetThisPageUrl(true),
+                ReferrerUrl = _webHelper.GetUrlReferrer(),
+                Customer = customer
+            };
 
             _logRepository.Insert(log);
         }
