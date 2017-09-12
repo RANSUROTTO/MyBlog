@@ -28,7 +28,6 @@ namespace Blog.Libraries.Core.Caching.MemCaching
         public MemcachedManager(string sectionName)
         {
             _sectionName = new Lazy<string>(() => sectionName);
-
         }
 
         #endregion

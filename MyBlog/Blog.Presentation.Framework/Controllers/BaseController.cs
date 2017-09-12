@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Web.Mvc;
+using Blog.Presentation.Framework.Attributes;
 
 namespace Blog.Presentation.Framework.Controllers
 {
@@ -12,6 +8,7 @@ namespace Blog.Presentation.Framework.Controllers
     /// <summary>
     /// 基础控制器
     /// </summary>
+    [StoreIpAddress]
     public abstract class BaseController : Controller
     {
 

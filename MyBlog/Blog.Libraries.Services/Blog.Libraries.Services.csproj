@@ -48,6 +48,9 @@
     <Compile Include="Content\CategorieService.cs" />
     <Compile Include="Content\IArticleService.cs" />
     <Compile Include="Content\ICategorieService.cs" />
+    <Compile Include="Logging\ILogService.cs" />
+    <Compile Include="Logging\LogService.cs" />
+    <Compile Include="Logging\LogServiceExtensions.cs" />
     <Compile Include="Members\AdminService.cs" />
     <Compile Include="Members\CustomerService.cs" />
     <Compile Include="Members\GuestService.cs" />

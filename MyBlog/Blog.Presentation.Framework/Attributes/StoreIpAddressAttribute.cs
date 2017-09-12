@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
-using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Helper;
+using Blog.Libraries.Core.Context;
+using Blog.Libraries.Services.Members;
 using Blog.Libraries.Core.Infrastructure;
 using Blog.Libraries.Data.Domain.Members;
-using Blog.Libraries.Services.Members;
 
 namespace Blog.Presentation.Framework.Attributes
 {
@@ -18,7 +18,6 @@ namespace Blog.Presentation.Framework.Attributes
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-
             if (!DataSettingsHelper.DatabaseInstalled())
                 return;
 
@@ -29,7 +28,7 @@ namespace Blog.Presentation.Framework.Attributes
             if (filterContext.IsChildAction)
                 return;
 
-            //只接受Get请求
+            //筛选接受Get请求
             if (!string.Equals(filterContext.HttpContext.Request.HttpMethod, "GET", StringComparison.OrdinalIgnoreCase))
                 return;
 
@@ -48,7 +47,6 @@ namespace Blog.Presentation.Framework.Attributes
                     customerService.UpdateCustomer(customer);
                 }
             }
-
         }
 
     }

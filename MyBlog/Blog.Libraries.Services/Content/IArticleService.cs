@@ -33,10 +33,10 @@ namespace Blog.Libraries.Services.Content
         void UpdateArticle(Article article);
 
         /// <summary>
-        /// 通过ID删除一篇文章
+        /// 删除文章
         /// </summary>
-        /// <param name="id">文章ID</param>
-        void DeleteArticle(long id);
+        /// <param name="article">文章</param>
+        void DeleteArticle(Article article);
 
     }
 }

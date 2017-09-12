@@ -48,7 +48,7 @@ namespace Blog.Libraries.Services.Content
             throw new NotImplementedException();
         }
 
-        public void DeleteArticle(long id)
+        public void DeleteArticle(Article article)
         {
             throw new NotImplementedException();
         }
