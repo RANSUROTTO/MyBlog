@@ -57,6 +57,7 @@
       <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +78,7 @@
     <Compile Include="Domain\Members\Customer.cs" />
     <Compile Include="Domain\Members\CustomerProfile.cs" />
     <Compile Include="Domain\Members\Enum\CustomerNameFormat.cs" />
+    <Compile Include="Settings\BlogSettings.cs" />
     <Compile Include="Settings\CustomerSettings.cs" />
     <Compile Include="Domain\Members\Guest.cs" />
     <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
