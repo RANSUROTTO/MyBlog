@@ -4,7 +4,7 @@ using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Data.Domain.Logging;
 using System.Linq;
-using Blog.Libraries.Data.Domain.Content;
+using Blog.Libraries.Data.Domain.Blog;
 
 namespace Blog.Libraries.Data.Domain.Members
 {
@@ -78,15 +78,15 @@ namespace Blog.Libraries.Data.Domain.Members
             set { _logs = value; }
         }
 
-        private ICollection<Article> _articles;
+        private ICollection<Blog.BlogPost> _articles;
         /// <summary>
         /// 获取或设置该用户下的文章列表
         /// </summary>
-        public virtual ICollection<Article> Articles
+        public virtual ICollection<Blog.BlogPost> Articles
         {
             get
             {
-                return _articles?.Where(p => !p.IsDeleted)?.ToList() ?? (_articles = new List<Article>());
+                return _articles?.Where(p => !p.IsDeleted)?.ToList() ?? (_articles = new List<Blog.BlogPost>());
             }
             set
             {

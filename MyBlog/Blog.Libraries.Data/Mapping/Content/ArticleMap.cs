@@ -1,9 +1,9 @@
-﻿using Blog.Libraries.Data.Domain.Content;
+﻿using Blog.Libraries.Data.Domain.Blog;
 
 namespace Blog.Libraries.Data.Mapping.Content
 {
 
-    public class ArticleMap : CustomEntityTypeConfiguration<Article>
+    public class ArticleMap : CustomEntityTypeConfiguration<Domain.Blog.BlogPost>
     {
 
         public ArticleMap()
@@ -12,7 +12,7 @@ namespace Blog.Libraries.Data.Mapping.Content
 
             //foreign key
             this.HasRequired(p => p.Customer).WithMany().Map(p => p.MapKey("Customer_Id"));
-            this.HasRequired(p => p.Categorie).WithMany(p => p.Articles).Map(p => p.MapKey("Categorie_Id"));
+            this.HasRequired(p => p.BlogCategorie).WithMany(p => p.Articles).Map(p => p.MapKey("Categorie_Id"));
         }
 
     }

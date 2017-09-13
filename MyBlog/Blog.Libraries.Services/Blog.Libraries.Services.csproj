@@ -44,10 +44,10 @@
     <Compile Include="Authentication\FromsAuthenticationService.cs" />
     <Compile Include="Authentication\AuthenticationType.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
-    <Compile Include="Content\ArticleService.cs" />
-    <Compile Include="Content\CategorieService.cs" />
-    <Compile Include="Content\IArticleService.cs" />
-    <Compile Include="Content\ICategorieService.cs" />
+    <Compile Include="Blog\BlogPostService.cs" />
+    <Compile Include="Blog\BlogCategorieService.cs" />
+    <Compile Include="Blog\IBlogPostService.cs" />
+    <Compile Include="Blog\IBlogCategorieService.cs" />
     <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\LanguageService.cs" />
     <Compile Include="Logging\ILogService.cs" />
@@ -78,7 +78,9 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

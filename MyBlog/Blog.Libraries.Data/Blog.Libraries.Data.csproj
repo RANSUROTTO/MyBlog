@@ -69,8 +69,8 @@
     <Compile Include="Context\DbObjectContext.cs" />
     <Compile Include="Context\EntityContext.cs" />
     <Compile Include="Context\IDbContext.cs" />
-    <Compile Include="Domain\Content\Article.cs" />
-    <Compile Include="Domain\Content\Categorie.cs" />
+    <Compile Include="Domain\Blog\BlogPost.cs" />
+    <Compile Include="Domain\Blog\BlogCategorie.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Admin.cs" />
@@ -102,6 +102,7 @@
     <Compile Include="Settings\LocalizationSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Domain\Content\" />
     <Folder Include="Initializers\" />
   </ItemGroup>
   <ItemGroup>

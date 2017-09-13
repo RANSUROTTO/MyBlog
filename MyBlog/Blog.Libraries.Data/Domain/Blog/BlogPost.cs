@@ -1,13 +1,13 @@
 ﻿using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Domain.Members;
 
-namespace Blog.Libraries.Data.Domain.Content
+namespace Blog.Libraries.Data.Domain.Blog
 {
 
     /// <summary>
     /// 代表一个文章
     /// </summary>
-    public class Article : BaseEntity
+    public class BlogPost : BaseEntity
     {
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Blog.Libraries.Data.Domain.Content
         /// <summary>
         /// 获取或设置文章的分类
         /// </summary>
-        public virtual Categorie Categorie { get; set; }
+        public virtual BlogCategorie BlogCategorie { get; set; }
 
     }
 }

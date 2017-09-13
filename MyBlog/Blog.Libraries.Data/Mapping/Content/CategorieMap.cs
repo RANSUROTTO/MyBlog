@@ -1,9 +1,9 @@
-﻿using Blog.Libraries.Data.Domain.Content;
+﻿using Blog.Libraries.Data.Domain.Blog;
 
 namespace Blog.Libraries.Data.Mapping.Content
 {
 
-    public class CategorieMap : CustomEntityTypeConfiguration<Categorie>
+    public class CategorieMap : CustomEntityTypeConfiguration<BlogCategorie>
     {
 
         public CategorieMap()
@@ -11,7 +11,7 @@ namespace Blog.Libraries.Data.Mapping.Content
             this.Property(p => p.Title).HasMaxLength(200);
 
             //nvaigation properties
-            this.HasMany(p => p.Articles).WithRequired(p => p.Categorie);
+            this.HasMany(p => p.Articles).WithRequired(p => p.BlogCategorie);
         }
 
     }

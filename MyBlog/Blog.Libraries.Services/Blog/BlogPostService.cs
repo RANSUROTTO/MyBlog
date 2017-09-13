@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
-using Blog.Libraries.Data.Domain.Content;
 
-namespace Blog.Libraries.Services.Content
+namespace Blog.Libraries.Services.Blog
 {
-    public class ArticleService : IArticleService
+    public class BlogPostService : IBlogPostService
     {
 
         #region Fields
 
-        private IRepository<Article> _articleRepository;
+        private IRepository<Data.Domain.Blog.BlogPost> _articleRepository;
 
         #endregion
 
         #region Constructor
 
-        public ArticleService(IRepository<Article> articleRepository)
+        public BlogPostService(IRepository<Data.Domain.Blog.BlogPost> articleRepository)
         {
             this._articleRepository = articleRepository;
         }
@@ -28,27 +23,27 @@ namespace Blog.Libraries.Services.Content
 
         #region Methods
 
-        public Article GetArticleById(long articleId)
+        public Data.Domain.Blog.BlogPost GetArticleById(long articleId)
         {
             throw new NotImplementedException();
         }
 
-        public Article GetArticleByGuid(Guid guid)
+        public Data.Domain.Blog.BlogPost GetArticleByGuid(Guid guid)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertArticle(Article article)
+        public void InsertArticle(Data.Domain.Blog.BlogPost blogPost)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateArticle(Article article)
+        public void UpdateArticle(Data.Domain.Blog.BlogPost blogPost)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteArticle(Article article)
+        public void DeleteArticle(Data.Domain.Blog.BlogPost blogPost)
         {
             throw new NotImplementedException();
         }

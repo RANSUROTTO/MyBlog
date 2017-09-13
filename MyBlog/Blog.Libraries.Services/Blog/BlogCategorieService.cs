@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
-using Blog.Libraries.Data.Domain.Content;
+using Blog.Libraries.Data.Domain.Blog;
 
-namespace Blog.Libraries.Services.Content
+namespace Blog.Libraries.Services.Blog
 {
 
-    public class CategorieService : ICategorieService
+    public class BlogCategorieService : IBlogCategorieService
     {
 
         #region Fields
 
-        private IRepository<Categorie> _categorieRepository;
+        private IRepository<BlogCategorie> _categorieRepository;
 
         #endregion
 
         #region Constructor
 
-        public CategorieService(IRepository<Categorie> categorieRepository)
+        public BlogCategorieService(IRepository<BlogCategorie> categorieRepository)
         {
             _categorieRepository = categorieRepository;
         }
@@ -29,12 +26,12 @@ namespace Blog.Libraries.Services.Content
 
         #region Methods
 
-        public IList<Categorie> GetAllCategorie()
+        public IList<BlogCategorie> GetAllCategorie()
         {
             throw new NotImplementedException();
         }
 
-        public Categorie GetCategorieById(long categorieId)
+        public BlogCategorie GetCategorieById(long categorieId)
         {
             throw new NotImplementedException();
         }

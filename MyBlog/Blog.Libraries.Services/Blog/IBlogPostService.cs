@@ -1,9 +1,8 @@
 ﻿using System;
-using Blog.Libraries.Data.Domain.Content;
 
-namespace Blog.Libraries.Services.Content
+namespace Blog.Libraries.Services.Blog
 {
-    public interface IArticleService
+    public interface IBlogPostService
     {
 
         /// <summary>
@@ -11,32 +10,32 @@ namespace Blog.Libraries.Services.Content
         /// </summary>
         /// <param name="articleId">文章ID</param>
         /// <returns>一篇文章</returns>
-        Article GetArticleById(long articleId);
+        Data.Domain.Blog.BlogPost GetArticleById(long articleId);
 
         /// <summary>
         /// 通过Guid获取文章
         /// </summary>
         /// <param name="guid">Guid</param>
         /// <returns>文章</returns>
-        Article GetArticleByGuid(Guid guid);
+        Data.Domain.Blog.BlogPost GetArticleByGuid(Guid guid);
 
         /// <summary>
         /// 插入文章
         /// </summary>
-        /// <param name="article">文章</param>
-        void InsertArticle(Article article);
+        /// <param name="blogPost">文章</param>
+        void InsertArticle(Data.Domain.Blog.BlogPost blogPost);
 
         /// <summary>
         /// 更新文章
         /// </summary>
-        /// <param name="article">文章</param>
-        void UpdateArticle(Article article);
+        /// <param name="blogPost">文章</param>
+        void UpdateArticle(Data.Domain.Blog.BlogPost blogPost);
 
         /// <summary>
         /// 删除文章
         /// </summary>
-        /// <param name="article">文章</param>
-        void DeleteArticle(Article article);
+        /// <param name="blogPost">文章</param>
+        void DeleteArticle(Data.Domain.Blog.BlogPost blogPost);
 
     }
 }
