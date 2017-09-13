@@ -23,7 +23,7 @@ namespace Blog.Libraries.Services.Members
 
         #endregion
 
-        public Admin GetAdminById(long id)
+        public Admin GetAdminById(long adminId)
         {
             throw new NotImplementedException();
         }

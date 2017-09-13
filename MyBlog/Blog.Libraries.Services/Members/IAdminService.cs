@@ -13,9 +13,9 @@ namespace Blog.Libraries.Services.Members
         /// <summary>
         /// 通过ID获取管理员
         /// </summary>
-        /// <param name="id">管理员ID</param>
+        /// <param name="adminId">管理员ID</param>
         /// <returns>一个管理员</returns>
-        Admin GetAdminById(long id);
+        Admin GetAdminById(long adminId);
 
         /// <summary>
         /// 通过Guid获取管理员

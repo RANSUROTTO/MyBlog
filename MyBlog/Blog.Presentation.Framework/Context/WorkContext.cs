@@ -29,8 +29,6 @@ namespace Blog.Presentation.Framework.Context
 
         #endregion
 
-
-
         #region Properties
 
         public virtual IGuest Guest

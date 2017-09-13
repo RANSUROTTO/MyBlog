@@ -30,7 +30,7 @@ namespace Blog.Libraries.Services.Members
 
         #endregion
 
-        public Guest GetGuestById(long id)
+        public Guest GetGuestById(long guestId)
         {
             throw new NotImplementedException();
         }

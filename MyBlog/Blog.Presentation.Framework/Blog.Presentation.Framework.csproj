@@ -105,6 +105,7 @@
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
     <Compile Include="Context\WorkContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\PublicController.cs" />
     <Compile Include="DependencyRegistrar.cs" />
     <Compile Include="Localization\ILocalizedModel.cs" />
     <Compile Include="Localization\ILocalizedModelLocal.cs" />

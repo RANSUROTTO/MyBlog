@@ -1,7 +1,7 @@
 ﻿using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Data.Domain.Members.Enum;
 
-namespace Blog.Libraries.Data.Domain.Members
+namespace Blog.Libraries.Data.Settings
 {
 
     /// <summary>

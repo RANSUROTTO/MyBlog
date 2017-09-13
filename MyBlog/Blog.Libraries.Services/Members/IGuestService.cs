@@ -16,9 +16,9 @@ namespace Blog.Libraries.Services.Members
         /// <summary>
         /// 通过ID获取游客
         /// </summary>
-        /// <param name="id">游客ID</param>
+        /// <param name="guestId">游客ID</param>
         /// <returns>一个游客</returns>
-        Guest GetGuestById(long id);
+        Guest GetGuestById(long guestId);
 
         /// <summary>
         /// 通过Guid获取游客

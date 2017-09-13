@@ -30,9 +30,9 @@ namespace Blog.Libraries.Services.Logging
         /// <summary>
         /// 通过ID获取日志
         /// </summary>
-        /// <param name="id">日志ID</param>
+        /// <param name="logId">日志ID</param>
         /// <returns>日志</returns>
-        Log GetLogById(long id);
+        Log GetLogById(long logId);
 
         /// <summary>
         /// 删除日志

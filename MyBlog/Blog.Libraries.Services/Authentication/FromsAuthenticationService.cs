@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Settings;
 
 namespace Blog.Libraries.Services.Authentication
 {

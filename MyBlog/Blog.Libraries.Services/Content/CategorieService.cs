@@ -34,7 +34,7 @@ namespace Blog.Libraries.Services.Content
             throw new NotImplementedException();
         }
 
-        public Categorie GetCategorieById(long id)
+        public Categorie GetCategorieById(long categorieId)
         {
             throw new NotImplementedException();
         }

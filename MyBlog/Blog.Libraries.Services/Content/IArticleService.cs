@@ -9,9 +9,9 @@ namespace Blog.Libraries.Services.Content
         /// <summary>
         /// 通过ID获取文章
         /// </summary>
-        /// <param name="id">文章ID</param>
+        /// <param name="articleId">文章ID</param>
         /// <returns>一篇文章</returns>
-        Article GetArticleById(long id);
+        Article GetArticleById(long articleId);
 
         /// <summary>
         /// 通过Guid获取文章

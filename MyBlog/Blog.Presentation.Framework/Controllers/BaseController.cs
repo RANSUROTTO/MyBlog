@@ -7,6 +7,7 @@ namespace Blog.Presentation.Framework.Controllers
 
     /// <summary>
     /// 基础控制器
+    /// StoreIpAddress:存储用户最后访问的站点的客户端地址
     /// </summary>
     [StoreIpAddress]
     public abstract class BaseController : Controller

@@ -77,7 +77,7 @@
     <Compile Include="Domain\Members\Customer.cs" />
     <Compile Include="Domain\Members\CustomerProfile.cs" />
     <Compile Include="Domain\Members\Enum\CustomerNameFormat.cs" />
-    <Compile Include="Domain\Members\CustomerSettings.cs" />
+    <Compile Include="Settings\CustomerSettings.cs" />
     <Compile Include="Domain\Members\Guest.cs" />
     <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
     <Compile Include="Domain\Members\Enum\UserRegistrationType.cs" />
@@ -99,6 +99,7 @@
     <Compile Include="Provider\SqlCeDataProvider.cs" />
     <Compile Include="Provider\SqlServerDataProvider.cs" />
     <Compile Include="Repository\EfRepository.cs" />
+    <Compile Include="Settings\LocalizationSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Initializers\" />

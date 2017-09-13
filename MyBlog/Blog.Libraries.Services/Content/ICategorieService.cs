@@ -20,9 +20,9 @@ namespace Blog.Libraries.Services.Content
         /// <summary>
         /// 根据ID获取文章分类
         /// </summary>
-        /// <param name="id">文章分类ID</param>
+        /// <param name="categorieId">文章分类ID</param>
         /// <returns>文章分类</returns>
-        Categorie GetCategorieById(long id);
+        Categorie GetCategorieById(long categorieId);
 
     }
 

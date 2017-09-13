@@ -61,12 +61,12 @@ namespace Blog.Libraries.Services.Logging
             _logRepository.Insert(log);
         }
 
-        public Log GetLogById(long id)
+        public Log GetLogById(long logId)
         {
-            if (id == default(long))
+            if (logId == default(long))
                 return null;
 
-            return _logRepository.GetById(id);
+            return _logRepository.GetById(logId);
         }
 
         public void DeleteLog(Log log)

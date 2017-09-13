@@ -28,7 +28,7 @@ namespace Blog.Libraries.Services.Content
 
         #region Methods
 
-        public Article GetArticleById(long id)
+        public Article GetArticleById(long articleId)
         {
             throw new NotImplementedException();
         }
