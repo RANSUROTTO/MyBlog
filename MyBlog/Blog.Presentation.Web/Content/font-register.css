@@ -1,0 +1,48 @@
+/* kilsonburg */
+
+@font-face {
+    font-family: "kilsonburg";
+    src: url('font/kilsonburg.ttf');
+}
+
+
+/* Lusitana */
+
+@font-face {
+    font-family: "Lusitana-Bold";
+    src: url('font/Lusitana/Lusitana-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Lusitana-Regular";
+    src: url('font/Lusitana/Lusitana-Regular.ttf');
+}
+
+
+/* Monoton */
+
+@font-face {
+    font-family: "Monoton-Regular";
+    src: url('font/Monoton/Monoton-Regular.ttf');
+}
+
+
+/* Syncopate */
+
+@font-face {
+    font-family: "Syncopate-Bold";
+    src: url('font/Syncopate/Syncopate-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Syncopate-Regular";
+    src: url('font/Syncopate/Syncopate-Regular.ttf');
+}
+
+
+/* UnicaOne */
+
+@font-face {
+    font-family: "UnicaOne-Regular";
+    src: url('font/Unica_One/UnicaOne-Regular.ttf');
+}

@@ -48,6 +48,8 @@
     <Compile Include="Blog\BlogCategorieService.cs" />
     <Compile Include="Blog\IBlogPostService.cs" />
     <Compile Include="Blog\IBlogCategorieService.cs" />
+    <Compile Include="Infrastructure\Installation\IInstallationLocalizationService.cs" />
+    <Compile Include="Infrastructure\Installation\InstallationLanguage.cs" />
     <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\LanguageService.cs" />
     <Compile Include="Logging\ILogService.cs" />

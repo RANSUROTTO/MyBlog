@@ -16,5 +16,7 @@ namespace Blog.Presentation.Web
                 namespaces: new[] { "Blog.Presentation.Web.Controllers" });
 
         }
+
+
     }
 }
