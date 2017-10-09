@@ -50,7 +50,16 @@ namespace Blog.Presentation.Web.Controllers
             };
 
             //获取可用的语言
-
+            foreach (var lang in _locService.GetAvailableLanguage())
+            {
+                model.AvailableLanguages.Add(new SelectListItem
+                {
+                    Value = "",
+                    Text = lang.Name,
+                    //默认勾选上当前选择的语言
+                    Selected = _locService.GetCurrentLanguage().Code == lang.Code
+                });
+            }
 
             return View(model);
         }

@@ -4,7 +4,7 @@ namespace Blog.Libraries.Services.Infrastructure.Installation
 {
 
     /// <summary>
-    /// 代表一个安装应用时可用的语言模型
+    /// 代表一个安装时可用的语言
     /// </summary>
     public class InstallationLanguage
     {
@@ -23,7 +23,7 @@ namespace Blog.Libraries.Services.Infrastructure.Installation
 
 
     /// <summary>
-    /// 代表一个安装应用时可用语言资源模型
+    /// 代表一个安装时可用语言资源
     /// </summary>
     public class InstallationLocaleResource
     {
