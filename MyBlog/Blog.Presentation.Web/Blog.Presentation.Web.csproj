@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Localization\Installation\installation.ja.xml" />
     <Content Include="Assets\amazeui-2.7.2\css\admin.css" />
     <Content Include="Assets\amazeui-2.7.2\css\amazeui.css" />
     <Content Include="Assets\amazeui-2.7.2\css\amazeui.flat.css" />
@@ -277,6 +278,8 @@
     <Content Include="Assets\layui-2.1.4\font\iconfont.ttf" />
     <Content Include="Assets\layui-2.1.4\font\iconfont.woff" />
     <Content Include="Views\Install\Index.cshtml" />
+    <Content Include="App_Data\Localization\Installation\installation.zh.xml" />
+    <Content Include="App_Data\Localization\Installation\installation.en.xml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -285,7 +288,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\page\" />
     <Folder Include="Scripts\layui_modules\" />
     <Folder Include="Scripts\page_scripts\" />

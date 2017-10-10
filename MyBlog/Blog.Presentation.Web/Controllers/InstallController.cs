@@ -12,7 +12,7 @@ namespace Blog.Presentation.Web.Controllers
 
         #region Fields
 
-        private readonly IInstallationLocalizationService _locService;
+        private readonly IInstallationLocalizationService _installationLocalzationService;
         private readonly WebConfig _config;
 
         #endregion
@@ -21,7 +21,7 @@ namespace Blog.Presentation.Web.Controllers
 
         public InstallController(IInstallationLocalizationService locService, WebConfig config)
         {
-            _locService = locService;
+            _installationLocalzationService = locService;
             _config = config;
         }
 
@@ -50,14 +50,14 @@ namespace Blog.Presentation.Web.Controllers
             };
 
             //获取可用的语言
-            foreach (var lang in _locService.GetAvailableLanguage())
+            foreach (var lang in _installationLocalzationService.GetAvailableLanguage())
             {
                 model.AvailableLanguages.Add(new SelectListItem
                 {
                     Value = "",
                     Text = lang.Name,
                     //默认勾选上当前选择的语言
-                    Selected = _locService.GetCurrentLanguage().Code == lang.Code
+                    Selected = _installationLocalzationService.GetCurrentLanguage().Code == lang.Code
                 });
             }
 
@@ -78,6 +78,21 @@ namespace Blog.Presentation.Web.Controllers
 
 
 
+            return View();
+        }
+
+        public ActionResult ChangeLanguage(string languageCode)
+        {
+            if (DataSettingsHelper.DatabaseInstalled())
+                return RedirectToAction("Index", "Home");
+
+            _installationLocalzationService.SaveCurrentLanguage(languageCode);
+
+            return RedirectToAction("Index", "Install");
+        }
+
+        public ActionResult RestartInstall()
+        {
             return View();
         }
 
