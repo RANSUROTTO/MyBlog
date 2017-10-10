@@ -244,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstallController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -275,6 +276,7 @@
     <Content Include="Assets\layui-2.1.4\font\iconfont.eot" />
     <Content Include="Assets\layui-2.1.4\font\iconfont.ttf" />
     <Content Include="Assets\layui-2.1.4\font\iconfont.woff" />
+    <Content Include="Views\Install\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -287,7 +289,6 @@
     <Folder Include="Content\page\" />
     <Folder Include="Scripts\layui_modules\" />
     <Folder Include="Scripts\page_scripts\" />
-    <Folder Include="Views\Install\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">

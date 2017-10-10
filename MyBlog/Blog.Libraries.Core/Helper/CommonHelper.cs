@@ -245,22 +245,22 @@ namespace Blog.Libraries.Core.Helper
         /// 将值转换为目标类型
         /// </summary>
         /// <param name="value">值</param>
-        /// <param name="destinationType">目标类型</param>
+        /// <typeparam name="T">目标类型</typeparam>
         /// <returns>转换后的值</returns>
-        public static object To(object value, Type destinationType)
+        public static T To<T>(object value)
         {
-            return To(value, destinationType, CultureInfo.InvariantCulture);
+            return (T)To(value, typeof(T));
         }
 
         /// <summary>
         /// 将值转换为目标类型
         /// </summary>
         /// <param name="value">值</param>
-        /// <typeparam name="T">目标类型</typeparam>
+        /// <param name="destinationType">目标类型</param>
         /// <returns>转换后的值</returns>
-        public static T To<T>(object value)
+        public static object To(object value, Type destinationType)
         {
-            return (T)To(value, typeof(T));
+            return To(value, destinationType, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
