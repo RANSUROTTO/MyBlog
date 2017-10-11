@@ -17,6 +17,8 @@ namespace Blog.Libraries.Core.Configuration
             //初始化属性值
             var startupNode = section.SelectSingleNode("Startup");
             Config.IgnoreStartupTasks = GetBool(startupNode, "IgnoreStartupTasks");
+            var clusterNode = section.SelectSingleNode("Cluster");
+
 
             return Config;
         }
@@ -27,6 +29,13 @@ namespace Blog.Libraries.Core.Configuration
         /// 是否忽略运行应用程序启动任务
         /// </summary>
         public bool IgnoreStartupTasks { get; set; }
+
+        /// <summary>
+        /// 是否开启集群运行方式
+        /// more information:
+        /// https://github.com/ZhengZicong/MyBlog
+        /// </summary>
+        public bool OpenClusterPattern { get; set; }
 
         #endregion
 
