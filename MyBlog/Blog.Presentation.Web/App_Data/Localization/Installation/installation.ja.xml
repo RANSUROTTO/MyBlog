@@ -1,1 +1,67 @@
-﻿
+﻿<Language Name="日本語" IsDefault="true" IsRightToLeft="false">
+  <LocaleResource Name="Title">
+    <Value>
+      Ransurotto - インストールガイド
+    </Value>
+  </LocaleResource>
+  <LocaleResource Name="ToolTips">
+    <Value>このガイドを完成させて、データベース（すなわち「接続文字列」）を接続することを知り。必要に、あなたのサービスプロバイダに連絡して下さい。本機やサーバーにインストールされている場合は、一部の管理人の情報が必要になるかもしれません。</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminInformation">
+    <Value>管理者の情報</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminEmail">
+    <Value>管理人の電子メール</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminPassword">
+    <Value>管理人のパスワード</Value>
+  </LocaleResource>
+  <LocaleResource Name="ConfirmPassword">
+    <Value>パスワードを確認する</Value>
+  </LocaleResource>
+  <LocaleResource Name="InstallSampleData">
+    <Value>テストデータを導入する</Value>
+  </LocaleResource>
+  <LocaleResource Name="DataBaseInformation">
+    <Value>データベース情報</Value>
+  </LocaleResource>
+  <LocaleResource Name="DataProvider">
+    <Value>データベース</Value>
+  </LocaleResource>
+  <LocaleResource Name="MySQLDataProvider">
+    <Value>使用MySQLデータベース（MySQL5.6 +）[推薦]</Value>
+  </LocaleResource>
+  <LocaleResource Name="NotExistCreateDatabase">
+    <Value>存在しない場合は、データベース作成</Value>
+  </LocaleResource>
+  <LocaleResource Name="ConnectionStringInformation">
+    <Value>リンク文字列</Value>
+  </LocaleResource>
+  <LocaleResource Name="InputConnectionStringOption">
+    <Value>入力リンク文字列を入力して下さい</Value>
+  </LocaleResource>
+  <LocaleResource Name="InputRawConnectionStringOption">
+    <Value>入力原始接続文字列（高級）を入力</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerName">
+    <Value>MySQLの実例</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseName">
+    <Value>データベース名</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUsername">
+    <Value>MySQLユーザー名</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUserPassword">
+    <Value>MySQLのパスワード</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseConnectionString">
+    <Value>リンク文字列</Value>
+  </LocaleResource>
+  <LocaleResource Name="Install">
+    <Value>インストール</Value>
+  </LocaleResource>
+  <LocaleResource Name="">
+    <Value></Value>
+  </LocaleResource>
+</Language>

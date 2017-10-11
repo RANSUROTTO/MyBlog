@@ -76,10 +76,6 @@ namespace Blog.Presentation.Framework
                 builder.Register(p => new EntityContext(dataSettings.DataConnectionString))
                     .As<IDbContext>();
             }
-            else
-            {
-                throw new ArgumentException("dataSettings is invalid");
-            }
 
             builder.RegisterGeneric(typeof(EfRepository<>))
                 .As(typeof(IRepository<>))

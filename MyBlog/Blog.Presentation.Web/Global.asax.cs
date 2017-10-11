@@ -15,7 +15,7 @@ namespace Blog.Presentation.Web
         {
 
             //初始化应用程序
-            EngineContext.Initialize(true);
+            EngineContext.Initialize(false);
 
             //设置安全协议
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

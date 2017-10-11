@@ -33,7 +33,7 @@ namespace Blog.Presentation.Web.Controllers
         public ActionResult Index()
         {
             //数据库已安装
-            if (!DataSettingsHelper.DatabaseInstalled())
+            if (DataSettingsHelper.DatabaseInstalled())
                 return RedirectToAction("Index", "Home");
 
             //设置请求超时时间 (设置为5分钟)
@@ -69,7 +69,7 @@ namespace Blog.Presentation.Web.Controllers
         public ActionResult Index(InstallModel model)
         {
             //数据库已安装
-            if (!DataSettingsHelper.DatabaseInstalled())
+            if (DataSettingsHelper.DatabaseInstalled())
                 return RedirectToAction("Index", "Home");
 
             //设置请求超时时间 (设置为10分钟)

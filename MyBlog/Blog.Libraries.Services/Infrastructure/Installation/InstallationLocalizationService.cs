@@ -63,7 +63,7 @@ namespace Blog.Libraries.Services.Infrastructure.Installation
                 if (!string.IsNullOrEmpty(userLanguage))
                 {
                     language = _availableLanguages
-                        .FirstOrDefault(p => p.Code.StartsWith(userLanguage, StringComparison.InvariantCultureIgnoreCase));
+                        .FirstOrDefault(p => userLanguage.StartsWith(p.Code, StringComparison.InvariantCultureIgnoreCase));
                 }
             }
             if (language != null)

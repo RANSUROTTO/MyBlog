@@ -1,1 +1,67 @@
-﻿
+﻿<Language Name="English" IsDefault="true" IsRightToLeft="false">
+  <LocaleResource Name="Title">
+    <Value>
+      Ransurotto - Installation wizard
+    </Value>
+  </LocaleResource>
+  <LocaleResource Name="ToolTips">
+    <Value>To complete this wizard, you must know how to connect to the database (that is, the connection string). If necessary, please contact your service provider. If you install on the machine or server, you may also need some administrator information.</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminInformation">
+    <Value>Administrator information</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminEmail">
+    <Value>Admin email</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminPassword">
+    <Value>Admin password</Value>
+  </LocaleResource>
+  <LocaleResource Name="ConfirmPassword">
+    <Value>Confirm password</Value>
+  </LocaleResource>
+  <LocaleResource Name="InstallSampleData">
+    <Value>Import test data</Value>
+  </LocaleResource>
+  <LocaleResource Name="DataBaseInformation">
+    <Value>Database information</Value>
+  </LocaleResource>
+  <LocaleResource Name="DataProvider">
+    <Value>Data provider</Value>
+  </LocaleResource>
+  <LocaleResource Name="MySQLDataProvider">
+    <Value>Using the MySQL (MySQL5.6+) database [recommendation]</Value>
+  </LocaleResource>
+  <LocaleResource Name="NotExistCreateDatabase">
+    <Value>If it does not exist, create the database</Value>
+  </LocaleResource>
+  <LocaleResource Name="ConnectionStringInformation">
+    <Value>Connection string</Value>
+  </LocaleResource>
+  <LocaleResource Name="InputConnectionStringOption">
+    <Value>Please enter a connection string</Value>
+  </LocaleResource>
+  <LocaleResource Name="InputRawConnectionStringOption">
+    <Value>Enter the original connection string (Advanced)</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerName">
+    <Value>MySQL instance</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseName">
+    <Value>Database name</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUsername">
+    <Value>MySQL username</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUserPassword">
+    <Value>MySQL password</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseConnectionString">
+    <Value>Connection string</Value>
+  </LocaleResource>
+  <LocaleResource Name="Install">
+    <Value>Install</Value>
+  </LocaleResource>
+  <LocaleResource Name="">
+    <Value></Value>
+  </LocaleResource>
+</Language>

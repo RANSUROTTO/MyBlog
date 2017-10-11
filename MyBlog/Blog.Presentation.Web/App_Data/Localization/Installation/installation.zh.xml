@@ -1,7 +1,7 @@
-﻿<Language Name ="简体中文" IsDefault="true" IsRightToLeft="false">
+﻿<Language Name="简体中文" IsDefault="true" IsRightToLeft="false">
   <LocaleResource Name="Title">
     <Value>
-      Ransurotto - 安装导向
+      Ransurotto - 安装向导
     </Value>
   </LocaleResource>
   <LocaleResource Name="ToolTips">
@@ -60,15 +60,6 @@
   </LocaleResource>
   <LocaleResource Name="Install">
     <Value>安装</Value>
-  </LocaleResource>
-  <LocaleResource Name="">
-    <Value></Value>
-  </LocaleResource>
-  <LocaleResource Name="">
-    <Value></Value>
-  </LocaleResource>
-  <LocaleResource Name="">
-    <Value></Value>
   </LocaleResource>
   <LocaleResource Name="">
     <Value></Value>
