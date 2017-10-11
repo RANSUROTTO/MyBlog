@@ -1,6 +1,269 @@
 ﻿@using Blog.Libraries.Core.Helper
+@using Blog.Libraries.Core.Infrastructure
+@using Blog.Libraries.Services.Infrastructure.Installation
+
+@model  Blog.Presentation.Web.Models.Install.InstallModel
+
 
 @{
     Layout = null;
+    var ILS = EngineContext.Current.Resolve<IInstallationLocalizationService>();
 }
 
+<!DOCTYPE HTML>
+<html class="no-js">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>@ILS.GetResource("Title")</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <!-- 防 狼 术 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="blog" />
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <!-- styles begin -->
+    <link rel="stylesheet" href="~/Assets/amazeui-2.7.2/css/amazeui.css">
+    <link rel="stylesheet" href="~/Assets/layui-2.1.4/css/layui.css">
+
+    <style>
+        body {
+            background-color: rgba(239, 239, 239, 1);
+            font-size: 1.5rem;
+        }
+
+        .logo-wrapper {
+            /* background: url('Images/jingshenwuran.jpeg'); */
+            background-color: #3c8dbc;
+        }
+
+            .logo-wrapper .logo {
+                color: rgba(255, 255, 255, 1);
+                font-size: 5rem;
+                font-weight: 500;
+            }
+
+        .panel-title {
+            color: #868686;
+        }
+
+        .form-group {
+            display: table;
+            width: 100%;
+        }
+
+        .form-label {
+            color: #8a8a8a;
+            padding-top: 7px;
+        }
+
+        .credentials {
+            background: #eeeeee;
+            padding: 22px 10px 7px;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+    </style>
+
+    <!-- styles end -->
+</head>
+
+
+
+<body class="am-g am-padding-vertical">
+
+    <div class="am-u-lg-centered am-u-lg-9 am-u-md-12 am-u-sm-12">
+
+        <!-- language dropdown list -->
+        <div class="layui-form am-text-sm am-padding-horizontal-0 am-padding-vertical-sm am-u-lg-offset-9 am-u-lg-3 am-u-md-4 am-u-md-offset-7 am-u-sm-10 am-u-sm-offset-1">
+            @Html.DropDownList("language", Model.AvailableLanguages, new { lay_verify = "required", lay_filter = "language" })
+        </div>
+
+        <!-- logo wrapper -->
+        <div class="logo-wrapper am-padding-lg am-u-lg-12 am-u-lg-offset-0 am-u-md-10 am-u-md-offset-1 am-u-sm-10 am-u-sm-offset-1">
+            <div class="logo am-text-center">
+                RANSUROTTO
+            </div>
+        </div>
+
+        <!-- from wrapper -->
+        <form action="" method="post">
+            <div class="layui-form am-padding am-u-lg-12 am-u-lg-offset-0 am-u-md-10 am-u-md-offset-1 am-u-sm-10 am-u-sm-offset-1" style="background-color:#fff;">
+                <p>@ILS.GetResource("ToolTips")</p>
+                <div class="am-u-lg-offset-1 am-u-lg-10 ">
+
+                    <!-- adminstrator setting -->
+                    <div class="am-margin-top-xl">
+                        <div class="panel-title am-text-xl am-margin-bottom-sm am-u-lg-4 am-lg-text-right am-u-md-12">
+                            @ILS.GetResource("AdminInfo")
+                        </div>
+                        <div class="am-padding-sm">
+
+                            <div class="form-group am-margin-bottom">
+                                <label for="" class="am-u-lg-4 am-lg-text-right form-label">
+                                    @ILS.GetResource("AdminEmail")
+                                </label>
+                                <div class="am-u-lg-8">
+                                    @Html.TextBoxFor(p => p.AdminEmail, new { @class = "layui-input" })
+                                </div>
+                            </div>
+
+                            <div class="form-group am-margin-bottom">
+                                <label for="" class="am-u-lg-4 am-lg-text-right form-label">
+                                    @ILS.GetResource("AdminPassword")
+                                </label>
+                                <div class="am-u-lg-8">
+                                    @Html.TextBoxFor(p => p.AdminPassword, new { @class = "layui-input" })
+                                </div>
+                            </div>
+
+                            <div class="form-group am-margin-bottom">
+                                <label for="" class="am-u-lg-4 am-lg-text-right form-label">
+                                    @ILS.GetResource("ConfirmPassword")
+                                </label>
+                                <div class="am-u-lg-8">
+                                    @Html.TextBoxFor(p => p.ConfirmPassword, new { @class = "layui-input" })
+                                </div>
+                            </div>
+
+                            <div class="form-group am-margin-bottom">
+                                <div class="am-u-lg-8 am-u-lg-offset-4">
+                                    @Html.CheckBoxFor(p => p.InstallSampleData, new { lay_skin = "primary", title = ILS.GetResource("InstallSampleData") })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- database setting -->
+                    <div class="am-margin-top-xl">
+                        <div class="panel-title am-text-xl am-margin-bottom-sm am-u-lg-4 am-lg-text-right am-u-md-12">
+                            @ILS.GetResource("DataBaseInformation")
+                        </div>
+                        <div class="am-padding-sm">
+
+                            <div class="form-group am-margin-bottom">
+                                <label for="" class="am-u-lg-4 am-lg-text-right form-label">
+                                    @ILS.GetResource("DataProvider")
+                                </label>
+                                <div class="am-u-lg-8">
+                                    @Html.RadioButtonFor(p => p.DataProvider, "mysql", new { @checked = "checked", title = ILS.GetResource("MySQLDataProvider") })
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group am-margin-bottom">
+                                <div class="am-u-lg-8 am-u-lg-offset-4">
+                                    @Html.CheckBoxFor(p => p.NotExistCreateDatabase, new { lay_skin = "primary", title = ILS.GetResource("NotExistCreateDatabase") })
+                                </div>
+                            </div>
+
+                            <div class="form-group am-margin-bottom">
+                                <label for="" class="am-u-lg-4 am-lg-text-right form-label">
+                                    @ILS.GetResource("ConnectionStringInformation")
+                                </label>
+                                <div class="am-u-lg-8">
+                                    <div>
+                                        @Html.RadioButtonFor(p => p.SqlConnectionInfo, "sqlDatabaseInfo", new { id = "sqlconnectioninfo_values", @checked = "checked", title = ILS.GetResource("InputConnectionStringOption"), lay_filter = "DataProvider" })
+                                    </div>
+                                    <div>
+
+                                        @Html.RadioButtonFor(p => p.SqlConnectionInfo, "sqlDatabaseConnectionString", new { id = "sqlconnectioninfo_raw", @checked = "checked", title = ILS.GetResource("InputRawConnectionStringOption"), lay_filter = "DataProvider" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- sqlDatabaseInfo -->
+                            <div id="sqlDatabaseInfo" class="credentials">
+                                <div class="form-group am-margin-bottom">
+                                    <label for="" class="am-u-lg-4 am-lg-text-right form-label">@ILS.GetResource("ServerName")</label>
+                                    <div class="am-u-lg-8">
+                                        @Html.TextBoxFor(p => p.ServerName, new { @class = "layui-input" })
+                                    </div>
+                                </div>
+                                <div class="form-group am-margin-bottom">
+                                    <label for="" class="am-u-lg-4 am-lg-text-right form-label">@ILS.GetResource("DatabaseName")</label>
+                                    <div class="am-u-lg-8">
+                                        @Html.TextBoxFor(p => p.DatabaseName, new { @class = "layui-input" })
+                                    </div>
+                                </div>
+                                <div class="form-group am-margin-bottom">
+                                    <label for="" class="am-u-lg-4 am-lg-text-right form-label">@ILS.GetResource("ServerUsername")</label>
+                                    <div class="am-u-lg-8">
+                                        @Html.TextBoxFor(p => p.ServerUsername, new { @class = "layui-input" })
+                                    </div>
+                                </div>
+                                <div class="form-group am-margin-bottom">
+                                    <label for="" class="am-u-lg-4 am-lg-text-right form-label">@ILS.GetResource("ServerUserPassword")</label>
+                                    <div class="am-u-lg-8">
+                                        @Html.TextBoxFor(p => p.ServerUserPassword, new { @class = "layui-input" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- sqlDatabaseConnectionString -->
+                            <div id="sqlDatabaseConnectionString" class="credentials" style="display:none;">
+                                <div class="form-group am-margin-bottom">
+                                    <label for="" class="am-u-lg-4 am-lg-text-right form-label">@ILS.GetResource("DatabaseConnectionString")</label>
+                                    <div class="am-u-lg-8">
+                                        @Html.TextBoxFor(p => p.DatabaseConnectionString, new { @class = "layui-input" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="am-u-lg-12 am-text-center">
+                                <button type="submit" class="am-btn am-btn-primary am-radius am-btn-xl">@ILS.GetResource("Install")</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- scripts begin -->
+    <script src="~/Assets/layui-2.1.4/layui.js"></script>
+    <script>
+        layui.use(['form', 'jquery'], function () {
+            var form = layui.form;
+            var $ = layui.$;
+
+            //language dropdown list value change
+            form.on('select(language)', function (data) {
+                window.location.href = data.value;
+            });
+
+            //dataProvider radio value change
+            form.on('radio(DataProvider)', function (data) {
+                var selectedProvider = $(data.elem).attr('id');
+                if (selectedProvider == 'sqlconnectioninfo_values') {
+                    $('#sqlDatabaseInfo').show();
+                    $('#sqlDatabaseConnectionString').hide();
+                } else if (selectedProvider == 'sqlconnectioninfo_raw') {
+                    $('#sqlDatabaseInfo').hide();
+                    $('#sqlDatabaseConnectionString').show();
+                }
+            });
+
+        });
+    </script>
+    <!-- scripts end -->
+
+</body>
+
+</html>

@@ -54,7 +54,7 @@ namespace Blog.Presentation.Web.Controllers
             {
                 model.AvailableLanguages.Add(new SelectListItem
                 {
-                    Value = "",
+                    Value = Url.Action("ChangeLanguage", new { languageCode = lang.Code }),
                     Text = lang.Name,
                     //默认勾选上当前选择的语言
                     Selected = _installationLocalzationService.GetCurrentLanguage().Code == lang.Code
@@ -66,7 +66,7 @@ namespace Blog.Presentation.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Action(InstallModel model)
+        public ActionResult Index(InstallModel model)
         {
             //数据库已安装
             if (!DataSettingsHelper.DatabaseInstalled())
@@ -74,9 +74,6 @@ namespace Blog.Presentation.Web.Controllers
 
             //设置请求超时时间 (设置为10分钟)
             this.Server.ScriptTimeout = 600;
-
-
-
 
             return View();
         }

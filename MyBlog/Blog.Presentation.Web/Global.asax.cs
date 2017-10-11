@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Blog.Libraries.Core.Infrastructure;
 
 namespace Blog.Presentation.Web
 {
@@ -12,6 +13,11 @@ namespace Blog.Presentation.Web
     {
         protected void Application_Start()
         {
+
+            //初始化应用程序
+            EngineContext.Initialize(true);
+
+            //设置安全协议
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             //禁用 "X-AspNetMvc-Version" 请求头
@@ -19,10 +25,11 @@ namespace Blog.Presentation.Web
 
             //清除默认视图引擎
             ViewEngines.Engines.Clear();
+
             //仅适用Razor视图引擎
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-
+            //注册路由
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

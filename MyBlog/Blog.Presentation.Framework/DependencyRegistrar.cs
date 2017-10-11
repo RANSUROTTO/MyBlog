@@ -15,6 +15,7 @@ using Blog.Libraries.Core.Infrastructure.TypeFinder;
 using Blog.Libraries.Data.Context;
 using Blog.Libraries.Data.Provider;
 using Blog.Libraries.Data.Repository;
+using Blog.Libraries.Services.Infrastructure.Installation;
 
 namespace Blog.Presentation.Framework
 {
@@ -88,7 +89,8 @@ namespace Blog.Presentation.Framework
 
             //注册缓存服务
 
-
+            //注册业务服务
+            builder.RegisterType<InstallationLocalizationService>().As<IInstallationLocalizationService>().InstancePerLifetimeScope();
 
 
         }

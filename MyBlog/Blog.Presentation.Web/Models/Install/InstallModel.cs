@@ -67,7 +67,7 @@ namespace Blog.Presentation.Web.Models.Install
         /// <summary>
         /// 获取或设置数据库服务授权用户名密码
         /// </summary>
-        public string ServerPassword { get; set; }
+        public string ServerUserPassword { get; set; }
 
         /// <summary>
         /// 获取或设置数据库连接字符串

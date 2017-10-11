@@ -1,1 +1,76 @@
-﻿
+﻿<Language Name ="简体中文" IsDefault="true" IsRightToLeft="false">
+  <LocaleResource Name="Title">
+    <Value>
+      Ransurotto - 安装导向
+    </Value>
+  </LocaleResource>
+  <LocaleResource Name="ToolTips">
+    <Value>完成这个向导，你必须知道如何连接数据库("即连接字符串")。如有必要，请联系你的服务提供商。如果在本机或服务器上安装，你可能还需要一些管理员的信息。</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminInformation">
+    <Value>管理员信息</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminEmail">
+    <Value>管理员邮箱</Value>
+  </LocaleResource>
+  <LocaleResource Name="AdminPassword">
+    <Value>管理员密码</Value>
+  </LocaleResource>
+  <LocaleResource Name="ConfirmPassword">
+    <Value>确认密码</Value>
+  </LocaleResource>
+  <LocaleResource Name="InstallSampleData">
+    <Value>导入测试数据</Value>
+  </LocaleResource>
+  <LocaleResource Name="DataBaseInformation">
+    <Value>数据库信息</Value>
+  </LocaleResource>
+  <LocaleResource Name="DataProvider">
+    <Value>数据库</Value>
+  </LocaleResource>
+  <LocaleResource Name="MySQLDataProvider">
+    <Value>使用MySQL（MySQL5.6+）数据库[推荐]</Value>
+  </LocaleResource>
+  <LocaleResource Name="NotExistCreateDatabase">
+    <Value>如果不存在，创建数据库</Value>
+  </LocaleResource>
+  <LocaleResource Name="ConnectionStringInformation">
+    <Value>连接字符串</Value>
+  </LocaleResource>
+  <LocaleResource Name="InputConnectionStringOption">
+    <Value>请输入连接字符串</Value>
+  </LocaleResource>
+  <LocaleResource Name="InputRawConnectionStringOption">
+    <Value>输入原始连接字符串(高级)</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerName">
+    <Value>MySQL实例</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseName">
+    <Value>数据库名称</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUsername">
+    <Value>MySQL用户名</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUserPassword">
+    <Value>MySQL密码</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseConnectionString">
+    <Value>连接字符串</Value>
+  </LocaleResource>
+  <LocaleResource Name="Install">
+    <Value>安装</Value>
+  </LocaleResource>
+  <LocaleResource Name="">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="">
+    <Value></Value>
+  </LocaleResource>
+  <LocaleResource Name="">
+    <Value></Value>
+  </LocaleResource>
+</Language>
