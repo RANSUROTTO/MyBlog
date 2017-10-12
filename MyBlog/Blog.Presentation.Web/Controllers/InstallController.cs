@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Configuration;
+using Blog.Libraries.Core.Helper;
+using Blog.Libraries.Core.Infrastructure;
 using Blog.Presentation.Web.Models.Install;
 using Blog.Libraries.Services.Infrastructure.Installation;
 
@@ -32,14 +34,12 @@ namespace Blog.Presentation.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //数据库已安装
             if (DataSettingsHelper.DatabaseInstalled())
-                return RedirectToAction("Index", "Home");
+                return RedirectToRoute("HomePage");
 
-            //设置请求超时时间 (设置为5分钟)
             this.Server.ScriptTimeout = 300;
 
-            //创建默认安装设置模型
+            //default install settings
             var model = new InstallModel
             {
                 AdminEmail = "Adminstrator@yourBlog.com",
@@ -49,14 +49,13 @@ namespace Blog.Presentation.Web.Controllers
                 SqlConnectionInfo = "sqlconnectioninfo_values"
             };
 
-            //获取可用的语言
+            //builder available language list
             foreach (var lang in _installationLocalzationService.GetAvailableLanguage())
             {
                 model.AvailableLanguages.Add(new SelectListItem
                 {
                     Value = Url.Action("ChangeLanguage", new { languageCode = lang.Code }),
                     Text = lang.Name,
-                    //默认勾选上当前选择的语言
                     Selected = _installationLocalzationService.GetCurrentLanguage().Code == lang.Code
                 });
             }
@@ -70,7 +69,7 @@ namespace Blog.Presentation.Web.Controllers
         {
             //数据库已安装
             if (DataSettingsHelper.DatabaseInstalled())
-                return RedirectToAction("Index", "Home");
+                return RedirectToRoute("HomePage");
 
             //设置请求超时时间 (设置为10分钟)
             this.Server.ScriptTimeout = 600;
@@ -81,7 +80,7 @@ namespace Blog.Presentation.Web.Controllers
         public ActionResult ChangeLanguage(string languageCode)
         {
             if (DataSettingsHelper.DatabaseInstalled())
-                return RedirectToAction("Index", "Home");
+                return RedirectToRoute("HomePage");
 
             _installationLocalzationService.SaveCurrentLanguage(languageCode);
 
@@ -90,7 +89,14 @@ namespace Blog.Presentation.Web.Controllers
 
         public ActionResult RestartInstall()
         {
-            return View();
+            if (DataSettingsHelper.DatabaseInstalled())
+                return RedirectToRoute("HomePage");
+
+            //restart application
+            IWebHelper webHelper = EngineContext.Current.Resolve<IWebHelper>();
+            webHelper.RestartAppDomain();
+
+            return RedirectToRoute("HomePage");
         }
 
         #endregion

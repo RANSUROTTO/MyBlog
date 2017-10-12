@@ -1,5 +1,4 @@
-﻿@using Blog.Libraries.Core.Helper
-@using Blog.Libraries.Core.Infrastructure
+﻿@using Blog.Libraries.Core.Infrastructure
 @using Blog.Libraries.Services.Infrastructure.Installation
 
 @model  Blog.Presentation.Web.Models.Install.InstallModel
@@ -41,6 +40,7 @@
 
     <style>
         body {
+            background-color: #efefef;
             background-color: rgba(239, 239, 239, 1);
             font-size: 1.5rem;
         }
@@ -51,6 +51,7 @@
         }
 
             .logo-wrapper .logo {
+                color: #ffffff;
                 color: rgba(255, 255, 255, 1);
                 font-size: 5rem;
                 font-weight: 500;
@@ -76,6 +77,35 @@
             margin-bottom: 15px;
             margin-top: 20px;
         }
+
+        .throbber {
+            display: none;
+        }
+
+            .throbber .curtain {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #5e7b8c;
+                opacity: 0.9;
+                filter: alpha(opacity=90);
+            }
+
+            .throbber .curtain-content {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+                .throbber .curtain-content div {
+                    text-align: center;
+                    padding: 250px;
+                    color: #FFF;
+                }
     </style>
 
     <!-- styles end -->
@@ -100,9 +130,11 @@
         </div>
 
         <!-- from wrapper -->
-        <form action="" method="post">
-            <div class="layui-form am-padding am-u-lg-12 am-u-lg-offset-0 am-u-md-10 am-u-md-offset-1 am-u-sm-10 am-u-sm-offset-1" style="background-color:#fff;">
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @class = "am-cf" }))
+        {
+            <div class="layui-form am-padding am-u-lg-12 am-u-lg-offset-0 am-u-md-10 am-u-md-offset-1 am-u-sm-10 am-u-sm-offset-1" style="background-color: #fff;">
                 <p>@ILS.GetResource("ToolTips")</p>
+                @Html.AntiForgeryToken()
                 <div class="am-u-lg-offset-1 am-u-lg-10 ">
 
                     <!-- adminstrator setting -->
@@ -214,7 +246,7 @@
                             </div>
 
                             <!-- sqlDatabaseConnectionString -->
-                            <div id="sqlDatabaseConnectionString" class="credentials" style="display:none;">
+                            <div id="sqlDatabaseConnectionString" class="credentials" style="display: none;">
                                 <div class="form-group am-margin-bottom">
                                     <label for="" class="am-u-lg-4 am-lg-text-right form-label">@ILS.GetResource("DatabaseConnectionString")</label>
                                     <div class="am-u-lg-8">
@@ -232,8 +264,26 @@
 
                 </div>
             </div>
-        </form>
 
+        }
+
+        <div class="am-text-center am-margin-vertical-sm">
+            <button type="submit" class="am-btn am-btn-default am-radius am-btn-lg" style="background: #fff;">重启安装</button>
+        </div>
+
+    </div>
+
+    <div class="throbber">
+        <div class="curtain">
+        </div>
+        <div class="curtain-content">
+            <div>
+                <h1 class="throbber-header am-text-xl">Loading...</h1>
+                <p>
+                    <img src=".gif" alt="" />
+                </p>
+            </div>
+        </div>
     </div>
 
     <!-- scripts begin -->
@@ -261,6 +311,22 @@
             });
 
         });
+
+        function showThrobber(message) {
+            var $ = layui.$;
+            $('.throbber-header').html(message);
+            $(".throbber").fadeIn(500);
+        }
+
+        function showThrobberToTop(message) {
+
+            var $ = layui.$;
+            $("html, body").animate({
+                scrollTop: 0
+            }, 500);
+
+            showThrobber(message);
+        }
     </script>
     <!-- scripts end -->
 
