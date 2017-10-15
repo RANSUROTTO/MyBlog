@@ -69,7 +69,7 @@ namespace Blog.Presentation.Web.Controllers
         {
             if (DataSettingsHelper.DatabaseInstalled())
                 return RedirectToRoute("HomePage");
-        
+
             this.Server.ScriptTimeout = 600;
 
             return View();
