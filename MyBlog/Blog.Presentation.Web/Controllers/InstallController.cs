@@ -67,11 +67,9 @@ namespace Blog.Presentation.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(InstallModel model)
         {
-            //数据库已安装
             if (DataSettingsHelper.DatabaseInstalled())
                 return RedirectToRoute("HomePage");
-
-            //设置请求超时时间 (设置为10分钟)
+        
             this.Server.ScriptTimeout = 600;
 
             return View();
