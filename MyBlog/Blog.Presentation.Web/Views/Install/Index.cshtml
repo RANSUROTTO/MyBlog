@@ -208,11 +208,11 @@
                                 </label>
                                 <div class="am-u-lg-8">
                                     <div>
-                                        @Html.RadioButtonFor(p => p.SqlConnectionInfo, "sqlDatabaseInfo", new { id = "sqlconnectioninfo_values", @checked = "checked", title = ILS.GetResource("InputConnectionStringOption"), lay_filter = "DataProvider" })
+                                        @Html.RadioButtonFor(p => p.SqlConnectionInfo, "sqlDatabaseInfo", new { id = "sqlconnectioninfo_values", @checked = "checked", title = ILS.GetResource("InputConnectionStringOption"), lay_filter = "ConnectionStringInformation" })
                                     </div>
                                     <div>
 
-                                        @Html.RadioButtonFor(p => p.SqlConnectionInfo, "sqlDatabaseConnectionString", new { id = "sqlconnectioninfo_raw", title = ILS.GetResource("InputRawConnectionStringOption"), lay_filter = "DataProvider" })
+                                        @Html.RadioButtonFor(p => p.SqlConnectionInfo, "sqlDatabaseConnectionString", new { id = "sqlconnectioninfo_raw", title = ILS.GetResource("InputRawConnectionStringOption"), lay_filter = "ConnectionStringInformation" })
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +299,7 @@
             });
 
             //dataProvider radio value change
-            form.on('radio(DataProvider)', function (data) {
+            form.on('radio(ConnectionStringInformation)', function (data) {
                 var selectedProvider = $(data.elem).attr('id');
                 if (selectedProvider == 'sqlconnectioninfo_values') {
                     $('#sqlDatabaseInfo').show();

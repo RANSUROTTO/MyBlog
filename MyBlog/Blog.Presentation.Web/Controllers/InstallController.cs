@@ -30,7 +30,7 @@ namespace Blog.Presentation.Web.Controllers
         #endregion
 
         #region Methods
-        
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -71,6 +71,30 @@ namespace Blog.Presentation.Web.Controllers
                 return RedirectToRoute("HomePage");
 
             this.Server.ScriptTimeout = 600;
+
+            if (model.DatabaseConnectionString != null)
+                model.DatabaseConnectionString = model.DatabaseConnectionString.Trim();
+
+            //builder available language list
+            foreach (var lang in _installationLocalzationService.GetAvailableLanguage())
+            {
+                model.AvailableLanguages.Add(new SelectListItem
+                {
+                    Value = Url.Action("ChangeLanguage", new { languageCode = lang.Code }),
+                    Text = lang.Name,
+                    Selected = _installationLocalzationService.GetCurrentLanguage().Code == lang.Code
+                });
+            }
+
+            //use mysql database 
+            if (model.DataProvider.Equals("mysql", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                
+
+                
+            }
+
+
 
             return View();
         }
