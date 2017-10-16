@@ -13,12 +13,12 @@ namespace Blog.Libraries.Data.Settings
         /// <summary>
         /// 获取或设置身份验证票据名称
         /// </summary>
-        public string AuthenticationTicketName { get; set; }
+        public string AuthenticationTicketName { get; set; } = "default_authentication_ticket";
 
         /// <summary>
-        /// 获取或设置一个值，指示是否使用用户名而不是电子邮件
+        /// 指示可以使用什么账号进行登录
         /// </summary>
-        public bool UsernamesEnabled { get; set; }
+        public CustomerLoginPattern CustomerLoginPattern { get; set; } = CustomerLoginPattern.Full;
 
         /// <summary>
         /// 获取或设置一个值，指示用户是否可以检查用户名的可用性（在“我的帐户”中注册或更改时）
@@ -28,7 +28,7 @@ namespace Blog.Libraries.Data.Settings
         /// <summary>
         /// 获取或设置一个值，指示用户是否被允许更改其用户名
         /// </summary>
-        public bool AllowUsersToChangeUsernames { get; set; }
+        public bool AllowUsersToChangeUsernames { get; set; } = false;
 
         /// <summary>
         /// 客户的默认密码格式

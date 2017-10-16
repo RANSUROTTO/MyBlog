@@ -78,6 +78,7 @@
     <Compile Include="Domain\Members\Admin.cs" />
     <Compile Include="Domain\Members\Customer.cs" />
     <Compile Include="Domain\Members\CustomerProfile.cs" />
+    <Compile Include="Domain\Members\Enum\CustomerLoginPattern.cs" />
     <Compile Include="Domain\Members\Enum\CustomerNameFormat.cs" />
     <Compile Include="Migrations\201710161625131_Init.cs" />
     <Compile Include="Migrations\201710161625131_Init.Designer.cs">
