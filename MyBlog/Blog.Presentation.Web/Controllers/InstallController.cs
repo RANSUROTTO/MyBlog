@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using MySql.Data.MySqlClient;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Helper;
@@ -86,17 +88,52 @@ namespace Blog.Presentation.Web.Controllers
                 });
             }
 
-            //use mysql database 
-            if (model.DataProvider.Equals("mysql", System.StringComparison.InvariantCultureIgnoreCase))
+            //use mysql database , check connection string 
+            if (model.DataProvider.Equals("mysql", StringComparison.InvariantCultureIgnoreCase))
             {
-                
+                if (model.SqlConnectionInfo.Equals("sqlDatabaseInfo", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (string.IsNullOrEmpty(model.DatabaseConnectionString))
+                        ModelState.AddModelError("", _installationLocalzationService.GetResource("DatabaseConnectionStringRequired"));
 
-                
+                    try
+                    {
+                        new MySqlConnectionStringBuilder(model.DatabaseConnectionString);
+                    }
+                    catch
+                    {
+                        ModelState.AddModelError("",
+                            _installationLocalzationService.GetResource("DatabaseConnectionStringError"));
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(model.ServerName))
+                        ModelState.AddModelError("", _installationLocalzationService.GetResource("ServerNameRequired"));
+
+                    if (string.IsNullOrEmpty(model.DatabaseName))
+                        ModelState.AddModelError("", _installationLocalzationService.GetResource("DatabaseNameRequired"));
+
+                    if (string.IsNullOrEmpty(model.ServerUsername))
+                        ModelState.AddModelError("", _installationLocalzationService.GetResource("ServerUsernameRequired"));
+
+                    if (string.IsNullOrEmpty(model.ServerUserPassword))
+                        ModelState.AddModelError("", _installationLocalzationService.GetResource("ServerUserPasswordRequired"));
+                }
             }
 
+            if (ModelState.IsValid)
+            {
 
+                //构建SqlConnection
 
-            return View();
+                //创建或连接数据库
+
+                //插入必要的数据
+
+            }
+
+            return View(model);
         }
 
         public ActionResult ChangeLanguage(string languageCode)

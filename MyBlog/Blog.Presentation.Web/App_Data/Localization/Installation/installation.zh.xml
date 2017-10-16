@@ -1,8 +1,6 @@
 ﻿<Language Name="简体中文" IsDefault="true" IsRightToLeft="false">
   <LocaleResource Name="Title">
-    <Value>
-      Ransurotto - 安装向导
-    </Value>
+    <Value>Ransurotto - 安装向导</Value>
   </LocaleResource>
   <LocaleResource Name="ToolTips">
     <Value>完成这个向导，你必须知道如何连接数据库("即连接字符串")。如有必要，请联系你的服务提供商。如果在本机或服务器上安装，你可能还需要一些管理员的信息。</Value>
@@ -60,6 +58,24 @@
   </LocaleResource>
   <LocaleResource Name="Install">
     <Value>安装</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseConnectionStringRequired">
+    <Value>必须输入数据库连接字符串(高级)</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseConnectionStringError">
+    <Value>提供的数据库连接字符串(高级)不正确</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerNameRequired">
+    <Value>必须输入数据库服务实例名</Value>
+  </LocaleResource>
+  <LocaleResource Name="DatabaseNameRequired">
+    <Value>必须输入数据库名称</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUsernameRequired">
+    <Value>必须输入数据库有效用户名</Value>
+  </LocaleResource>
+  <LocaleResource Name="ServerUserPasswordRequired">
+    <Value>必须输入数据库有效用户密码</Value>
   </LocaleResource>
   <LocaleResource Name="">
     <Value></Value>
