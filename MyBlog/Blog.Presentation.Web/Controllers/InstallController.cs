@@ -30,7 +30,7 @@ namespace Blog.Presentation.Web.Controllers
         #endregion
 
         #region Methods
-
+        
         [HttpGet]
         public ActionResult Index()
         {
