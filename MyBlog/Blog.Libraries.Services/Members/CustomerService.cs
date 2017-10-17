@@ -6,6 +6,7 @@ using Blog.Libraries.Core.Helper;
 using Blog.Libraries.Data.Domain.Members;
 using Blog.Libraries.Data.Domain.Members.Enum;
 using Blog.Libraries.Data.Settings;
+using Blog.Libraries.Services.Security;
 
 namespace Blog.Libraries.Services.Members
 {
@@ -18,16 +19,18 @@ namespace Blog.Libraries.Services.Members
         private readonly IRepository<Customer> _customerRepository;
         private readonly CustomerSettings _customerSettings;
         private readonly IRepository<CustomerPassword> _customerPasswordRepository;
+        private readonly IEncryptionService _encryptionService;
 
         #endregion
 
         #region Constructor
 
-        public CustomerService(IRepository<Customer> customerRepository, CustomerSettings customerSettings, IRepository<CustomerPassword> customerPasswordRepository)
+        public CustomerService(IRepository<Customer> customerRepository, CustomerSettings customerSettings, IRepository<CustomerPassword> customerPasswordRepository, IEncryptionService encryptionService)
         {
             _customerRepository = customerRepository;
             _customerSettings = customerSettings;
             _customerPasswordRepository = customerPasswordRepository;
+            _encryptionService = encryptionService;
         }
 
         #endregion
@@ -121,15 +124,17 @@ namespace Blog.Libraries.Services.Members
                     return customerPassword.Password.Equals(enteredPassword, StringComparison.InvariantCulture);
 
                 case PasswordFormat.Encrypted:
-                    break;
+                    return _encryptionService.DecryptText(customerPassword.Password).Equals(enteredPassword);
 
                 case PasswordFormat.Hashed:
-                    break;
+                    return customerPassword.Password.Equals(
+                        _encryptionService.CreateHash(enteredPassword,
+                        _customerSettings.HashedPasswordFormat),
+                        StringComparison.InvariantCultureIgnoreCase);
 
                 default:
                     return false;
             }
-            throw new NotImplementedException();
         }
 
         public void UpdateCustomer(Customer customer)
@@ -153,8 +158,8 @@ namespace Blog.Libraries.Services.Members
             if (!this.PasswordMatch(this.GetCurrentPassword(customer.Id), password))
             {
                 customer.FailedLoginAttempts++;
-                if (_customerSettings.FailedPasswordAllowedAttempts > 0 && customer.FailedLoginAttempts >=
-                    _customerSettings.FailedPasswordAllowedAttempts)
+                if (_customerSettings.FailedPasswordAllowedAttempts > 0
+                    && customer.FailedLoginAttempts >= _customerSettings.FailedPasswordAllowedAttempts)
                 {
                     customer.FailedLoginAttempts = 0;
                     customer.CannotLoginUntilDate =
@@ -169,6 +174,7 @@ namespace Blog.Libraries.Services.Members
             customer.RequireReLogin = false;
             customer.CannotLoginUntilDate = null;
             customer.LastLoginDate = DateTime.UtcNow;
+            this.UpdateCustomer(customer);
 
             return CustomerLoginResult.Successful;
         }

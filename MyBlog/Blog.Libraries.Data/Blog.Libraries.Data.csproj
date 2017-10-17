@@ -111,6 +111,7 @@
     <Compile Include="Provider\SqlServerDataProvider.cs" />
     <Compile Include="Repository\EfRepository.cs" />
     <Compile Include="Settings\LocalizationSettings.cs" />
+    <Compile Include="Settings\SecuritySettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Content\" />
