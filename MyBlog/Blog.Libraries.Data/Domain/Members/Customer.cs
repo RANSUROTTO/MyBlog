@@ -4,7 +4,6 @@ using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Data.Domain.Logging;
 using System.Linq;
-using Blog.Libraries.Data.Domain.Blog;
 
 namespace Blog.Libraries.Data.Domain.Members
 {
@@ -19,11 +18,6 @@ namespace Blog.Libraries.Data.Domain.Members
         /// 获取或设置登录用户名
         /// </summary>
         public string Username { get; set; }
-
-        /// <summary>
-        /// 获取或设置登录密码
-        /// </summary>
-        public string Password { get; set; }
 
         /// <summary>
         /// 获取或设置电子邮箱
@@ -49,7 +43,7 @@ namespace Blog.Libraries.Data.Domain.Members
         public DateTime? CannotLoginUntilDate { get; set; }
 
         /// <summary>
-        /// 获取或设置用户最后登录的ip地址
+        /// 获取或设置用户最后访问的ip地址
         /// </summary>
         public string LastIpAddress { get; set; }
 
@@ -68,6 +62,17 @@ namespace Blog.Libraries.Data.Domain.Members
         /// </summary>
         public virtual CustomerProfile CustomerProfile { get; set; }
 
+
+        private ICollection<CustomerPassword> _customerPasswords;
+        /// <summary>
+        /// 获取或设置该用户的密码列表
+        /// </summary>
+        public ICollection<CustomerPassword> CustomerPasssword
+        {
+            get { return _customerPasswords?.Where(p => !p.IsDeleted).ToList() ?? new List<CustomerPassword>(); };
+            set { _customerPasswords = value; }
+        }
+
         private ICollection<Log> _logs;
         /// <summary>
         /// 获取或设置该用户引发的日志记录
@@ -84,14 +89,8 @@ namespace Blog.Libraries.Data.Domain.Members
         /// </summary>
         public virtual ICollection<Blog.BlogPost> Articles
         {
-            get
-            {
-                return _articles?.Where(p => !p.IsDeleted)?.ToList() ?? (_articles = new List<Blog.BlogPost>());
-            }
-            set
-            {
-                _articles = value;
-            }
+            get { return _articles?.Where(p => !p.IsDeleted).ToList() ?? (_articles = new List<Blog.BlogPost>()); }
+            set { _articles = value; }
         }
 
     }

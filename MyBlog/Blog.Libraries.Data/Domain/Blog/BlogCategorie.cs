@@ -18,13 +18,12 @@ namespace Blog.Libraries.Data.Domain.Blog
 
 
         private ICollection<BlogPost> _articles;
-
         /// <summary>
         /// 获取或设置该分类下的文章列表
         /// </summary>
         public virtual ICollection<BlogPost> Articles
         {
-            get { return _articles?.Where(p => !p.IsDeleted)?.ToList() ?? new List<BlogPost>(); }
+            get { return _articles?.Where(p => !p.IsDeleted).ToList() ?? new List<BlogPost>(); }
             set { _articles = value; }
         }
 

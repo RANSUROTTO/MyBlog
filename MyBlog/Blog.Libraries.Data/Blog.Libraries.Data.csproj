@@ -77,9 +77,12 @@
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Admin.cs" />
     <Compile Include="Domain\Members\Customer.cs" />
+    <Compile Include="Domain\Members\CustomerPassword.cs" />
     <Compile Include="Domain\Members\CustomerProfile.cs" />
     <Compile Include="Domain\Members\Enum\CustomerLoginPattern.cs" />
+    <Compile Include="Domain\Members\Enum\CustomerLoginResult.cs" />
     <Compile Include="Domain\Members\Enum\CustomerNameFormat.cs" />
+    <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
     <Compile Include="Migrations\201710161625131_Init.cs" />
     <Compile Include="Migrations\201710161625131_Init.Designer.cs">
       <DependentUpon>201710161625131_Init.cs</DependentUpon>
@@ -88,7 +91,6 @@
     <Compile Include="Settings\BlogSettings.cs" />
     <Compile Include="Settings\CustomerSettings.cs" />
     <Compile Include="Domain\Members\Guest.cs" />
-    <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
     <Compile Include="Domain\Members\Enum\UserRegistrationType.cs" />
     <Compile Include="Domain\Tasks\ScheduleTask.cs" />
     <Compile Include="Mapping\Content\ArticleMap.cs" />

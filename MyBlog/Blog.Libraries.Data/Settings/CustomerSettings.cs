@@ -33,32 +33,32 @@ namespace Blog.Libraries.Data.Settings
         /// <summary>
         /// 客户的默认密码格式
         /// </summary>
-        public PasswordFormat DefaultPasswordFormat { get; set; }
+        public PasswordFormat DefaultPasswordFormat { get; set; } = PasswordFormat.Hashed;
 
         /// <summary>
         /// 获取或设置密码散列时的客户密码格式（SHA1，MD5）
         /// </summary>
-        public string HashedPasswordFormat { get; set; }
+        public string HashedPasswordFormat { get; set; } = "MD5";
 
         /// <summary>
         /// 获取或设置最小密码长度
         /// </summary>
-        public int PasswordMinLength { get; set; }
+        public int PasswordMinLength { get; set; } = 6;
 
         /// <summary>
         /// 获取或设置锁定帐户的最大登录失败次数,设置0以禁用此功能
         /// </summary>
-        public int FailedPasswordAllowedAttempts { get; set; }
+        public int FailedPasswordAllowedAttempts { get; set; } = 0;
 
         /// <summary>
         /// 获取或设置锁定用户的分钟数（用于登录失败）
         /// </summary>
-        public int FailedPasswordLockoutMinutes { get; set; }
+        public int FailedPasswordLockoutMinutes { get; set; } = 10;
 
         /// <summary>
         /// 用户注册类型
         /// </summary>
-        public UserRegistrationType UserRegistrationType { get; set; }
+        public UserRegistrationType UserRegistrationType { get; set; } = UserRegistrationType.Standard;
 
         /// <summary>
         /// 获取或设置一个值,指示用户是否允许上传头像

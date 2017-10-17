@@ -13,12 +13,7 @@ namespace Blog.Libraries.Core.Domain.Members
         /// 获取或设置用户名
         /// </summary>
         string Username { get; set; }
-
-        /// <summary>
-        /// 获取或设置密码
-        /// </summary>
-        string Password { get; set; }
-
+        
         /// <summary>
         /// 获取或设置电子邮箱
         /// </summary>
