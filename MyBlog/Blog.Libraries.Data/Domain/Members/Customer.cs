@@ -67,9 +67,9 @@ namespace Blog.Libraries.Data.Domain.Members
         /// <summary>
         /// 获取或设置该用户的密码列表
         /// </summary>
-        public ICollection<CustomerPassword> CustomerPasssword
+        public ICollection<CustomerPassword> CustomerPasswords
         {
-            get { return _customerPasswords?.Where(p => !p.IsDeleted).ToList() ?? new List<CustomerPassword>(); };
+            get { return _customerPasswords?.Where(p => !p.IsDeleted).ToList() ?? new List<CustomerPassword>(); }
             set { _customerPasswords = value; }
         }
 

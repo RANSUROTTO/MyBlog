@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Autofac;
 using System.Web;
 using Autofac.Integration.Mvc;
@@ -15,7 +11,10 @@ using Blog.Libraries.Core.Infrastructure.TypeFinder;
 using Blog.Libraries.Data.Context;
 using Blog.Libraries.Data.Provider;
 using Blog.Libraries.Data.Repository;
+using Blog.Libraries.Services.Authentication;
 using Blog.Libraries.Services.Infrastructure.Installation;
+using Blog.Libraries.Services.Members;
+using Blog.Libraries.Services.Security;
 
 namespace Blog.Presentation.Framework
 {
@@ -87,6 +86,11 @@ namespace Blog.Presentation.Framework
 
             //注册业务服务
             builder.RegisterType<InstallationLocalizationService>().As<IInstallationLocalizationService>().InstancePerLifetimeScope();
+            builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerLifetimeScope();
+            builder.RegisterType<AdminService>().As<IAdminService>().InstancePerLifetimeScope();
+            builder.RegisterType<GuestService>().As<IGuestService>().InstancePerLifetimeScope();
+            builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
+            builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
 
 
         }

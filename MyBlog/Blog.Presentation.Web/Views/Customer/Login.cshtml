@@ -1,0 +1,37 @@
+﻿@model Blog.Presentation.Web.Models.Customer.CustomerLoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.TextBoxFor(p => p.UsernameOrEmail)
+
+        <br />
+
+        @Html.PasswordFor(p => p.Password)
+
+        <br />
+
+        @Html.CheckBoxFor(p => p.RememberMe)
+
+        <br />
+
+        <input type="submit" value="提交" />
+
+    }
+
+</body>
+</html>

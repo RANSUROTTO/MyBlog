@@ -287,6 +287,7 @@
     <Content Include="Views\Install\Index.cshtml" />
     <Content Include="App_Data\Localization\Installation\installation.zh.xml" />
     <Content Include="App_Data\Localization\Installation\installation.en.xml" />
+    <Content Include="Views\Customer\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -298,7 +299,6 @@
     <Folder Include="Content\page\" />
     <Folder Include="Scripts\layui_modules\" />
     <Folder Include="Scripts\page_scripts\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">

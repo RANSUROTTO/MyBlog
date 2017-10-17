@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Blog.Presentation.Web.Models.Customer
+﻿namespace Blog.Presentation.Web.Models.Customer
 {
 
     public class CustomerLoginModel
     {
 
         /// <summary>
-        /// 用户登录名 / Email / Phone?
+        /// 获取或设置登录用户名或电子邮箱
         /// </summary>
-        public string Username { get; set; }
+        public string UsernameOrEmail { get; set; }
 
         /// <summary>
-        /// 用户登录密码
+        /// 获取或设置登录密码
         /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// 获取活设置一个值,该值指示是否记住登录状态
+        /// </summary>
+        public bool RememberMe { get; set; }
 
     }
 

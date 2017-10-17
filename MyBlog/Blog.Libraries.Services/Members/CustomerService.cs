@@ -162,8 +162,7 @@ namespace Blog.Libraries.Services.Members
                     && customer.FailedLoginAttempts >= _customerSettings.FailedPasswordAllowedAttempts)
                 {
                     customer.FailedLoginAttempts = 0;
-                    customer.CannotLoginUntilDate =
-                        DateTime.UtcNow.AddMinutes(_customerSettings.FailedPasswordLockoutMinutes);
+                    customer.CannotLoginUntilDate = DateTime.UtcNow.AddMinutes(_customerSettings.FailedPasswordLockoutMinutes);
                 }
                 this.UpdateCustomer(customer);
                 return CustomerLoginResult.WrongPassword;

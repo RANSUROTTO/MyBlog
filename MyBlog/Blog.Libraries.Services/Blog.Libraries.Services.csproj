@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\FromsAuthenticationService.cs" />
+    <Compile Include="Authentication\FormsAuthenticationService.cs" />
     <Compile Include="Authentication\AuthenticationType.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
     <Compile Include="Blog\BlogPostService.cs" />

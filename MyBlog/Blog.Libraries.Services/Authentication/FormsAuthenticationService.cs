@@ -14,7 +14,7 @@ namespace Blog.Libraries.Services.Authentication
     /// <summary>
     /// Froms身份验证业务实现
     /// </summary>
-    public class FromsAuthenticationService : IAuthenticationService
+    public class FormsAuthenticationService : IAuthenticationService
     {
 
         #region Fields
@@ -38,18 +38,17 @@ namespace Blog.Libraries.Services.Authentication
         /// <summary>
         /// Ctor
         /// </summary>
-        public FromsAuthenticationService(HttpContextBase httpContext
+        public FormsAuthenticationService(HttpContextBase httpContext
             , ICustomerService customerService
             , IAdminService adminService
             , IGuestService guestService
-            , TimeSpan expirationTimeSpan
             , CustomerSettings customerSettings)
         {
             _httpContext = httpContext;
             _customerService = customerService;
             _adminService = adminService;
             _guestService = guestService;
-            _expirationTimeSpan = expirationTimeSpan;
+            _expirationTimeSpan = FormsAuthentication.Timeout;
             _customerSettings = customerSettings;
         }
 

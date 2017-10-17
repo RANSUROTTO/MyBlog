@@ -83,9 +83,14 @@
     <Compile Include="Domain\Members\Enum\CustomerLoginResult.cs" />
     <Compile Include="Domain\Members\Enum\CustomerNameFormat.cs" />
     <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
+    <Compile Include="Mapping\Members\CustomerPasswordMap.cs" />
     <Compile Include="Migrations\201710161625131_Init.cs" />
     <Compile Include="Migrations\201710161625131_Init.Designer.cs">
       <DependentUpon>201710161625131_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710171500052_init_2.cs" />
+    <Compile Include="Migrations\201710171500052_init_2.Designer.cs">
+      <DependentUpon>201710171500052_init_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Settings\BlogSettings.cs" />
@@ -130,6 +135,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710161625131_Init.resx">
       <DependentUpon>201710161625131_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171500052_init_2.resx">
+      <DependentUpon>201710171500052_init_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
