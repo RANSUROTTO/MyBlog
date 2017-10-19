@@ -17,7 +17,7 @@ namespace Blog.Libraries.Services.Infrastructure.Installation
         /// <summary>
         /// 安装页面存储语言选择的Cookie的名称
         /// </summary>
-        private const string LanguageCookieName = "ransurotto.installation.lang";
+        private const string LanguageCookieName = "ransurotto.cn.installation.lang";
 
         /// <summary>
         /// 安装页面可用语言

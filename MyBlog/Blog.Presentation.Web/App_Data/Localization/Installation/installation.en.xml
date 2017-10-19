@@ -47,10 +47,10 @@
     <Value>MySQL instance</Value>
   </LocaleResource>
   <LocaleResource Name="DatabaseName">
-    <Value>Database name</Value>
+    <Value>Database key</Value>
   </LocaleResource>
-  <LocaleResource Name="ServerUsername">
-    <Value>MySQL username</Value>
+  <LocaleResource Name="ServerUserkey">
+    <Value>MySQL userkey</Value>
   </LocaleResource>
   <LocaleResource Name="ServerUserPassword">
     <Value>MySQL password</Value>

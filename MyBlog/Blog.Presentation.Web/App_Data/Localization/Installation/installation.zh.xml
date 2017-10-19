@@ -47,7 +47,7 @@
   <LocaleResource Name="DatabaseName">
     <Value>数据库名称</Value>
   </LocaleResource>
-  <LocaleResource Name="ServerUsername">
+  <LocaleResource Name="ServerUserkey">
     <Value>MySQL用户名</Value>
   </LocaleResource>
   <LocaleResource Name="ServerUserPassword">
@@ -71,7 +71,7 @@
   <LocaleResource Name="DatabaseNameRequired">
     <Value>必须输入数据库名称</Value>
   </LocaleResource>
-  <LocaleResource Name="ServerUsernameRequired">
+  <LocaleResource Name="ServerUserkeyRequired">
     <Value>必须输入数据库有效用户名</Value>
   </LocaleResource>
   <LocaleResource Name="ServerUserPasswordRequired">

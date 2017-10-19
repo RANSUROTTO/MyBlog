@@ -49,7 +49,7 @@
   <LocaleResource Name="DatabaseName">
     <Value>データベース名</Value>
   </LocaleResource>
-  <LocaleResource Name="ServerUsername">
+  <LocaleResource Name="ServerUserkey">
     <Value>MySQLユーザー名</Value>
   </LocaleResource>
   <LocaleResource Name="ServerUserPassword">
