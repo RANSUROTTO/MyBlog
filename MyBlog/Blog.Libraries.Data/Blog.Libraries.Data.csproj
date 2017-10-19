@@ -73,6 +73,7 @@
     <Compile Include="Domain\Blog\BlogPost.cs" />
     <Compile Include="Domain\Blog\BlogCategorie.cs" />
     <Compile Include="Domain\Blog\Enum\BlogPostShowType.cs" />
+    <Compile Include="Domain\Configuration\Setting.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Admin.cs" />
