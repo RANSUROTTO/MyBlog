@@ -1,7 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Autofac;
 using System.Web;
+using Autofac.Builder;
+using Autofac.Core;
 using Autofac.Integration.Mvc;
+using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Fakes;
@@ -12,6 +18,7 @@ using Blog.Libraries.Data.Context;
 using Blog.Libraries.Data.Provider;
 using Blog.Libraries.Data.Repository;
 using Blog.Libraries.Services.Authentication;
+using Blog.Libraries.Services.Configuration;
 using Blog.Libraries.Services.Infrastructure.Installation;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Services.Security;
@@ -79,10 +86,19 @@ namespace Blog.Presentation.Framework
             builder.RegisterGeneric(typeof(EfRepository<>))
                 .As(typeof(IRepository<>))
                 .InstancePerLifetimeScope();
+            builder.RegisterSource(new SettingsSource());
+
 
             //注册插件服务
 
             //注册缓存服务
+            builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_static").SingleInstance();
+            builder.RegisterType<PerRequestCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_per_request").InstancePerLifetimeScope();
+
+            //注册设定
+            builder.RegisterType<SettingService>().As<ISettingService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("cache_static"))
+                .InstancePerLifetimeScope();
 
             //注册业务服务
             builder.RegisterType<InstallationLocalizationService>().As<IInstallationLocalizationService>().InstancePerLifetimeScope();
@@ -101,5 +117,39 @@ namespace Blog.Presentation.Framework
         }
 
     }
+
+
+    public class SettingsSource : IRegistrationSource
+    {
+        static readonly MethodInfo BuildMethod = typeof(SettingsSource).GetMethod(
+            "BuildRegistration",
+            BindingFlags.Static | BindingFlags.NonPublic);
+
+        public IEnumerable<IComponentRegistration> RegistrationsFor(
+            Service service,
+            Func<Service, IEnumerable<IComponentRegistration>> registrations)
+        {
+            var ts = service as TypedService;
+            if (ts != null && typeof(ISettings).IsAssignableFrom(ts.ServiceType))
+            {
+                var buildMethod = BuildMethod.MakeGenericMethod(ts.ServiceType);
+                yield return (IComponentRegistration)buildMethod.Invoke(null, null);
+            }
+        }
+
+        static IComponentRegistration BuildRegistration<TSettings>() where TSettings : ISettings, new()
+        {
+            return RegistrationBuilder
+                .ForDelegate((c, p) =>
+                {
+                    return c.Resolve<ISettingService>().LoadSetting<TSettings>();
+                })
+                .InstancePerLifetimeScope()
+                .CreateRegistration();
+        }
+
+        public bool IsAdapterForIndividualComponents { get { return false; } }
+    }
+
 
 }

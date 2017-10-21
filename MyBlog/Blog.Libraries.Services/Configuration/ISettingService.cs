@@ -9,6 +9,19 @@ namespace Blog.Libraries.Services.Configuration
 
     public interface ISettingService
     {
+        /// <summary>
+        /// 插入设定
+        /// </summary>
+        /// <param name="setting">设定</param>
+        /// <param name="clearCache">是否清除缓存</param>
+        void InsertSetting(Setting setting, bool clearCache = true);
+
+        /// <summary>
+        /// 更新设定
+        /// </summary>
+        /// <param name="setting">设定</param>
+        /// <param name="clearCache">是否清除缓存</param>
+        void UpdateSetting(Setting setting, bool clearCache = true);
 
         /// <summary>
         /// 获取全部设定
@@ -61,14 +74,12 @@ namespace Blog.Libraries.Services.Configuration
         void SetSetting<T>(string key, T value, bool clearCache = true);
 
         /// <summary>
-        /// 
+        /// 查看某个设定属性是否存在
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <typeparam name="TProType"></typeparam>
-        /// <param name="setting"></param>
-        /// <param name="keySelector"></param>
-        /// <returns></returns>
-        bool SettingExists<T, TProType>(T setting, Expression<Func<T, TProType>> keySelector) where T : ISettings, new();
+        /// <param name="settings">设定</param>
+        /// <param name="keySelector">属性</param>
+        /// <returns>结果</returns>
+        bool SettingExists<T, TProType>(T settings, Expression<Func<T, TProType>> keySelector) where T : ISettings, new();
 
         /// <summary>
         /// 
