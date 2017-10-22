@@ -121,9 +121,8 @@ namespace Blog.Presentation.Framework
 
     public class SettingsSource : IRegistrationSource
     {
-        static readonly MethodInfo BuildMethod = typeof(SettingsSource).GetMethod(
-            "BuildRegistration",
-            BindingFlags.Static | BindingFlags.NonPublic);
+        static readonly MethodInfo BuildMethod =
+            typeof(SettingsSource).GetMethod("BuildRegistration", BindingFlags.Static | BindingFlags.NonPublic);
 
         public IEnumerable<IComponentRegistration> RegistrationsFor(
             Service service,
@@ -149,6 +148,7 @@ namespace Blog.Presentation.Framework
         }
 
         public bool IsAdapterForIndividualComponents { get { return false; } }
+
     }
 
 
