@@ -2,7 +2,7 @@
 namespace Blog.Libraries.Core.Domain.Members
 {
 
-    public interface IAdmin
+    public interface IAdmin: IAuthenticationUser
     {
 
         /// <summary>

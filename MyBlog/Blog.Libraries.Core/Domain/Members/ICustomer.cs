@@ -6,7 +6,7 @@ namespace Blog.Libraries.Core.Domain.Members
     /// <summary>
     /// 代表一个用户
     /// </summary>
-    public interface ICustomer
+    public interface ICustomer : IAuthenticationUser
     {
 
         /// <summary>

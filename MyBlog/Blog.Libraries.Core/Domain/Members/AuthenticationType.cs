@@ -1,4 +1,4 @@
-﻿namespace Blog.Libraries.Services.Authentication
+﻿namespace Blog.Libraries.Core.Domain.Members
 {
 
     /// <summary>

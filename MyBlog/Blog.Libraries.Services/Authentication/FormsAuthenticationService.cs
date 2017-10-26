@@ -4,6 +4,7 @@ using System.Web.Security;
 using System.Globalization;
 using System.ComponentModel;
 using System.Collections.Generic;
+using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Data.Domain.Members;
 using Blog.Libraries.Data.Settings;

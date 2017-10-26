@@ -15,6 +15,11 @@ namespace Blog.Libraries.Data.Domain.Members
         /// </summary>
         public string UserAgent { get; set; }
 
+        /// <summary>
+        /// 身份验证类型
+        /// </summary>
+        public AuthenticationType AuthenticatinType => AuthenticationType.Guest;
+
     }
 
 }

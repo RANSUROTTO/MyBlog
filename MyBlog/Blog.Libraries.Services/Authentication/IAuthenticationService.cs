@@ -1,4 +1,5 @@
 ﻿using System;
+using Blog.Libraries.Core.Domain.Members;
 
 namespace Blog.Libraries.Services.Authentication
 {

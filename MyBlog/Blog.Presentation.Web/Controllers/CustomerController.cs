@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Data.Domain.Members;
 using Blog.Libraries.Data.Domain.Members.Enum;
 using Blog.Libraries.Services.Authentication;
