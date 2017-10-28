@@ -96,7 +96,7 @@ namespace Blog.Libraries.Data.Domain.Members
         /// <summary>
         /// 身份验证类型
         /// </summary>
-        public AuthenticationType AuthenticatinType => AuthenticationType.Customer;
+        public AuthenticationType AuthenticationType => AuthenticationType.Customer;
 
     }
 

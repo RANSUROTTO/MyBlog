@@ -52,7 +52,7 @@ namespace Blog.Presentation.Web.Controllers
                     case CustomerLoginResult.Successful:
                         //Sign In
                         var customer = _customerService.GetCustomerByUsernameOrEmail(model.UsernameOrEmail);
-                        _authenticationService.SignIn(customer.Guid, AuthenticationType.Customer, createPersistentCookie: model.RememberMe);
+                        _authenticationService.SignIn(customer, createPersistentCookie: model.RememberMe);
                         return RedirectToRoute("HomePage");
 
                     case CustomerLoginResult.CustomerNotExist:

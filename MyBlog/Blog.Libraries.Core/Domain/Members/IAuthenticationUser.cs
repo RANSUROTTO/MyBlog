@@ -1,10 +1,14 @@
-﻿namespace Blog.Libraries.Core.Domain.Members
+﻿using System;
+
+namespace Blog.Libraries.Core.Domain.Members
 {
 
     public interface IAuthenticationUser
     {
 
-        AuthenticationType AuthenticatinType { get; }
+        Guid Guid { get; set; }
+
+        AuthenticationType AuthenticationType { get; }
 
     }
 

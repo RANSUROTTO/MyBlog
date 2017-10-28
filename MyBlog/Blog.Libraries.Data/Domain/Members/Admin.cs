@@ -33,7 +33,7 @@ namespace Blog.Libraries.Data.Domain.Members
         /// <summary>
         /// 身份验证类型
         /// </summary>
-        public AuthenticationType AuthenticatinType => AuthenticationType.Admin;
+        public AuthenticationType AuthenticationType => AuthenticationType.Admin;
 
     }
 

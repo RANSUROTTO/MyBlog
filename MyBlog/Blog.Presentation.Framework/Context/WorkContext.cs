@@ -5,6 +5,7 @@ using Blog.Libraries.Core.Domain.Localization;
 using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Core.Fakes;
 using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Services.Authentication;
 
 namespace Blog.Presentation.Framework.Context
 {
@@ -15,16 +16,16 @@ namespace Blog.Presentation.Framework.Context
         #region Fields
 
         private readonly HttpContextBase _httpContext;
-
-        private Customer _cacheCustomer;
+        private readonly IAuthenticationService _authenticationService;
 
         #endregion
 
         #region Constructor
 
-        public WorkContext()
+        public WorkContext(HttpContextBase httpContext, IAuthenticationService authenticationService)
         {
-
+            _httpContext = httpContext;
+            _authenticationService = authenticationService;
         }
 
         #endregion
@@ -33,23 +34,18 @@ namespace Blog.Presentation.Framework.Context
 
         public virtual IGuest Guest
         {
-            get
-            {
-
-
-                throw new NotImplementedException();
-            }
+            get { return _authenticationService.GetAuthenticationMember<Guest>(AuthenticationType.Guest); }
         }
 
         public ICustomer Customer
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return _authenticationService.GetAuthenticationMember<Customer>(AuthenticationType.Customer); }
         }
 
-        public IAdmin Admin { get; }
+        public IAdmin Admin
+        {
+            get { return _authenticationService.GetAuthenticationMember<Admin>(AuthenticationType.Admin); }
+        }
 
         public Language Language { get; set; }
 

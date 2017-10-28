@@ -1,4 +1,5 @@
-﻿using Blog.Libraries.Core.Data;
+﻿using System;
+using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
 
 namespace Blog.Libraries.Data.Domain.Members
@@ -18,7 +19,7 @@ namespace Blog.Libraries.Data.Domain.Members
         /// <summary>
         /// 身份验证类型
         /// </summary>
-        public AuthenticationType AuthenticatinType => AuthenticationType.Guest;
+        public AuthenticationType AuthenticationType => AuthenticationType.Guest;
 
     }
 

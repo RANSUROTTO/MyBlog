@@ -57,6 +57,112 @@ namespace Blog.Libraries.Services.Authentication
 
         #region Methods
 
+        public void SignIn(IAuthenticationUser user, DateTime? expirantion = null, bool createPersistentCookie = true)
+        {
+            var now = DateTime.UtcNow.ToLocalTime();
+            var ticketName = _customerSettings.AuthenticationTicketName;
+            var actualExpirationTimeSpan = expirantion.HasValue ?
+                (expirantion.Value - now)
+                : _expirationTimeSpan;
+
+            var ticket = new FormsAuthenticationTicket(
+                1 /*version*/,
+                ticketName,
+                now,
+                now.Add(actualExpirationTimeSpan),
+                createPersistentCookie,
+                user.Guid.ToString(),
+                FormsAuthentication.FormsCookiePath);
+
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+            var cookie = _httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (cookie == null)
+            {
+                cookie = new HttpCookie(FormsAuthentication.FormsCookieName) { HttpOnly = true };
+                if (FormsAuthentication.CookieDomain != null)
+                {
+                    cookie.Domain = FormsAuthentication.CookieDomain;
+                }
+                if (ticket.IsPersistent)
+                {
+                    cookie.Expires = ticket.Expiration;
+                }
+                cookie.Secure = FormsAuthentication.RequireSSL;
+                cookie.Path = FormsAuthentication.FormsCookiePath;
+            }
+
+            var ticketDictionary = StringToAuthenticationTicket(cookie.Value);
+            ticketDictionary[user.AuthenticationType.ToString().ToLower(CultureInfo.InvariantCulture)] = encryptedTicket;
+            cookie.Value = AuthenticationTicketToString(ticketDictionary);
+
+            _httpContext.Response.Cookies.Set(cookie);
+        }
+
+        public virtual void SignOut(AuthenticationType type)
+        {
+
+            if (_httpContext?.Request == null
+                || !_httpContext.Request.IsAuthenticated
+                || !(_httpContext.User.Identity is FormsIdentity))
+                return;
+
+            var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
+            var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
+
+            if (ticketDictionary.ContainsKey(type.ToString()))
+                ticketDictionary.Remove(type.ToString());
+
+            //清除已缓存的已身份验证对象
+            RemoveCacheMemberByAuthenticationType(type);
+        }
+
+        public virtual T GetAuthenticationMember<T>(AuthenticationType authenticationType) where T : IAuthenticationUser, new()
+        {
+            var cacheMember = GetCacheMemberByAuthenticationType(authenticationType);
+            if (cacheMember != null)
+                return (T)cacheMember;
+
+            if (_httpContext?.Request == null
+                || !_httpContext.Request.IsAuthenticated
+                || !(_httpContext.User.Identity is FormsIdentity))
+                return default(T);
+
+            var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
+            var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
+
+            T t = (T)GetMemberByAuthenticationTypeAndTicket(authenticationType, ticketDictionary);
+
+            return t;
+        }
+
+        #endregion
+
+        #region Obsolete Methods
+
+        [Obsolete("IAuthenticationUser:Use when not in use", true)]
+        public virtual T GetAuthenticationMember<T>() where T : class
+        {
+            var authenticationType = GetAuthenticationTypeByMemberType<T>();
+
+            var cacheMember = GetCacheMemberByAuthenticationType(authenticationType);
+            if (cacheMember != null)
+                return (T)cacheMember;
+
+            if (_httpContext?.Request == null
+                || !_httpContext.Request.IsAuthenticated
+                || !(_httpContext.User.Identity is FormsIdentity))
+                return null;
+
+            var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
+            var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
+
+            T t = (T)GetMemberByAuthenticationTypeAndTicket(authenticationType, ticketDictionary);
+
+            return t;
+        }
+
+        [Obsolete("IAuthenticationUser:Use when not in use", true)]
         public virtual void SignIn(Guid guid, AuthenticationType type, DateTime? expirantion = null, bool createPersistentCookie = true)
         {
             var now = DateTime.UtcNow.ToLocalTime();
@@ -97,45 +203,6 @@ namespace Blog.Libraries.Services.Authentication
             cookie.Value = AuthenticationTicketToString(ticketDictionary);
 
             _httpContext.Response.Cookies.Set(cookie);
-        }
-
-        public virtual void SignOut(Guid guid, AuthenticationType type)
-        {
-
-            if (_httpContext?.Request == null
-                || !_httpContext.Request.IsAuthenticated
-                || !(_httpContext.User.Identity is FormsIdentity))
-                return;
-
-            var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
-            var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
-
-            if (ticketDictionary.ContainsKey(type.ToString()))
-                ticketDictionary.Remove(type.ToString());
-
-            //清除已缓存的已身份验证对象
-            RemoveCacheMemberByAuthenticationType(type);
-        }
-
-        public virtual T GetAuthenticationMember<T>() where T : class
-        {
-            var authenticationType = GetAuthenticationTypeByMemberType<T>();
-
-            var cacheMember = GetCacheMemberByAuthenticationType(authenticationType);
-            if (cacheMember != null)
-                return (T)cacheMember;
-
-            if (_httpContext?.Request == null
-                || !_httpContext.Request.IsAuthenticated
-                || !(_httpContext.User.Identity is FormsIdentity))
-                return null;
-
-            var fromsIdentity = (FormsIdentity)_httpContext.User.Identity;
-            var ticketDictionary = StringToAuthenticationTicket(fromsIdentity.Ticket.UserData);
-
-            T t = (T)GetMemberByAuthenticationTypeAndTicket(authenticationType, ticketDictionary);
-
-            return t;
         }
 
         #endregion
@@ -231,6 +298,8 @@ namespace Blog.Libraries.Services.Authentication
         /// </summary>
         private string AuthenticationTicketToString(Dictionary<string, string> ticketDictionary)
         {
+            if (ticketDictionary == null)
+                throw new ArgumentException("ticketDictionary is null");
             var dictionaryTypeConverter = TypeDescriptor.GetConverter(typeof(Dictionary<string, string>));
             return (string)dictionaryTypeConverter.ConvertTo(ticketDictionary, typeof(string));
         }
@@ -240,6 +309,9 @@ namespace Blog.Libraries.Services.Authentication
         /// </summary>
         private Dictionary<string, string> StringToAuthenticationTicket(string ticketString)
         {
+            if (string.IsNullOrEmpty(ticketString))
+                throw new ArgumentException("ticketString Is Null Or Empty");
+
             var dictionaryTypeConverter = TypeDescriptor.GetConverter(typeof(Dictionary<string, string>));
             return (Dictionary<string, string>)dictionaryTypeConverter.ConvertFrom(ticketString) ?? new Dictionary<string, string>();
         }
