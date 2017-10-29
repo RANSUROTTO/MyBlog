@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -417,7 +418,38 @@ namespace Blog.Libraries.Core.Helper
 
         public virtual void RestartAppDomain(bool makeRedirect = false, string redirectUrl = "")
         {
-            throw new NotImplementedException();
+            if (CommonHelper.GetTrustLevel() > AspNetHostingPermissionLevel.Medium)
+            {
+                //full trust
+                HttpRuntime.UnloadAppDomain();
+
+                TryWriteGlobalAsax();
+            }
+            else
+            {
+                //medium trust
+                bool success = TryWriteWebConfig();
+                if (!success)
+                {
+                    throw new Exception("Unable to restart");
+                }
+                success = TryWriteGlobalAsax();
+
+                if (!success)
+                {
+                    throw new Exception("Unable to restart");
+                }
+            }
+
+            // If setting up extensions/modules requires an AppDomain restart, it's very unlikely the
+            // current request can be processed correctly.  So, we redirect to the same URL, so that the
+            // new request will come to the newly started AppDomain.
+            if (_httpContext != null && makeRedirect)
+            {
+                if (String.IsNullOrEmpty(redirectUrl))
+                    redirectUrl = GetThisPageUrl(true);
+                _httpContext.Response.Redirect(redirectUrl, true /*endResponse*/);
+            }
         }
 
         public virtual bool IsRequestBeingRedirected
@@ -464,6 +496,41 @@ namespace Blog.Libraries.Core.Helper
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// 更改WebConfig最后修改时间
+        /// </summary>
+        protected virtual bool TryWriteWebConfig()
+        {
+            try
+            {
+                // In medium trust, "UnloadAppDomain" is not supported. Touch web.config
+                // to force an AppDomain restart.
+                File.SetLastWriteTimeUtc(CommonHelper.MapPath("~/web.config"), DateTime.UtcNow);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 修改Gobal.asax最后修改时间
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool TryWriteGlobalAsax()
+        {
+            try
+            {
+                File.SetLastWriteTimeUtc(CommonHelper.MapPath("~/global.asax"), DateTime.UtcNow);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion

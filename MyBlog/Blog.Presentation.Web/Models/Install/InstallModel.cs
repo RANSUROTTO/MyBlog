@@ -44,8 +44,8 @@ namespace Blog.Presentation.Web.Models.Install
 
         /// <summary>
         /// 获取或设置输入连接字符串的方式
-        /// sqlconnectioninfo_values
-        /// sqlconnectioninfo_raw
+        /// sqlconnectioninfo_values:sqlDatabaseInfo
+        /// sqlconnectioninfo_raw:sqlDatabaseConnectionString
         /// </summary>
         public string SqlConnectionInfo { get; set; }
 
@@ -70,7 +70,7 @@ namespace Blog.Presentation.Web.Models.Install
         public string ServerUserPassword { get; set; }
 
         /// <summary>
-        /// 获取或设置数据库连接字符串
+        /// 获取或设置数据库原始连接字符串
         /// </summary>
         public string DatabaseConnectionString { get; set; }
 
