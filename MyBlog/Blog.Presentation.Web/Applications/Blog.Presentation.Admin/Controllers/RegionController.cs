@@ -8,10 +8,21 @@ namespace Blog.Presentation.Admin.Controllers
 {
     public class RegionController : Controller
     {
-        // GET: Region
-        public ActionResult Index()
+
+        public ActionResult Sidebar()
         {
             return View();
         }
+
+        public ActionResult Header()
+        {
+            return View();
+        }
+
+        public ActionResult Footer()
+        {
+            return View();
+        }
+
     }
 }
