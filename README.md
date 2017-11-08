@@ -69,12 +69,13 @@ MyBlog
 ```
 
 ## Initialization Configuration
+
 ### Redis Caching
-  1.博客线上版本因为仅仅只有一个服务器的原因，而且使用了Windows Server 2012系统，所以仅考虑使用了Redis-Windows-3.2.100作为服务端，使用StackExchange.Redis作为c#的操作类库。<br/>
-  2.配置Redis缓存功能：在命名空间 Blog.Presentation.Framework 下找到 DependencyRegistrar.cs , 这是一个实现 IDependencyRegistrar 优先级最高的依赖注册类.实现 Register 方法.在该方法中完成 RedisCacheManager 为 ICacheManager 的依赖注册。
-  ``` csharp
+  1.博客线上版本因为仅仅只有一个服务器的原因，而且使用了Windows Server 2012系统，所以仅考虑使用了 Redis-Windows-3.2.100 作为服务端，使用    StackExchange.Redis作为c#的操作类库。<br/>
+  2.配置Redis缓存功能：在命名空间 Blog.Presentation.Framework 下找到 DependencyRegistrar.cs ，这是一个实现 IDependencyRegistrar 优先级最高的依赖注册类.实现 Register 方法.在该方法中完成 RedisCacheManager 为 ICacheManager 的依赖注册。
+  ```csharp
  builder.RegisterType<RedisConnectionWrapper>()
-     .WithParameter(new NamedParameter("connectionString", "connectionString"))
+     .WithParameter(new NamedParameter("connectionString", "127.0.0.1:6379,allowAdmin=true"))
      .As<IRedisConnectionWrapper>()
      .SingleInstance();
  builder.RegisterType<RedisCacheManager>()
@@ -82,6 +83,9 @@ MyBlog
      .Named<ICacheManager>("cache_static")
      .InstancePerLifetimeScope();
   ```
+  3.使用了RedisCache后建议弃用MemoryCache
+  
+### Memcached Ching
 
 
 
