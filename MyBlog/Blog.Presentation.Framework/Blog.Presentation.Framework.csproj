@@ -115,6 +115,9 @@
     <Compile Include="Localization\LocalizedUrlExtenstions.cs" />
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Razor\BaseRazorViewEngine.cs" />
+    <Compile Include="Routes\IRoutePublisher.cs" />
+    <Compile Include="Routes\RoutePublisher.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
   </ItemGroup>
   <ItemGroup />
