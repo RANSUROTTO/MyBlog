@@ -8,6 +8,7 @@ using Autofac.Builder;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
 using Blog.Libraries.Core.Caching;
+using Blog.Libraries.Core.Caching.RedisCaching;
 using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Fakes;
@@ -94,6 +95,16 @@ namespace Blog.Presentation.Framework
             //注册缓存服务
             builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_static").SingleInstance();
             builder.RegisterType<PerRequestCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_per_request").InstancePerLifetimeScope();
+
+            //redis
+            builder.RegisterType<RedisConnectionWrapper>()
+                .WithParameter(new NamedParameter("connectionString", ""))
+                .As<IRedisConnectionWrapper>()
+                .SingleInstance();
+            builder.RegisterType<RedisCacheManager>()
+                .As<ICacheManager>()
+                .Named<ICacheManager>("cache_static")
+                .InstancePerLifetimeScope();
 
             //注册设定
             builder.RegisterType<SettingService>().As<ISettingService>()
