@@ -71,8 +71,24 @@ MyBlog
 ## Initialization Configuration
 
 ### Center Config
- Blog.Libraries.Core.Configuration 命名空间下,
+ Blog.Libraries.Core.Configuration 命名空间下,存在配置类 WebConfig.cs 这是一个用于控制所有其它配置的配置类<br/>
+ 通过启动项目的配置文件（App.config,Web.config）进行初始化<br/>
+ 您需要在启动项目的配置文件中这样进行配置：<br/>
+ ```xml
+  <configSections>
+    <!-- WebConfig.cs 配置文件 type 指向 WebConfig.cs 程序集地址 -->
+    <section name="WebConfig" type="Blog.Libraries.Core.Configuration.WebConfig" requirePermission="false" />
+  </configSections>
 
+    <!-- WebConfig.cs 配置节点 -->
+  <WebConfig>
+    <Startup IgnoreStartupTasks="false" />
+    <Cluster OpenClusterPattern="true"/>
+    <!-- 其它属性配置 。。。。。。 -->
+  </WebConfig>
+ ```
+ [当需要进行集群设置时，这也是主要的配置类。你需要保证它们的同步！]
+ 
 ### Redis Caching
   1_博客线上版本因为仅仅只有一个服务器的原因，而且使用了Windows Server 2012系统，所以仅考虑使用了 Redis-Windows-3.2.100 作为服务端，使用    StackExchange.Redis作为c#的操作类库。<br/>
   2_配置Redis缓存功能：在命名空间 Blog.Presentation.Framework 下找到 DependencyRegistrar.cs ，这是一个实现 IDependencyRegistrar 优先级最高的依赖注册类.实现 Register 方法.在该方法中完成 RedisCacheManager 为 ICacheManager 的依赖注册。
