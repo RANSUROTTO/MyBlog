@@ -90,22 +90,40 @@ MyBlog
  [ 当需要进行集群设置时，这也是主要的配置类。你需要保证它们的同步！]
  
 ### Redis Caching
-  1_博客线上版本因为仅仅只有一个服务器的原因，而且使用了Windows Server 2012系统，所以仅考虑使用了 Redis-Windows-3.2.100 作为服务端，使用    StackExchange.Redis作为c#的操作类库。<br/>
-  2_配置Redis缓存功能：在命名空间 Blog.Presentation.Framework 下找到 DependencyRegistrar.cs ，这是一个实现 IDependencyRegistrar 优先级最高的依赖注册类.实现 Register 方法.在该方法中完成 RedisCacheManager 为 ICacheManager 的依赖注册。
-  ```csharp
- builder.RegisterType<RedisConnectionWrapper>()
-     .WithParameter(new NamedParameter("connectionString", "127.0.0.1:6379,allowAdmin=true"))
-     .As<IRedisConnectionWrapper>()
-     .SingleInstance();
- builder.RegisterType<RedisCacheManager>()
-     .As<ICacheManager>()
-     .Named<ICacheManager>("cache_static")
-     .InstancePerLifetimeScope();
-  ```
+  1_博客线上版本因为仅仅只有一个服务器的原因，而且使用了Windows Server 2012系统，所以仅考虑使用了 Redis-Windows-3.2.100 作为服务端，使用    StackExchange.Redis 作为c#的操作类库。<br/>
+  2_配置Redis缓存功能：你需要配置 Web.config 内 <WebConfig> 节点的 <RedisCaching> 节点.将其 Enable 属性设置为 true，并且配置 ConfigString。
+ ```xml
+  <!-- Web.config -->
+  <WebConfig>
+    <!-- Redis缓存配置 -->
+    <RedisCaching Enable="true" ConfigString="127.0.0.1:6379"/>
+  </WebConfig>
+ ```
   3_使用了RedisCache后建议弃用MemoryCache
   
 ### Memcached Chaching
-
+ 1_开启memcached缓存功能：你需要配置 Web.config 内 <WebConfig> 节点内的 <MemCaching> 节点,将其 Enable 属性设置为 true。我们使用的 memchached 的操作类库为 Enyim.Caching，你需要在 Web.config 中另行配置 Enyim.Caching。
+  ```xml
+  <configSections>
+    <sectionGroup name="enyim.com">
+      <section name="memcached" type="Enyim.Caching.Configuration.MemcachedClientSection, Enyim.Caching"/>
+    </sectionGroup>
+  </configSections>
+ 
+  <enyim.com>
+    <memcached>
+      <servers>
+        <add address="127.0.0.1" port="11211" />
+      </servers>
+    </memcached>
+  </enyim.com>
+ 
+  <WebConfig>
+    <!-- Memcached缓存配置 -->
+    <MemCaching Enable="true" />
+  </WebConfig>
+  
+  ```
 
 
 
