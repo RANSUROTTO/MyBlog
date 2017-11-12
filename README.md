@@ -109,6 +109,7 @@ MyBlog
       <section name="memcached" type="Enyim.Caching.Configuration.MemcachedClientSection, Enyim.Caching"/>
     </sectionGroup>
   </configSections>
+ 
   <enyim.com>
     <memcached>
       <servers>
@@ -116,9 +117,10 @@ MyBlog
       </servers>
     </memcached>
   </enyim.com>
+ 
   <!-- Web.config -->
   <WebConfig>
-    <!-- Redis缓存配置 -->
+    <!-- Memcached缓存配置 -->
     <MemCaching Enable="true" />
   </WebConfig>
   
