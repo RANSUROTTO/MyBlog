@@ -118,7 +118,6 @@ MyBlog
     </memcached>
   </enyim.com>
  
-  <!-- Web.config -->
   <WebConfig>
     <!-- Memcached缓存配置 -->
     <MemCaching Enable="true" />
