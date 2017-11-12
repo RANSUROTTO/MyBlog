@@ -17,7 +17,13 @@ namespace Blog.Libraries.Core.Configuration
             //初始化属性值
             var startupNode = section.SelectSingleNode("Startup");
             Config.IgnoreStartupTasks = GetBool(startupNode, "IgnoreStartupTasks");
+
             var clusterNode = section.SelectSingleNode("Cluster");
+            Config.OpenClusterPattern = GetBool(clusterNode, "OpenClusterPattern");
+
+            var redisCachingNode = section.SelectSingleNode("RedisCaching");
+            Config.RedisCachingEnable = GetBool(redisCachingNode, "Enable");
+            Config.RedisCachingConfig = GetString(redisCachingNode, "ConfigString");
 
 
             return Config;
@@ -37,6 +43,21 @@ namespace Blog.Libraries.Core.Configuration
         /// </summary>
         public bool OpenClusterPattern { get; set; }
 
+        /// <summary>
+        /// 是否开启Redis缓存
+        /// </summary>
+        public bool RedisCachingEnable { get; set; }
+
+        /// <summary>
+        /// Redis缓存配置字符串
+        /// </summary>
+        public string RedisCachingConfig { get; set; }
+
+        /// <summary>
+        /// 是否开启Memcached缓存
+        /// </summary>
+        public string MemcachedEnable { get; set; }
+        
         #endregion
 
         #region Utilities
