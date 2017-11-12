@@ -25,6 +25,8 @@ namespace Blog.Libraries.Core.Configuration
             Config.RedisCachingEnable = GetBool(redisCachingNode, "Enable");
             Config.RedisCachingConfig = GetString(redisCachingNode, "ConfigString");
 
+            var memcachingNode = section.SelectSingleNode("MemCaching");
+            Config.MemcachedEnable = GetBool(memcachingNode, "Enable");
 
             return Config;
         }
@@ -56,8 +58,8 @@ namespace Blog.Libraries.Core.Configuration
         /// <summary>
         /// 是否开启Memcached缓存
         /// </summary>
-        public string MemcachedEnable { get; set; }
-        
+        public bool MemcachedEnable { get; set; }
+
         #endregion
 
         #region Utilities
