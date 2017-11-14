@@ -126,6 +126,20 @@ MyBlog
   ```
 
 ### Application Settings
-
+ 1_该设置主要针对业务功能的配置。目前所有该类设置都放置在 Blog.Libraries.Data.Settings 命名空间下。该设置实际存储在数据库中,正常使用将会添加至缓存中。
+ 2_创建一个新的业务配置：新建一个以 Settings 结尾的类,实现 ISettings 接口即可.TypeFinder 和 Autofac 将会帮你完成剩下的包括依赖注册等操作。
+ ```csharp
+  //create
+  public class TestSettings : ISetting{
+    public bool RunStartTask{get;set;}
+  }
+  //use
+  public static void Main(string[] args){
+    TestSettings settings = EngineContext.Current.Resolve<TestSettings>();
+  }
+ ```
+ 
+ 
+ 
 
 
