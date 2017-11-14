@@ -8,6 +8,7 @@ using Autofac.Builder;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
 using Blog.Libraries.Core.Caching;
+using Blog.Libraries.Core.Caching.MemCaching;
 using Blog.Libraries.Core.Caching.RedisCaching;
 using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Data;
@@ -93,18 +94,22 @@ namespace Blog.Presentation.Framework
             //注册插件服务
 
             //注册缓存服务
-            builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_static").SingleInstance();
             builder.RegisterType<PerRequestCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_per_request").InstancePerLifetimeScope();
 
-            //redis
-            builder.RegisterType<RedisConnectionWrapper>()
-                .WithParameter(new NamedParameter("connectionString", ""))
-                .As<IRedisConnectionWrapper>()
-                .SingleInstance();
-            builder.RegisterType<RedisCacheManager>()
-                .As<ICacheManager>()
-                .Named<ICacheManager>("cache_static")
-                .InstancePerLifetimeScope();
+            if (config.MemcachedEnable)
+                builder.RegisterType<MemcachedManager>().As<ICacheManager>().Named<ICacheManager>("chache_other").SingleInstance();
+
+            if (config.RedisCachingEnable)
+            {
+                builder.RegisterType<RedisConnectionWrapper>().As<IRedisConnectionWrapper>().SingleInstance();
+                builder.RegisterType<RedisCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_static")
+                    .InstancePerLifetimeScope();
+            }
+            else
+            {
+                builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("cache_static").SingleInstance();
+            }
+
 
             //注册设定
             builder.RegisterType<SettingService>().As<ISettingService>()

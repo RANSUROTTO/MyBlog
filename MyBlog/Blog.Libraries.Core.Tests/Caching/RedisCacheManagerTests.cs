@@ -1,5 +1,6 @@
 ﻿using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.Caching.RedisCaching;
+using Blog.Libraries.Core.Configuration;
 using Blog.Tests;
 using NUnit.Framework;
 
@@ -29,7 +30,12 @@ namespace Blog.Libraries.Core.Tests.Caching
         /// </summary>
         static RedisCacheManagerTests()
         {
-            _redisConnectionWrapper = new RedisConnectionWrapper("127.0.0.1:6379,allowAdmin=true");
+            var config = new WebConfig
+            {
+                RedisCachingEnable = true,
+                RedisCachingConfig = "127.0.0.1:6379,allowAdmin=true"
+            };
+            _redisConnectionWrapper = new RedisConnectionWrapper(config);
             _redisCacheManager = new RedisCacheManager(_redisConnectionWrapper);
         }
 

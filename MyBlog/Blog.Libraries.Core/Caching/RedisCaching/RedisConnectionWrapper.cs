@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using Blog.Libraries.Core.Configuration;
 using RedLock;
 using StackExchange.Redis;
 
@@ -16,9 +17,9 @@ namespace Blog.Libraries.Core.Caching.RedisCaching
 
         #region Ctor
 
-        public RedisConnectionWrapper(string connectionString)
+        public RedisConnectionWrapper(WebConfig webconfig)
         {
-            this._connectionString = new Lazy<string>(() => connectionString);
+            this._connectionString = new Lazy<string>(() => webconfig.RedisCachingConfig);
             this._redisLockFactory = CreateRedisLockFactory();
         }
 

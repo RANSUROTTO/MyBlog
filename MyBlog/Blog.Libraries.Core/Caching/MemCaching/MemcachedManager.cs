@@ -17,15 +17,9 @@ namespace Blog.Libraries.Core.Caching.MemCaching
 
         #endregion
 
-        #region Properties
-
-        protected string SectionName { get { return _sectionName.Value; } }
-
-        #endregion
-
         #region Constructor
 
-        public MemcachedManager(string sectionName)
+        public MemcachedManager(string sectionName = "enyim.com")
         {
             _sectionName = new Lazy<string>(() => sectionName);
         }
