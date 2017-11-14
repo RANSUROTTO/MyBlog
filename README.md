@@ -131,7 +131,7 @@ MyBlog
  ```csharp
   //create
   public class TestSettings : ISetting{
-    public bool RunStartTask{get;set;}
+    public bool RunStartTask { get; set; }
   }
   //use
   public static void Main(string[] args){
