@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Blog.Libraries.Core.Domain.Members;
-using Blog.Libraries.Data.Domain.Members;
+﻿using System.Web.Mvc;
 using Blog.Libraries.Data.Domain.Members.Enum;
 using Blog.Libraries.Services.Authentication;
 using Blog.Libraries.Services.Members;
@@ -14,6 +8,7 @@ namespace Blog.Presentation.Web.Controllers
 {
     public class CustomerController : Controller
     {
+
         #region Fields
 
         private readonly IAuthenticationService _authenticationService;
