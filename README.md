@@ -140,10 +140,10 @@ MyBlog
  ```
  
  ### Database Connection Settings 
-  1_该项目数据持久化默认提供 Entity Framework ORM框架，项目线上使用 mysql 数据库.
-  2_项目提供 mysql 和 sqlserver 及 sqlite 持久化操作的实现（ sqlserver 和 sqlite 仅经过单元测试,未在线上版本使用）
-  3_项目内所有数据库实体均继承于 BaseEntity 类（便于管理）。项目实质上使用 EF6 DataMigration 对数据库进行实体变更管理（该功能未提交，请自行启用）。
-  4_设置你的数据库连接信息（包括数据库提供商和数据库连接字符串），在启动项目
+  1_该项目数据持久化默认提供 Entity Framework ORM框架，项目线上使用 mysql 数据库.<br/>
+  2_项目提供 mysql 和 sqlserver 及 sqlite 持久化操作的实现（ sqlserver 和 sqlite 仅经过单元测试,未在线上版本使用）<br/>
+  3_项目内所有数据库实体均继承于 BaseEntity 类（便于管理）。项目实质上使用 EF6 DataMigration 对数据库进行实体变更管理（该功能未提交，请自行启用）。<br/>
+  4_设置你的数据库连接信息（包括数据库提供商和数据库连接字符串），在启动项目<br/>
  
  
 
