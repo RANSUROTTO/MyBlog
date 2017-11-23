@@ -71,8 +71,8 @@ MyBlog
 ## Initialization Configuration
 
 ### Center Config
- Blog.Libraries.Core.Configuration 命名空间下,存在配置类 WebConfig.cs 这是一个用于控制所有其它配置的配置类<br/>
- 通过启动项目的配置文件(App.config,Web.config)进行初始化<br/>
+ `Blog.Libraries.Core.Configuration` 命名空间下,存在配置类 `WebConfig.cs` 这是一个用于控制所有其它配置的配置类<br/>
+ 通过启动项目的配置文件(`App.config`,`Web.config`)进行初始化<br/>
  您需要在启动项目的配置文件中这样进行配置：<br/>
  ```xml
   <configSections>
@@ -90,8 +90,8 @@ MyBlog
  [ 当需要进行集群设置时，这也是主要的配置类。你需要保证它们的同步！]
  
 ### Redis Caching
-  1_博客线上版本因为仅仅只有一个服务器的原因，而且使用了Windows Server 2012系统，所以仅考虑使用了 Redis-Windows-3.2.100 作为服务端，使用    StackExchange.Redis 作为c#的操作类库。<br/>
-  2_配置Redis缓存功能：你需要配置 Web.config 内 <WebConfig> 节点的 <RedisCaching> 节点.将其 Enable 属性设置为 true，并且配置 ConfigString。
+  1_博客线上版本因为仅仅只有一个服务器的原因，而且使用了 `Windows Server 2012` 系统，所以仅考虑使用了 `Redis-Windows-3.2.100` 作为服务端，使用    `StackExchange.Redis` 作为应用程序操作redis的类库。<br/>
+  2_配置 `Redis` 缓存功能：你需要配置 `Web.config` 内 `<WebConfig>` 节点的 `<RedisCaching>` 节点.将其 `Enable` 属性设置为 `true`，并且配置 `ConfigString`。
  ```xml
   <!-- Web.config -->
   <WebConfig>
@@ -99,10 +99,10 @@ MyBlog
     <RedisCaching Enable="true" ConfigString="127.0.0.1:6379"/>
   </WebConfig>
  ```
-  3_使用了RedisCache后建议弃用MemoryCache
+  3_使用了 `RedisCache` 后建议弃用 `MemoryCache`
   
 ### Memcached Chaching
- 1_开启memcached缓存功能：你需要配置 Web.config 内 <WebConfig> 节点内的 <MemCaching> 节点,将其 Enable 属性设置为 true。我们使用的 memchached 的操作类库为 Enyim.Caching，你需要在 Web.config 中另行配置 Enyim.Caching。
+ 1_开启 `memcached` 缓存功能：你需要配置 `Web.config` 内 `<WebConfig>` 节点内的 `<MemCaching>` 节点,将其 `Enable` 属性设置为 `true`。我们使用的 `memchached` 的操作类库为 `Enyim.Caching`，你需要在 `Web.config` 中另行配置 `Enyim.Caching`。
   ```xml
   <configSections>
     <sectionGroup name="enyim.com">
@@ -126,8 +126,8 @@ MyBlog
   ```
 
 ### Application Settings
- 1_该设置主要针对业务功能的配置。目前所有该类设置都放置在 Blog.Libraries.Data.Settings 命名空间下。该设置实际存储在数据库中,正常使用将会添加至缓存中。<br/>
- 2_创建一个新的业务配置：新建一个以 Settings 结尾的类,实现 ISettings 接口即可.TypeFinder 和 Autofac 将会帮你完成剩下的包括依赖注册等操作。
+ 1_该设置主要针对业务功能的配置。目前所有该类设置都放置在 `Blog.Libraries.Data.Settings` 命名空间下。该设置实际存储在数据库中,正常使用将会添加至缓存中。<br/>
+ 2_创建一个新的业务配置：新建一个以 `Settings` 结尾的类,实现 `ISettings` 接口即可.`TypeFinder` 和 `Autofac` 将会帮你完成剩下的包括依赖注册等操作。
  ```csharp
   //create
   public class TestSettings : ISetting{
@@ -139,6 +139,14 @@ MyBlog
   }
  ```
  
+ ### Database Connection Settings 
+  1_该项目数据持久化默认提供 `Entity Framework` ORM框架，项目线上使用 `mysql` 数据库.<br/>
+  2_项目提供 `mysql` 和 `sqlserver` 及 `sqlite` 持久化操作的实现（ `sqlserver` 和 `sqlite` 仅经过单元测试,未在线上版本使用）<br/>
+  3_项目内所有数据库实体均继承于 `BaseEntity` 类（便于管理）。项目实质上使用 EF6 DataMigration 对数据库进行实体变更管理（该功能未提交，请自行启用）。<br/>
+  4_设置你的数据库连接信息（包括数据库提供商和数据库连接字符串），在启动项目 `AppData\` 目录下找到 `db.config` 文件（该文件不包含于解决方案视图目录下），如在文件资源管理器中仍然未找到该文件，您需要启动项目进行一次数据初始化。 <br/>
+ ```
+   
+ ```
  
  
 
