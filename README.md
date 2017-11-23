@@ -150,7 +150,8 @@ MyBlog
      <item key="DataProvider" value="databaseName"/>
      <item key="DataConnectionString" value="Server=127.0.0.1;"/>
      <!-- Release -->
-     <!-- <item key="" value="" /> -->
+     <!-- <item key="DataProvider" value="databaseName" /> -->
+     <!-- <item key="DataConnectionString" value="Server=127.0.0.1;" /> -->
    </configuration>
  ```
  
