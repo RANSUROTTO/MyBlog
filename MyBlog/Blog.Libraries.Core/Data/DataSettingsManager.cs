@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
-using System.Text;
-using Blog.Libraries.Core.Extensions;
+using System.Linq;
+using System.Xml.Linq;
 using Blog.Libraries.Core.Helper;
 
 namespace Blog.Libraries.Core.Data
@@ -42,11 +40,13 @@ namespace Blog.Libraries.Core.Data
             if (string.IsNullOrEmpty(settingString))
                 return shellSettings;
 
+            #region Old Method -> String Store
+            /*
             var settings = new List<string>();
             using (var reader = new StringReader(settingString))
             {
                 string str;
-                while (!string.IsNullOrEmpty((str = reader.ReadLine())))
+                while (!string.IsNullOrEmpty(str = reader.ReadLine()))
                 {
                     settings.Add(str);
                 }
@@ -70,7 +70,17 @@ namespace Blog.Libraries.Core.Data
                 {
                     shellSettings.RawDataSettings.Add(key, value);
                 }
-            }
+            }*/
+            #endregion
+
+            var xElement = XDocument.Parse(settingString).Root;
+            var items = xElement?.Elements("item").ToList();
+
+            if (items == null)
+                return shellSettings;
+
+            shellSettings.DataProvider = items.FirstOrDefault(p => p.Attribute("key")?.Value == "DataProvider")?.Attribute("value")?.Value;
+            shellSettings.DataConnectionString = items.FirstOrDefault(p => p.Attribute("key")?.Value == "DataConnectionString")?.Attribute("value")?.Value;
 
             return shellSettings;
         }
@@ -85,19 +95,34 @@ namespace Blog.Libraries.Core.Data
             if (shellSettings == null)
                 return string.Empty;
 
-            var settingString = new StringBuilder();
-            foreach (var propertiy in typeof(DataSettings).GetProperties())
+            var xmlDocument = new XDocument(
+                new XElement(
+                    "configuration",
+                    new XElement("item", new XAttribute("key", "DataProvider"), new XAttribute("value", shellSettings.DataProvider)),
+                    new XElement("item", new XAttribute("key", "DataConnectionString"), new XAttribute("value", shellSettings.DataConnectionString))
+                    )
+                );
+            shellSettings.RawDataSettings?.Keys.ToList().ForEach(p =>
             {
-                if (propertiy.PropertyType.IsCSharpBasicTypeOrOtherBasicType())
-                {
-                    settingString.AppendFormat("{0}:{1}{2}"
-                        , propertiy.Name
-                        , propertiy.GetValue(shellSettings),
-                        Environment.NewLine);
-                }
-            }
+                var xElement = new XElement("item", new XAttribute("key", p), new XAttribute("key", shellSettings.RawDataSettings[p]));
+                xmlDocument.Root?.Add(xElement);
+            });
 
-            return settingString.ToString();
+            #region Old Method 
+            /* var settingString = new StringBuilder();
+             foreach (var propertiy in typeof(DataSettings).GetProperties())
+             {
+                 if (propertiy.PropertyType.IsCSharpBasicTypeOrOtherBasicType())
+                 {
+                     settingString.AppendFormat("{0}:{1}{2}"
+                         , propertiy.Name
+                         , propertiy.GetValue(shellSettings),
+                         Environment.NewLine);
+                 }
+             }*/
+            #endregion
+
+            return xmlDocument.ToString();
         }
 
         /// <summary>
