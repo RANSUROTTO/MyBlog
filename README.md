@@ -141,11 +141,18 @@ MyBlog
  
  ### Database Connection Settings 
   1_该项目数据持久化默认提供 `Entity Framework` ORM框架，项目线上使用 `mysql` 数据库.<br/>
-  2_项目提供 `mysql` 和 `sqlserver` 及 `sqlite` 持久化操作的实现（ `sqlserver` 和 `sqlite` 仅经过单元测试,未在线上版本使用）<br/>
+  2_项目提供 `mysql` 和 `sqlserver` 及 `sqlite` 持久化操作的实现（ `sqlserver` 和 `sqlite` 仅经过单元测试,未在线上版本使用，生产环境使用需要谨谨慎！）<br/>
   3_项目内所有数据库实体均继承于 `BaseEntity` 类（便于管理）。项目实质上使用 EF6 DataMigration 对数据库进行实体变更管理（该功能未提交，请自行启用）。<br/>
   4_设置你的数据库连接信息（包括数据库提供商和数据库连接字符串），在启动项目 `AppData\` 目录下找到 `db.config` 文件（该文件不包含于解决方案视图目录下），如在文件资源管理器中仍然未找到该文件，您需要启动项目进行一次数据初始化。 <br/>
- ```
-   
+ ```xml
+   <configuration>
+     <!-- Debug -->
+     <item key="DataProvider" value="databaseName"/>
+     <item key="DataConnectionString" value="Server=127.0.0.1;"/>
+     <!-- Release -->
+     <!-- <item key="DataProvider" value="databaseName" /> -->
+     <!-- <item key="DataConnectionString" value="Server=127.0.0.1;" /> -->
+   </configuration>
  ```
  
  
