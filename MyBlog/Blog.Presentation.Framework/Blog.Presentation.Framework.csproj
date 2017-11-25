@@ -118,11 +118,10 @@
     <Compile Include="Razor\BaseRazorViewEngine.cs" />
     <Compile Include="Routes\IRoutePublisher.cs" />
     <Compile Include="Routes\RoutePublisher.cs" />
+    <Compile Include="Temporary\Razor\BaseRazorViewEngine.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Temporary\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
       <Project>{df1821a4-b68b-4dbf-8b03-1eef22c41971}</Project>

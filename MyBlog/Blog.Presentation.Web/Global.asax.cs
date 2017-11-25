@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Blog.Libraries.Core.Infrastructure;
+using Blog.Presentation.Framework.Temporary.Razor;
 
 namespace Blog.Presentation.Web
 {
@@ -27,7 +28,7 @@ namespace Blog.Presentation.Web
             ViewEngines.Engines.Clear();
 
             //仅适用Razor视图引擎
-            ViewEngines.Engines.Add(new RazorViewEngine());
+            ViewEngines.Engines.Add(new BaseRazorViewEngine());
 
             //注册路由
             AreaRegistration.RegisterAllAreas();
