@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Blog.Libraries.Core.Infrastructure;
+using Blog.Presentation.Framework.Temporary.Route;
 
 namespace Blog.Presentation.Web
 {
@@ -15,8 +17,9 @@ namespace Blog.Presentation.Web
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Blog.Presentation.Web.Controllers" });
 
+            var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
+            routePublisher.RegisterRoutes(routes);
         }
-
 
     }
 }

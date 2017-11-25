@@ -42,7 +42,8 @@ namespace Blog.Presentation.Framework.Temporary.Razor
             MasterLocationFormats = new string[] { };
             PartialViewLocationFormats = new string[] { };
             FileExtensions = new string[] {
-                "cshtml"
+                "cshtml",
+                "html"
             };
 
         }
@@ -83,8 +84,7 @@ namespace Blog.Presentation.Framework.Temporary.Razor
             IEnumerable<string> fileExtensions = base.FileExtensions;
             return new RazorView(controllerContext, viewPath, masterPath, true, fileExtensions);
         }
-
-
+        
         #region Utilities & Methods
 
         protected virtual string GetAreaName(RouteData routeData)
