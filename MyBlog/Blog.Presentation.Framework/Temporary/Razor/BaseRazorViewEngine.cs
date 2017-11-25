@@ -108,7 +108,7 @@ namespace Blog.Presentation.Framework.Temporary.Razor
             {
                 return area.Area;
             }
-            var route2 = route as Route;
+            var route2 = route as System.Web.Routing.Route;
             if ((route2 != null) && (route2.DataTokens != null))
             {
                 return (route2.DataTokens["area"] as string);

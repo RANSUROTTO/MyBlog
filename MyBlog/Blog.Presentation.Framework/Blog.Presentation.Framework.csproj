@@ -119,6 +119,9 @@
     <Compile Include="Routes\IRoutePublisher.cs" />
     <Compile Include="Routes\RoutePublisher.cs" />
     <Compile Include="Temporary\Razor\BaseRazorViewEngine.cs" />
+    <Compile Include="Temporary\Route\IRouteProvider.cs" />
+    <Compile Include="Temporary\Route\IRoutePublisher.cs" />
+    <Compile Include="Temporary\Route\RoutePublisher.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
   </ItemGroup>
   <ItemGroup />

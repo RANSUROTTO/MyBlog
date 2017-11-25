@@ -24,6 +24,7 @@ using Blog.Libraries.Services.Configuration;
 using Blog.Libraries.Services.Infrastructure.Installation;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Services.Security;
+using Blog.Presentation.Framework.Temporary.Route;
 
 namespace Blog.Presentation.Framework
 {
@@ -58,6 +59,9 @@ namespace Blog.Presentation.Framework
             builder.Register(p => p.Resolve<HttpContextBase>().Session)
                 .As<HttpSessionStateBase>()
                 .InstancePerLifetimeScope();
+
+            //注册路由服务
+            builder.RegisterType<RoutePublisher>().As<IRoutePublisher>().SingleInstance();
 
             //注册 Web Helper
             builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
