@@ -321,6 +321,14 @@
       <Project>{05f1c1e5-6a2c-42c3-adee-253e9ed85005}</Project>
       <Name>Blog.Presentation.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="Applications\Blog.Presentation.Admin\Blog.Presentation.Admin.csproj">
+      <Project>{cafb9683-31ec-4c45-996f-ac53cbf9ad3c}</Project>
+      <Name>Blog.Presentation.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="Applications\Blog.Presentation.API\Blog.Presentation.API.csproj">
+      <Project>{5e37fabf-c7f7-4918-90e2-4624a1a6b297}</Project>
+      <Name>Blog.Presentation.API</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

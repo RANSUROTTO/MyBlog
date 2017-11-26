@@ -11,17 +11,11 @@
     <meta name="description" content="">
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="#" type="image/png">
+    <title>@(ViewBag.PageContext.Title)</title>
 
-    <title>@ViewBag.PageContext.Title</title>
-
-    <link href="Assets/adminex/css/style.css" rel="stylesheet">
-    <link href="Assets/adminex/css/style-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="Assets/adminex/Assets/adminex/js/html5shiv.js"></script>
-        <script src="Assets/adminex/Assets/adminex/js/respond.min.js"></script>
-    <![endif]-->
+    <link href="@Url.Content("~/Assets/adminex/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Assets/adminex/css/style-responsive.css")" rel="stylesheet">
+    @RenderSection("styles", false)
 </head>
 <body>
 
@@ -602,7 +596,7 @@
             <!-- page heading end-->
             <!--body wrapper start-->
             <div class="wrapper">
-                Body contents goes here
+                @RenderBody()
             </div>
             <!--body wrapper end-->
             <!--footer section start-->
@@ -618,14 +612,20 @@
 
 
     <!-- Placed js at the end of the document so the pages load faster -->
-    <script src="Assets/adminex/js/jquery-1.10.2.min.js"></script>
-    <script src="Assets/adminex/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="Assets/adminex/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="Assets/adminex/js/bootstrap.min.js"></script>
-    <script src="Assets/adminex/js/modernizr.min.js"></script>
-    <script src="Assets/adminex/js/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/jquery-1.10.2.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/jquery-ui-1.9.2.custom.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/jquery-migrate-1.2.1.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/modernizr.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/jquery.nicescroll.js")"></script>
 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="@Url.Content("~/Assets/adminex/Assets/adminex/js/html5shiv.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Assets/adminex/Assets/adminex/js/respond.min.js")"></script>
+    <![endif]-->
     <!--common scripts for all pages-->
-    <script src="Assets/adminex/js/scripts.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/scripts.js")"></script>
+    @RenderSection("scripts", false)
 </body>
 </html>

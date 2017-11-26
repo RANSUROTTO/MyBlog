@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
+    <Compile Include="Context\PageContext.cs" />
     <Compile Include="Context\WorkContext.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\PublicController.cs" />
