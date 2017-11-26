@@ -15,7 +15,7 @@ namespace Blog.Presentation.Framework.Context
         /// <summary>
         /// 页面作者
         /// </summary>
-        public string Anthor { get; set; }
+        public string Author { get; set; }
 
         /// <summary>
         /// 页面关键词

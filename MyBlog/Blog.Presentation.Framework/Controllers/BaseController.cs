@@ -10,8 +10,21 @@ namespace Blog.Presentation.Framework.Controllers
     /// StoreIpAddress:存储用户最后访问的站点的客户端地址
     /// </summary>
     [StoreIpAddress]
-    public abstract class BaseController : Controller
+    public abstract class BaseController : AsyncController
     {
+
+        #region Constructor
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        protected BaseController()
+        {
+        }
+
+        #endregion
+
+        #region Methods
 
         public virtual string RenderPartialViewToString()
         {
@@ -33,7 +46,7 @@ namespace Blog.Presentation.Framework.Controllers
         /// </summary>
         /// <param name="viewName">视图名称</param>
         /// <param name="model">视图模型</param>
-        /// <returns></returns>
+        /// <returns>html字符串</returns>
         public virtual string RenderPartialViewToString(string viewName, object model)
         {
             //获取视图名称
@@ -54,9 +67,7 @@ namespace Blog.Presentation.Framework.Controllers
             }
         }
 
-
-
-
+        #endregion
 
     }
 
