@@ -99,6 +99,7 @@
     <Compile Include="Common\MimeTypes.cs" />
     <Compile Include="Common\SiteException.cs" />
     <Compile Include="ComponentModel\GenericDictionaryTypeConverter.cs" />
+    <Compile Include="ComponentModel\RoleAuthentication.cs" />
     <Compile Include="ComponentModel\TypeConverterRegistartionStartupTask.cs" />
     <Compile Include="Configuration\AutoBuilderBaseInterface.cs" />
     <Compile Include="Caching\CacheExtensions.cs" />

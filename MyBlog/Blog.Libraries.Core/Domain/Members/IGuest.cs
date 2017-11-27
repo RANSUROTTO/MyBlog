@@ -1,6 +1,4 @@
-﻿using Blog.Libraries.Core.Data;
-
-namespace Blog.Libraries.Core.Domain.Members
+﻿namespace Blog.Libraries.Core.Domain.Members
 {
 
     /// <summary>
