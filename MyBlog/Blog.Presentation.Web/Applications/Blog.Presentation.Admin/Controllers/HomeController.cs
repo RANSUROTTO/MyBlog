@@ -7,6 +7,7 @@ namespace Blog.Presentation.Admin.Controllers
     public class HomeController : Controller
     {
 
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.PageContext = new PageContext
