@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Blog.Libraries.Core.Domain.Members;
 
 namespace Blog.Libraries.Core.ComponentModel
 {
@@ -25,19 +26,49 @@ namespace Blog.Libraries.Core.ComponentModel
         /// </summary>
         public string RoleCode { get; set; }
 
+        /// <summary>
+        /// 允许访问的用户类型
+        /// </summary>
+        public AuthenticationType? AuthenticationType { get; set; }
+
         #endregion
 
         #region Constructor
 
+        /// <summary>
+        /// 通过权限代码设置函数权限
+        /// </summary>
         public RoleActionAttribute(string roleCode)
         {
             if (RoleCodeValidator(roleCode))
                 this.RoleCode = RoleCode;
         }
 
+        /// <summary>
+        /// 通过常用操作类型作为权限代码设置函数权限
+        /// </summary>
         public RoleActionAttribute(RoleActionType roleActionType)
         {
             this.RoleCode = GetRoleCodeByRoleActionType(roleActionType);
+        }
+
+        /// <summary>
+        /// 通过权限代码和用户类型设置函数权限
+        /// </summary>
+        public RoleActionAttribute(string roleCode, AuthenticationType type)
+        {
+            if (RoleCodeValidator(roleCode))
+                this.RoleCode = RoleCode;
+            this.AuthenticationType = type;
+        }
+
+        /// <summary>
+        /// 通过常用操作类型作为权限代码和用户类型设置函数权限
+        /// </summary>
+        public RoleActionAttribute(RoleActionType roleActionType, AuthenticationType type)
+        {
+            this.RoleCode = GetRoleCodeByRoleActionType(roleActionType);
+            this.AuthenticationType = type;
         }
 
         #endregion
