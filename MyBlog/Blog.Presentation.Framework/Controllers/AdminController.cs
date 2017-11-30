@@ -1,21 +1,43 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc.Filters;
+using Blog.Libraries.Core.Context;
+using Blog.Libraries.Core.Domain.Members;
 
 namespace Blog.Presentation.Framework.Controllers
 {
 
     public class AdminController : PublicController
     {
-        protected override void OnAuthentication(AuthenticationContext filterContext)
+
+        #region Fields
+
+        private readonly IAdmin _authenticationAdmin;
+
+        #endregion
+
+        #region Constructor
+
+        public AdminController(IWorkContext workContext) : base(workContext)
         {
-            base.OnAuthentication(filterContext);
+            _authenticationAdmin = workContext.Admin;
         }
 
+        #endregion
 
+        protected override void OnAuthentication(AuthenticationContext filterContext)
+        {
+            if (filterContext == null)
+                throw new ArgumentNullException("filterContext");
+
+            if (_authenticationAdmin == null)
+            {
+                Response.RedirectToRoute("login", new { returnUrl = Request.Url?.ToString() });
+                Response.End();
+                return;
+            }
+
+            base.OnAuthentication(filterContext);
+        }
 
     }
 
