@@ -2,10 +2,12 @@ using System;
 using System.Web.Mvc.Filters;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Presentation.Framework.Attributes.FilterAttributes;
 
 namespace Blog.Presentation.Framework.Controllers
 {
 
+    [UserAuthentication]
     public class AdminController : PublicController
     {
 

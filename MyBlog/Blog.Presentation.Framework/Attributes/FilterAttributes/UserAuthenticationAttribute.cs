@@ -8,6 +8,9 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            
+
+
             base.OnActionExecuting(filterContext);
         }
 

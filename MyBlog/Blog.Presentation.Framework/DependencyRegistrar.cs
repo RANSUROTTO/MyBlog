@@ -11,6 +11,7 @@ using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.Caching.MemCaching;
 using Blog.Libraries.Core.Caching.RedisCaching;
 using Blog.Libraries.Core.Configuration;
+using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Fakes;
 using Blog.Libraries.Core.Helper;
@@ -24,6 +25,7 @@ using Blog.Libraries.Services.Configuration;
 using Blog.Libraries.Services.Infrastructure.Installation;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Services.Security;
+using Blog.Presentation.Framework.Context;
 using Blog.Presentation.Framework.Temporary.Route;
 
 namespace Blog.Presentation.Framework
@@ -119,6 +121,9 @@ namespace Blog.Presentation.Framework
             builder.RegisterType<SettingService>().As<ISettingService>()
                 .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("cache_static"))
                 .InstancePerLifetimeScope();
+
+            //注册工作上下文
+            builder.RegisterType<WorkContext>().As<IWorkContext>().InstancePerLifetimeScope();
 
             //注册业务服务
             builder.RegisterType<InstallationLocalizationService>().As<IInstallationLocalizationService>().InstancePerLifetimeScope();

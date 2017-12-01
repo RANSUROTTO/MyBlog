@@ -1,11 +1,21 @@
 ﻿using System.Web.Mvc;
+using Blog.Libraries.Core.Context;
 using Blog.Presentation.Framework.Context;
+using Blog.Presentation.Framework.Controllers;
 
 namespace Blog.Presentation.Admin.Controllers
 {
 
-    public class HomeController : Controller
+    public class HomeController : AdminController
     {
+
+        #region Constructor
+
+        public HomeController(IWorkContext workContext) : base(workContext)
+        {
+        }
+
+        #endregion
 
         [HttpGet]
         public ActionResult Index()

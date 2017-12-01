@@ -117,6 +117,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
+      <Project>{DF1821A4-B68B-4DBF-8B03-1EEF22C41971}</Project>
+      <Name>Blog.Libraries.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Blog.Presentation.Framework\Blog.Presentation.Framework.csproj">
       <Project>{05f1c1e5-6a2c-42c3-adee-253e9ed85005}</Project>
       <Name>Blog.Presentation.Framework</Name>
