@@ -2,12 +2,12 @@ using System;
 using System.Web.Mvc.Filters;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Domain.Members;
-using Blog.Presentation.Framework.Attributes.FilterAttributes;
+using Blog.Presentation.Framework.Attributes.FilterAttributes.AuthenticationFilterAttributes;
 
 namespace Blog.Presentation.Framework.Controllers
 {
 
-    [UserAuthentication]
+    [AdminAuthentication]
     public class AdminController : PublicController
     {
 
@@ -40,7 +40,7 @@ namespace Blog.Presentation.Framework.Controllers
 
             base.OnAuthentication(filterContext);
         }
-
+        
     }
 
 }
