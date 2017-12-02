@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Blog.Presentation.Framework.Attributes.FilterAttributes.AuthenticationFilterAttributes
@@ -12,8 +8,22 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes.Authentication
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
+
+            var actionDescriptor = filterContext.ActionDescriptor as ReflectedActionDescriptor;
+            if (actionDescriptor == null) throw new ArgumentException("无效的action对象");\
+
+            var methodName = actionDescriptor.MethodInfo.Name;
+            var className = filterContext.ActionDescriptor.ControllerDescriptor.ControllerType;
+
+            if (true)
+                base.OnActionExecuting(filterContext);
+            else
+            {
+                filterContext.HttpContext.Response.RedirectToRoute("Admin_Login", new { returnUrl = "" });
+                filterContext.HttpContext.Response.End();
+            }
         }
+
     }
 
 }

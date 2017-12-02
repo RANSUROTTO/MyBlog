@@ -41,6 +41,8 @@ namespace Blog.Presentation.Framework.Controllers
             base.OnAuthentication(filterContext);
         }
         
+
+
     }
 
 }
