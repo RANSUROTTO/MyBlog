@@ -74,6 +74,8 @@
     <Compile Include="Domain\Blog\BlogCategorie.cs" />
     <Compile Include="Domain\Blog\Enum\BlogPostShowType.cs" />
     <Compile Include="Domain\Configuration\Setting.cs" />
+    <Compile Include="Domain\Jurisdiction\RoleGroup.cs" />
+    <Compile Include="Domain\Jurisdiction\UserRole.cs" />
     <Compile Include="Domain\Logging\Log.cs" />
     <Compile Include="Domain\Logging\LogLevel.cs" />
     <Compile Include="Domain\Members\Admin.cs" />
@@ -85,6 +87,8 @@
     <Compile Include="Domain\Members\Enum\CustomerNameFormat.cs" />
     <Compile Include="Domain\Members\Enum\PasswordFormat.cs" />
     <Compile Include="Mapping\Configuration\SettingMap.cs" />
+    <Compile Include="Mapping\Jurisdiction\RoleGroupMap.cs" />
+    <Compile Include="Mapping\Jurisdiction\UserRoleMap.cs" />
     <Compile Include="Mapping\Members\CustomerPasswordMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Settings\BlogSettings.cs" />
