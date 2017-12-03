@@ -10,7 +10,7 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes.Authentication
         {
 
             var actionDescriptor = filterContext.ActionDescriptor as ReflectedActionDescriptor;
-            if (actionDescriptor == null) throw new ArgumentException("无效的action对象");\
+            if (actionDescriptor == null) throw new ArgumentException("无效的action对象");
 
             var methodName = actionDescriptor.MethodInfo.Name;
             var className = filterContext.ActionDescriptor.ControllerDescriptor.ControllerType;
