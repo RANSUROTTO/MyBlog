@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Data.Domain.Jurisdiction
@@ -23,6 +25,13 @@ namespace Blog.Libraries.Data.Domain.Jurisdiction
         /// 获取或设置权限字符串
         /// </summary>
         public string RoleString { get; set; }
+
+
+        private ICollection<UserRole> _userRoles;
+        /// <summary>
+        /// 获取或设置对应用户权限
+        /// </summary>
+        public virtual ICollection<UserRole> UserRoles { get { return _userRoles?.Where(p => !p.IsDeleted).ToList(); } set { _userRoles = value; } }
 
     }
 

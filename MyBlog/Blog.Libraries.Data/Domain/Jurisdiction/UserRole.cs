@@ -16,6 +16,11 @@ namespace Blog.Libraries.Data.Domain.Jurisdiction
         public string RoleString { get; set; }
 
         /// <summary>
+        /// 获取或设置备注信息
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// 获取或设置权限对应用户
         /// </summary>
         public virtual Customer Customer { get; set; }
