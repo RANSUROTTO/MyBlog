@@ -10,6 +10,8 @@ namespace Blog.Libraries.Services.Jurisdiction
     public interface IRoleService
     {
 
+
+
     }
 
 }
