@@ -53,8 +53,8 @@
     <Compile Include="Infrastructure\Installation\IInstallationLocalizationService.cs" />
     <Compile Include="Infrastructure\Installation\InstallationLanguage.cs" />
     <Compile Include="Infrastructure\Installation\InstallationLocalizationService.cs" />
-    <Compile Include="Jurisdiction\IRoleService.cs" />
-    <Compile Include="Jurisdiction\RoleService.cs" />
+    <Compile Include="Permissions\IRoleService.cs" />
+    <Compile Include="Permissions\RoleService.cs" />
     <Compile Include="Localization\ILanguageService.cs" />
     <Compile Include="Localization\LanguageService.cs" />
     <Compile Include="Logging\ILogService.cs" />
