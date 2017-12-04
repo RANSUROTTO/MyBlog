@@ -5,7 +5,7 @@ using Blog.Libraries.Core.Helper;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Core.Infrastructure;
-using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Presentation.Framework.Attributes
 {

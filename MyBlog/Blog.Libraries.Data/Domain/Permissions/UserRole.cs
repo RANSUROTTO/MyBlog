@@ -1,7 +1,7 @@
 using Blog.Libraries.Core.Data;
-using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Data.Domain.Jurisdiction
+namespace Blog.Libraries.Data.Domain.Permissions
 {
 
     /// <summary>
@@ -23,7 +23,7 @@ namespace Blog.Libraries.Data.Domain.Jurisdiction
         /// <summary>
         /// 获取或设置权限对应用户
         /// </summary>
-        public virtual Customer Customer { get; set; }
+        public virtual Admin Admin { get; set; }
 
         /// <summary>
         /// 获取或设置权限对应组

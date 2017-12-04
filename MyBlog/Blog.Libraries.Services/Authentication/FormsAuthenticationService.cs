@@ -5,8 +5,8 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Collections.Generic;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 using Blog.Libraries.Services.Members;
-using Blog.Libraries.Data.Domain.Members;
 using Blog.Libraries.Data.Settings;
 
 namespace Blog.Libraries.Services.Authentication

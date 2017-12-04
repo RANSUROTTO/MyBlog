@@ -1,6 +1,6 @@
-using Blog.Libraries.Data.Domain.Jurisdiction;
+using Blog.Libraries.Data.Domain.Permissions;
 
-namespace Blog.Libraries.Data.Mapping.Jurisdiction
+namespace Blog.Libraries.Data.Mapping.Permissions
 {
 
     public class RoleGroupMap : CustomEntityTypeConfiguration<RoleGroup>
@@ -8,6 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Jurisdiction
 
         public RoleGroupMap()
         {
+            this.ToTable("Permissions_RoleGroup");
+
             this.Property(p => p.Name).HasMaxLength(200);
             this.Property(p => p.Description).HasMaxLength(255);
 

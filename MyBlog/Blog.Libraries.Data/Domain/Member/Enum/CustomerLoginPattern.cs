@@ -1,4 +1,4 @@
-﻿namespace Blog.Libraries.Data.Domain.Members.Enum
+﻿namespace Blog.Libraries.Data.Domain.Member.Enum
 {
     public enum CustomerLoginPattern : byte
     {

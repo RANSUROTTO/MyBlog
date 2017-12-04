@@ -8,6 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Content
 
         public ArticleMap()
         {
+            this.ToTable("Content_Article");
+
             this.Property(p => p.Title).HasMaxLength(200);
 
             //foreign key

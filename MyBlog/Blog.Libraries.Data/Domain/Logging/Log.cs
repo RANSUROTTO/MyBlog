@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
-using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Libraries.Data.Domain.Logging
 {

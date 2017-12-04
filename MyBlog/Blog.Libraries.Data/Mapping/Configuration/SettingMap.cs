@@ -8,6 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Configuration
 
         public SettingMap()
         {
+            this.ToTable("Configuration_Setting");
+
             this.Property(p => p.Name).IsRequired().IsUnicode();
             this.Property(p => p.Value).IsRequired();
         }

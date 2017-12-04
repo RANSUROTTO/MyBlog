@@ -1,10 +1,8 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Domain.Localization;
 using Blog.Libraries.Core.Domain.Members;
-using Blog.Libraries.Core.Fakes;
-using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 using Blog.Libraries.Services.Authentication;
 
 namespace Blog.Presentation.Framework.Context

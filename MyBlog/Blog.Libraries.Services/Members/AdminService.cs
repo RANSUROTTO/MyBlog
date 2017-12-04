@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Blog.Libraries.Core.Data;
-using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Libraries.Services.Members
 {

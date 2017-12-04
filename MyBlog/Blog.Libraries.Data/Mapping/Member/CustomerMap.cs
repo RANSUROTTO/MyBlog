@@ -1,6 +1,6 @@
-﻿using Blog.Libraries.Data.Domain.Members;
+﻿using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Data.Mapping.Members
+namespace Blog.Libraries.Data.Mapping.Member
 {
 
     public class CustomerMap : CustomEntityTypeConfiguration<Customer>
@@ -8,6 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Members
 
         public CustomerMap()
         {
+            this.ToTable("Member_Customer");
+
             this.Property(p => p.Username).IsRequired().HasMaxLength(50);
             this.Property(p => p.Email).HasMaxLength(200);
             this.Property(p => p.LastIpAddress).HasMaxLength(200);

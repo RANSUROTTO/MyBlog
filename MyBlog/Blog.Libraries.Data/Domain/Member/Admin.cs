@@ -1,7 +1,8 @@
 ﻿using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Data.Domain.Permissions;
 
-namespace Blog.Libraries.Data.Domain.Members
+namespace Blog.Libraries.Data.Domain.Member
 {
 
     /// <summary>
@@ -19,6 +20,11 @@ namespace Blog.Libraries.Data.Domain.Members
         /// 获取或设置管理员登录密码
         /// </summary>
         public string Passwrod { get; set; }
+
+        /// <summary>
+        /// 获取该管理员绑定的权限信息
+        /// </summary>
+        public virtual UserRole UserRole { get; set; }
 
         /// <summary>
         /// 获取或设置管理员绑定的用户

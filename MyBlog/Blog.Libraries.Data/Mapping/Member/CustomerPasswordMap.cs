@@ -1,6 +1,6 @@
-﻿using Blog.Libraries.Data.Domain.Members;
+﻿using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Data.Mapping.Members
+namespace Blog.Libraries.Data.Mapping.Member
 {
 
     public class CustomerPasswordMap : CustomEntityTypeConfiguration<CustomerPassword>
@@ -8,6 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Members
 
         public CustomerPasswordMap()
         {
+            this.ToTable("Member_CustomerPassword");
+
             this.Property(p => p.Password).HasMaxLength(32);
 
             //foreign key

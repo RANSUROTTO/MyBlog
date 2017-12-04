@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Blog.Libraries.Core.Data;
-using Blog.Libraries.Data.Domain.Members.Enum;
+﻿using Blog.Libraries.Core.Data;
+using Blog.Libraries.Data.Domain.Member.Enum;
 
-namespace Blog.Libraries.Data.Domain.Members
+namespace Blog.Libraries.Data.Domain.Member
 {
 
     public class CustomerPassword : BaseEntity

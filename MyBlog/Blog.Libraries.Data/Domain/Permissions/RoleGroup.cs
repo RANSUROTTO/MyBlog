@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Blog.Libraries.Core.Data;
 
-namespace Blog.Libraries.Data.Domain.Jurisdiction
+namespace Blog.Libraries.Data.Domain.Permissions
 {
 
     /// <summary>

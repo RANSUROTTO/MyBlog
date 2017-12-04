@@ -8,7 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Localization
 
         public LocaleStringResourceMap()
         {
-            this.ToTable("LocaleStringResource");
+            this.ToTable("Localization_LocaleStringResource");
+
             this.Property(p => p.ResourceName).IsRequired().HasMaxLength(200);
             this.Property(p => p.ResourceValue).IsRequired();
 

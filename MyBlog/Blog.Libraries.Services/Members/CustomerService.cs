@@ -3,8 +3,8 @@ using System.Linq;
 using Blog.Libraries.Core.Data;
 using System.Collections.Generic;
 using Blog.Libraries.Core.Helper;
-using Blog.Libraries.Data.Domain.Members;
-using Blog.Libraries.Data.Domain.Members.Enum;
+using Blog.Libraries.Data.Domain.Member;
+using Blog.Libraries.Data.Domain.Member.Enum;
 using Blog.Libraries.Data.Settings;
 using Blog.Libraries.Services.Security;
 

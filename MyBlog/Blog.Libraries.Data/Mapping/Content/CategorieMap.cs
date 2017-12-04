@@ -8,6 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Content
 
         public CategorieMap()
         {
+            this.ToTable("Content_Categorie");
+
             this.Property(p => p.Title).HasMaxLength(200);
 
             //nvaigation properties

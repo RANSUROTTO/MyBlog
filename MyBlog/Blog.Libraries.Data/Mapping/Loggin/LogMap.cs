@@ -8,7 +8,8 @@ namespace Blog.Libraries.Data.Mapping.Loggin
 
         public LogMap()
         {
-            this.ToTable("Log");
+            this.ToTable("Loggin_Log");
+
             this.Property(p => p.ShortMessage).IsRequired();
             this.Property(p => p.IpAddress).HasMaxLength(200);
             this.Property(p => p.PageUrl).HasMaxLength(500);

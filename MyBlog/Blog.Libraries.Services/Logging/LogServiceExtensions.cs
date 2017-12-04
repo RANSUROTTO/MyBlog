@@ -1,6 +1,6 @@
 ﻿using System;
 using Blog.Libraries.Data.Domain.Logging;
-using Blog.Libraries.Data.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Libraries.Services.Logging
 {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Data.Domain.Logging;
-using System.Linq;
 
-namespace Blog.Libraries.Data.Domain.Members
+namespace Blog.Libraries.Data.Domain.Member
 {
 
     /// <summary>
@@ -61,7 +61,6 @@ namespace Blog.Libraries.Data.Domain.Members
         /// 获取该用户绑定的概况资料
         /// </summary>
         public virtual CustomerProfile CustomerProfile { get; set; }
-
 
         private ICollection<CustomerPassword> _customerPasswords;
         /// <summary>
