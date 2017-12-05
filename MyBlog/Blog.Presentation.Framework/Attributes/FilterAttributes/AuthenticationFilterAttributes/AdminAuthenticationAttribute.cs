@@ -1,11 +1,20 @@
 using System;
 using System.Web.Mvc;
+using Blog.Libraries.Services.Permissions;
 
 namespace Blog.Presentation.Framework.Attributes.FilterAttributes.AuthenticationFilterAttributes
 {
 
     public class AdminAuthenticationAttribute : ActionFilterAttribute
     {
+
+        private readonly IRoleService _roleService;
+
+        public AdminAuthenticationAttribute(IRoleService roleService)
+        {
+            _roleService = roleService;
+        }
+
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
 
@@ -15,7 +24,7 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes.Authentication
             var methodName = actionDescriptor.MethodInfo.Name;
             var className = filterContext.ActionDescriptor.ControllerDescriptor.ControllerType.FullName;
 
-            if (true)
+            if (_roleService.Authorize(className, methodName))
                 base.OnActionExecuting(filterContext);
             else
             {
