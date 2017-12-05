@@ -104,7 +104,6 @@
   <ItemGroup>
     <Compile Include="Attributes\ControllerDescription.cs" />
     <Compile Include="Attributes\FilterAttributes\AuthenticationFilterAttributes\AdminAuthenticationAttribute.cs" />
-    <Compile Include="Attributes\FilterAttributes\AuthenticationFilterAttributes\CustomerAuthenticationAttribute.cs" />
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
     <Compile Include="Context\PageContext.cs" />
     <Compile Include="Context\WorkContext.cs" />

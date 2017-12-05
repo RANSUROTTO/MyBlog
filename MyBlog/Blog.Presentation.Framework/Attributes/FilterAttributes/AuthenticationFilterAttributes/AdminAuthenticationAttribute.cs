@@ -13,7 +13,7 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes.Authentication
             if (actionDescriptor == null) throw new ArgumentException("无效的action对象");
 
             var methodName = actionDescriptor.MethodInfo.Name;
-            var className = filterContext.ActionDescriptor.ControllerDescriptor.ControllerType;
+            var className = filterContext.ActionDescriptor.ControllerDescriptor.ControllerType.FullName;
 
             if (true)
                 base.OnActionExecuting(filterContext);

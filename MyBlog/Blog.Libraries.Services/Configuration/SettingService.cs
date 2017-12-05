@@ -17,8 +17,8 @@ namespace Blog.Libraries.Services.Configuration
 
         #region Fields
 
-        private const string AllSettingCacheKey = "ransurotto.cn.setting.all";
-        private const string SettingsPatternKey = "ransurotto.cn.setting.";
+        private const string AllSettingCacheKey = "ransurotto.com.setting.all";
+        private const string SettingsPatternKey = "ransurotto.com.setting.";
 
         private readonly IRepository<Setting> _settingRepository;
         private readonly ICacheManager _cacheManager;
