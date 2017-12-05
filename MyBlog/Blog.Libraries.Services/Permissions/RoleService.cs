@@ -1,12 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Web;
 using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.ComponentModel;
 using Blog.Libraries.Core.Context;
-using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Domain.Member;
-using Blog.Libraries.Data.Domain.Permissions;
+using Newtonsoft.Json;
 
 namespace Blog.Libraries.Services.Permissions
 {
@@ -20,8 +21,6 @@ namespace Blog.Libraries.Services.Permissions
         #region fields
 
         private readonly IWorkContext _workContext;
-        private readonly IRepository<UserRole> _userRoleRepository;
-        private readonly IRepository<RoleGroup> _roleGroupRepository;
         private readonly HttpContextBase _httpContextBase;
         private readonly ICacheManager _cacheManager;
 
@@ -32,11 +31,9 @@ namespace Blog.Libraries.Services.Permissions
 
         #region Constructor
 
-        public RoleService(IWorkContext workContext, IRepository<UserRole> userRoleRepository, IRepository<RoleGroup> roleGroupRepository, HttpContextBase httpContextBase, ICacheManager cacheManager)
+        public RoleService(IWorkContext workContext, HttpContextBase httpContextBase, ICacheManager cacheManager)
         {
             _workContext = workContext;
-            _userRoleRepository = userRoleRepository;
-            _roleGroupRepository = roleGroupRepository;
             _httpContextBase = httpContextBase;
             _cacheManager = cacheManager;
         }
@@ -76,10 +73,11 @@ namespace Blog.Libraries.Services.Permissions
             var roleAttribute = method.GetCustomAttribute<RoleActionAttribute>(true);
             if (roleAttribute == null) return true;
 
+            if (string.IsNullOrEmpty(roleString)) return false;
+            var authorizeRoleList = JsonConvert.DeserializeObject<List<RoleItem>>(roleString);
 
-
-
-            throw new System.NotImplementedException();
+            return authorizeRoleList.Any(p => p.ClassName == classFullName
+                && p.AuthorizeMethods.Split('|').Contains(roleAttribute.RoleCode));
         }
 
         #endregion
@@ -111,7 +109,7 @@ namespace Blog.Libraries.Services.Permissions
         {
             if (admin == null)
                 throw new ArgumentNullException("admin");
-            return string.Format(AdminRoleCacheKey, admin.UserRole?.RoleGroup?.Id);
+            return string.Format(GroupRoleCacheKey, admin.UserRole?.RoleGroup?.Id);
         }
 
         #endregion
