@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using Blog.Libraries.Core.Infrastructure;
 using Blog.Libraries.Services.Permissions;
 
 namespace Blog.Presentation.Framework.Attributes.FilterAttributes.AuthenticationFilterAttributes
@@ -9,6 +10,11 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes.Authentication
     {
 
         private readonly IRoleService _roleService;
+
+        public AdminAuthenticationAttribute()
+        {
+            if (_roleService == null) _roleService = EngineContext.Current.Resolve<IRoleService>();
+        }
 
         public AdminAuthenticationAttribute(IRoleService roleService)
         {
