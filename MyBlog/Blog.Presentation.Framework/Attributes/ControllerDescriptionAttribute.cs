@@ -61,7 +61,6 @@ namespace Blog.Presentation.Framework.Attributes
 
         #region InternalClass
 
-        [Serializable]
         public class ControllerDescription
         {
 
