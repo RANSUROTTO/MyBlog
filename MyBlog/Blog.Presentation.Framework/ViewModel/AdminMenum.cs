@@ -6,9 +6,9 @@ namespace Blog.Presentation.Framework.ViewModel
     public class AdminMenum
     {
 
-        public string Name { get; set; }
-
         public string Icon { get; set; }
+
+        public string Name { get; set; }
 
         public int Order { get; set; }
 
