@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Infrastructure;
 using Blog.Libraries.Services.Permissions;
 
@@ -9,34 +10,54 @@ namespace Blog.Presentation.Framework.Attributes.FilterAttributes.Authentication
     public class AdminAuthenticationAttribute : ActionFilterAttribute
     {
 
+        #region Fields
+
         private readonly IRoleService _roleService;
+        private readonly IWorkContext _workContext;
+
+        #endregion
+
+        #region Constructor
 
         public AdminAuthenticationAttribute()
         {
-            if (_roleService == null) _roleService = EngineContext.Current.Resolve<IRoleService>();
+            if (_roleService == null)
+                _roleService = EngineContext.Current.Resolve<IRoleService>();
+            if (_workContext == null)
+                _workContext = EngineContext.Current.Resolve<IWorkContext>();
         }
 
-        public AdminAuthenticationAttribute(IRoleService roleService)
+        public AdminAuthenticationAttribute(IRoleService roleService, IWorkContext workContext)
         {
             _roleService = roleService;
+            _workContext = workContext;
         }
+
+        #endregion
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            if (filterContext == null)
+                throw new ArgumentNullException("filterContext");
 
-            var actionDescriptor = filterContext.ActionDescriptor as ReflectedActionDescriptor;
-            if (actionDescriptor == null) throw new ArgumentException("无效的action对象");
+            if (_workContext.Admin == null)
+                RedirectToLogin(filterContext);
 
-            var methodName = actionDescriptor.MethodInfo.Name;
-            var className = filterContext.ActionDescriptor.ControllerDescriptor.ControllerType.FullName;
+            var areaName = filterContext.RouteData.Values["Area"].ToString();
+            var controllerName = filterContext.RouteData.Values["Controller"].ToString();
+            var actionName = filterContext.RouteData.Values["Action"].ToString();
 
-            if (_roleService.Authorize(className, methodName))
+            if (_roleService.Authorize(areaName, controllerName, actionName))
                 base.OnActionExecuting(filterContext);
             else
-            {
-                filterContext.HttpContext.Response.RedirectToRoute("Admin_Login", new { returnUrl = "" });
-                filterContext.HttpContext.Response.End();
-            }
+                RedirectToLogin(filterContext);
+
+        }
+
+        private void RedirectToLogin(ActionExecutingContext filterContext)
+        {
+            filterContext.HttpContext.Response.RedirectToRoute("Admin_Login", new { returnUrl = "" });
+            filterContext.HttpContext.Response.End();
         }
 
     }

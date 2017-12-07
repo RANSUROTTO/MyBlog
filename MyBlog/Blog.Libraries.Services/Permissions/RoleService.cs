@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web;
 using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.ComponentModel;
+using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Data.Domain.Member;
 using Newtonsoft.Json;
@@ -23,6 +24,7 @@ namespace Blog.Libraries.Services.Permissions
         private readonly IWorkContext _workContext;
         private readonly HttpContextBase _httpContextBase;
         private readonly ICacheManager _cacheManager;
+        private readonly WebConfig _webConfig;
 
         private const string AdminRoleCacheKey = "ransurotto.com.role.admin_{0}";
         private const string GroupRoleCacheKey = "ransurotto.com.role.group_{0}";
@@ -31,11 +33,12 @@ namespace Blog.Libraries.Services.Permissions
 
         #region Constructor
 
-        public RoleService(IWorkContext workContext, HttpContextBase httpContextBase, ICacheManager cacheManager)
+        public RoleService(IWorkContext workContext, HttpContextBase httpContextBase, ICacheManager cacheManager, WebConfig webConfig)
         {
             _workContext = workContext;
             _httpContextBase = httpContextBase;
             _cacheManager = cacheManager;
+            _webConfig = webConfig;
         }
 
         #endregion
@@ -44,40 +47,36 @@ namespace Blog.Libraries.Services.Permissions
 
         public bool Authorize()
         {
+            var routeDataValues = _httpContextBase.Request.RequestContext.RouteData.Values;
 
-            throw new System.NotImplementedException();
+            var areaName = routeDataValues["Area"].ToString();
+            var controllerName = routeDataValues["Controller"].ToString();
+            var actionName = routeDataValues["Action"].ToString();
+
+            return Authorize(areaName, controllerName, actionName);
         }
 
-        public bool Authorize(string classFullName, string methodName)
+        public bool Authorize(string area, string controllerName, string actionName)
         {
             var admin = _workContext.Admin as Admin;
-            return Authorize(classFullName, methodName, admin);
+            return Authorize(area, controllerName, actionName, admin);
         }
 
-        public bool Authorize(string classFullName, string methodName, Admin admin)
+        public bool Authorize(string area, string controllerName, string actionName, Admin admin)
         {
             if (admin == null)
                 return false;
 
-            return Authorize(classFullName, methodName, GetRoleStringCache(admin, "admin"))
-                   || Authorize(classFullName, methodName, GetRoleStringCache(admin, "group"));
+            return Authorize(area, controllerName, actionName, GetRoleStringCache(admin, "admin"))
+                   || Authorize(area, controllerName, actionName, GetRoleStringCache(admin, "group"));
         }
 
-        public bool Authorize(string classFullName, string methodName, string roleString)
+        public bool Authorize(string area, string controllerName, string actionName, string roleString)
         {
-            //获取classType,获取失败将抛出异常
-            var classType = Type.GetType(classFullName, true);
-            var method = classType.GetMethod(methodName);
-            if (method == null) throw new Exception("无法找到对应方法");
 
-            var roleAttribute = method.GetCustomAttribute<RoleActionAttribute>(true);
-            if (roleAttribute == null) return true;
-
-            if (string.IsNullOrEmpty(roleString)) return false;
             var authorizeRoleList = JsonConvert.DeserializeObject<List<RoleItem>>(roleString);
 
-            return authorizeRoleList.Any(p => p.ClassName == classFullName
-                && p.AuthorizeMethods.Split('|').Contains(roleAttribute.RoleCode));
+            return false;
         }
 
         #endregion

@@ -7,37 +7,40 @@ namespace Blog.Libraries.Services.Permissions
     {
 
         /// <summary>
-        /// 判断当前管理员是否有当前访问功能权限
+        /// 判断当前管理员是否有当前访问操作权限
         /// ，该方法需要 HTTP上下文 可用
         /// </summary>
         /// <returns>结果</returns>
         bool Authorize();
 
         /// <summary>
-        /// 判断当前管理员是否有某功能权限
+        /// 判断当前管理员是否有某操作权限
         /// </summary>
-        /// <param name="classFullName">类的完全名称(包含命名空间)</param>
-        /// <param name="methodName">方法名称</param>
+        /// <param name="area">区域名称</param>
+        /// <param name="controllerName">控制器名称</param>
+        /// <param name="actionName">动作名称</param>
         /// <returns>结果</returns>
-        bool Authorize(string classFullName, string methodName);
+        bool Authorize(string area, string controllerName, string actionName);
 
         /// <summary>
         /// 判断指定管理员是否有某功能权限
         /// </summary>
-        /// <param name="classFullName">类的完全名称(包含命名空间)</param>
-        /// <param name="methodName">方法名称</param>
+        /// <param name="area">区域名称</param>
+        /// <param name="controllerName">控制器名称</param>
+        /// <param name="actionName">动作名称</param>
         /// <param name="admin">检查管理员</param>
         /// <returns>结果</returns>
-        bool Authorize(string classFullName, string methodName, Admin admin);
+        bool Authorize(string area, string controllerName, string actionName, Admin admin);
 
         /// <summary>
         /// 判断权限字符串是包含某功能权限
         /// </summary>
-        /// <param name="classFullName">类的完全名称(包含命名空间)</param>
-        /// <param name="methodName">方法名称</param>
+        /// <param name="area">区域名称</param>
+        /// <param name="controllerName">控制器名称</param>
+        /// <param name="actionName">动作名称</param>
         /// <param name="roleString">权限字符串</param>
         /// <returns>结果</returns>
-        bool Authorize(string classFullName, string methodName, string roleString);
+        bool Authorize(string area, string controllerName, string actionName, string roleString);
 
     }
 

@@ -5,14 +5,19 @@ namespace Blog.Libraries.Services.Permissions
     {
 
         /// <summary>
-        /// 授权类
+        /// 授权Area
         /// </summary>
-        public string ClassName { get; set; }
+        public string Area { get; set; }
 
         /// <summary>
-        /// 授权函数集合
+        /// 授权Controller
         /// </summary>
-        public string AuthorizeMethods { get; set; }
+        public string Controller { get; set; }
+
+        /// <summary>
+        /// 授权Action
+        /// </summary>
+        public string AuthorizeActions { get; set; }
 
     }
 
