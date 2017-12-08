@@ -68,6 +68,9 @@ namespace Blog.Presentation.Framework
             //注册 Web Helper
             builder.RegisterType<WebHelper>().As<IWebHelper>().InstancePerLifetimeScope();
 
+            //注册 Attribute
+            builder.RegisterFilterProvider();
+
             //注册 Controller
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
 

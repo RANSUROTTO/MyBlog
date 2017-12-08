@@ -1,16 +1,16 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web.Mvc;
 using Blog.Libraries.Core.Domain.Members;
 
-namespace Blog.Libraries.Core.ComponentModel
+namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
 {
 
     /// <summary>
-    /// 需要权限的方法
+    /// 授权检查
     /// </summary>
-    [AttributeUsage(AttributeTargets.Method)]
-    public class RoleActionAttribute : Attribute
+    public class RoleAuthorizeAttribute : AuthorizeAttribute
     {
 
         #region Fields
@@ -27,7 +27,7 @@ namespace Blog.Libraries.Core.ComponentModel
         public string RoleCode { get; set; }
 
         /// <summary>
-        /// 允许访问的用户类型
+        /// 授权用户类型
         /// </summary>
         public AuthenticationType? AuthenticationType { get; set; }
 
@@ -38,24 +38,24 @@ namespace Blog.Libraries.Core.ComponentModel
         /// <summary>
         /// 通过权限代码设置函数权限
         /// </summary>
-        public RoleActionAttribute(string roleCode)
+        public RoleAuthorizeAttribute(string roleCode)
         {
             if (RoleCodeValidator(roleCode))
                 this.RoleCode = RoleCode;
         }
 
         /// <summary>
-        /// 通过常用操作类型作为权限代码设置函数权限
+        /// 通过基本操作类型作为权限代码设置函数权限
         /// </summary>
-        public RoleActionAttribute(RoleActionType roleActionType)
+        public RoleAuthorizeAttribute(RoleActionType roleActionType)
         {
             this.RoleCode = GetRoleCodeByRoleActionType(roleActionType);
         }
 
         /// <summary>
-        /// 通过权限代码和用户类型设置函数权限
+        /// 通过权限代码和授权用户类型设置函数权限
         /// </summary>
-        public RoleActionAttribute(string roleCode, AuthenticationType type)
+        public RoleAuthorizeAttribute(string roleCode, AuthenticationType type)
         {
             if (RoleCodeValidator(roleCode))
                 this.RoleCode = RoleCode;
@@ -63,12 +63,21 @@ namespace Blog.Libraries.Core.ComponentModel
         }
 
         /// <summary>
-        /// 通过常用操作类型作为权限代码和用户类型设置函数权限
+        /// 通过基本操作类型作为权限代码和授权用户类型设置函数权限
         /// </summary>
-        public RoleActionAttribute(RoleActionType roleActionType, AuthenticationType type)
+        public RoleAuthorizeAttribute(RoleActionType roleActionType, AuthenticationType type)
         {
             this.RoleCode = GetRoleCodeByRoleActionType(roleActionType);
             this.AuthenticationType = type;
+        }
+
+        #endregion
+
+        #region Method
+
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            base.OnAuthorization(filterContext);
         }
 
         #endregion
@@ -112,7 +121,7 @@ namespace Blog.Libraries.Core.ComponentModel
     }
 
     /// <summary>
-    /// 操作形式
+    /// 基本操作动作
     /// </summary>
     public enum RoleActionType : byte
     {

@@ -4,6 +4,7 @@
     /// <summary>
     /// 用户类型
     /// </summary>
+
     public enum AuthenticationType : byte
     {
 

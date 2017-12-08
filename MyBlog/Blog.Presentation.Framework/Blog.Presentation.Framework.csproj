@@ -105,6 +105,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AuthorizeAttributes\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Attributes\AuthorizeAttributes\RoleAuthorizeAttribute.cs" />
     <Compile Include="Attributes\ControllerDescriptionAttribute.cs" />
     <Compile Include="Attributes\FilterAttributes\AuthenticationFilterAttributes\AdminAuthenticationAttribute.cs" />
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
