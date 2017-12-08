@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Routing;
 using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.ComponentModel;
 using Blog.Libraries.Core.Configuration;
@@ -73,6 +74,7 @@ namespace Blog.Libraries.Services.Permissions
 
         public bool Authorize(string area, string controllerName, string actionName, string roleString)
         {
+
 
             var authorizeRoleList = JsonConvert.DeserializeObject<List<RoleItem>>(roleString);
 

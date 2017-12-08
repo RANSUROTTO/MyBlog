@@ -15,6 +15,9 @@ namespace Blog.Libraries.Core.Configuration
             Config = new WebConfig();
 
             //初始化属性值
+            var debugNode = section.SelectSingleNode("Debug");
+            Config.Debug = GetBool(debugNode, "Enable");
+
             var startupNode = section.SelectSingleNode("Startup");
             Config.IgnoreStartupTasks = GetBool(startupNode, "IgnoreStartupTasks");
 
@@ -32,6 +35,11 @@ namespace Blog.Libraries.Core.Configuration
         }
 
         #region Properties
+
+        /// <summary>
+        /// 调试模式[部分功能将沉默：权限等]
+        /// </summary>
+        public bool Debug { get; set; }
 
         /// <summary>
         /// 是否忽略运行应用程序启动任务
