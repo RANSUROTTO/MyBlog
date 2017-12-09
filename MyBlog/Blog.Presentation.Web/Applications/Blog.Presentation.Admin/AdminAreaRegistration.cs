@@ -10,7 +10,7 @@ namespace Blog.Presentation.Admin
             context.MapRoute(
                 "Admin_Default",
                 "Admin/{controller}/{action}/{id}",
-                new { area = AreaName, controller = "Home", action = "index", id = UrlParameter.Optional },
+                new { controller = "Home", action = "index", id = UrlParameter.Optional },
                 new[] { "Blog.Presentation.Admin.Controllers" }
                 );
 

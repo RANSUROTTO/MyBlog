@@ -11,7 +11,7 @@ namespace Blog.Presentation.API
             context.MapRoute(
                 "API_Default",
                 "API/{controller}/{action}/{id}",
-                new { area = AreaName, controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Blog.Presentation.API.Controllers" }
                 );
         }
