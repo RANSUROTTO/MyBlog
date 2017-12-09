@@ -6,17 +6,9 @@ using Blog.Presentation.Framework.Controllers;
 namespace Blog.Presentation.Admin.Controllers
 {
 
-    public class HomeController : AdminController
+    public class HomeController : Controller
     {
-
-        #region Constructor
-
-        public HomeController(IWorkContext workContext) : base(workContext)
-        {
-        }
-
-        #endregion
-
+        
         [HttpGet]
         public ActionResult Index()
         {

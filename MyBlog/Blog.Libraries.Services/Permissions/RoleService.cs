@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
 using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.ComponentModel;
@@ -74,9 +75,16 @@ namespace Blog.Libraries.Services.Permissions
 
         public bool Authorize(string area, string controllerName, string actionName, string roleString)
         {
+            if (!(ControllerBuilder.Current.GetControllerFactory() is DefaultControllerFactory))
+                throw new Exception($"当前环境使用的IControllerFactory非DefaultControllerFactory,为${ControllerBuilder.Current.GetControllerFactory().GetType()}请更新代码");
 
+            var routeData = new RouteData();
+            routeData.Values.Add("area", area);
+            routeData.Values.Add("controller", controllerName);
+            routeData.Values.Add("action", actionName);
 
-            var authorizeRoleList = JsonConvert.DeserializeObject<List<RoleItem>>(roleString);
+            var controllerType = typeof(DefaultControllerFactory).GetMethod("GetControllerTypeFromDirectRoute").Invoke(null, null);
+
 
             return false;
         }
