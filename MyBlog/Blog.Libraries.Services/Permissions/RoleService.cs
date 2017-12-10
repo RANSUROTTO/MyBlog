@@ -79,17 +79,25 @@ namespace Blog.Libraries.Services.Permissions
             if (_webConfig.Debug)
                 return true;
 
-            var routeData = new Dictionary<string, object>();
-            routeData.Add("area", area);
-            routeData.Add("controller", controllerName);
-            routeData.Add("action", actionName);
+            var routeData = new Dictionary<string, object>
+            {
+                {"area", area},
+                {"controller", controllerName},
+                {"action", actionName}
+            };
 
-            RouteTable.Routes.GetVirtualPath(null, new RouteValueDictionary(routeData));
+            var virtualPathData = RouteTable.Routes.GetVirtualPathForArea(_httpContextBase.Request.RequestContext, new RouteValueDictionary(routeData));
+            // ASP.NET MVC5 ：System.Web.Mvc.Routing.RouteDataTokenKeys const Namespaces = "Namespaces"
+            // ASP.NET MVC Source Code: https://github.com/aspnet/AspNetWebStack
+            var controllerNamespaces = virtualPathData.DataTokens["Namespaces"] as string[];
+            if (controllerNamespaces == null)
+                throw new Exception("未找到对应路由绑定的控制器命名空间");
 
-
-
-
-
+            for (int i = 0; i < controllerNamespaces.Length; i++)
+            {
+                var controllerClassName = string.Format($"{controllerNamespaces[i]}.{controllerName}Controller");
+                var controllerClassType = Type.GetType(controllerClassName);
+            }
 
             return false;
         }
