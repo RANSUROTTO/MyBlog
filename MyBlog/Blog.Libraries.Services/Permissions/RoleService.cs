@@ -79,12 +79,12 @@ namespace Blog.Libraries.Services.Permissions
             if (_webConfig.Debug)
                 return true;
 
-            var routeData = new RouteData();
-            routeData.Values.Add("area", area);
-            routeData.Values.Add("controller", controllerName);
-            routeData.Values.Add("action", actionName);
+            var routeData = new Dictionary<string, object>();
+            routeData.Add("area", area);
+            routeData.Add("controller", controllerName);
+            routeData.Add("action", actionName);
 
-
+            RouteTable.Routes.GetVirtualPath(null, new RouteValueDictionary(routeData));
 
 
 
