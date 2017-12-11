@@ -149,6 +149,7 @@
     <Compile Include="Infrastructure\SiteEngine.cs" />
     <Compile Include="Infrastructure\TypeFinder\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\TypeFinder\ITypeFinder.cs" />
+    <Compile Include="Infrastructure\TypeFinder\TypeFinderExtensions.cs" />
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

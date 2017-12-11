@@ -44,10 +44,14 @@ namespace Blog.Presentation.Web.Controllers
             for (int i = 0; i < controllerNamespaces.Length; i++)
             {
                 var controllerClassName = string.Format($"{controllerNamespaces[i]}.HomeController");
-                var controllerClassType = Type.GetType(controllerClassName);
-
+                Type controllerClassType = null;
+                foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    if (assembly.GetType(controllerClassName) != null)
+                        controllerClassType = assembly.GetType(controllerClassName);
+                }
             }
-            
+
             return Content(sb.ToString());
         }
 

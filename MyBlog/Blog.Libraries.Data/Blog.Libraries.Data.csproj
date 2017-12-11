@@ -90,7 +90,6 @@
     <Compile Include="Mapping\Permissions\RoleGroupMap.cs" />
     <Compile Include="Mapping\Permissions\UserRoleMap.cs" />
     <Compile Include="Mapping\Member\CustomerPasswordMap.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Settings\BlogSettings.cs" />
     <Compile Include="Settings\CustomerSettings.cs" />
     <Compile Include="Domain\Member\Guest.cs" />
@@ -119,6 +118,7 @@
   <ItemGroup>
     <Folder Include="Domain\Content\" />
     <Folder Include="Initializers\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
