@@ -1,6 +1,6 @@
 using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Services.Permissions
+namespace Blog.Presentation.Framework.Services.Permissions
 {
 
     public interface IRoleService

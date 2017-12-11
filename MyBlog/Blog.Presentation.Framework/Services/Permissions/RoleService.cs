@@ -1,6 +1,7 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -10,7 +11,7 @@ using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
 using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Services.Permissions
+namespace Blog.Presentation.Framework.Services.Permissions
 {
 
     /// <summary>
@@ -103,7 +104,14 @@ namespace Blog.Libraries.Services.Permissions
                     throw new Exception($"没有找到控制器类型,检索的控制器类型完全名称为{controllerClassName}");
             }
 
-            var action = controllerType.GetMethods().Where(p=> (p.Name == actionName));
+            var action = controllerType.GetMethods().FirstOrDefault(p =>
+                (p.Name == actionName && p.GetCustomAttribute<ActionNameAttribute>(true) == null)
+                || p.GetCustomAttribute<ActionNameAttribute>(true).Name == actionName);
+
+            if (action == null) return true;
+
+
+
 
             return false;
         }

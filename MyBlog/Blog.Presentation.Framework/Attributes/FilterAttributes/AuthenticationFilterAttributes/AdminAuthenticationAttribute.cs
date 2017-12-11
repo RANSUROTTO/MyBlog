@@ -2,7 +2,7 @@ using System;
 using System.Web.Mvc;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Infrastructure;
-using Blog.Libraries.Services.Permissions;
+using Blog.Presentation.Framework.Services.Permissions;
 
 namespace Blog.Presentation.Framework.Attributes.FilterAttributes.AuthenticationFilterAttributes
 {

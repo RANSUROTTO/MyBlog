@@ -130,6 +130,9 @@
     <Compile Include="Routes\RoutePublisher.cs" />
     <Compile Include="Services\ControllerService.cs" />
     <Compile Include="Services\IControllerService.cs" />
+    <Compile Include="Services\Permissions\IRoleService.cs" />
+    <Compile Include="Services\Permissions\RoleItem.cs" />
+    <Compile Include="Services\Permissions\RoleService.cs" />
     <Compile Include="Temporary\Razor\BaseRazorViewEngine.cs" />
     <Compile Include="Temporary\Route\IRouteProvider.cs" />
     <Compile Include="Temporary\Route\IRoutePublisher.cs" />
