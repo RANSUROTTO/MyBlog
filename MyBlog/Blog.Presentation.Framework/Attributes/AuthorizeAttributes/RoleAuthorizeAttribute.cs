@@ -10,6 +10,7 @@ namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
     /// <summary>
     /// 授权检查
     /// </summary>
+    [AttributeUsage(AttributeTargets.Method)]
     public class RoleAuthorizeAttribute : AuthorizeAttribute
     {
 
@@ -30,6 +31,11 @@ namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
         /// 授权用户类型
         /// </summary>
         public AuthenticationType? AuthenticationType { get; set; }
+
+        /// <summary>
+        /// 权限描述
+        /// </summary>
+        public string Description { get; set; }
 
         #endregion
 
@@ -89,12 +95,16 @@ namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
             switch (actionType)
             {
                 case RoleActionType.Insert:
+                    Description = "新增";
                     return "INSERT";
                 case RoleActionType.Update:
+                    Description = "编辑";
                     return "UPDATE";
                 case RoleActionType.Select:
+                    Description = "查询";
                     return "SELECT";
                 case RoleActionType.Delete:
+                    Description = "删除";
                     return "DELETE";
                 default:
                     throw new ArgumentException("无法找到对应操作形式的权限代码", "actionType");
