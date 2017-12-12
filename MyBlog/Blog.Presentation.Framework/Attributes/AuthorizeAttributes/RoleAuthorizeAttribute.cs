@@ -1,8 +1,11 @@
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Mvc;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Infrastructure;
+using Blog.Presentation.Framework.Services.Permissions;
 
 namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
 {
@@ -17,6 +20,7 @@ namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
         #region Fields
 
         private readonly string[] _notUseCode = { "INSERT", "UPDATE", "SELECT", "DELETE" };
+        private readonly IRoleService _roleService = EngineContext.Current.Resolve<IRoleService>();
 
         #endregion
 
@@ -83,7 +87,18 @@ namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
 
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            base.OnAuthorization(filterContext);
+            if (_roleService.Authorize())
+            {
+                base.OnAuthorization(filterContext);
+            }
+            AuthorizeFail(filterContext.HttpContext.Response);
+        }
+
+        public virtual void AuthorizeFail(HttpResponseBase response)
+        {
+            response.Clear();
+            response.StatusCode = 401;
+            response.End();
         }
 
         #endregion
