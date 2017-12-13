@@ -10,6 +10,10 @@ using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
 using Blog.Libraries.Data.Domain.Member;
+using Blog.Libraries.Services.Permissions;
+using Blog.Presentation.Framework.Attributes.AuthorizeAttributes;
+using Newtonsoft.Json;
+using NUnit.Framework;
 
 namespace Blog.Presentation.Framework.Services.Permissions
 {
@@ -110,6 +114,10 @@ namespace Blog.Presentation.Framework.Services.Permissions
 
             if (action == null) return true;
 
+            var roleAttribute = action.GetCustomAttribute<RoleAuthorizeAttribute>();
+            if (roleAttribute == null) return true;
+
+            var role = JsonConvert.DeserializeObject<List<RoleItem>>(roleString);
 
 
 
