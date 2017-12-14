@@ -108,7 +108,6 @@
     <Compile Include="Attributes\AuthorizeAttributes\AdminAuthorizeAttribute.cs" />
     <Compile Include="Attributes\AuthorizeAttributes\RoleAuthorizeAttribute.cs" />
     <Compile Include="Attributes\ControllerDescriptionAttribute.cs" />
-    <Compile Include="Attributes\FilterAttributes\AuthenticationFilterAttributes\AdminAuthenticationAttribute.cs" />
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
     <Compile Include="Context\PageContext.cs" />
     <Compile Include="Context\WorkContext.cs" />
@@ -129,6 +128,8 @@
     <Compile Include="Routes\IRoutePublisher.cs" />
     <Compile Include="Routes\RoutePublisher.cs" />
     <Compile Include="Services\ControllerService.cs" />
+    <Compile Include="Services\Controller\AdminControllerService.cs" />
+    <Compile Include="Services\Controller\IAdminControllerService.cs" />
     <Compile Include="Services\IControllerService.cs" />
     <Compile Include="Services\Permissions\IRoleService.cs" />
     <Compile Include="Services\Permissions\RoleItem.cs" />
@@ -138,7 +139,7 @@
     <Compile Include="Temporary\Route\IRoutePublisher.cs" />
     <Compile Include="Temporary\Route\RoutePublisher.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
-    <Compile Include="ViewModel\AdminMenum.cs" />
+    <Compile Include="CommonModel\AdminMenu.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

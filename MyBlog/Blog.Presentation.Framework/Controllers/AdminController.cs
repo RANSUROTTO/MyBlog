@@ -2,12 +2,10 @@ using System;
 using System.Web.Mvc.Filters;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Domain.Members;
-using Blog.Presentation.Framework.Attributes.FilterAttributes.AuthenticationFilterAttributes;
 
 namespace Blog.Presentation.Framework.Controllers
 {
 
-    [AdminAuthentication]
     public class AdminController : PublicController
     {
 
@@ -26,6 +24,8 @@ namespace Blog.Presentation.Framework.Controllers
 
         #endregion
 
+        #region Methods
+
         protected override void OnAuthentication(AuthenticationContext filterContext)
         {
             if (filterContext == null)
@@ -40,6 +40,8 @@ namespace Blog.Presentation.Framework.Controllers
 
             base.OnAuthentication(filterContext);
         }
+
+        #endregion
 
     }
 
