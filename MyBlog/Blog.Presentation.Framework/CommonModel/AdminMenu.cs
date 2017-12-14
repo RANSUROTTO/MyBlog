@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 
-namespace Blog.Presentation.Framework.ViewModel
+namespace Blog.Presentation.Framework.CommonModel
 {
 
-    public class AdminMenum
+    public class AdminMenu
     {
 
         public string Icon { get; set; }
@@ -14,7 +14,7 @@ namespace Blog.Presentation.Framework.ViewModel
 
         public bool I18N { get; set; }
 
-        public IList<AdminMenum> Children { get; set; }
+        public IList<AdminMenu> Children { get; set; }
 
     }
 
