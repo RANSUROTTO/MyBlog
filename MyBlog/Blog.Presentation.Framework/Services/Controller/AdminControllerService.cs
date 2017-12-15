@@ -16,6 +16,7 @@ namespace Blog.Presentation.Framework.Services.Controller
 
         private readonly ITypeFinder _typeFinder;
         private readonly IRoleService _roleService;
+        
 
         #endregion
 
