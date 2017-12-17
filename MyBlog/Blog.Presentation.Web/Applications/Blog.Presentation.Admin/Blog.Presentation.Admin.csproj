@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="AdminAreaRegistration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -115,6 +116,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\BlogPost\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Blog.Libraries.Core\Blog.Libraries.Core.csproj">
