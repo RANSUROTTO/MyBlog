@@ -15,7 +15,7 @@ namespace Blog.Presentation.Framework.Services.Permissions
         public string Controller { get; set; }
 
         /// <summary>
-        /// 授权Action
+        /// 授权Action列表
         /// </summary>
         public string AuthorizeActions { get; set; }
 
