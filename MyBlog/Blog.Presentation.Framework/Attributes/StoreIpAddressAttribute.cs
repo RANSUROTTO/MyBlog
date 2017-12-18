@@ -11,7 +11,7 @@ namespace Blog.Presentation.Framework.Attributes
 {
 
     /// <summary>
-    /// 代表一个用于更新用户最后访问的过滤器
+    /// 代表一个用于更新用户最后访问记录的过滤器
     /// </summary>
     public class StoreIpAddressAttribute : ActionFilterAttribute
     {
@@ -28,7 +28,11 @@ namespace Blog.Presentation.Framework.Attributes
             if (filterContext.IsChildAction)
                 return;
 
-            //筛选接受Get请求
+            //不要将筛选器应用于AJAX请求
+            if (filterContext.HttpContext.Request.IsAjaxRequest())
+                return;
+
+            //筛选仅接受Get请求记录
             if (!string.Equals(filterContext.HttpContext.Request.HttpMethod, "GET", StringComparison.OrdinalIgnoreCase))
                 return;
 
