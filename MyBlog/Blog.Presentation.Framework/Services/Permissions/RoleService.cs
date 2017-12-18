@@ -10,7 +10,6 @@ using Blog.Libraries.Core.Configuration;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
 using Blog.Libraries.Data.Domain.Member;
-using Blog.Libraries.Services.Permissions;
 using Blog.Presentation.Framework.Attributes.AuthorizeAttributes;
 using Newtonsoft.Json;
 using NUnit.Framework;

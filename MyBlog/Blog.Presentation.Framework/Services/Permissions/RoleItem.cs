@@ -1,4 +1,4 @@
-namespace Blog.Libraries.Services.Permissions
+namespace Blog.Presentation.Framework.Services.Permissions
 {
 
     public class RoleItem
