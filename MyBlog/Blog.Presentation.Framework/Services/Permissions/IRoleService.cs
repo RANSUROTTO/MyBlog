@@ -1,3 +1,4 @@
+using Blog.Libraries.Core.Domain.Members;
 using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Presentation.Framework.Services.Permissions

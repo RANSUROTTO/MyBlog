@@ -22,7 +22,7 @@ namespace Blog.Presentation.Framework.Services.Permissions
     public class RoleService : IRoleService
     {
 
-        #region fields
+        #region Fields
 
         private readonly IWorkContext _workContext;
         private readonly HttpContextBase _httpContextBase;

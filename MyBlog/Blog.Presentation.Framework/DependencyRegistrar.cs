@@ -26,6 +26,8 @@ using Blog.Libraries.Services.Infrastructure.Installation;
 using Blog.Libraries.Services.Members;
 using Blog.Libraries.Services.Security;
 using Blog.Presentation.Framework.Context;
+using Blog.Presentation.Framework.Services.Controller;
+using Blog.Presentation.Framework.Services.Permissions;
 using Blog.Presentation.Framework.Temporary.Route;
 
 namespace Blog.Presentation.Framework
@@ -136,7 +138,12 @@ namespace Blog.Presentation.Framework
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
 
-
+            builder.RegisterType<RoleService>().As<IRoleService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("cache_static"))
+                .InstancePerLifetimeScope();
+            builder.RegisterType<RegionService>().As<IRegionService>()
+                .WithParameter(ResolvedParameter.ForNamed<ICacheManager>("cache_static"))
+                .InstancePerLifetimeScope();
         }
 
         public int Order

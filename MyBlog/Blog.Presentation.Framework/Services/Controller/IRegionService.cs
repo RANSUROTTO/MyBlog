@@ -7,7 +7,7 @@ namespace Blog.Presentation.Framework.Services.Controller
     /// <summary>
     /// 管理员控制器业务
     /// </summary>
-    public interface IAdminControllerService
+    public interface IRegionService
     {
 
         /// <summary>

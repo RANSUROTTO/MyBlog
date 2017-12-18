@@ -131,8 +131,8 @@
     <Compile Include="Routes\IRoutePublisher.cs" />
     <Compile Include="Routes\RoutePublisher.cs" />
     <Compile Include="Services\ControllerService.cs" />
-    <Compile Include="Services\Controller\AdminControllerService.cs" />
-    <Compile Include="Services\Controller\IAdminControllerService.cs" />
+    <Compile Include="Services\Controller\RegionService.cs" />
+    <Compile Include="Services\Controller\IRegionService.cs" />
     <Compile Include="Services\IControllerService.cs" />
     <Compile Include="Services\Permissions\IRoleService.cs" />
     <Compile Include="Services\Permissions\RoleItem.cs" />
