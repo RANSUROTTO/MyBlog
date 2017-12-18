@@ -1,3 +1,13 @@
 ﻿@using Blog.Presentation.Framework.CommonModel
 @model List<AdminMenu>
 
+@helper RenderMenuItem(AdminMenu item)
+{
+
+}
+
+
+@foreach (var item in Model)
+{
+    RenderMenuItem(item);
+}
