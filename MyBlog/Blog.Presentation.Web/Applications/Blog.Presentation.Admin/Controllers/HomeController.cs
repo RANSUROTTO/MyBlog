@@ -8,13 +8,9 @@ namespace Blog.Presentation.Admin.Controllers
 {
 
     [ControllerDescription("[Name=test,Icon=fa fa-awit,Order=0,I18n=true]", "[Name=hhh,Icon=fa fa-awit,Order=0,I18n=true]")]
-    public class HomeController : AdminController
+    public class HomeController : Controller
     {
-
-        public HomeController(IWorkContext workContext) : base(workContext)
-        {
-        }
-
+        
         [HttpGet]
         public ActionResult Index()
         {

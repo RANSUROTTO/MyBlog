@@ -3,8 +3,25 @@
 
 @helper RenderMenuItem(AdminMenu item)
 {
-    <li>
-        
+    <li @(item.AnyChidren ? Html.Raw("class=\"menu-list\"") : null)>
+        <a @(!string.IsNullOrEmpty(item.Url) ? Html.Raw(string.Format("href=\"{0}\"", item.Url)) : null)>
+            @if (!string.IsNullOrEmpty(item.Icon))
+            {
+                <text>
+                    <i class="@(item.Icon)"></i>
+                </text>
+            }
+            <span>@(item.Name)</span>
+        </a>
+        @if (item.AnyChidren)
+        {
+            <ul class="sub-menu-list">
+                @foreach (var subItem in item.Children)
+                {
+                    @RenderMenuItem(subItem)
+                }
+            </ul>
+        }
     </li>
 }
 
