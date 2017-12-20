@@ -69,6 +69,10 @@ namespace Blog.Presentation.Framework.Services.Permissions
 
         public bool Authorize(string area, string controllerName, string actionName, Admin admin)
         {
+            //调试模式不验证权限
+            if (_webConfig.Debug)
+                return true;
+
             if (admin == null)
                 return false;
 

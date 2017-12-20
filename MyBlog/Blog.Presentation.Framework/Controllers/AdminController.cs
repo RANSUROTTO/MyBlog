@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc.Filters;
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Presentation.Framework.Controllers
 {
@@ -11,7 +12,7 @@ namespace Blog.Presentation.Framework.Controllers
 
         #region Fields
 
-        private readonly IAdmin _authenticationAdmin;
+        public Admin AuthenticationAdmin { get; }
 
         #endregion
 
@@ -19,7 +20,7 @@ namespace Blog.Presentation.Framework.Controllers
 
         public AdminController(IWorkContext workContext) : base(workContext)
         {
-            _authenticationAdmin = workContext.Admin;
+            AuthenticationAdmin = workContext.Admin as Admin;
         }
 
         #endregion
@@ -31,7 +32,7 @@ namespace Blog.Presentation.Framework.Controllers
             if (filterContext == null)
                 throw new ArgumentNullException("filterContext");
 
-            if (_authenticationAdmin == null)
+            if (AuthenticationAdmin == null)
             {
                 Response.RedirectToRoute("login", new { returnUrl = Request.Url?.ToString() });
                 Response.End();

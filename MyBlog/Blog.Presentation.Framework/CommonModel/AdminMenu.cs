@@ -30,9 +30,14 @@ namespace Blog.Presentation.Framework.CommonModel
         public bool I18N { get; set; }
 
         /// <summary>
+        /// 链接地址
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
         /// 子节点
         /// </summary>
-        public IList<AdminMenu> Children { get; set; }
+        public List<AdminMenu> Children { get; set; }
 
         /// <summary>
         /// 是否包含子节点

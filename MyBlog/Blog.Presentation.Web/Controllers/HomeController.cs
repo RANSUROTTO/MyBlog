@@ -8,6 +8,7 @@ using Blog.Libraries.Core.Helper;
 using Blog.Libraries.Core.Infrastructure;
 using System.Reflection;
 using System.Web.Mvc.Routing;
+using Blog.Presentation.Framework.Services.Controller;
 
 namespace Blog.Presentation.Web.Controllers
 {
@@ -16,9 +17,11 @@ namespace Blog.Presentation.Web.Controllers
     {
 
         private IWebHelper WebHelper { get { return new WebHelper(HttpContext); } }
+        private IRegionService RegionService { get { return EngineContext.Current.Resolve<IRegionService>(); } }
 
         public ActionResult Index()
         {
+            var list = RegionService.GetAdminMenus(0);
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("CommonHelper.MapPath:" + CommonHelper.MapPath("~"));

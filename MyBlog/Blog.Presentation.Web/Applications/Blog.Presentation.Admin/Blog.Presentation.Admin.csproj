@@ -124,6 +124,10 @@
       <Project>{DF1821A4-B68B-4DBF-8B03-1EEF22C41971}</Project>
       <Name>Blog.Libraries.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Blog.Libraries.Data\Blog.Libraries.Data.csproj">
+      <Project>{2FE05ACE-2D15-47A8-AC0F-E2A75F61AE3F}</Project>
+      <Name>Blog.Libraries.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Blog.Presentation.Framework\Blog.Presentation.Framework.csproj">
       <Project>{05f1c1e5-6a2c-42c3-adee-253e9ed85005}</Project>
       <Name>Blog.Presentation.Framework</Name>

@@ -25,7 +25,10 @@ namespace Blog.Libraries.Services.Members
 
         public Admin GetAdminById(long adminId)
         {
-            throw new NotImplementedException();
+            if (adminId == 0)
+                return null;
+
+            return _adminRepository.GetById(adminId);
         }
 
         public Admin GetAdminByGuid(Guid guid)

@@ -11,10 +11,12 @@ namespace Blog.Presentation.Framework.Services.Controller
     {
 
         /// <summary>
-        /// 获取管理员菜单项集合
+        /// 获取指定管理员可见菜单项集合
+        /// debug模式下获取所有可见菜单项集合
         /// </summary>
-        /// <returns>管理员菜单项集合</returns>
-        IList<AdminMenu> GetAdminMenus();
+        /// <param name="adminId">管理员ID</param>
+        /// <returns>管理员可见菜单项集合</returns>
+        List<AdminMenu> GetAdminMenus(long adminId);
 
     }
 
