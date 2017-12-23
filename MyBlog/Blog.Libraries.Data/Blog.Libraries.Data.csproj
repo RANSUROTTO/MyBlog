@@ -90,11 +90,6 @@
     <Compile Include="Mapping\Permissions\RoleGroupMap.cs" />
     <Compile Include="Mapping\Permissions\UserRoleMap.cs" />
     <Compile Include="Mapping\Member\CustomerPasswordMap.cs" />
-    <Compile Include="Migrations\201712200243277_no1.cs" />
-    <Compile Include="Migrations\201712200243277_no1.Designer.cs">
-      <DependentUpon>201712200243277_no1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Settings\BlogSettings.cs" />
     <Compile Include="Settings\CustomerSettings.cs" />
     <Compile Include="Domain\Member\Guest.cs" />
@@ -133,11 +128,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712200243277_no1.resx">
-      <DependentUpon>201712200243277_no1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -98,14 +98,14 @@ namespace Blog.Presentation.Framework.Services.Controller
             if (menu.Children == null)
             {
                 menu.Children = new List<AdminMenu> { adminMenu };
-                return menu.Children.First(p => p.Name == (description.I18N ? description.Name + "" : description.Name));
+                return menu.Children.First(p => p.Name == adminMenu.Name);
             }
 
-            if (menu.Children.Any(p => p.Name == (description.I18N ? description.Name + "" : description.Name)))
-                return menu.Children.First(p => p.Name == (description.I18N ? description.Name + "" : description.Name));
+            if (menu.Children.Any(p => p.Name == adminMenu.Name))
+                return menu.Children.First(p => p.Name == adminMenu.Name);
 
             menu.Children.Add(adminMenu);
-            return menu.Children.First(p => p.Name == (description.I18N ? description.Name + "" : description.Name));
+            return menu.Children.First(p => p.Name == adminMenu.Name);
         }
 
         #endregion
