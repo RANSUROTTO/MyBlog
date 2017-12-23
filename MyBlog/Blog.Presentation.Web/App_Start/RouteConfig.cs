@@ -16,6 +16,12 @@ namespace Blog.Presentation.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Blog.Presentation.Web.Controllers" });
+            routes.MapRoute(
+                name: "Web_Login",
+                url: "Login",
+                defaults: new { action = "Login", controller = "Customer" },
+                namespaces: new[] { "Blog.Presentation.Web.Controllers" }
+                );
 
             var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
             routePublisher.RegisterRoutes(routes);

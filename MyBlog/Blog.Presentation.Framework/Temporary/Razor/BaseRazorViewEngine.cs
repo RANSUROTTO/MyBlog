@@ -172,8 +172,10 @@ namespace Blog.Presentation.Framework.Temporary.Razor
 
             var newLocations = areaLocations.ToList();
             var typeAgent = EngineContext.Current.Resolve<ITypeFinder>();
-            newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/{1}/{0}.cshtml");
+            newLocations.Insert(0, "~/Views/Shared/{0}.cshtml");
+            newLocations.Insert(0, "~/Views/{1}/{0}.cshtml");
             newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/Shared/{0}.cshtml");
+            newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/{1}/{0}.cshtml");
             areaLocations = newLocations.ToArray();
 
             bool usingAreas = !String.IsNullOrEmpty(areaName);
