@@ -84,7 +84,7 @@ namespace Blog.Presentation.Framework.Temporary.Razor
             IEnumerable<string> fileExtensions = base.FileExtensions;
             return new RazorView(controllerContext, viewPath, masterPath, true, fileExtensions);
         }
-        
+
         #region Utilities & Methods
 
         protected virtual string GetAreaName(RouteData routeData)
@@ -170,13 +170,16 @@ namespace Blog.Presentation.Framework.Temporary.Razor
             string areaName = GetAreaName(controllerContext.RouteData);
             areaName = (areaName == null ? (controllerContext.RouteData.DataTokens["Namespaces"] as string[])[0].Replace(".Controllers", "") : areaName);
 
-            var newLocations = areaLocations.ToList();
             var typeAgent = EngineContext.Current.Resolve<ITypeFinder>();
-            newLocations.Insert(0, "~/Views/Shared/{0}.cshtml");
-            newLocations.Insert(0, "~/Views/{1}/{0}.cshtml");
-            newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/Shared/{0}.cshtml");
-            newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/{1}/{0}.cshtml");
-            areaLocations = newLocations.ToArray();
+
+            if (!string.IsNullOrEmpty(areaName) &&
+                areaName.Equals("Admin", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var newLocations = areaLocations.ToList();
+                newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/Shared/{0}.cshtml");
+                newLocations.Insert(0, "~/Applications/" + assembilesname + "/Views/{1}/{0}.cshtml");
+                areaLocations = newLocations.ToArray();
+            }
 
             bool usingAreas = !String.IsNullOrEmpty(areaName);
 
