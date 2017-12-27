@@ -26,7 +26,7 @@ namespace Blog.Presentation.Admin.Controllers
 
         public ActionResult Sidebar()
         {
-            var adminMenus = _regionService.GetAdminMenus(AuthenticationAdmin.Id).ToList();
+            var adminMenus = _regionService.GetAdminMenus(0).ToList();
             return View(adminMenus);
         }
 

@@ -17,7 +17,7 @@
     <link href="@Url.Content("~/Assets/adminex/css/style-responsive.css")" rel="stylesheet">
     @RenderSection("styles", false)
 </head>
-<body>
+<body class="sticky-header">
 
     <section>
 
@@ -27,13 +27,13 @@
             <!--logo and iconic logo start-->
             <div class="logo">
                 <a href="index.html">
-                    <img src="Assets/adminex/images/logo.png" alt="">
+                    <img src="~/Assets/adminex/images/logo.png" alt="">
                 </a>
             </div>
 
             <div class="logo-icon text-center">
                 <a href="index.html">
-                    <img src="Assets/adminex/images/logo_icon.png" alt="">
+                    <img src="~/Assets/adminex/images/logo_icon.png" alt="">
                 </a>
             </div>
             <!--logo and iconic logo end-->
@@ -43,7 +43,7 @@
                 <!-- visible to small devices only -->
                 <div class="visible-xs hidden-sm hidden-md hidden-lg">
                     <div class="media logged-user">
-                        <img alt="" src="Assets/adminex/images/photos/user-avatar.png" class="media-object">
+                        <img alt="" src="~/Assets/adminex/images/photos/user-avatar.png" class="media-object">
                         <div class="media-body">
                             <h4>
                                 <a href="#">John Doe</a>
@@ -81,268 +81,6 @@
                     Html.RenderAction("Sidebar", "Region");
                 }
 
-                @*<ul class="nav nav-pills nav-stacked custom-nav">
-                        <li class="menu-list">
-                            <a href="index.html">
-                                <i class="fa fa-home"></i>
-                                <span>Dashboard</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="index_alt.html"> Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index.html"> Dashboard 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-laptop"></i>
-                                <span>Layouts</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li class="active">
-                                    <a href="blank_page.html"> Blank Page</a>
-                                </li>
-                                <li class="menu-list">
-                                    <a href>
-                                        <i class="fa fa-laptop"></i>
-                                        <span>Boxed Page</span>
-                                    </a>
-                                    <ul class="sub-menu-list">
-                                        <li>
-                                            <a href="blank_page.html"> Blank Page</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="leftmenu_collapsed_view.html"> Sidebar Collapsed</a>
-                                </li>
-                                <li>
-                                    <a href="horizontal_menu.html"> Horizontal Menu</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-book"></i>
-                                <span>UI Elements</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="general.html"> General</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html"> Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="tabs-accordions.html"> Tabs & Accordions</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html"> Typography</a>
-                                </li>
-                                <li>
-                                    <a href="slider.html"> Slider</a>
-                                </li>
-                                <li>
-                                    <a href="panels.html"> Panels</a>
-                                </li>
-                                <li>
-                                    <a href="widgets.html"> Widgets</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-cogs"></i>
-                                <span>Components</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="grids.html"> Grids</a>
-                                </li>
-                                <li>
-                                    <a href="gallery.html"> Media Gallery</a>
-                                </li>
-                                <li>
-                                    <a href="calendar.html"> Calendar</a>
-                                </li>
-                                <li>
-                                    <a href="tree_view.html"> Tree View</a>
-                                </li>
-                                <li>
-                                    <a href="nestable.html"> Nestable</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="fontawesome.html">
-                                <i class="fa fa-bullhorn"></i>
-                                <span>Fontawesome</span>
-                            </a>
-                        </li>
-
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-envelope"></i>
-                                <span>Mail</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="mail.html"> Inbox</a>
-                                </li>
-                                <li>
-                                    <a href="mail_compose.html"> Compose Mail</a>
-                                </li>
-                                <li>
-                                    <a href="mail_view.html"> View Mail</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-tasks"></i>
-                                <span>Forms</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="form_layouts.html"> Form Layouts</a>
-                                </li>
-                                <li>
-                                    <a href="form_advanced_components.html"> Advanced Components</a>
-                                </li>
-                                <li>
-                                    <a href="form_wizard.html"> Form Wizards</a>
-                                </li>
-                                <li>
-                                    <a href="form_validation.html"> Form Validation</a>
-                                </li>
-                                <li>
-                                    <a href="editors.html"> Editors</a>
-                                </li>
-                                <li>
-                                    <a href="inline_editors.html"> Inline Editors</a>
-                                </li>
-                                <li>
-                                    <a href="pickers.html"> Pickers</a>
-                                </li>
-                                <li>
-                                    <a href="dropzone.html"> Dropzone</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-bar-chart-o"></i>
-                                <span>Charts</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="flot_chart.html"> Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html"> Morris Charts</a>
-                                </li>
-                                <li>
-                                    <a href="chartjs.html"> Chartjs</a>
-                                </li>
-                                <li>
-                                    <a href="c3chart.html"> C3 Charts</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-list">
-                            <a href="#">
-                                <i class="fa fa-th-list"></i>
-                                <span>Data Tables</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="basic_table.html"> Basic Table</a>
-                                </li>
-                                <li>
-                                    <a href="dynamic_table.html"> Advanced Table</a>
-                                </li>
-                                <li>
-                                    <a href="responsive_table.html"> Responsive Table</a>
-                                </li>
-                                <li>
-                                    <a href="editable_table.html"> Edit Table</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-list">
-                            <a href="#">
-                                <i class="fa fa-map-marker"></i>
-                                <span>Maps</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="google_map.html"> Google Map</a>
-                                </li>
-                                <li>
-                                    <a href="vector_map.html"> Vector Map</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-list">
-                            <a href="">
-                                <i class="fa fa-file-text"></i>
-                                <span>Extra Pages</span>
-                            </a>
-                            <ul class="sub-menu-list">
-                                <li>
-                                    <a href="profile.html"> Profile</a>
-                                </li>
-                                <li>
-                                    <a href="invoice.html"> Invoice</a>
-                                </li>
-                                <li>
-                                    <a href="pricing_table.html"> Pricing Table</a>
-                                </li>
-                                <li>
-                                    <a href="timeline.html"> Timeline</a>
-                                </li>
-                                <li>
-                                    <a href="blog_list.html"> Blog List</a>
-                                </li>
-                                <li>
-                                    <a href="blog_details.html"> Blog Details</a>
-                                </li>
-                                <li>
-                                    <a href="directory.html"> Directory </a>
-                                </li>
-                                <li>
-                                    <a href="chat.html"> Chat </a>
-                                </li>
-                                <li>
-                                    <a href="404.html"> 404 Error</a>
-                                </li>
-                                <li>
-                                    <a href="500.html"> 500 Error</a>
-                                </li>
-                                <li>
-                                    <a href="registration.html"> Registration Page</a>
-                                </li>
-                                <li>
-                                    <a href="lock_screen.html"> Lockscreen </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="login.html">
-                                <i class="fa fa-sign-in"></i>
-                                <span>Login Page</span>
-                            </a>
-                        </li>
-
-                    </ul>*@
                 <!--sidebar nav end-->
 
             </div>
@@ -453,7 +191,7 @@
                                     <li class="new">
                                         <a href="">
                                             <span class="thumb">
-                                                <img src="Assets/adminex/images/photos/user1.png" alt="" />
+                                                <img src="~/Assets/adminex/images/photos/user1.png" alt="" />
                                             </span>
                                             <span class="desc">
                                                 <span class="name">
@@ -467,7 +205,7 @@
                                     <li>
                                         <a href="">
                                             <span class="thumb">
-                                                <img src="Assets/adminex/images/photos/user2.png" alt="" />
+                                                <img src="~/Assets/adminex/images/photos/user2.png" alt="" />
                                             </span>
                                             <span class="desc">
                                                 <span class="name">Jonathan Smith</span>
@@ -478,7 +216,7 @@
                                     <li>
                                         <a href="">
                                             <span class="thumb">
-                                                <img src="Assets/adminex/images/photos/user3.png" alt="" />
+                                                <img src="~/Assets/adminex/images/photos/user3.png" alt="" />
                                             </span>
                                             <span class="desc">
                                                 <span class="name">Jane Doe</span>
@@ -489,7 +227,7 @@
                                     <li>
                                         <a href="">
                                             <span class="thumb">
-                                                <img src="Assets/adminex/images/photos/user4.png" alt="" />
+                                                <img src="~/Assets/adminex/images/photos/user4.png" alt="" />
                                             </span>
                                             <span class="desc">
                                                 <span class="name">Mark Henry</span>
@@ -500,7 +238,7 @@
                                     <li>
                                         <a href="">
                                             <span class="thumb">
-                                                <img src="Assets/adminex/images/photos/user5.png" alt="" />
+                                                <img src="~/Assets/adminex/images/photos/user5.png" alt="" />
                                             </span>
                                             <span class="desc">
                                                 <span class="name">Jim Doe</span>
@@ -566,7 +304,7 @@
                         </li>
                         <li>
                             <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                <img src="Assets/adminex/images/photos/user-avatar.png" alt="" /> John Doe
+                                <img src="~/Assets/adminex/images/photos/user-avatar.png" alt="" /> John Doe
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
@@ -614,7 +352,7 @@
             <!--body wrapper end-->
             <!--footer section start-->
             <footer class="sticky-footer">
-                2014 &copy; AdminEx by ThemeBucket
+                2017 &copy; Ransurotto
             </footer>
             <!--footer section end-->
 

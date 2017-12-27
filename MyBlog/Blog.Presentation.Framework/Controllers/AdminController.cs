@@ -32,12 +32,12 @@ namespace Blog.Presentation.Framework.Controllers
             if (filterContext == null)
                 throw new ArgumentNullException("filterContext");
 
-            if (AuthenticationAdmin == null)
-            {
-                Response.RedirectToRoute("login", new { returnUrl = Request.Url?.ToString() });
-                Response.End();
-                return;
-            }
+            /* if (AuthenticationAdmin == null)
+             {
+                 Response.RedirectToRoute("login", new { returnUrl = Request.Url?.ToString() });
+                 Response.End();
+                 return;
+             }*/
 
             base.OnAuthentication(filterContext);
         }
