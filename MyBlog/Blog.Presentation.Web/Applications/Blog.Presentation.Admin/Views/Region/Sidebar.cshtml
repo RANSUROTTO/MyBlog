@@ -4,7 +4,7 @@
 @helper RenderMenuItem(AdminMenu item)
 {
     <li @(item.AnyChidren ? Html.Raw("class=\"menu-list\"") : null)>
-        <a @(!string.IsNullOrEmpty(item.Url) ? Html.Raw(string.Format("href=\"{0}\"", item.Url)) : null)>
+        <a @(!string.IsNullOrEmpty(item.Url) ? Html.Raw(string.Format("href=\"{0}\"", item.Url)) : Html.Raw("href"))>
             @if (!string.IsNullOrEmpty(item.Icon))
             {
                 <text>
