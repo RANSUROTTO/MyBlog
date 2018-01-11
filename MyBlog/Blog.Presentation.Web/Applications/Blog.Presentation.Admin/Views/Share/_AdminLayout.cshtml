@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    var kendoVersion = "2014.1.318";
 }
 <!DOCTYPE html>
 <html>
@@ -11,11 +12,21 @@
     <meta name="description" content="">
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="#" type="image/png">
+
     <title>@(ViewBag.PageContext.Title)</title>
 
+    <!-- Style Begin -->
     <link href="@Url.Content("~/Assets/adminex/css/style.css")" rel="stylesheet">
     <link href="@Url.Content("~/Assets/adminex/css/style-responsive.css")" rel="stylesheet">
+
+    <link href="@Url.Content(string.Format("~/Assets/kendo/{0}/kendo.rtl.min.css", kendoVersion))" rel="stylesheet">
+    <link href="@Url.Content(string.Format("~/Assets/kendo/{0}/kendo.default.min.css", kendoVersion))" rel="stylesheet">
+    <link href="@Url.Content(string.Format("~/Assets/kendo/{0}/kendo.common.min.css", kendoVersion))" rel="stylesheet">
+
+    <!-- Style End -->
+
     @RenderSection("styles", false)
+
 </head>
 <body class="sticky-header">
 
@@ -375,8 +386,12 @@
         <script type="text/javascript" src="@Url.Content("~/Assets/adminex/Assets/adminex/js/html5shiv.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Assets/adminex/Assets/adminex/js/respond.min.js")"></script>
     <![endif]-->
+    <!-- kendo -->
+    <script type="text/javascript" src="@Url.Content(string.Format("~/Assets/kendo/{0}/kendo.web.min.js", kendoVersion))"></script>
+
     <!--common scripts for all pages-->
     <script type="text/javascript" src="@Url.Content("~/Assets/adminex/js/scripts.js")"></script>
+
     @RenderSection("scripts", false)
 </body>
 </html>
