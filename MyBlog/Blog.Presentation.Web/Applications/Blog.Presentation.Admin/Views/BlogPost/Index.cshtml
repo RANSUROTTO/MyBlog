@@ -3,22 +3,80 @@
     Layout = "~\\Applications\\Blog.Presentation.Admin\\Views\\Share\\_AdminLayout.cshtml";
 }
 
+
+
 <div class="row">
+
     <div class="col-sm-12">
-        <section class="panel">
-            <header class="panel-heading">
-                文章列表
-            </header>
-            <div class="panel-body" style="display: block;">
-                <table>
-                    <thead>
-                        <tr></tr>
-                    </thead>
-                    <tbody>
-                        <tr></tr>
-                    </tbody>
-                </table>
+
+        <section class="content-header panel">
+            <div class="panel-body">
+                <div class="clearfix">
+                    <h1 class="pull-left">
+                        Customers
+                    </h1>
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-info">
+                            <i class="fa fa-plus-square"></i>
+                            Add new
+                        </a>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success">
+                                <i class="fa fa-download"></i>
+                                Export
+                            </button>
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <span class="caret"></span>
+                                <span class="sr-only">&nbsp;</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-file-code-o"></i>
+                                        Export to XML (all found)
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-file-code-o"></i>
+                                        Export to XML (all found)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <section class="panel">
+            <div class="panel-body">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-8"><input class="form-control text-box single-line" id="SearchEmail" name="SearchEmail" type="text" value=""></div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-8"><input class="form-control text-box single-line" id="SearchEmail" name="SearchEmail" type="text" value=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-body">
+                <div class="customers-grid"></div>
+            </div>
+        </section>
+
     </div>
+
 </div>

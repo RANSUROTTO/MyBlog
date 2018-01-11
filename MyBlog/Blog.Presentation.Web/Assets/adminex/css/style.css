@@ -3,7 +3,9 @@ Template Name: AdminEx Dashboard
 Author: ThemeBucket
 -------------------------------------------*/
 
-/* @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic); */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+
 @import url('bootstrap.min.css');
 @import url('bootstrap-reset.css');
 @import url('jquery-ui-1.10.3.css');
@@ -5420,4 +5422,42 @@ ul.iconic-list {
         border-bottom: none;
         margin-bottom: 0;
         padding-bottom: 0;
+    }
+
+
+
+
+/*Custom Style By Ransurotto*/
+.content-header {
+    background-color: transparent;
+}
+
+    .content-header .clearfix h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+    }
+
+.dropdown-menu {
+    border-color: #eee;
+}
+
+.clearfix .btn-group .dropdown-menu {
+    right: 0;
+    left: auto;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+}
+
+    .clearfix .btn-group .dropdown-menu input, .clearfix .btn-group .dropdown-menu button, .clearfix .btn-group .dropdown-menu a {
+        display: block;
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 3px 20px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #777;
+        white-space: nowrap;
+        font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
     }

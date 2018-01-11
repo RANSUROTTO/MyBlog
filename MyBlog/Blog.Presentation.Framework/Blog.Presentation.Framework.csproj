@@ -112,6 +112,7 @@
     <Compile Include="Attributes\AuthorizeAttributes\RoleAuthorizeAttribute.cs" />
     <Compile Include="Attributes\ControllerDescriptionAttribute.cs" />
     <Compile Include="Attributes\StoreIpAddressAttribute.cs" />
+    <Compile Include="CommonModel\ActionResult\JsonResult.cs" />
     <Compile Include="Context\PageContext.cs" />
     <Compile Include="Context\WorkContext.cs" />
     <Compile Include="Controllers\AdminController.cs" />

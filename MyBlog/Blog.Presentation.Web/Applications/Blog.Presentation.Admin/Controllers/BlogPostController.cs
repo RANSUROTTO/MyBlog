@@ -16,15 +16,12 @@ namespace Blog.Presentation.Admin.Controllers
 
         #region Fields
 
-        private readonly IBlogPostService _blogPostService;
-
         #endregion
 
         #region Constructor
 
-        public BlogPostController(IWorkContext workContext, IBlogPostService blogPostService) : base(workContext)
+        public BlogPostController(IWorkContext workContext) : base(workContext)
         {
-            _blogPostService = blogPostService;
         }
 
         #endregion
@@ -34,6 +31,11 @@ namespace Blog.Presentation.Admin.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult List()
+        {
+            return Json("");
         }
 
         #endregion

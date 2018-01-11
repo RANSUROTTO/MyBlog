@@ -1,6 +1,8 @@
 ﻿using System.IO;
+using System.Text;
 using System.Web.Mvc;
 using Blog.Presentation.Framework.Attributes;
+using Blog.Presentation.Framework.CommonModel.ActionResult;
 
 namespace Blog.Presentation.Framework.Controllers
 {
@@ -65,6 +67,46 @@ namespace Blog.Presentation.Framework.Controllers
                 //返回视图字符串
                 return sw.GetStringBuilder().ToString();
             }
+        }
+
+        #endregion
+
+        #region Utilities
+
+        public NetJsonResult NetJson(object data)
+        {
+            return NetJson(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public NetJsonResult NetJson(object data, JsonRequestBehavior behavior)
+        {
+            return NetJson(data, null, null, JsonRequestBehavior.AllowGet);
+        }
+
+        public NetJsonResult NetJson(object data, string contentType)
+        {
+            return NetJson(data, contentType, null, JsonRequestBehavior.AllowGet);
+        }
+
+        public NetJsonResult NetJson(object data, string contentType, JsonRequestBehavior behavior)
+        {
+            return NetJson(data, contentType, null, behavior);
+        }
+
+        public NetJsonResult NetJson(object data, string contentType, Encoding contentEncoding)
+        {
+            return NetJson(data, contentType, contentEncoding, JsonRequestBehavior.AllowGet);
+        }
+
+        public virtual NetJsonResult NetJson(object data, string contentType, Encoding contentEncoding, JsonRequestBehavior behavior)
+        {
+            return new NetJsonResult
+            {
+                Data = data,
+                ContentType = contentType,
+                ContentEncoding = contentEncoding,
+                JsonRequestBehavior = behavior
+            };
         }
 
         #endregion

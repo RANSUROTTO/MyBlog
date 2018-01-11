@@ -1624,6 +1624,18 @@
     <Content Include="Assets\kendo\2014.1.318\kendo.view.min.js.map" />
     <Content Include="Assets\kendo\2014.1.318\kendo.web.min.js.map" />
     <Content Include="Assets\kendo\2014.1.318\kendo.window.min.js.map" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-Black.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-BlackIt.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-Bold.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-BoldIt.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-ExtraLight.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-ExtraLightIt.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-It.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-Light.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-LightIt.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-Regular.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-Semibold.otf" />
+    <Content Include="Assets\adminex\fonts\SourceSansPro\SourceSansPro-SemiboldIt.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
