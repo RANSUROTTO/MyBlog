@@ -73,10 +73,61 @@
 
         <section class="panel">
             <div class="panel-body">
-                <div class="customers-grid"></div>
+                <div class="blogs-grid"></div>
             </div>
         </section>
 
     </div>
 
 </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".blogs-grid").kendoGrid({
+                dataSource: {
+                    type: "json",
+                    transport: {
+                        read: {
+                            url: "@Html.Raw(Url.Action("BlogPostList", "BlogPost"))",
+                            type: "POST",
+                            dataType: "json",
+                            data: additionalData
+                        }
+                    },
+                    schema: {
+                        data: "Data",
+                        total: "Total",
+                        errors: "Errors"
+                    },
+                    error: function(e) {
+                        //display_kendoui_grid_error(e);
+                        // Cancel the changes
+                        this.cancelChanges();
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: true
+                },
+                pageable: {
+                    refresh: true,
+                    @*pageSizes: [@(gridPageSizes)],
+                    @Html.Partial("_GridPagerMessages")*@
+                },
+                scrollable: false,
+                dataBound: onDataBound,
+                columns: []
+            });
+        });
+
+        function additionalData() {
+            
+        }
+
+        function onDataBound() {
+            
+        }
+
+    </script>
+}

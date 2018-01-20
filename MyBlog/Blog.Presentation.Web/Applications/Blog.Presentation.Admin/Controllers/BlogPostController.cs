@@ -33,7 +33,7 @@ namespace Blog.Presentation.Admin.Controllers
             return View();
         }
 
-        public ActionResult List()
+        public ActionResult BlogPostList()
         {
             return Json("");
         }
