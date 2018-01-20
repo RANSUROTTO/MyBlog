@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Transactions;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Context;
 
@@ -43,6 +44,8 @@ namespace Blog.Libraries.Data.Repository
             }
         }
 
+        public List<T> Data { get { return Entities.ToList(); } }
+
         #endregion
 
         #region Constructor
@@ -62,6 +65,11 @@ namespace Blog.Libraries.Data.Repository
         public virtual T GetById(params object[] id)
         {
             return Entities.Find(id);
+        }
+
+        public virtual T GetSingle(Expression<Func<T, bool>> where)
+        {
+            return Entities.FirstOrDefault(where);
         }
 
         public virtual Task<T> GetByIdAsync(params object[] id)
@@ -196,7 +204,7 @@ namespace Blog.Libraries.Data.Repository
             }
         }
 
-        public Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
+        public virtual Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
         {
             throw new NotImplementedException();
         }
@@ -281,6 +289,48 @@ namespace Blog.Libraries.Data.Repository
             catch (DbEntityValidationException dbEx)
             {
                 throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual void ExecuteDbTran(Action execute)
+        {
+            var tran = ((DbContext)_context).Database.BeginTransaction();
+            try
+            {
+                execute.Invoke();
+                tran.Commit();
+                ((DbContext)_context).SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                tran.Rollback();
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+            catch (Exception e)
+            {
+                tran.Rollback();
+                throw new Exception(e.Message);
+            }
+        }
+
+        public virtual void ExecuteRequiredTran(Action execute)
+        {
+            using (TransactionScope tran = new TransactionScope(TransactionScopeOption.Required))
+            {
+                try
+                {
+                    execute();
+                    tran.Complete();
+                    ((DbContext)_context).SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    throw new Exception(GetFullErrorText(dbEx), dbEx);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
         }
 

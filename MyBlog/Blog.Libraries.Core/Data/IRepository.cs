@@ -22,6 +22,13 @@ namespace Blog.Libraries.Core.Data
         T GetById(params object[] id);
 
         /// <summary>
+        /// 根据条件获取唯一对象
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <returns>实体</returns>
+        T GetSingle(Expression<Func<T, bool>> where);
+
+        /// <summary>
         /// 插入实体
         /// </summary>
         /// <param name="entity">实体</param>
@@ -65,9 +72,26 @@ namespace Blog.Libraries.Core.Data
         void Delete(IEnumerable<T> entities);
 
         /// <summary>
+        /// 执行数据库事务操作
+        /// </summary>
+        /// <param name="execute"></param>
+        void ExecuteDbTran(Action execute);
+
+        /// <summary>
+        /// 执行分布式事务操作
+        /// </summary>
+        /// <param name="execute"></param>
+        void ExecuteRequiredTran(Action execute);
+
+        /// <summary>
         /// 获取实体数据集
         /// </summary>
         IQueryable<T> Table { get; }
+
+        /// <summary>
+        /// 全部数据
+        /// </summary>
+        List<T> Data { get; }
 
     }
 

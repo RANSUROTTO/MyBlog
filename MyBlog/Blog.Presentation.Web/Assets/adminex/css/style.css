@@ -5448,7 +5448,9 @@ ul.iconic-list {
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 }
 
-    .clearfix .btn-group .dropdown-menu input, .clearfix .btn-group .dropdown-menu button, .clearfix .btn-group .dropdown-menu a {
+    .clearfix .btn-group .dropdown-menu input,
+    .clearfix .btn-group .dropdown-menu button,
+    .clearfix .btn-group .dropdown-menu a {
         display: block;
         background: none;
         border: none;
