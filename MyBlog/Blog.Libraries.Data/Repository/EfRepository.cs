@@ -294,22 +294,24 @@ namespace Blog.Libraries.Data.Repository
 
         public virtual void ExecuteDbTran(Action execute)
         {
-            var tran = ((DbContext)_context).Database.BeginTransaction();
-            try
+            using (var tran = ((DbContext)_context).Database.BeginTransaction())
             {
-                execute.Invoke();
-                tran.Commit();
-                ((DbContext)_context).SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                tran.Rollback();
-                throw new Exception(GetFullErrorText(dbEx), dbEx);
-            }
-            catch (Exception e)
-            {
-                tran.Rollback();
-                throw new Exception(e.Message);
+                try
+                {
+                    execute.Invoke();
+                    ((DbContext)_context).SaveChanges();
+                    tran.Commit();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    tran.Rollback();
+                    throw new Exception(GetFullErrorText(dbEx), dbEx);
+                }
+                catch (Exception e)
+                {
+                    tran.Rollback();
+                    throw new Exception(e.Message);
+                }
             }
         }
 
@@ -320,8 +322,8 @@ namespace Blog.Libraries.Data.Repository
                 try
                 {
                     execute();
-                    tran.Complete();
                     ((DbContext)_context).SaveChanges();
+                    tran.Complete();
                 }
                 catch (DbEntityValidationException dbEx)
                 {
