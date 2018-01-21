@@ -59,7 +59,7 @@ namespace Blog.Libraries.Data.Repository
         }
 
         #endregion
-
+        
         #region Methods
 
         public virtual T GetById(params object[] id)
