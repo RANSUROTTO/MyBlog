@@ -1,0 +1,24 @@
+﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+
+
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir)\Blog.Libraries.Core\bin\Debug\Blog.Libraries.Core.dll" #>
+<#@ assembly name="$(SolutionDir)\Blog.Libraries.Data\bin\Debug\Blog.Libraries.Data.dll" #>
+<#@ assembly name="$(SolutionDir)\Blog.Libraries.Data\bin\Debug\EntityFramework.dll" #>
+<#@ assembly name="$(SolutionDir)\Blog.Libraries.Data\bin\Debug\MySql.Data.dll" #>
+<#@ assembly name="$(SolutionDir)\Blog.Libraries.Data\bin\Debug\MySql.Data.Entity.EF6.dll" #>
+
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Blog.Libraries.Core.Domain"#>
+<#@ import namespace="Blog.Libraries.Data.Domain"#>
+
+<#@ output extension=".cs" encoding="utf-8" #>
+
+<#
+	
+
+#>

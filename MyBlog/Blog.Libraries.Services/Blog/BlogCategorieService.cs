@@ -11,7 +11,7 @@ namespace Blog.Libraries.Services.Blog
 
         #region Fields
 
-        private IRepository<BlogCategorie> _categorieRepository;
+        private readonly IRepository<BlogCategorie> _categorieRepository;
 
         #endregion
 
