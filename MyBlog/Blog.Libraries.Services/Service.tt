@@ -19,19 +19,20 @@
 <#@ import namespace="Blog.Libraries.Core.T4" #>
 <#@ import namespace="Blog.Libraries.Core.Infrastructure.TypeFinder" #>
 
-<#@ output extension=".cs" encoding="utf-8" #>
+<#@ output extension=".txt" encoding="utf-8" #>
 
 <#
+    System.Diagnostics.Debugger.Launch();  
     var solutionPath = Host.ResolveAssemblyReference("$(SolutionDir)");
     var projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");
     
-    var typeFinder = new WebAppTypeFinder();
+    var typeFinder = new AppDomainTypeFinder();
     var modelTypes = typeFinder.FindClassesOfType(typeof(BaseEntity));
 
     foreach(var entityType in modelTypes){
         var t4Model = T4ModelInfo.Create(entityType,true);
-        #>
-<#=t4Model.ToString() #>
+#>
+<#=            t4Model.ToString() #>
 <#
     }
 #>
