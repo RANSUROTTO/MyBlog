@@ -30,8 +30,11 @@
 
     foreach(var entityType in modelTypes){
         var t4Model = T4ModelInfo.Create(entityType,true);
-        Console.WriteLine(t4Model);
+        #>
+<#=t4Model.ToString() #>
+<#
     }
 #>
-<#=solutionPath#>  
-<#=projectPath#>  
+
+<#=        solutionPath#>  
+<#=        projectPath#>  
