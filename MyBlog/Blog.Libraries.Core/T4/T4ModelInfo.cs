@@ -62,6 +62,11 @@ namespace Blog.Libraries.Core.T4
             return new T4ModelInfo(modelType, useModule);
         }
 
+        public override string ToString()
+        {
+            return $"{nameof(Name)}: {Name}, {nameof(ModelType)}: {ModelType}, {nameof(ModuleName)}: {ModuleName}, {nameof(UseModule)}: {UseModule}";
+        }
+
         #endregion
 
     }
