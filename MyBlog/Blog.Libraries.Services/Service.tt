@@ -16,7 +16,7 @@
 <#@ import namespace="Blog.Libraries.Core.Infrastructure.TypeFinder" #>
 
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="Template1.tt" #>
+<#@ include file="ServiceTemplate.tt" #>
 
 <#@ output extension=".txt" encoding="utf-8" #>
 

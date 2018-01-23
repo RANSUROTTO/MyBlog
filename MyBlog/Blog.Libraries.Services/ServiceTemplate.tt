@@ -1,0 +1,32 @@
+﻿<#+
+    // <copyright file="ServiceTemplate.tt" company="ransurotto.com">
+    //  Copyright © Ransurotto. All Rights Reserved.
+    // </copyright>
+
+    public class ServiceTemplate : CSharpTemplate
+    {
+
+        private readonly T4ModelInfo _model;
+
+        public ServiceTemplate(T4ModelInfo model){
+            _model = model;
+        }
+
+        public override string TransformText()
+        {
+            //base.TransformText();
+#>
+namespace <#=            DefaultNamespace #>
+{
+	public class <#=            Identifier("Sample Class") #>
+	{
+		private string <#=            FieldName("Sample Field") #>;
+
+		public string <#=            PropertyName("Sample Property") #> { get; set; }
+	}
+}
+<#+
+            return this.GenerationEnvironment.ToString();
+        }
+    }
+#>
