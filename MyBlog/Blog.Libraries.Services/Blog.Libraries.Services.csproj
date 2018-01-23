@@ -124,6 +124,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Service.tt</DependentUpon>
     </Content>
+    <Content Include="Template1.tt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

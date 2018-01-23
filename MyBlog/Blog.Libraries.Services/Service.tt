@@ -11,18 +11,16 @@
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
-<#@ import namespace="System.Reflection" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="Blog.Libraries.Core.Domain"#>
-<#@ import namespace="Blog.Libraries.Data.Domain"#>
 <#@ import namespace="Blog.Libraries.Core.Data" #>
 <#@ import namespace="Blog.Libraries.Core.T4" #>
 <#@ import namespace="Blog.Libraries.Core.Infrastructure.TypeFinder" #>
 
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="Template1.tt" #>
+
 <#@ output extension=".txt" encoding="utf-8" #>
 
-<#
-    System.Diagnostics.Debugger.Launch();  
+<# 
     var solutionPath = Host.ResolveAssemblyReference("$(SolutionDir)");
     var projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");
     
@@ -31,9 +29,7 @@
 
     foreach(var entityType in modelTypes){
         var t4Model = T4ModelInfo.Create(entityType,true);
-#>
-<#=            t4Model.ToString() #>
-<#
+
     }
 #>
 
