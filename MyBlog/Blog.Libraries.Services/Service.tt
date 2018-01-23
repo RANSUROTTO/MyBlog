@@ -29,7 +29,7 @@
 
     foreach(var entityType in modelTypes){
         var t4Model = T4ModelInfo.Create(entityType,true);
-
+        var template = new ServiceTemplate(t4Model);
     }
 #>
 

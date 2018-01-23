@@ -16,7 +16,7 @@
         {
             //base.TransformText();
 #>
-namespace <#=            DefaultNamespace #>
+namespace <#="Blog.Libraries.Services"+_model.ModuleName#>
 {
 	public class <#=            Identifier("Sample Class") #>
 	{
