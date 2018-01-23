@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" hostspecific="false" language="C#" #>
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 
 
 <#@ assembly name="System.Core" #>
@@ -15,10 +15,25 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Blog.Libraries.Core.Domain"#>
 <#@ import namespace="Blog.Libraries.Data.Domain"#>
+<#@ import namespace="Blog.Libraries.Core.Data" #>
+<#@ import namespace="Blog.Libraries.Core.T4" #>
+<#@ import namespace="Blog.Libraries.Core.Infrastructure.TypeFinder" #>
 
 <#@ output extension=".cs" encoding="utf-8" #>
 
 <#
-	
+    var solutionPath = Host.ResolveAssemblyReference("$(SolutionDir)");
+    var projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");
+    
+    var typeFinder = new WebAppTypeFinder();
+    var modelTypes = typeFinder.FindClassesOfType(typeof(BaseEntity));
+
+    foreach(var entityType in modelTypes){
+        var t4Model = T4ModelInfo.Create(entityType,true);
+
+    }
+
 
 #>
+<#=solutionPath#>  
+<#=projectPath#>  

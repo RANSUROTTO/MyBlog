@@ -152,6 +152,7 @@
     <Compile Include="Infrastructure\TypeFinder\TypeFinderExtensions.cs" />
     <Compile Include="Infrastructure\TypeFinder\WebAppTypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4\T4ModelInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
