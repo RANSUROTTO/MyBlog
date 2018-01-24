@@ -86,6 +86,11 @@ namespace Blog.Libraries.Services.Services
             return _repository.GetSingle(where);
         }
 
+        public Task<T> GetSingleAsync(Expression<Func<T, bool>> @where)
+        {
+            return _repository.GetSingleAsync(where);
+        }
+
         public void Insert(T entity)
         {
             _repository.Insert(entity);

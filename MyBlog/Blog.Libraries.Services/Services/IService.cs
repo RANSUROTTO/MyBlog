@@ -107,6 +107,13 @@ namespace Blog.Libraries.Services.Services
         Task<T> GetByIdAsync(params object[] id);
 
         /// <summary>
+        /// 根据条件异步获取第一个实体对象
+        /// </summary>
+        /// <param name="where">检索条件</param>
+        /// <returns>实体</returns>
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> where);
+
+        /// <summary>
         /// 异步插入实体
         /// </summary>
         /// <param name="entity">实体</param>
