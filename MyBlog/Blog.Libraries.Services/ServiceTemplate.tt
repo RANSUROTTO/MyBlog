@@ -16,13 +16,13 @@
         {
             //base.TransformText();
 #>
-namespace <#="Blog.Libraries.Services"+_model.ModuleName#>
+namespace <#=            string.Format("Blog.Libraries.Services{0}{1}",".",_model.ModuleName)#>
 {
-	public class <#=            Identifier("Sample Class") #>
+	public partial class <#=            string.Format("{0}Service",_model.Name)#>
 	{
-		private string <#=            FieldName("Sample Field") #>;
-
-		public string <#=            PropertyName("Sample Property") #> { get; set; }
+        
+    
+    
 	}
 }
 <#+
