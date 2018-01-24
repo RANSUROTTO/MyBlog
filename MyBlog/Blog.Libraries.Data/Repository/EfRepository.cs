@@ -59,7 +59,7 @@ namespace Blog.Libraries.Data.Repository
         }
 
         #endregion
-        
+
         #region Methods
 
         public virtual T GetById(params object[] id)
@@ -74,8 +74,12 @@ namespace Blog.Libraries.Data.Repository
 
         public virtual Task<T> GetByIdAsync(params object[] id)
         {
-            var result = Task.Run(() => Entities.Find(id));
-            return result;
+            return Task.Run(() => Entities.Find(id));
+        }
+
+        public Task<T> GetSingleAsync(Expression<Func<T, bool>> @where)
+        {
+            return Task.Run(() => GetSingle(@where));
         }
 
         public virtual void Insert(T entity)

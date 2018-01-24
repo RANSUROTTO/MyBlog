@@ -1,17 +1,153 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Services.Services
 {
 
-    public interface IService<T> where T : BaseEntity, new()
+    /// <summary>
+    /// 业务类
+    /// </summary>
+    public partial interface IService<T> where T : BaseEntity, new()
     {
 
+        /// <summary>
+        /// 根据标识符获得实体对象
+        /// </summary>
+        /// <param name="id">标识符</param>
+        /// <returns>实体</returns>
+        T GetById(params object[] id);
 
+        /// <summary>
+        /// 根据条件获取唯一对象
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <returns>实体</returns>
+        T GetSingle(Expression<Func<T, bool>> where);
+
+        /// <summary>
+        /// 插入实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void Insert(T entity);
+
+        /// <summary>
+        /// 插入多个实体通过集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        void Insert(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 更新实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void Update(T entity);
+
+        /// <summary>
+        /// 更新实体,指定更新属性
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <param name="fields">属性</param>
+        void Update(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
+
+        /// <summary>
+        /// 更新多个实体通过集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        void Update(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void Delete(T entity);
+
+        /// <summary>
+        /// 删除多个实体通过集合
+        /// </summary>
+        /// <param name="entities"></param>
+        void Delete(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 执行数据库事务操作
+        /// </summary>
+        /// <param name="execute"></param>
+        void ExecuteDbTran(Action execute);
+
+        /// <summary>
+        /// 执行分布式事务操作
+        /// </summary>
+        /// <param name="execute"></param>
+        void ExecuteRequiredTran(Action execute);
+
+        /// <summary>
+        /// 获取实体数据集
+        /// </summary>
+        IQueryable<T> Table { get; }
+
+        /// <summary>
+        /// 全部数据
+        /// </summary>
+        List<T> Data { get; }
+
+    }
+
+    public partial interface IService<T> where T : BaseEntity, new()
+    {
+
+        /// <summary>
+        /// 根据标识符异步获得实体对象
+        /// </summary>
+        /// <param name="id">标识符</param>
+        /// <returns>实体</returns>
+        Task<T> GetByIdAsync(params object[] id);
+
+        /// <summary>
+        /// 异步插入实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        Task InsertAsync(T entity);
+
+        /// <summary>
+        /// 异步插入多个实体通过集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        Task InsertAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 异步更新实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        Task UpdateAsync(T entity);
+
+        /// <summary>
+        /// 异步更新实体,指定更新属性
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <param name="fields">属性</param>
+        Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
+
+        /// <summary>
+        /// 异步更新多个实体通过集合
+        /// </summary>
+        /// <param name="entities">实体集合</param>
+        Task UpdateAsync(IEnumerable<T> entities);
+
+        /// <summary>
+        /// 异步删除实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        Task DeleteAsync(T entity);
+
+        /// <summary>
+        /// 异步删除多个实体通过集合
+        /// </summary>
+        /// <param name="entities"></param>
+        Task DeleteAsync(IEnumerable<T> entities);
 
     }
 
