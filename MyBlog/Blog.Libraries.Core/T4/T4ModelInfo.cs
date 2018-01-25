@@ -14,22 +14,22 @@ namespace Blog.Libraries.Core.T4
         /// <summary>
         /// 获取或设置T4模型名称
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; }
 
         /// <summary>
         /// 获取或设置T4模型所封装类型
         /// </summary>
-        public Type ModelType { get; set; }
+        public Type ModelType { get; }
 
         /// <summary>
         /// 获取或设置T4模型所在模块名称
         /// </summary>
-        public string ModuleName { get; set; }
+        public string ModuleName { get; }
 
         /// <summary>
         /// 获取或设置是否指定生成模块名称
         /// </summary>
-        public bool UseModule { get; set; }
+        public bool UseModule { get; }
 
         #endregion
 

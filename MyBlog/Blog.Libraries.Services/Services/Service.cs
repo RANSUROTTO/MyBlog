@@ -9,7 +9,7 @@ using Blog.Libraries.Core.Data;
 namespace Blog.Libraries.Services.Services
 {
 
-    public class Service<T> : IService<T> where T : BaseEntity, new()
+    public class Service<T> : IService<T> where T : BaseEntity
     {
 
         #region Fields

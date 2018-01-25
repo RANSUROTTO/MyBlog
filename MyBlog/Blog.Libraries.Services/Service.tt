@@ -30,7 +30,12 @@
     foreach(var entityType in modelTypes){
         var t4Model = T4ModelInfo.Create(entityType,true);
         var template = new ServiceTemplate(t4Model);
+        var outPath = t4Model.UseModule ? string.Format(@"{0}{1}{2}",projectPath,@"Services\",t4Model.ModuleName):string.Format("{0}{1}",projectPath,@"Services\");
+    #>
+<#=            outPath #>
+<#
     }
+
 #>
 
 <#=        solutionPath#>  

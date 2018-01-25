@@ -12,7 +12,7 @@ namespace Blog.Libraries.Services.Services
     /// <summary>
     /// “µŒÒ¿‡
     /// </summary>
-    public partial interface IService<T> where T : BaseEntity, new()
+    public partial interface IService<T> where T : BaseEntity
     {
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Blog.Libraries.Services.Services
 
     }
 
-    public partial interface IService<T> where T : BaseEntity, new()
+    public partial interface IService<T> where T : BaseEntity
     {
 
         /// <summary>

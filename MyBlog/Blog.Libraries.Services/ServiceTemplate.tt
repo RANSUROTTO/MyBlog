@@ -18,12 +18,10 @@
 #>
 namespace <#=            string.Format("Blog.Libraries.Services{0}{1}",".",_model.ModuleName)#>
 {
-	public partial class <#=            string.Format("{0}Service",_model.Name)#>
-	{
-        
-    
-    
-	}
+	public partial interface <#=            string.Format("I{0}Service",_model.Name)#><T> : IService<T> where T:BaseEntity {}
+
+    public partial class <#=            string.Format("{0}Service",_model.Name) #><T> : Service<T>,<#=            string.Format("I{0}Service",_model.Name)#> where T:BaseEntity {}
+
 }
 <#+
             return this.GenerationEnvironment.ToString();
