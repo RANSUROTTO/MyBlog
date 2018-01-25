@@ -8,7 +8,7 @@ using Blog.Libraries.Core.Domain.Localization;
 namespace Blog.Libraries.Services.Localization
 {
 
-    public interface ILanguageService
+    public partial interface ILanguageService
     {
 
         /// <summary>

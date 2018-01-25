@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Blog.Libraries.Data.Domain.Member.Enum;
 using Blog.Libraries.Services.Authentication;
-using Blog.Libraries.Services.Members;
+using Blog.Libraries.Services.Member;
 using Blog.Presentation.Web.Models.Customer;
 
 namespace Blog.Presentation.Web.Controllers

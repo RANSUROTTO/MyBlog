@@ -3,27 +3,15 @@ using System.Linq;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Services.Members
+namespace Blog.Libraries.Services.Member
 {
 
-    public class GuestService : IGuestService
+    public partial class GuestService : IGuestService
     {
 
         #region Fields
 
         private readonly IRepository<Guest> _guestRepository;
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        public GuestService(IRepository<Guest> guestRepository)
-        {
-            _guestRepository = guestRepository;
-        }
 
         #endregion
 

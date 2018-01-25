@@ -12,7 +12,7 @@ using Blog.Libraries.Data.Domain.Configuration;
 namespace Blog.Libraries.Services.Configuration
 {
 
-    public class SettingService : ISettingService
+    public partial class SettingService : ISettingService
     {
 
         #region Fields
@@ -27,7 +27,7 @@ namespace Blog.Libraries.Services.Configuration
 
         #region Constructor
 
-        public SettingService(IRepository<Setting> settingRepository, ICacheManager cacheManager)
+        public SettingService(IRepository<Setting> settingRepository, ICacheManager cacheManager) : base(settingRepository)
         {
             _settingRepository = settingRepository;
             _cacheManager = cacheManager;

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Blog.Libraries.Data.Domain.Member;
 using Blog.Libraries.Data.Domain.Member.Enum;
 
-namespace Blog.Libraries.Services.Members
+namespace Blog.Libraries.Services.Member
 {
 
     /// <summary>
     /// 用户业务接口
     /// </summary>
-    public interface ICustomerService
+    public partial interface ICustomerService
     {
 
         /// <summary>

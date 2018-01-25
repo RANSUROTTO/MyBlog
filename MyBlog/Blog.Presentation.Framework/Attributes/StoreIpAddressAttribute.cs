@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Helper;
 using Blog.Libraries.Core.Context;
-using Blog.Libraries.Services.Members;
+using Blog.Libraries.Services.Member;
 using Blog.Libraries.Core.Infrastructure;
 using Blog.Libraries.Data.Domain.Member;
 

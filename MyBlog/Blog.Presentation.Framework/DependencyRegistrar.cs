@@ -23,7 +23,7 @@ using Blog.Libraries.Data.Repository;
 using Blog.Libraries.Services.Authentication;
 using Blog.Libraries.Services.Configuration;
 using Blog.Libraries.Services.Infrastructure.Installation;
-using Blog.Libraries.Services.Members;
+using Blog.Libraries.Services.Member;
 using Blog.Libraries.Services.Security;
 using Blog.Presentation.Framework.Context;
 using Blog.Presentation.Framework.Services.Controller;

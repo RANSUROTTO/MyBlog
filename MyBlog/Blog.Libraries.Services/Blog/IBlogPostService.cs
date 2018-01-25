@@ -2,7 +2,7 @@
 
 namespace Blog.Libraries.Services.Blog
 {
-    public interface IBlogPostService
+    public partial interface IBlogPostService
     {
 
         /// <summary>

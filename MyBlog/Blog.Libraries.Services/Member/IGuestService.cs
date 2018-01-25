@@ -1,12 +1,12 @@
 ﻿using System;
 using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Services.Members
+namespace Blog.Libraries.Services.Member
 {
     /// <summary>
     /// 游客业务接口
     /// </summary>
-    public interface IGuestService
+    public partial interface IGuestService
     {
 
         /// <summary>

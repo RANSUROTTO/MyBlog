@@ -8,10 +8,10 @@ using Blog.Libraries.Data.Domain.Member.Enum;
 using Blog.Libraries.Data.Settings;
 using Blog.Libraries.Services.Security;
 
-namespace Blog.Libraries.Services.Members
+namespace Blog.Libraries.Services.Member
 {
 
-    public class CustomerService : ICustomerService
+    public partial class CustomerService : ICustomerService
     {
 
         #region Fields
@@ -25,7 +25,7 @@ namespace Blog.Libraries.Services.Members
 
         #region Constructor
 
-        public CustomerService(IRepository<Customer> customerRepository, CustomerSettings customerSettings, IRepository<CustomerPassword> customerPasswordRepository, IEncryptionService encryptionService)
+        public CustomerService(IRepository<Customer> customerRepository, CustomerSettings customerSettings, IRepository<CustomerPassword> customerPasswordRepository, IEncryptionService encryptionService) : base(customerRepository)
         {
             _customerRepository = customerRepository;
             _customerSettings = customerSettings;

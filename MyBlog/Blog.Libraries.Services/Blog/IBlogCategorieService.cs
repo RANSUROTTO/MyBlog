@@ -7,7 +7,7 @@ namespace Blog.Libraries.Services.Blog
     /// <summary>
     /// 文章分类业务接口
     /// </summary>
-    public interface IBlogCategorieService
+    public partial interface IBlogCategorieService
     {
 
         /// <summary>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Blog.Libraries.Core.Caching;
 using Blog.Libraries.Core.Infrastructure.TypeFinder;
-using Blog.Libraries.Services.Members;
+using Blog.Libraries.Services.Member;
 using Blog.Presentation.Framework.Attributes;
 using Blog.Presentation.Framework.CommonModel;
 using Blog.Presentation.Framework.Controllers;

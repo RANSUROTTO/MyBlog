@@ -5,7 +5,7 @@ using Blog.Libraries.Data.Domain.Member;
 namespace Blog.Libraries.Services.Logging
 {
 
-    public interface ILogService
+    public partial interface ILogService
     {
 
         /// <summary>

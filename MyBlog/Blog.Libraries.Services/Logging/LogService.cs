@@ -8,7 +8,7 @@ using Blog.Libraries.Data.Domain.Member;
 
 namespace Blog.Libraries.Services.Logging
 {
-    public class LogService : ILogService
+    public partial class LogService : ILogService
     {
 
         #region Fields
@@ -23,7 +23,7 @@ namespace Blog.Libraries.Services.Logging
 
         public LogService(IRepository<Log> logRepository,
             IDbContext dbContext,
-            IWebHelper webHelper)
+            IWebHelper webHelper) : base(logRepository)
         {
             this._logRepository = logRepository;
             this._dbContext = dbContext;

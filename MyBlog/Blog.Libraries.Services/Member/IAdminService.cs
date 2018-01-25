@@ -1,13 +1,13 @@
 ﻿using System;
 using Blog.Libraries.Data.Domain.Member;
 
-namespace Blog.Libraries.Services.Members
+namespace Blog.Libraries.Services.Member
 {
 
     /// <summary>
     /// 管理员业务接口
     /// </summary>
-    public interface IAdminService
+    public partial interface IAdminService
     {
 
         /// <summary>

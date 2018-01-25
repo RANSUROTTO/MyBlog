@@ -7,7 +7,7 @@ using Blog.Libraries.Data.Domain.Configuration;
 namespace Blog.Libraries.Services.Configuration
 {
 
-    public interface ISettingService
+    public partial interface ISettingService
     {
         /// <summary>
         /// 插入设定

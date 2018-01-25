@@ -3,7 +3,7 @@ using Blog.Libraries.Core.Data;
 
 namespace Blog.Libraries.Services.Blog
 {
-    public class BlogPostService : IBlogPostService
+    public partial class BlogPostService : IBlogPostService
     {
 
         #region Fields
@@ -11,16 +11,7 @@ namespace Blog.Libraries.Services.Blog
         private IRepository<Data.Domain.Blog.BlogPost> _articleRepository;
 
         #endregion
-
-        #region Constructor
-
-        public BlogPostService(IRepository<Data.Domain.Blog.BlogPost> articleRepository)
-        {
-            this._articleRepository = articleRepository;
-        }
-
-        #endregion
-
+        
         #region Methods
 
         public Data.Domain.Blog.BlogPost GetArticleById(long articleId)

@@ -6,7 +6,7 @@ using Blog.Libraries.Data.Domain.Blog;
 namespace Blog.Libraries.Services.Blog
 {
 
-    public class BlogCategorieService : IBlogCategorieService
+    public partial class BlogCategorieService : IBlogCategorieService
     {
 
         #region Fields
@@ -14,16 +14,7 @@ namespace Blog.Libraries.Services.Blog
         private readonly IRepository<BlogCategorie> _categorieRepository;
 
         #endregion
-
-        #region Constructor
-
-        public BlogCategorieService(IRepository<BlogCategorie> categorieRepository)
-        {
-            _categorieRepository = categorieRepository;
-        }
-
-        #endregion
-
+        
         #region Methods
 
         public IList<BlogCategorie> GetAllCategorie()

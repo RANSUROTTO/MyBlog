@@ -4,21 +4,12 @@ using Blog.Libraries.Core.Domain.Localization;
 
 namespace Blog.Libraries.Services.Localization
 {
-    public class LanguageService : ILanguageService
+    public partial class LanguageService : ILanguageService
     {
 
         #region Fields
 
         private readonly IRepository<Language> _languageRepository;
-
-        #endregion
-
-        #region Constructor
-
-        public LanguageService(IRepository<Language> languageRepository)
-        {
-            _languageRepository = languageRepository;
-        }
 
         #endregion
 
