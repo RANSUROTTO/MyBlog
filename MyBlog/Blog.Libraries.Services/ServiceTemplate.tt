@@ -15,12 +15,29 @@
         public override string TransformText()
         {
             //base.TransformText();
+            var entityNamespace = _model.ModelType.Namespace;
+            var currentNamespace = string.Format("Blog.Libraries.Services.{0}",_model.ModuleName);
+            var interfaceName = string.Format("I{0}Service",_model.Name);
+            var className = string.Format("{0}Service",_model.Name);
 #>
-namespace <#=            string.Format("Blog.Libraries.Services{0}{1}",".",_model.ModuleName)#>
-{
-	public partial interface <#=            string.Format("I{0}Service",_model.Name)#><T> : IService<T> where T:BaseEntity {}
+using <#=entityNamespace#>;
+using Blog.Libraries.Core.Data;
+using Blog.Libraries.Services.Services;
 
-    public partial class <#=            string.Format("{0}Service",_model.Name) #><T> : Service<T>,<#=            string.Format("I{0}Service",_model.Name)#> where T:BaseEntity {}
+namespace <#=currentNamespace#>
+{
+	public partial interface <#=interfaceName#> : IService<<#=_model.Name #>> {}
+
+    public partial class <#=className#> : Service<<#=_model.Name #>>,<#=interfaceName#> 
+    {
+        
+        #region Constructor
+
+        public <#=className#> (IRepository<<#=_model.Name #>> repository) : base(repository) {}
+        
+        #endregion
+
+    }
 
 }
 <#+

@@ -4,19 +4,19 @@
 
 
 
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Localization
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Localization
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Logging
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Permissions
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Permissions
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Configuration
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Blog
-E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Blog
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Localization\LanguageService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Localization\LocaleStringResourceService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member\AdminService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member\CustomerService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member\CustomerPasswordService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member\CustomerProfileService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Member\GuestService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Logging\LogService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Permissions\RoleGroupService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Permissions\UserRoleService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Configuration\SettingService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Blog\BlogPostService.cs
+E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\Services\Blog\BlogCategorieService.cs
 
 E:\Code Repository\MyBlog\MyBlog\  
 E:\Code Repository\MyBlog\MyBlog\Blog.Libraries.Services\  

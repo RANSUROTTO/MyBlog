@@ -21,16 +21,23 @@
 <#@ output extension=".txt" encoding="utf-8" #>
 
 <# 
+    //获取解决方案路径和项目路径
     var solutionPath = Host.ResolveAssemblyReference("$(SolutionDir)");
     var projectPath = Host.ResolveAssemblyReference("$(ProjectDir)");
     
+    //查找继承BaseEntity的实体类类型集合
     var typeFinder = new AppDomainTypeFinder();
     var modelTypes = typeFinder.FindClassesOfType(typeof(BaseEntity));
 
+    //通过实体类类型生成业务层
     foreach(var entityType in modelTypes){
-        var t4Model = T4ModelInfo.Create(entityType,true);
+        var t4Model = T4ModelInfo.Create(entityType, true);
         var template = new ServiceTemplate(t4Model);
-        var outPath = t4Model.UseModule ? string.Format(@"{0}{1}{2}",projectPath,@"Services\",t4Model.ModuleName):string.Format("{0}{1}",projectPath,@"Services\");
+        var outPath = t4Model.UseModule ?
+            string.Format(@"{0}{1}{2}{3}Service.cs", projectPath,@"Services\", t4Model.ModuleName + @"\", t4Model.Name)
+            :string.Format(@"{0}{1}{2}Service.cs", projectPath, @"Services\", t4Model.Name);
+        template.Output.Encoding = Encoding.UTF8;
+        template.RenderToFile(outPath);
     #>
 <#=            outPath #>
 <#

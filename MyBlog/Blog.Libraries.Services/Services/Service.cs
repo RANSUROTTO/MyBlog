@@ -20,7 +20,7 @@ namespace Blog.Libraries.Services.Services
 
         #region Constructor
 
-        public Service(IRepository<T> repository)
+        protected Service(IRepository<T> repository)
         {
             this._repository = repository;
         }

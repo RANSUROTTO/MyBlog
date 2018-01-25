@@ -91,7 +91,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\EncryptionService.cs" />
     <Compile Include="Security\IEncryptionService.cs" />
+    <Compile Include="Services\Blog\BlogCategorieService.cs" />
+    <Compile Include="Services\Blog\BlogPostService.cs" />
+    <Compile Include="Services\Configuration\SettingService.cs" />
     <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\Localization\LanguageService.cs" />
+    <Compile Include="Services\Localization\LocaleStringResourceService.cs" />
+    <Compile Include="Services\Logging\LogService.cs" />
+    <Compile Include="Services\Member\AdminService.cs" />
+    <Compile Include="Services\Member\CustomerPasswordService.cs" />
+    <Compile Include="Services\Member\CustomerProfileService.cs" />
+    <Compile Include="Services\Member\CustomerService.cs" />
+    <Compile Include="Services\Member\GuestService.cs" />
+    <Compile Include="Services\Permissions\RoleGroupService.cs" />
+    <Compile Include="Services\Permissions\UserRoleService.cs" />
     <Compile Include="Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +132,21 @@
     <Content Include="Service.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Service.txt</LastGenOutput>
+      <LastOutputs>
+.\Services\Blog\BlogCategorieService.cs
+.\Services\Blog\BlogPostService.cs
+.\Services\Configuration\SettingService.cs
+.\Services\Localization\LanguageService.cs
+.\Services\Localization\LocaleStringResourceService.cs
+.\Services\Logging\LogService.cs
+.\Services\Member\AdminService.cs
+.\Services\Member\CustomerPasswordService.cs
+.\Services\Member\CustomerProfileService.cs
+.\Services\Member\CustomerService.cs
+.\Services\Member\GuestService.cs
+.\Services\Permissions\RoleGroupService.cs
+.\Services\Permissions\UserRoleService.cs
+</LastOutputs>
     </Content>
     <Content Include="Service.txt">
       <AutoGen>True</AutoGen>
