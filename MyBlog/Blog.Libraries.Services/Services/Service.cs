@@ -9,12 +9,15 @@ using Blog.Libraries.Core.Data;
 namespace Blog.Libraries.Services.Services
 {
 
+    /// <summary>
+    /// 业务层实现
+    /// </summary>
     public class Service<T> : IService<T> where T : BaseEntity
     {
 
         #region Fields
 
-        private readonly IRepository<T> _repository;
+        protected readonly IRepository<T> Repository;
 
         #endregion
 
@@ -22,15 +25,15 @@ namespace Blog.Libraries.Services.Services
 
         protected Service(IRepository<T> repository)
         {
-            this._repository = repository;
+            this.Repository = repository;
         }
 
         #endregion
 
         #region Properties
 
-        public IQueryable<T> Table => _repository.Table;
-        public List<T> Data => _repository.Data;
+        public IQueryable<T> Table => Repository.Table;
+        public List<T> Data => Repository.Data;
 
         #endregion
 
@@ -38,102 +41,102 @@ namespace Blog.Libraries.Services.Services
 
         public Task<T> GetByIdAsync(params object[] id)
         {
-            return _repository.GetByIdAsync(id);
+            return Repository.GetByIdAsync(id);
         }
 
         public Task InsertAsync(T entity)
         {
-            return _repository.InsertAsync(entity);
+            return Repository.InsertAsync(entity);
         }
 
         public Task InsertAsync(IEnumerable<T> entities)
         {
-            return _repository.InsertAsync(entities);
+            return Repository.InsertAsync(entities);
         }
 
         public Task UpdateAsync(T entity)
         {
-            return _repository.UpdateAsync(entity);
+            return Repository.UpdateAsync(entity);
         }
 
         public Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
         {
-            return _repository.UpdateAsync(entity, fields);
+            return Repository.UpdateAsync(entity, fields);
         }
 
         public Task UpdateAsync(IEnumerable<T> entities)
         {
-            return _repository.UpdateAsync(entities);
+            return Repository.UpdateAsync(entities);
         }
 
         public Task DeleteAsync(T entity)
         {
-            return _repository.DeleteAsync(entity);
+            return Repository.DeleteAsync(entity);
         }
 
         public Task DeleteAsync(IEnumerable<T> entities)
         {
-            return _repository.DeleteAsync(entities);
+            return Repository.DeleteAsync(entities);
         }
 
         public T GetById(params object[] id)
         {
-            return _repository.GetById(id);
+            return Repository.GetById(id);
         }
 
         public T GetSingle(Expression<Func<T, bool>> @where)
         {
-            return _repository.GetSingle(where);
+            return Repository.GetSingle(where);
         }
 
         public Task<T> GetSingleAsync(Expression<Func<T, bool>> @where)
         {
-            return _repository.GetSingleAsync(where);
+            return Repository.GetSingleAsync(where);
         }
 
         public void Insert(T entity)
         {
-            _repository.Insert(entity);
+            Repository.Insert(entity);
         }
 
         public void Insert(IEnumerable<T> entities)
         {
-            _repository.Insert(entities);
+            Repository.Insert(entities);
         }
 
         public void Update(T entity)
         {
-            _repository.Update(entity);
+            Repository.Update(entity);
         }
 
         public void Update(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
         {
-            _repository.Update(entity, fields);
+            Repository.Update(entity, fields);
         }
 
         public void Update(IEnumerable<T> entities)
         {
-            _repository.Update(entities);
+            Repository.Update(entities);
         }
 
         public void Delete(T entity)
         {
-            _repository.Delete(entity);
+            Repository.Delete(entity);
         }
 
         public void Delete(IEnumerable<T> entities)
         {
-            _repository.Delete(entities);
+            Repository.Delete(entities);
         }
 
         public void ExecuteDbTran(Action execute)
         {
-            _repository.ExecuteDbTran(execute);
+            Repository.ExecuteDbTran(execute);
         }
 
         public void ExecuteRequiredTran(Action execute)
         {
-            _repository.ExecuteRequiredTran(execute);
+            Repository.ExecuteRequiredTran(execute);
         }
 
         #endregion

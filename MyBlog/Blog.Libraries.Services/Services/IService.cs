@@ -10,7 +10,7 @@ namespace Blog.Libraries.Services.Services
 {
 
     /// <summary>
-    /// 业务类
+    /// 业务层接口
     /// </summary>
     public partial interface IService<T> where T : BaseEntity
     {

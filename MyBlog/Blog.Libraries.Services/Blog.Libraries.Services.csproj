@@ -67,10 +67,6 @@
   <ItemGroup>
     <Compile Include="Authentication\FormsAuthenticationService.cs" />
     <Compile Include="Authentication\IAuthenticationService.cs" />
-    <Compile Include="Blog\BlogPostService.cs" />
-    <Compile Include="Blog\BlogCategorieService.cs" />
-    <Compile Include="Blog\IBlogPostService.cs" />
-    <Compile Include="Blog\IBlogCategorieService.cs" />
     <Compile Include="Configuration\ISettingService.cs" />
     <Compile Include="Configuration\SettingExtenisons.cs" />
     <Compile Include="Configuration\SettingService.cs" />
