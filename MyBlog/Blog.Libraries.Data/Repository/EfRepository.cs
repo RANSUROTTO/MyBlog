@@ -234,23 +234,20 @@ namespace Blog.Libraries.Data.Repository
 
         public virtual Task UpdateAsync(Expression<Func<T, bool>> @where, Expression<Func<T, T>> update)
         {
-            return Task.Run(() =>
+            try
             {
-                try
-                {
-                    if (where == null)
-                        throw new ArgumentNullException("where");
-                    if (update == null)
-                        throw new ArgumentNullException("update");
+                if (where == null)
+                    throw new ArgumentNullException("where");
+                if (update == null)
+                    throw new ArgumentNullException("update");
 
-                    Entities.Where(where).Update(update);
-                    _context.SaveChanges();
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    throw new Exception(GetFullErrorText(dbEx), dbEx);
-                }
-            });
+                return Entities.Where(where).UpdateAsync(update);
+                //return _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual async Task UpdateAsync(IEnumerable<T> entities)

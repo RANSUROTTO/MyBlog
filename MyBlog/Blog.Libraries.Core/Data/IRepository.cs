@@ -54,7 +54,7 @@ namespace Blog.Libraries.Core.Data
         void Update(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
 
         /// <summary>
-        /// 直接更新指定条件的实体
+        /// 批量更新指定条件的实体
         /// </summary>
         /// <param name="where">条件</param>
         /// <param name="update">更新内容</param>
@@ -75,19 +75,19 @@ namespace Blog.Libraries.Core.Data
         /// <summary>
         /// 删除多个实体通过集合
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">实体集合</param>
         void Delete(IEnumerable<T> entities);
 
         /// <summary>
-        /// 执行数据库事务操作
+        /// 执行事务操作
         /// </summary>
-        /// <param name="execute"></param>
+        /// <param name="execute">任务</param>
         void ExecuteDbTran(Action execute);
 
         /// <summary>
         /// 执行分布式事务操作
         /// </summary>
-        /// <param name="execute"></param>
+        /// <param name="execute">任务</param>
         void ExecuteRequiredTran(Action execute);
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Blog.Libraries.Core.Data
         Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
 
         /// <summary>
-        /// 直接更新指定条件的实体
+        /// 异步批量更新指定条件的实体
         /// </summary>
         /// <param name="where">条件</param>
         /// <param name="update">更新内容</param>
