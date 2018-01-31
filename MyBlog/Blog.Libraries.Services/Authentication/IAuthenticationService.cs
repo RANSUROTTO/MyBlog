@@ -1,5 +1,6 @@
 ﻿using System;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 
 namespace Blog.Libraries.Services.Authentication
 {

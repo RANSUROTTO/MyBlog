@@ -1,4 +1,4 @@
-﻿namespace Blog.Libraries.Core.Domain.Members
+﻿namespace Blog.Libraries.Core.Domain.Members.Enum
 {
 
     /// <summary>

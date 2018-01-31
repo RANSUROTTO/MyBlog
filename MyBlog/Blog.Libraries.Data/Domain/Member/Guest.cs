@@ -1,5 +1,6 @@
 ﻿using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 
 namespace Blog.Libraries.Data.Domain.Member
 {

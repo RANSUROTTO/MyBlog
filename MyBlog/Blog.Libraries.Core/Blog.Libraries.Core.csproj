@@ -121,7 +121,7 @@
     <Compile Include="Data\DataSettingsManager.cs" />
     <Compile Include="Data\IDataProvider.cs" />
     <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Domain\Members\AuthenticationType.cs" />
+    <Compile Include="Domain\Members\Enum\AuthenticationType.cs" />
     <Compile Include="Domain\Members\IAdmin.cs" />
     <Compile Include="Domain\Members\IAuthenticationUser.cs" />
     <Compile Include="Domain\Members\ICustomer.cs" />

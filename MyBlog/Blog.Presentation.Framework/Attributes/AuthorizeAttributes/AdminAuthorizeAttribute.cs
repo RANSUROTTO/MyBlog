@@ -1,5 +1,6 @@
 using System.Web;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 
 namespace Blog.Presentation.Framework.Attributes.AuthorizeAttributes
 {

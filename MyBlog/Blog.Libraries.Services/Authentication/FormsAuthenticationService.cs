@@ -5,6 +5,7 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Collections.Generic;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 using Blog.Libraries.Data.Domain.Member;
 using Blog.Libraries.Services.Member;
 using Blog.Libraries.Data.Settings;

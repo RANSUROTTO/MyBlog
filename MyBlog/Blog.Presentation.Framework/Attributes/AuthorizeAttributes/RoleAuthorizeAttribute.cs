@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 using Blog.Libraries.Core.Infrastructure;
 using Blog.Presentation.Framework.Services.Permissions;
 

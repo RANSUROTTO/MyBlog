@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 using Blog.Libraries.Data.Domain.Logging;
 
 namespace Blog.Libraries.Data.Domain.Member

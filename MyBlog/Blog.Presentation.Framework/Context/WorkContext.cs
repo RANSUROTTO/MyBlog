@@ -2,6 +2,7 @@
 using Blog.Libraries.Core.Context;
 using Blog.Libraries.Core.Domain.Localization;
 using Blog.Libraries.Core.Domain.Members;
+using Blog.Libraries.Core.Domain.Members.Enum;
 using Blog.Libraries.Data.Domain.Member;
 using Blog.Libraries.Services.Authentication;
 
