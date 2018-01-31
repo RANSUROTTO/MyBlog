@@ -54,6 +54,13 @@ namespace Blog.Libraries.Core.Data
         void Update(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
 
         /// <summary>
+        /// 直接更新指定条件的实体
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <param name="update">更新内容</param>
+        void Update(Expression<Func<T, bool>> where, Expression<Func<T, T>> update);
+
+        /// <summary>
         /// 更新多个实体通过集合
         /// </summary>
         /// <param name="entities">实体集合</param>
@@ -136,6 +143,13 @@ namespace Blog.Libraries.Core.Data
         /// <param name="entity">实体</param>
         /// <param name="fields">属性</param>
         Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields);
+
+        /// <summary>
+        /// 直接更新指定条件的实体
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <param name="update">更新内容</param>
+        Task UpdateAsync(Expression<Func<T, bool>> where, Expression<Func<T, T>> update);
 
         /// <summary>
         /// 异步更新多个实体通过集合

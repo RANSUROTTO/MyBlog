@@ -178,6 +178,11 @@ namespace Blog.Libraries.Data.Repository
             throw new NotImplementedException();
         }
 
+        public virtual void Update(Expression<Func<T, bool>> @where, Expression<Func<T, T>> update)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual void Update(IEnumerable<T> entities)
         {
             try
@@ -209,6 +214,11 @@ namespace Blog.Libraries.Data.Repository
         }
 
         public virtual Task UpdateAsync(T entity, params Expression<Func<T, PropertyInfo>>[] fields)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual Task UpdateAsync(Expression<Func<T, bool>> @where, Expression<Func<T, T>> update)
         {
             throw new NotImplementedException();
         }
