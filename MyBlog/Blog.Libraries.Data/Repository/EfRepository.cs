@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using Blog.Libraries.Core.Data;
 using Blog.Libraries.Data.Context;
+using EntityFramework.Extensions;
 
 namespace Blog.Libraries.Data.Repository
 {
@@ -180,7 +181,20 @@ namespace Blog.Libraries.Data.Repository
 
         public virtual void Update(Expression<Func<T, bool>> @where, Expression<Func<T, T>> update)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (where == null)
+                    throw new ArgumentNullException("where");
+                if (update == null)
+                    throw new ArgumentNullException("update");
+
+                Entities.Where(where).Update(update);
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
         }
 
         public virtual void Update(IEnumerable<T> entities)
@@ -220,7 +234,23 @@ namespace Blog.Libraries.Data.Repository
 
         public virtual Task UpdateAsync(Expression<Func<T, bool>> @where, Expression<Func<T, T>> update)
         {
-            throw new NotImplementedException();
+            return Task.Run(() =>
+            {
+                try
+                {
+                    if (where == null)
+                        throw new ArgumentNullException("where");
+                    if (update == null)
+                        throw new ArgumentNullException("update");
+
+                    Entities.Where(where).Update(update);
+                    _context.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    throw new Exception(GetFullErrorText(dbEx), dbEx);
+                }
+            });
         }
 
         public virtual async Task UpdateAsync(IEnumerable<T> entities)
