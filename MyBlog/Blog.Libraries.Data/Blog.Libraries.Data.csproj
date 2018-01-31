@@ -95,6 +95,7 @@
     <Compile Include="Mapping\Permissions\UserRoleMap.cs" />
     <Compile Include="Mapping\Member\CustomerPasswordMap.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Provider\SqliteDataProvider.cs" />
     <Compile Include="Settings\BlogSettings.cs" />
     <Compile Include="Settings\CustomerSettings.cs" />
     <Compile Include="Domain\Member\Guest.cs" />
